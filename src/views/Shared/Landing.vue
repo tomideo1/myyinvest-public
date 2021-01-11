@@ -44,9 +44,28 @@
         </div>
       </section>
 
-      <section>
+      <section class="ml-5">
         <div class="container-fluid">
-          <img src="@/assets/svgs/light-circle.svg" class="position-relative z-index-0" style="top: 0%" />
+          <div class="d-flex flex-column">
+            <img src="@/assets/svgs/light-circle.svg" width="400" height="400" class="  position-relative d-md-none d-lg-block  mt-n5" style="z-index: -1" />
+            <img src="@/assets/svgs/light-circle.svg" width="300" height="300" class="d-md-block d-lg-none " style="margin-top: 100px" alt="" />
+            <div class="border-left-red d-flex flex-column  " style="margin-top: -120px">
+              <span class="text-main-red ">INVESTMENTS</span>
+              <span>Our Investment Options</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style="margin-top: 150px;" class="ml-5">
+        <div class="container-fluid">
+          <span class="d-flex flex-column ">
+            <span>
+              <h3>Co - Invest</h3>
+
+              <span class="header-underline justify-content-end ml-auto"></span>
+            </span>
+          </span>
         </div>
       </section>
     </main>

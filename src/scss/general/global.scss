@@ -1317,3 +1317,14 @@ Text weight
   font-weight: bold;
   //font-family: ;
 }
+
+.border-left-red {
+  border-left: 2.5px solid color(main-red);
+  padding-left: 10px;
+}
+
+.header-underline {
+  border-bottom: 3.5px solid color(main-red);
+  width: 3%;
+  padding-top: 10px;
+}

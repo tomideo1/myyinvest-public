@@ -2,7 +2,7 @@
 //@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap');
 * {
   box-sizing: border-box;
-  font-family: fonts(main-poppins);
+  font-family: fonts(main-poppins), serif;
 }
 
 html {
@@ -64,7 +64,7 @@ h6 {
 }
 
 .font-poppins {
-  font-family: fonts(main-poppins);
+  font-family: fonts(main-poppins), serif;
 }
 /**
 * Shadows
@@ -1325,6 +1325,119 @@ Text weight
 
 .header-underline {
   border-bottom: 3.5px solid color(main-red);
-  width: 3%;
-  padding-top: 10px;
+  width: 5%;
+  padding-top: 5px;
+}
+.footer-red {
+  background-color: color(main-red);
+  /* height: 500px; */
+  z-index: 1000;
+  margin-top: -3px;
+  margin-right: 0;
+  padding: 50px !important;
+}
+
+.footer-red .footer-row {
+  padding: 0 20px 0 20px;
+}
+
+.footer-red .footer-row {
+  padding: 0 20px 0 20px;
+}
+
+.footer-red .footer-row .footer-col h3 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 40px 0 30px 0;
+}
+
+.footer-red .footer-row .footer-col p {
+  color: #fff;
+  font-size: 12px;
+  line-height: 25px;
+}
+
+.footer-col ul li {
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  list-style: none;
+}
+
+.footer-col ul li a {
+  color: #fff;
+  font-size: 12px;
+  line-height: 25px;
+}
+
+.final-footer {
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.final-footer img {
+  margin-top: 100px;
+  width: 150px;
+  margin-bottom: 30px;
+}
+
+.final-footer .footer-img h5 {
+  font-size: 11px;
+  color: #fff;
+}
+
+.social-icons {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.social-icons ul li {
+  float: left;
+  margin-right: 8px;
+}
+
+#footer .social-icons {
+  margin-top: 30px;
+}
+
+#footer .social-icons ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#footer .social-icons ul li a {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  line-height: 15px;
+  padding-top: 25%;
+}
+
+#footer .social-icons ul li a:hover {
+  color: #fff;
+}
+
+#footer .social-icons ul li a.whatsapp:hover {
+  background-color: #33cc66;
+}
+
+#footer .social-icons ul li a.facebook:hover {
+  background-color: #3b5999;
+}
+
+#footer .social-icons ul li a.twitter:hover {
+  background-color: #2ac6f7;
+}
+
+#footer .social-icons ul li a.instagram:hover {
+  background-color: #833ab4;
+}
+
+#footer .social-icons ul li a.linkedin:hover {
+  background-color: #036dc0;
+}
+
+#footer .social-icons ul li a.youtube:hover {
+  background-color: #c4302b;
 }

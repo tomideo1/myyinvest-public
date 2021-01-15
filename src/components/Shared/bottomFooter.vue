@@ -86,7 +86,7 @@
             <p class="text-white ft-12 d-flex flex-column">
               <span class="d-flex flex-row">
                 <span> <i class="fa fa-phone mr-2"></i></span>
-                <span>07036821841,08108933352,08132049708</span>
+                <!--                <span>07036821841,08108933352,08132049708</span>-->
               </span>
             </p>
           </li>

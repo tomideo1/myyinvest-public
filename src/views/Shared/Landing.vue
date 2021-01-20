@@ -7,10 +7,10 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-lg-6 col-md-6">
-              <div class="d-flex flex-column position-absolute top-40">
+              <div class="d-flex flex-column position-absolute top-30">
                 <h2 class="text-main-red m-1  font-weight-bold text-bold">Build your Net worth</h2>
                 <p class="ft-18 m-1  font-weight-bold text-bold">Through Fractional Real Estate Investment.</p>
-                <div class="d-flex flex-row mt-4">
+                <div class="d-flex flex-row mt-5 pt-4">
                   <main-button text="GET STARTED" size="md" class="mr-4  shadow-3" />
                   <main-button type="outline" text="WATCH NOW &#160; &#160; &#x25B6;" size="md" class="" />
                 </div>
@@ -22,8 +22,8 @@
               <img style="width: 90%; position: relative; z-index: -1" src="@/assets/svgs/map.png" />
 
               <span>
-                <people class="position-absolute top-0 mt-2   d-lg-block d-md-none" style="left: 40%;" size="xl-2" />
-                <people class="position-absolute top-0 d-lg-none d-md-block mt-2 " style="left: 40%;" size="xl" />
+                <people class="position-absolute top-0 mt-2   d-lg-block d-md-none" flag-position="right" style="left: 40%;" size="xl-2" />
+                <people class="position-absolute top-0 d-lg-none d-md-block mt-2 " flag-position="right" style="left: 40%;" size="xl" />
               </span>
 
               <span>
@@ -32,13 +32,13 @@
               </span>
 
               <span>
-                <people class="position-absolute top-30   d-lg-block d-md-none mt-2" style="left: 40%;" size="xxl" />
-                <people class="position-absolute top-30 d-lg-none d-md-block  mt-2" style="left: 40%;" size="xl-1" />
+                <people class="position-absolute top-30   d-lg-block d-md-none mt-2" flag-position="right" style="left: 40%;" size="xxl" />
+                <people class="position-absolute top-30 d-lg-none d-md-block  mt-2" flag-position="right" style="left: 40%;" size="xl-1" />
               </span>
 
               <span>
-                <people class="position-absolute top-50 d-lg-block d-md-none " style="left: 7%;" size="xl-1" />
-                <people class="position-absolute top-50 d-lg-none d-md-block  " style="left: 0%;" size="xl" />
+                <people class="position-absolute top-50 d-lg-block d-md-none mt-n3 " style="left: 7%;" size="xl-2" />
+                <people class="position-absolute top-50 d-lg-none d-md-block mt-n3" style="left: 0%;" size="xl" />
               </span>
             </div>
           </div>
@@ -291,6 +291,42 @@
           <span>What Our Clients Say</span>
         </div>
         <p class="font-weight-light mt-2">We cherish this kind words from our investors and we are glad to be part on this journey with them.</p>
+
+        <div class="p-5 m-5 ">
+          <carousel :autoplay="true" :nav="false" :margin="10" :centre="true" :items="1">
+            <div class="testimonial d-flex ">
+              <div class="image" style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1611136066/testimonial_avatar_n0vftt.png')"></div>
+              <div class="comment px-4 py-3">
+                <blockquote class="mb-0">
+                  <p class="position-relative">
+                    <sup class="quot font-weight-bold">“</sup>
+                  </p>
+                </blockquote>
+                <p class="text-black">
+                  Real Estate investment has always been very capita intensive and a time-consuming venture. I conducted alot of research to find out the best choice for Real Estate investment and
+                  stumbled on Myyinvest. I was impressed at the level of information each property had.
+                </p>
+                <span class="text-red"> = Mojeed Babatunde =</span>
+              </div>
+            </div>
+
+            <div class="testimonial d-flex ">
+              <div class="image" style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1611136066/testimonial_avatar_n0vftt.png')"></div>
+              <div class="comment px-4 py-3">
+                <blockquote class="mb-0">
+                  <p class="position-relative">
+                    <sup class="quot font-weight-bold">“</sup>
+                  </p>
+                </blockquote>
+                <p class="text-black">
+                  Real Estate investment has always been very capita intensive and a time-consuming venture. I conducted alot of research to find out the best choice for Real Estate investment and
+                  stumbled on Myyinvest. I was impressed at the level of information each property had.
+                </p>
+                <span class="text-red"> = Mojeed Babatunde =</span>
+              </div>
+            </div>
+          </carousel>
+        </div>
       </section>
 
       <footer>
@@ -307,9 +343,10 @@ import TopNav from "../../components/Shared/TopNav";
 import MainButton from "../../components/form/MainButton";
 import People from "../../components/Shared/people";
 import BottomFooter from "../../components/Shared/bottomFooter";
+import carousel from "vue-owl-carousel2";
 export default {
   name: "Landing",
-  components: { BottomFooter, People, MainButton, TopNav }
+  components: { BottomFooter, People, MainButton, TopNav, carousel }
 };
 </script>
 

@@ -53,4 +53,7 @@ export default {
 .nav-height {
   height: 70px !important;
 }
+a.nav-link:hover {
+  color: color(main-red) !important;
+}
 </style>

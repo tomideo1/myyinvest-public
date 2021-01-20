@@ -136,7 +136,8 @@ button,
     background-color: color(bv-white);
     color: color(main-red);
     &:hover {
-      background-color: lighten(color(main-red), 50%);
+      background-color: lighten(color(main-red), 0%);
+      color: color(bv-white);
     }
   }
 

@@ -1,7 +1,14 @@
 <template>
   <div>
     <div :class="`avatar avatar-${size}`" @click="$emit('click', $event)" :style="{ background: '' }">
-      <img src="@/assets/images/avatar.png" alt="avatar" />
+      <span class="flag-left" v-if="flagPosition === 'left'">
+        <img src="@/assets/flags/nigeria.png" />
+      </span>
+      <span class="flag-right" v-if="flagPosition === 'right'">
+        <img src="@/assets/flags/nigeria.png" />
+      </span>
+      <div class="avatar-border "></div>
+      <img class="p-2 people" src="@/assets/images/avatar.png" alt="avatar" />
     </div>
   </div>
 </template>
@@ -21,8 +28,12 @@ export default {
       type: String,
       default: "sm",
       validator: value => {
-        return ["xs", "sm", "md", "lg", "xl"].indexOf(value) !== -1;
+        return ["xs", "sm", "md", "lg", "xl", "xl-1", "xxl", "xl-2"].indexOf(value) !== -1;
       }
+    },
+    flagPosition: {
+      type: String,
+      default: "left"
     }
   },
   computed: {
@@ -40,17 +51,83 @@ export default {
   }
 };
 </script>
-<style>
+<style lang="scss">
 .avatar {
-  border: 2px dashed red;
-  background-clip: padding-box;
-  padding: 5px;
-  position: relative;
+  background: transparent;
+  position: relative !important;
+  &:hover {
+    transition: all 300ms ease-in;
+    transform: scale(1.2);
+  }
+}
+.avatar:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.avatar .flag-left img {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  animation: crescendo 4s alternate infinite ease-in;
+  width: 40px;
+  height: 40px;
+  margin: calc(-100px / 1.6);
+}
 
-  .circle {
-    &-deg135 {
-      transform: rotate(135deg) translate(12em) rotate(-135deg);
-    }
+.avatar .flag-right img {
+  position: absolute;
+  top: 0%;
+  left: 75%;
+  width: 40px;
+  height: 40px;
+  animation: crescendo 4s alternate infinite ease-in;
+  margin: calc(100px / 6);
+}
+.avatar-border {
+  /* content: ''; */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  background: transparent;
+  border-radius: 50%;
+  border: 2px dashed color(main-red) !important;
+  -webkit-animation-name: Rotate;
+  -webkit-animation-duration: 60s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: Rotate;
+  -moz-animation-duration: 60s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: Rotate;
+  -ms-animation-duration: 60s;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .avatar .flag-left img {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    width: 30px;
+    height: 30px;
+    animation: crescendo 4s alternate infinite ease-in;
+    margin: calc(-100px / 3.2);
+    border-radius: 50%;
+  }
+  .avatar .flag-right img {
+    position: absolute;
+    top: -10%;
+    left: 65%;
+    width: 30px;
+    height: 30px;
+    animation: crescendo 4s alternate infinite ease-in;
+    margin: calc(100px / 6);
   }
 }
 </style>

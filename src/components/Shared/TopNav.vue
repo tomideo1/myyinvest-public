@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg bg-white shadow-3 nav-height">
       <a>
-        <img width="162" height="26" src="@/assets/logos/Myylogo2.png" alt="Logo" />
+        <img style="cursor: pointer" width="162" @click="$router.replace('/')" height="26" src="@/assets/logos/Myylogo2.png" alt="Logo" />
       </a>
       <button
         class="navbar-toggler"
@@ -19,7 +19,9 @@
       <div class="d-md-flex d-block flex-row mx-md-auto ">
         <div class="  mr-auto" id="navbarNavAltMarkup">
           <div class="d-flex flex-row ">
-            <a :class="['nav-item nav-link  mr-lg-5', currentNav === 'about' ? 'active' : '']" href="#">About</a>
+            <router-link :class="['nav-item nav-link  mr-lg-5', currentNav === 'about' ? 'active' : '']" to="/about">
+              About
+            </router-link>
             <a :class="['nav-item nav-link  mr-lg-5', currentNav === 'faq' ? 'active' : '']" href="#">FAQ</a>
             <a :class="['nav-item nav-link  mr-lg-5', currentNav === 'insight' ? 'active' : '']" href="#">Insight</a>
             <a :class="['nav-item nav-link  mr-lg-5', currentNav === 'listings' ? 'active' : '']" href="#">Listings</a>

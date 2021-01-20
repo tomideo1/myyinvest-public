@@ -1,14 +1,20 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Landing from "../views/Shared/Landing.vue";
+import About from "../views/Shared/About.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Landing",
+    name: "landing",
     component: Landing
+  },
+  {
+    path: "/about",
+    name: "about",
+    component: About
   }
   // {
   //   path: "/about",

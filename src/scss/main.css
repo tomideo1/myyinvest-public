@@ -115,6 +115,10 @@ h6 {
   color: #ffffff !important;
 }
 
+.text-black {
+  color: #4f4e4e !important;
+}
+
 .text-grey {
   color: !important;
 }
@@ -1463,7 +1467,9 @@ Text weight
   background-color: #fff;
   width: 95%;
   max-width: 700px;
-  min-height: 260px;
+  min-height: 300px;
+  margin: auto !important;
+  /* apply negative top and left margins to truly center the element */
   box-shadow: 3px -3px 10px #cecece;
 }
 
@@ -1516,6 +1522,12 @@ blockquote {
   color: #c10000;
   position: absolute;
   left: -20px;
+}
+
+.news-letter-input {
+  width: 350px;
+  border: 1px solid #c10000 !important;
+  border-radius: 3px;
 }
 
 /*# sourceMappingURL=main.css.map */

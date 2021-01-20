@@ -1,6 +1,27 @@
 <template>
   <div>
     <main class="d-none d-lg-block d-md-block">
+      <modal v-show="isModalVisible" @close="closeModal">
+        <div class="container-fluid d-flex flex-column align-items-center">
+          <img src="@/assets/svgs/news-letter.svg" width="50" height="50" />
+          <p class="ft-20 font-weight-bold mt-3">NewsLetter</p>
+          <span class="text-center d-flex flex-column ">
+            <small class="ft-10 font-weight-light ">Be first in line to get info on Real estate investment Opportunities</small>
+            <small class="ft-10 font-weight-light ">by subscribing to our newsletter</small>
+          </span>
+          <div class="d-flex flex-column m-1">
+            <input class="m-2 p-2 news-letter-input " placeholder="Enter Full Name" />
+            <input class="m-2 p-2 news-letter-input" placeholder="Enter Email" />
+            <input class="m-2 p-2 news-letter-input" placeholder="Enter Location" />
+          </div>
+          <div class="fixed-bottom">
+            <div class="d-flex flex-row   justify-content-end p-4 bottom-0">
+              <main-button size="sm" class="mr-4" text="Cancel" type="outline" @click="closeModal" />
+              <main-button size="sm" text="Subscribe" type="filled" />
+            </div>
+          </div>
+        </div>
+      </modal>
       <top-nav />
 
       <section>
@@ -344,9 +365,23 @@ import MainButton from "../../components/form/MainButton";
 import People from "../../components/Shared/people";
 import BottomFooter from "../../components/Shared/bottomFooter";
 import carousel from "vue-owl-carousel2";
+import modal from "../../components/Shared/modal.vue";
 export default {
   name: "Landing",
-  components: { BottomFooter, People, MainButton, TopNav, carousel }
+  components: { BottomFooter, People, MainButton, TopNav, carousel, modal },
+  data() {
+    return {
+      isModalVisible: true
+    };
+  },
+  methods: {
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    }
+  }
 };
 </script>
 

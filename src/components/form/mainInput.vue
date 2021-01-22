@@ -1,19 +1,29 @@
 <template>
   <div class="form__div">
-    <input
-      :class="['width-100 text-bold form__input', isInvalid ? 'is-invalid' : '']"
-      @keyup="keyup($event)"
-      :value="value"
-      :placeholder="placeholder"
-      :disabled="disable"
-      @input="trigger($event)"
-      @focus="focus"
-      :type="type"
-    />
-    <label class="label">{{ label }}</label>
-    <p class="font-poppins text-bold text-error ml-12" v-if="isInvalid">
-      {{ errorMessage }}
-    </p>
+    <div v-if="inputType === 'input'">
+      <input
+        :class="['width-100 text-bold form__input', isInvalid ? 'is-invalid' : '']"
+        @keyup="keyup($event)"
+        :value="value"
+        :placeholder="placeholder"
+        :disabled="disable"
+        @input="trigger($event)"
+        @focus="focus"
+        :type="type"
+      />
+      <label class="label">{{ label }}</label>
+      <p class="font-poppins text-bold text-error ml-12" v-if="isInvalid">
+        {{ errorMessage }}
+      </p>
+    </div>
+
+    <div class="form-group" v-if="inputType === 'select'">
+      <label for="">{{ label }}</label>
+      <select name="q1" id="" class="form-control 'width-100 text-bold ">
+        <option value="">Select an option</option>
+        <option v-for="(index, option) in options" :key="index" :value="option.value">{{ option.key }}</option>
+      </select>
+    </div>
   </div>
 </template>
 <script>
@@ -46,6 +56,10 @@ export default {
     },
     errorMessage: {
       type: String
+    },
+    inputType: {
+      type: String,
+      default: "input"
     }
   },
   methods: {

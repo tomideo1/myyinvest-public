@@ -72,16 +72,15 @@
 div.sign-up-form {
   opacity: 0;
   z-index: 1;
-  height: 100%;
   display: flex;
   /* align-items: center; */
   justify-content: center;
   flex-direction: column;
-  padding: 0rem 10rem 0rem 0rem;
-  // height: 100%;
+  position: relative;
+  height: 100%;
+  padding: 0rem 5rem 10rem 5rem;
   transition: all 0.2s 0.7s;
-  // overflow: hidden;
-  grid-column: 1 / 2;
+  grid-column: 1 / 5;
   grid-row: 1 / 2;
 }
 

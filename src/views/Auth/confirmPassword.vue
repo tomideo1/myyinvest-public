@@ -9,9 +9,10 @@
       </div>
       <div class="card shadow-3 d-flex flex-column justify-content-center w-100 p-2 " style="border-color: white;border-radius: 20px;">
         <div class="card-body ">
-          <p class="text-center font-weight-bold ft-24 mt-5 pb-5">Enter your email to reset password</p>
-          <main-input class=" mb-5 mt-5 " label="Email Address" type="email" />
-          <main-button class="w-100 mt-2 mb-5 " @click="$router.push('/email-sent')" text="RESET" type="filled" />
+          <p class="text-center font-weight-bold ft-16 mt-5 pb-5">Enter a password</p>
+          <main-input class=" mb-5 mt-5 " label="Password" type="password" />
+          <main-input class=" mb-5 mt-5 " label="Confirm Password" type="password" />
+          <main-button class="w-100 mt-2 mb-5 " text="CHANGE" type="filled" />
         </div>
       </div>
     </div>

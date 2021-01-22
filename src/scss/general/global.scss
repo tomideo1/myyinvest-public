@@ -1541,3 +1541,25 @@ blockquote {
   position: absolute;
   left: -20px;
 }
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc !important;
+  margin: 1em 0;
+  padding: 0;
+}
+
+.dot:before {
+  content: " \25CF";
+  font-size: 10px;
+  color: color(main-red);
+}

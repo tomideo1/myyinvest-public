@@ -3,6 +3,9 @@ import VueRouter from "vue-router";
 import Landing from "../views/Shared/Landing.vue";
 import About from "../views/Shared/About.vue";
 import Auth from "../views/Auth/index";
+import forgotPassword from "../views/Auth/forgotPassword";
+import confirmPassword from "../views/Auth/confirmPassword";
+import confirmMessage from "../views/Auth/confirmMessage";
 
 Vue.use(VueRouter);
 
@@ -26,6 +29,21 @@ const routes = [
     path: "/login",
     name: "login",
     component: Auth
+  },
+  {
+    path: "/forgot-password",
+    name: "forgotPassword",
+    component: forgotPassword
+  },
+  {
+    path: "/email-sent",
+    name: "confirmMessage",
+    component: confirmMessage
+  },
+  {
+    path: "/change-password",
+    name: "confirmPassword",
+    component: confirmPassword
   }
   // {
   //   path: "/about",

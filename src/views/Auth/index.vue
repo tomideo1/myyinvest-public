@@ -17,7 +17,7 @@
             <div class="card-body ">
               <main-input class=" " label="Email" type="email" />
               <main-input class=" " label="Password" />
-              <router-link style="color: #2EAAEF;" class="  mb-4 float-right" to="">Forgot Password?</router-link>
+              <router-link style="color: #2EAAEF;" class="  mb-4 float-right" to="/forgot-password">Forgot Password?</router-link>
               <main-button class="w-100" text="LOGIN" type="filled" />
             </div>
           </div>

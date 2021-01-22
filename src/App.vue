@@ -6,7 +6,6 @@
 
 <style lang="scss">
 @import "scss/main";
-@import "css/font-awesome.css";
 html,
 body {
   margin: 0;

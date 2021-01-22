@@ -29,8 +29,8 @@
         </div>
       </div>
       <div class="navbar-nav  d-flex flex-row-reverse  ">
-        <MainButton type="filled" class="ml-3" text="Sign Up" size="sm" />
-        <MainButton type="outline" text="Login " size="sm" />
+        <MainButton type="filled" @click="$router.replace('/register')" class="ml-3" text="Sign Up" size="sm" />
+        <MainButton type="outline" @click="$router.replace('/login')" text="Login " size="sm" />
       </div>
     </nav>
   </div>

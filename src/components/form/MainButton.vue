@@ -6,7 +6,7 @@
 </template>
 <script>
 const sizes = ["xs", "sm", "md", "lg"];
-const types = ["inverse", "filled", "outline"];
+const types = ["inverse", "filled", "outline", "transparent"];
 
 export default {
   name: "MainButton",
@@ -102,7 +102,7 @@ button,
   border: 1px solid color(main-red);
   font-size: 0.9rem;
   font-weight: bold;
-  cursor: pointer;
+  cursor: pointer !important;
   outline: none;
   position: relative;
   &.btn-lg {
@@ -141,6 +141,16 @@ button,
     }
   }
 
+  &.btn-transparent {
+    border: 1px solid color(bv-white);
+    background-color: transparent;
+    color: color(bv-white);
+    &:hover {
+      background-color: color(bv-white);
+      color: color(main-red);
+    }
+  }
+
   &.btn-filled {
     color: color(bv-white);
     background-color: color(main-red);
@@ -159,7 +169,7 @@ button,
 
 button:focus {
   outline: none !important;
-  border: 2px solid color(main-red);
+  border: 2px solid color(bv-white);
 }
 
 .btn-block {

@@ -9,10 +9,10 @@
             <small class="ft-10 font-weight-light ">Be first in line to get info on Real estate investment Opportunities</small>
             <small class="ft-10 font-weight-light ">by subscribing to our newsletter</small>
           </span>
-          <div class="d-flex flex-column m-1">
-            <input class="m-2 p-2 news-letter-input " placeholder="Enter Full Name" />
-            <input class="m-2 p-2 news-letter-input" placeholder="Enter Email" />
-            <input class="m-2 p-2 news-letter-input" placeholder="Enter Location" />
+          <div class="d-flex flex-column m-1 w-100">
+            <main-input class="m-2 p-2" label="Full Name" />
+            <main-input class="m-2 p-2" label="Email" type="email" />
+            <main-input class="m-2 p-2" label="Location" />
           </div>
           <div class="fixed-bottom">
             <div class="d-flex flex-row   justify-content-end p-4 bottom-0">
@@ -26,7 +26,7 @@
 
       <section>
         <div class="container-fluid">
-          <div class="row">
+          <div class="row p-5">
             <div class="col-lg-6 col-md-6">
               <div class="d-flex flex-column position-absolute top-30">
                 <h2 class="text-main-red m-1  font-weight-bold text-bold">Build your Net worth</h2>
@@ -366,12 +366,13 @@ import People from "../../components/Shared/people";
 import BottomFooter from "../../components/Shared/bottomFooter";
 import carousel from "vue-owl-carousel2";
 import modal from "../../components/Shared/modal.vue";
+import MainInput from "../../components/form/mainInput";
 export default {
   name: "Landing",
-  components: { BottomFooter, People, MainButton, TopNav, carousel, modal },
+  components: { MainInput, BottomFooter, People, MainButton, TopNav, carousel, modal },
   data() {
     return {
-      isModalVisible: true
+      isModalVisible: false
     };
   },
   methods: {

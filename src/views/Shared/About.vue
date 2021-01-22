@@ -61,15 +61,17 @@
               </div>
             </div>
 
-            <div id="co_own" class="col-lg-6  col-md-10  ml-md-5 mt-md-4 mt-lg-0 ml-lg-5">
-              <div class="border-left-red d-flex flex-column  ">
-                <span class="text-main-red ">WHAT WE DO</span>
-                <span class="w-50 font-weight-bold ft-14">You invest we handle the rest.</span>
+            <div id="co_own" class="col-lg-6  col-md-10  ml-md-5 mt-md-4 mt-lg-0">
+              <div id="co_own_text">
+                <div class="border-left-red d-flex flex-column  ">
+                  <span class="text-main-red ">WHAT WE DO</span>
+                  <span class="w-50 font-weight-bold ft-14">You invest we handle the rest.</span>
+                </div>
+                <p class="w-100 mt-3 text-align-left co-own font-weight-normal font-poppins" style="line-height:40px">
+                  We are a Property Technology Company that helps you to Invest in Real Estate Properties Seamlessly. We believe that everybody can be an investor irrespective of their financial class
+                  or Background. Through our Platform, we are creating a world whereby everyman can have access to a Real Estate Asset.
+                </p>
               </div>
-              <p id="co_own_text" class="w-100 mt-3 text-align-left co-own font-weight-normal font-poppins" style="line-height:40px">
-                We are a Property Technology Company that helps you to Invest in Real Estate Properties Seamlessly. We believe that everybody can be an investor irrespective of their financial class
-                or Background. Through our Platform, we are creating a world whereby everyman can have access to a Real Estate Asset.
-              </p>
             </div>
           </div>
         </div>

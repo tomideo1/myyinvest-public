@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Landing from "../views/Shared/Landing.vue";
 import About from "../views/Shared/About.vue";
+import Auth from "../views/Auth/index";
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,16 @@ const routes = [
     path: "/about",
     name: "about",
     component: About
+  },
+  {
+    path: "/register",
+    name: "register",
+    component: Auth
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: Auth
   }
   // {
   //   path: "/about",

@@ -414,7 +414,7 @@
             </div>
 
             <div class="col-12  mt-4">
-              <img src="@/assets/images/co-invest.svg" width="350" height="350" />
+              <img src="@/assets/images/co-invest.svg" width="300" height="300" />
             </div>
           </div>
         </div>
@@ -438,7 +438,7 @@
 
             <div class="col-12">
               <div class="  ">
-                <img src="@/assets/images/co-own.svg" width="350" height="350" class=" mt-5" />
+                <img src="@/assets/images/co-own.svg" width="300" height="300" class=" mt-5" />
               </div>
             </div>
           </div>
@@ -462,7 +462,7 @@
               <main-button type="filled" class="float-left mt-4" text="Learn More" size="md" />
             </div>
             <div style="position: relative; margin-top: 80px" class=" col-md-12 ">
-              <img src="@/assets/images/smart-invest.svg" width="350" height="350" class=" mt-n5" />
+              <img src="@/assets/images/smart-invest.svg" width="300" height="300" class=" mt-n5" />
             </div>
           </div>
         </div>
@@ -621,24 +621,40 @@
         </div>
       </section>
 
-      <div class="p-2" style="width:100%!important;">
-        <!-- <carousel :autoplay="true" :nav="false" :margin="10" :centre="true" :items="1"> -->
-        <div class="testimonial d-flex " style="height:50px!important">
-          <div class="image" style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1611136066/testimonial_avatar_n0vftt.png'); width:70%!important;"></div>
-          <div class="comment ">
-            <blockquote class="mb-0">
-              <p class="position-relative">
-                <sup class="quot font-weight-bold">“</sup>
+      <div class="p-4" style="width:100%!important;">
+        <carousel :autoplay="true" :nav="false" :margin="10" :centre="true" :items="1">
+          <div class="testimonial d-flex " style="height:50px!important">
+            <div class="image" style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1611136066/testimonial_avatar_n0vftt.png'); width:70%!important;"></div>
+            <div class="comment ">
+              <blockquote class="mb-0">
+                <p class="position-relative">
+                  <sup class="quot font-weight-bold">“</sup>
+                </p>
+              </blockquote>
+              <p class="text-black" style="line-height:18px!important;">
+                Real Estate investment has always been very capita intensive and a time-consuming venture. I conducted alot of research to find out the best choice for Real Estate investment and
+                stumbled on Myyinvest. I was impressed at the level of information each property had.
               </p>
-            </blockquote>
-            <p class="text-black" style="line-height:18px!important;">
-              Real Estate investment has always been very capita intensive and a time-consuming venture. I conducted alot of research to find out the best choice for Real Estate investment and
-              stumbled on Myyinvest. I was impressed at the level of information each property had.
-            </p>
-            <span class="text-main-red"> = Mojeed Babatunde =</span>
+              <span class="text-main-red"> = Mojeed Babatunde =</span>
+            </div>
           </div>
-        </div>
-        <!-- </carousel> -->
+
+          <div class="testimonial d-flex " style="height:50px!important">
+            <div class="image" style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1611136066/testimonial_avatar_n0vftt.png'); width:70%!important;"></div>
+            <div class="comment ">
+              <blockquote class="mb-0">
+                <p class="position-relative">
+                  <sup class="quot font-weight-bold">“</sup>
+                </p>
+              </blockquote>
+              <p class="text-black" style="line-height:18px!important;">
+                Real Estate investment has always been very capita intensive and a time-consuming venture. I conducted alot of research to find out the best choice for Real Estate investment and
+                stumbled on Myyinvest. I was impressed at the level of information each property had.
+              </p>
+              <span class="text-main-red"> = Mojeed Babatunde =</span>
+            </div>
+          </div>
+        </carousel>
       </div>
     </main>
   </div>

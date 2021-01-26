@@ -28,7 +28,7 @@ export default {
       type: String,
       default: "sm",
       validator: value => {
-        return ["xs", "sm", "md", "lg", "xl", "xl-1", "xxl", "xl-2"].indexOf(value) !== -1;
+        return ["xs", "sm", "md", "lg", "lg-1", "lg-2", "xl", "xl-1", "xxl", "xl-2"].indexOf(value) !== -1;
       }
     },
     flagPosition: {
@@ -126,6 +126,27 @@ export default {
     left: 65%;
     width: 30px;
     height: 30px;
+    animation: crescendo 4s alternate infinite ease-in;
+    margin: calc(100px / 6);
+  }
+}
+@media only screen and (min-width: 320px) and (max-width: 540px) {
+  .avatar .flag-left img {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    width: 20px;
+    height: 20px;
+    animation: crescendo 4s alternate infinite ease-in;
+    margin: calc(-100px / 3.2);
+    border-radius: 50%;
+  }
+  .avatar .flag-right img {
+    position: absolute;
+    top: -15%;
+    left: 65%;
+    width: 25px;
+    height: 25px;
     animation: crescendo 4s alternate infinite ease-in;
     margin: calc(100px / 6);
   }

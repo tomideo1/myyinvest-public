@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import Index from "../views/Shared/index.vue";
 import Landing from "../views/Shared/Landing.vue";
 import About from "../views/Shared/About.vue";
 import Auth from "../views/Auth/index";
@@ -13,13 +14,22 @@ const routes = [
   {
     path: "/",
     name: "landing",
-    component: Landing
+    component: Index,
+    redirect: "/home",
+    children: [
+      {
+        path: "about",
+        name: "about",
+        component: About
+      },
+      {
+        path: "home",
+        name: "home",
+        component: Landing
+      }
+    ]
   },
-  {
-    path: "/about",
-    name: "about",
-    component: About
-  },
+
   {
     path: "/register",
     name: "register",

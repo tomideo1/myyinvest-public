@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;1,200;1,300&display=swap");
 //@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap');
+
+// Then import Bootstrap an BootstrapVue SCSS files (order is important)
 * {
   box-sizing: border-box;
   font-family: fonts(main-poppins), serif;
@@ -289,6 +291,16 @@ Text weight
   &.avatar-lg {
     height: 3rem !important;
     width: 3rem !important;
+    font-size: 2rem;
+  }
+  &.avatar-lg-1 {
+    height: 4rem !important;
+    width: 4rem !important;
+    font-size: 2rem;
+  }
+  &.avatar-lg-2 {
+    height: 4.5rem !important;
+    width: 4.5rem !important;
     font-size: 2rem;
   }
   &.avatar-xl {
@@ -1337,7 +1349,6 @@ Text weight
   /* height: 500px; */
   z-index: 1000;
   margin-top: -3px;
-  padding: 50px !important;
 }
 
 .footer-col ul li {

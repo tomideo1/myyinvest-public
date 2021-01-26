@@ -1,29 +1,6 @@
 <template>
   <div>
     <main class="d-none d-lg-block d-md-block">
-      <modal v-show="isModalVisible" @close="closeModal">
-        <div class="container-fluid d-flex flex-column align-items-center">
-          <img src="@/assets/svgs/news-letter.svg" width="50" height="50" />
-          <p class="ft-20 font-weight-bold mt-3">NewsLetter</p>
-          <span class="text-center d-flex flex-column ">
-            <small class="ft-10 font-weight-light ">Be first in line to get info on Real estate investment Opportunities</small>
-            <small class="ft-10 font-weight-light ">by subscribing to our newsletter</small>
-          </span>
-          <div class="d-flex flex-column m-1">
-            <input class="m-2 p-2 news-letter-input " placeholder="Enter Full Name" />
-            <input class="m-2 p-2 news-letter-input" placeholder="Enter Email" />
-            <input class="m-2 p-2 news-letter-input" placeholder="Enter Location" />
-          </div>
-          <div class="fixed-bottom">
-            <div class="d-flex flex-row   justify-content-end p-4 bottom-0">
-              <main-button size="sm" class="mr-4" text="Cancel" type="outline" @click="closeModal" />
-              <main-button size="sm" text="Subscribe" type="filled" />
-            </div>
-          </div>
-        </div>
-      </modal>
-      <top-nav current-nav="about" />
-
       <section style="margin-top: 150px;" class="ml-5">
         <div class="container-fluid">
           <div class="row ">
@@ -196,10 +173,6 @@
           </div>
         </div>
       </section>
-
-      <footer>
-        <bottom-footer />
-      </footer>
     </main>
 
     <main class="d-lg-none d-md-none d-block"></main>
@@ -207,26 +180,9 @@
 </template>
 
 <script>
-import TopNav from "../../components/Shared/TopNav";
-import MainButton from "../../components/form/MainButton";
-import BottomFooter from "../../components/Shared/bottomFooter";
-import modal from "../../components/Shared/modal.vue";
 export default {
   name: "Landing",
-  components: { BottomFooter, MainButton, TopNav, modal },
-  data() {
-    return {
-      isModalVisible: false
-    };
-  },
-  methods: {
-    showModal() {
-      this.isModalVisible = true;
-    },
-    closeModal() {
-      this.isModalVisible = false;
-    }
-  }
+  components: {}
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid footer-red">
+  <div class="container-fluid footer-red p-lg-5 p-2 mt-4 ">
     <div class="row ">
       <div class="col-md-3  footer-col ">
         <p class="text-white ft-24 font-weight-bold" style="margin-left: 35px">Company</p>

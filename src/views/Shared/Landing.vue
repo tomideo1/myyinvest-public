@@ -619,27 +619,27 @@
           </div>
           <p class="font-weight-light mt-2 w-100">We cherish this kind words from our investors and we are glad to be part on this journey with them.</p>
         </div>
-
-        <div class="p-5 m-5 ">
-          <carousel :autoplay="true" :nav="false" :margin="10" :centre="true" :items="1">
-            <div class="testimonial d-flex ">
-              <div class="image" style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1611136066/testimonial_avatar_n0vftt.png')"></div>
-              <div class="comment px-4 py-3">
-                <blockquote class="mb-0">
-                  <p class="position-relative">
-                    <sup class="quot font-weight-bold">“</sup>
-                  </p>
-                </blockquote>
-                <p class="text-black">
-                  Real Estate investment has always been very capita intensive and a time-consuming venture. I conducted alot of research to find out the best choice for Real Estate investment and
-                  stumbled on Myyinvest. I was impressed at the level of information each property had.
-                </p>
-                <span class="text-red"> = Mojeed Babatunde =</span>
-              </div>
-            </div>
-          </carousel>
-        </div>
       </section>
+
+      <div class="p-2" style="width:100%!important;">
+        <!-- <carousel :autoplay="true" :nav="false" :margin="10" :centre="true" :items="1"> -->
+        <div class="testimonial d-flex " style="height:50px!important">
+          <div class="image" style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1611136066/testimonial_avatar_n0vftt.png'); width:70%!important;"></div>
+          <div class="comment ">
+            <blockquote class="mb-0">
+              <p class="position-relative">
+                <sup class="quot font-weight-bold">“</sup>
+              </p>
+            </blockquote>
+            <p class="text-black">
+              Real Estate investment has always been very capita intensive and a time-consuming venture. I conducted alot of research to find out the best choice for Real Estate investment and
+              stumbled on Myyinvest. I was impressed at the level of information each property had.
+            </p>
+            <span class="text-red"> = Mojeed Babatunde =</span>
+          </div>
+        </div>
+        <!-- </carousel> -->
+      </div>
     </main>
   </div>
 </template>
@@ -668,10 +668,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+// * {
+// background-color: red!important;
+// }
 @media only screen and (min-width: 1024px) and (max-width: 1240px) {
-  /** {*/
-  /*  background-color: red!important;*/
-  /*}*/
   #co_invest {
     width: 400px !important;
   }

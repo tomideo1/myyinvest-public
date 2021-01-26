@@ -5,7 +5,9 @@ import Landing from "../views/Shared/Landing.vue";
 import Listings from "../views/Shared/listings.vue";
 import Faq from "../views/Shared/faq.vue";
 import Terms from "../views/Shared/terms.vue";
-import Insight from "../views/Shared/insight.vue";
+import Insight from "../views/Shared/insight/insight.vue";
+import Blogs from "../views/Shared/insight/blogs.vue";
+import SingleBlog from "../views/Shared/insight/single.vue";
 import About from "../views/Shared/About.vue";
 import Auth from "../views/Auth/index";
 import forgotPassword from "../views/Auth/forgotPassword";
@@ -45,10 +47,30 @@ const routes = [
         path: "insight",
         name: "insight",
         component: Insight,
+        redirect: "/blogs",
+        children: [
+          {
+            path: "blogs",
+            name: "blogs",
+            component: Blogs,
+            meta: {
+              noFooter: true
+            }
+          },
+          {
+            path: "blogs/single",
+            name: "single-blog",
+            component: SingleBlog,
+            meta: {
+              noFooter: true
+            }
+          }
+        ],
         meta: {
           noFooter: true
         }
       },
+
       {
         path: "terms",
         name: "terms",

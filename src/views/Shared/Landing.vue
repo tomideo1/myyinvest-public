@@ -687,7 +687,7 @@ export default {
 // * {
 // background-color: red!important;
 // }
-@media only screen and (min-width: 1024px) and (max-width: 1240px) {
+@media only screen and (min-width: 640px) and (max-width: 1240px) {
   #co_invest {
     width: 400px !important;
   }

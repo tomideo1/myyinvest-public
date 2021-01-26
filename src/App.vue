@@ -27,7 +27,7 @@ body {
   /*  color: #2c3e50;*/
 
   &.router-link-exact-active {
-    color: color(main-red);
+    color: color(main-red) im !important;
   }
 }
 </style>

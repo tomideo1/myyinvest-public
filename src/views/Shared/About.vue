@@ -173,10 +173,6 @@
           </div>
         </div>
       </section>
-
-      <footer>
-        <bottom-footer />
-      </footer>
     </main>
 
     <main class="d-lg-none d-md-none d-block">

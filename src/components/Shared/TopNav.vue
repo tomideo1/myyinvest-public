@@ -49,20 +49,20 @@
         <b-navbar-nav class="d-md-flex d-block flex-row mx-md-auto ">
           <div class="  mr-auto" id="navbarNavAltMarkup">
             <div class="d-lg-flex flex-row  d-lg-block d-md-block d-none">
-              <router-link :class="['nav-item nav-link  mr-lg-5', $router.currentRoute.name === 'about' ? 'active' : '']" to="/about">
+              <router-link :class="['nav-item nav-link  mr-lg-5']" to="/about">
                 About
               </router-link>
-              <a :class="['nav-item nav-link  mr-lg-5', $router.currentRoute.name === 'faq' ? 'active' : '']" href="#">FAQ</a>
-              <a :class="['nav-item nav-link  mr-lg-5', $router.currentRoute.name === 'insight' ? 'active' : '']" href="#">Insight</a>
-              <a :class="['nav-item nav-link  mr-lg-5', $router.currentRoute.name === 'listings' ? 'active' : '']" href="#">Listings</a>
+              <router-link :class="['nav-item nav-link  mr-lg-5']" to="faq">FAQ</router-link>
+              <router-link :class="['nav-item nav-link  mr-lg-5']" to="insight">Insight</router-link>
+              <router-link :class="['nav-item nav-link  mr-lg-5']" to="listings">Listings</router-link>
             </div>
             <div class="d-block d-lg-none d-md-none ">
-              <router-link :class="['nav-item nav-link  mr-lg-5', $router.currentRoute.name === 'about' ? 'active' : '']" to="/about">
+              <router-link :class="['nav-item nav-link  mr-lg-5']" to="/about">
                 About
               </router-link>
-              <a :class="['nav-item nav-link  mr-lg-5', $router.currentRoute.name === 'faq' ? 'active' : '']" href="#">FAQ</a>
-              <a :class="['nav-item nav-link  mr-lg-5', $router.currentRoute.name === 'insight' ? 'active' : '']" href="#">Insight</a>
-              <a :class="['nav-item nav-link  mr-lg-5', $router.currentRoute.name === 'listings' ? 'active' : '']" href="#">Listings</a>
+              <router-link :class="['nav-item nav-link  mr-lg-5']" to="faq">FAQ</router-link>
+              <router-link :class="['nav-item nav-link  mr-lg-5']" to="insight">Insight</router-link>
+              <router-link :class="['nav-item nav-link  mr-lg-5']" to="listings">Listings</router-link>
             </div>
           </div>
         </b-navbar-nav>

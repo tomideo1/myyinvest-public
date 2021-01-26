@@ -631,11 +631,11 @@
                 <sup class="quot font-weight-bold">“</sup>
               </p>
             </blockquote>
-            <p class="text-black">
+            <p class="text-black" style="line-height:18px!important;">
               Real Estate investment has always been very capita intensive and a time-consuming venture. I conducted alot of research to find out the best choice for Real Estate investment and
               stumbled on Myyinvest. I was impressed at the level of information each property had.
             </p>
-            <span class="text-red"> = Mojeed Babatunde =</span>
+            <span class="text-main-red"> = Mojeed Babatunde =</span>
           </div>
         </div>
         <!-- </carousel> -->

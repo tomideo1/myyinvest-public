@@ -52,17 +52,17 @@
               <router-link :class="['nav-item nav-link  mr-lg-5']" to="/about">
                 About
               </router-link>
-              <router-link :class="['nav-item nav-link  mr-lg-5']" to="faq">FAQ</router-link>
-              <router-link :class="['nav-item nav-link  mr-lg-5']" to="insight">Insight</router-link>
-              <router-link :class="['nav-item nav-link  mr-lg-5']" to="listings">Listings</router-link>
+              <router-link :class="['nav-item nav-link  mr-lg-5']" to="/faq">FAQ</router-link>
+              <router-link :class="['nav-item nav-link  mr-lg-5']" to="/insight">Insight</router-link>
+              <router-link :class="['nav-item nav-link  mr-lg-5']" to="/listings">Listings</router-link>
             </div>
             <div class="d-block d-lg-none d-md-none ">
               <router-link :class="['nav-item nav-link  mr-lg-5']" to="/about">
                 About
               </router-link>
-              <router-link :class="['nav-item nav-link  mr-lg-5']" to="faq">FAQ</router-link>
-              <router-link :class="['nav-item nav-link  mr-lg-5']" to="insight">Insight</router-link>
-              <router-link :class="['nav-item nav-link  mr-lg-5']" to="listings">Listings</router-link>
+              <router-link :class="['nav-item nav-link  mr-lg-5']" to="/faq">FAQ</router-link>
+              <router-link :class="['nav-item nav-link  mr-lg-5']" to="/insight">Insight</router-link>
+              <router-link :class="['nav-item nav-link  mr-lg-5']" to="/listings">Listings</router-link>
             </div>
           </div>
         </b-navbar-nav>

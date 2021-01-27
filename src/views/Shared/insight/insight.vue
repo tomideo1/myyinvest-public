@@ -1,16 +1,16 @@
 <template>
-  <div class="p-3" style="max-height:100vh!important;">
+  <div class="p-3">
     <main class="container">
       <div class="row justify-content-center">
         <!-- ============= Post Content Area Start ============= -->
-        <section class="col-12 col-lg-8 mt-3">
+        <div class="col-12 col-md-12 col-lg-8 mt-3">
           <router-view />
-        </section>
+        </div>
 
         <!-- COL-8 ENDS -->
 
         <!-- ========== Sidebar Area ========== -->
-        <section class="col-12 col-md-8 col-lg-4  mt-lg-0 mt-md-0">
+        <aside class="col-12 col-md-8 col-lg-4 ">
           <div class="container-fluid ">
             <div class="d-flex flex-column">
               <p class="ft-18  font-weight-bold title">Top Stories</p>
@@ -47,7 +47,7 @@
               </div>
             </div>
           </div>
-        </section>
+        </aside>
       </div>
 
       <footer>

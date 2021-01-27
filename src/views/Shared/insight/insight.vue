@@ -1,5 +1,5 @@
 <template>
-  <div class="p-2 " style="max-height:100vh!important;">
+  <div class="p-3" style="max-height:100vh!important;">
     <main class="container">
       <div class="row justify-content-center">
         <!-- ============= Post Content Area Start ============= -->
@@ -49,6 +49,33 @@
           </div>
         </section>
       </div>
+
+      <footer>
+        <div id="footer" class="container-fluid footer-img bottom-0">
+          <div class="social-icons">
+            <ul>
+              <li>
+                <a class="whatsapp" href="#"><i class="fa fa-whatsapp"></i></a>
+              </li>
+              <li>
+                <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+              </li>
+              <li>
+                <a class="instagram" href="#"><i class="fa fa-instagram"></i></a>
+              </li>
+              <li>
+                <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+              </li>
+              <li>
+                <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+              </li>
+              <li>
+                <a class="youtube" href="#"><i class="fa fa-youtube"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
     </main>
   </div>
 </template>

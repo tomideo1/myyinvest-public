@@ -47,7 +47,9 @@ const routes = [
         path: "insight",
         name: "insight",
         component: Insight,
-        redirect: "/blogs",
+        redirect: {
+          name: "blogs"
+        },
         children: [
           {
             path: "blogs",

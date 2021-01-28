@@ -1380,9 +1380,6 @@ blockquote {
     width: 30%;
     margin-bottom: 40px;
   }
-  .footer-red {
-    padding: 20px !important;
-  }
   .aboutus-f p {
     text-align: justify;
   }
@@ -3096,7 +3093,7 @@ blockquote.blockquote p {
 
 .input-box input {
   width: 60%;
-  font-size: 30px;
+  font-size: 20px;
   margin: 50px auto 60px auto;
   box-shadow: -1px 1px 3px #bdbdbd;
 }
@@ -3158,22 +3155,22 @@ blockquote.blockquote p {
   position: relative;
 }
 
-/* .faq-tabs .tabs .content section .accordion .card {
-    background: none;
-    border: none;
-} */
+.faq-tabs .tabs .content section .accordion .card {
+  background: none;
+  border: none;
+}
 
-/* .faq-tabs .tabs .content section .accordion .card .card-header {
-    background: none;
-    border: none;
-    padding: .4rem 1rem;
-    font-family: "Roboto", sans-serif;
-} */
+.faq-tabs .tabs .content section .accordion .card .card-header {
+  background: none;
+  border: none;
+  padding: 0.4rem 1rem;
+  font-family: "Roboto", sans-serif;
+}
 
-/* .faq-tabs .tabs .content section .accordion .card-header h2 span {
-    float: left;
-    margin-top: 10px;
-} */
+.faq-tabs .tabs .content section .accordion .card-header h2 span {
+  float: left;
+  margin-top: 10px;
+}
 
 .accordion .card-header .btn {
   color: #2f2f31;
@@ -5182,7 +5179,7 @@ community area css
 
   .input-box input {
     width: 85%;
-    font-size: 20px;
+    font-size: 14px;
     margin: 50px auto 60px auto;
   }
 

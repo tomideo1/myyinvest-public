@@ -54,23 +54,14 @@ const routes = [
           {
             path: "blogs",
             name: "blogs",
-            component: Blogs,
-            meta: {
-              noFooter: true
-            }
+            component: Blogs
           },
           {
             path: "blogs/single",
             name: "single-blog",
-            component: SingleBlog,
-            meta: {
-              noFooter: true
-            }
+            component: SingleBlog
           }
-        ],
-        meta: {
-          noFooter: true
-        }
+        ]
       },
 
       {

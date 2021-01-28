@@ -1347,8 +1347,10 @@ Text weight
 .footer-red {
   background-color: color(main-red);
   /* height: 500px; */
+  position: relative;
   z-index: 1000;
   margin-top: -3px;
+  bottom: 0;
 }
 
 .footer-col ul li {

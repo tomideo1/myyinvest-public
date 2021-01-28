@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
     <!-- Catagory Area -->
     <div class="world-catagory-area">
       <ul class="nav nav-tabs" id="myTab" role="tablist">

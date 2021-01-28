@@ -23,7 +23,7 @@
     </modal>
     <top-nav />
     <router-view />
-    <footer v-if="typeof $route.meta.noFooter === 'undefined'">
+    <footer>
       <bottom-footer />
     </footer>
   </div>

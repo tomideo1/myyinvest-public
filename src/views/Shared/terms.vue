@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container disclaimer">
+    <div class="container-fluid p-lg-5 p-md-5 disclaimer">
       <div class="row">
         <div class="col-md-6 privy-f-t">
           <h1>Terms of Service</h1>
@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="main-content">
-        <div class="container">
+        <div class="container-fluid p-lg-5 p-md-5">
           <h6>Last Updated Date: November, 2020</h6>
 
           <h3>Agreement of Terms</h3>

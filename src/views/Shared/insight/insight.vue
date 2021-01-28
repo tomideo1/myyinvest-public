@@ -4,7 +4,7 @@
       <div class="container-fluid">
         <div class="row justify-content-center">
           <!-- ============= Post Content Area Start ============= -->
-          <div class="col-12 col-md-12 col-lg-8 mt-3">
+          <div class="col-12 col-md-12 col-lg-8 ">
             <router-view />
           </div>
 

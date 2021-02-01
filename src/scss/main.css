@@ -68,6 +68,10 @@ h6 {
 /**
 * Shadows
 */
+.title {
+  font-size: 2.2rem !important;
+}
+
 .shadow-none {
   box-shadow: none !important;
 }

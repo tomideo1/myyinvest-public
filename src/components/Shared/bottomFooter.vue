@@ -6,30 +6,30 @@
           <p class="text-white ft-24 font-weight-bold" style="margin-left: 35px">Company</p>
           <ul>
             <li class="mt-3">
-              <a>Home</a>
+              <a @click="$router.replace('/')">Home</a>
             </li>
             <li class="mt-3">
-              <a>About Us</a>
-            </li>
-
-            <li class="mt-3">
-              <a>Media</a>
+              <a @click="$router.replace('/about')">About Us</a>
             </li>
 
             <li class="mt-3">
-              <a>Listings</a>
+              <a @click="$router.replace('/')">Media</a>
+            </li>
+
+            <li class="mt-3">
+              <a @click="$router.replace('/listings')">Listings</a>
             </li>
             <li class="mt-3">
-              <a>Security</a>
+              <a @click="$router.replace('/')">Security</a>
             </li>
             <li class="mt-3">
-              <a>Terms and Conditions</a>
+              <a @click="$router.replace('/terms')">Terms and Conditions</a>
             </li>
             <li class="mt-3">
-              <a>Privacy Policy</a>
+              <a @click="$router.replace('/privacy')">Privacy Policy</a>
             </li>
             <li class="mt-3">
-              <a>Disclaimer</a>
+              <a @click="$router.replace('/disclaimer')">Disclaimer</a>
             </li>
           </ul>
         </div>
@@ -38,18 +38,18 @@
           <p class="text-white ft-24 font-weight-bold" style="margin-left: 35px">Learn</p>
           <ul class="  ">
             <li class="mt-3">
-              <a>FAQ</a>
+              <a @click="$router.replace('/faq')">FAQ</a>
             </li>
             <li class="mt-3">
-              <a>Insights</a>
-            </li>
-
-            <li class="mt-3">
-              <a>How it Works</a>
+              <a @click="$router.replace('/insight')">Insights</a>
             </li>
 
             <li class="mt-3">
-              <a>Podcasts</a>
+              <a @click="$router.replace('/about')">How it Works</a>
+            </li>
+
+            <li class="mt-3">
+              <a @click="$router.replace('/insight')">Podcasts</a>
             </li>
           </ul>
         </div>
@@ -58,10 +58,10 @@
           <p class="text-white ft-24 font-weight-bold" style="margin-left: 35px">Community</p>
           <ul class="">
             <li class="mt-3">
-              <a>Join our community</a>
+              <a @click="$router.replace('/register')">Join our community</a>
             </li>
             <li class="mt-3">
-              <a>Register for Webinar</a>
+              <a @click="$router.replace('/register')">Register for Webinar</a>
             </li>
 
             <li class="mt-3">
@@ -143,7 +143,8 @@ export default {
 };
 </script>
 
-<style scoped>
-.footer-main {
+<style scoped lang="scss">
+a {
+  cursor: pointer !important;
 }
 </style>

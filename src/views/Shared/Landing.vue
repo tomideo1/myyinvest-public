@@ -5,10 +5,26 @@
         <div class="container-fluid">
           <div class="row p-5">
             <div class="col-lg-6 col-md-6">
-              <div class="d-flex flex-column position-absolute top-30">
-                <h2 class="text-main-red m-1  font-weight-bold text-bold">Build your Net worth</h2>
-                <p class="ft-18 m-1  font-weight-bold text-bold">Through Fractional Real Estate Investment.</p>
-                <div class="d-flex flex-row mt-5 pt-4">
+              <div class="d-flex flex-column position-absolute top-10">
+                <h1 class="text-main-red m-1  font-weight-bold text-bold">Build your Net worth</h1>
+                <!-- <p class="ft-18 m-1  font-weight-bold text-bold">Through Fractional Real Estate Investment.</p> -->
+
+                <div id="slider">
+                  <ul>
+                    <li>
+                      <div class="slider-container">
+                        <p>Through Fractional Real Estate Investment.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="slider-container">
+                        <p>from anywhere across Africa</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="d-flex flex-row">
                   <main-button text="GET STARTED" size="md" class="mr-4  shadow-3" />
                   <main-button type="outline" text="WATCH NOW &#160; &#160; &#x25B6;" size="md" class="" />
                 </div>
@@ -46,9 +62,9 @@
       <section class="ml-5">
         <div class="container-fluid">
           <div class="d-flex flex-column">
-            <img src="@/assets/svgs/light-circle.svg" width="400" height="400" class="  position-relative d-md-none d-lg-block  mt-n5" style="z-index: -1" />
-            <img src="@/assets/svgs/light-circle.svg" width="300" height="300" class="d-md-block d-lg-none " style="margin-top: 100px" alt="" />
-            <div class="border-left-red d-flex flex-column  " style="margin-top: -120px">
+            <!-- <img src="@/assets/svgs/light-circle.svg" width="400" height="400" class="  position-relative d-md-none d-lg-block  mt-n5" style="z-index: -1" />
+            <img src="@/assets/svgs/light-circle.svg" width="300" height="300" class="d-md-block d-lg-none " style="margin-top: 100px" alt="" /> -->
+            <div class="border-left-red d-flex flex-column  " style="margin-top: 50px">
               <span class="text-main-red ">INVESTMENTS</span>
               <span>Our Investment Options</span>
             </div>
@@ -56,7 +72,7 @@
         </div>
       </section>
 
-      <section style="margin-top: 150px;" class="ml-5">
+      <section style="margin-top: 50px;" class="ml-5">
         <div class="container-fluid">
           <div class="row ">
             <div class="col-lg-6 col-md-12">
@@ -72,10 +88,10 @@
               <main-button type="filled" text="Invest Now" size="md" />
             </div>
 
-            <div style="position: relative; margin-top: -200px;" class="d-lg-block d-md-none col-lg-5  ">
+            <div style="position: relative;" class="d-lg-block d-md-none col-lg-5  ">
               <img id="co_invest" src="@/assets/images/co-invest.svg" width="600" height="600" class=" mt-n5" />
             </div>
-            <div style="position: relative; margin-top: 80px" class="d-lg-none d-md-block col-md-12 ">
+            <div style="position: relative;" class="d-lg-none d-md-block col-md-12 ">
               <img src="@/assets/images/co-invest.svg" width="700" height="700" class=" mt-n5" />
             </div>
           </div>
@@ -308,9 +324,9 @@
         <p class="font-weight-light mt-2">We cherish this kind words from our investors and we are glad to be part on this journey with them.</p>
 
         <div class="p-5 m-5 ">
-          <carousel :autoplay="true" :nav="false" :margin="10" :centre="true" :items="1">
+          <carousel :autoplay="true" :nav="false" :centre="true" :items="1">
             <div class="testimonial d-flex ">
-              <div class="image" style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1611136066/testimonial_avatar_n0vftt.png')"></div>
+              <div class="image  " style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1611136066/testimonial_avatar_n0vftt.png')"></div>
               <div class="comment px-4 py-3">
                 <blockquote class="mb-0">
                   <p class="position-relative">
@@ -350,7 +366,7 @@
         <div class="container-fluid">
           <div class="row p-3">
             <div class="">
-              <div class="d-flex flex-column position-relative w-100 " style="top:100%!important">
+              <div class="d-flex flex-column position-relative w-100 " style="top:40%!important">
                 <h5 class="text-main-red m-1 w-100 ft-18 font-weight-bold text-bold" style="font-weight: 900!important;">Build your Net worth</h5>
                 <p class="ft-12 m-1  font-weight-bold text-bold" style="font-weight: 900!important;">Through Fractional Real Estate Investment.</p>
                 <div class="d-flex flex-row mt-5 pt-4">
@@ -635,7 +651,7 @@
                 Real Estate investment has always been very capita intensive and a time-consuming venture. I conducted alot of research to find out the best choice for Real Estate investment and
                 stumbled on Myyinvest. I was impressed at the level of information each property had.
               </p>
-              <span class="text-main-red"> = Mojeed Babatunde =</span>
+              <span class="text-main-red"> Mojeed Babatunde =</span>
             </div>
           </div>
 
@@ -703,5 +719,69 @@ export default {
   #smart_invest {
     width: 400px !important;
   }
+}
+
+p {
+  font-size: 17px !important;
+}
+
+@-webkit-keyframes slide-animation {
+  0% {
+    opacity: 0;
+  }
+  2% {
+    opacity: 1;
+  }
+  20% {
+    left: 0px;
+    opacity: 1;
+  }
+  22.5% {
+    opacity: 0.6;
+  }
+  25% {
+    left: -600px;
+    opacity: 1;
+  }
+  45% {
+    left: -600px;
+    opacity: 1;
+  }
+  47.5% {
+    opacity: 0.6;
+  }
+  50% {
+    left: -1200px;
+    opacity: 1;
+  }
+  70% {
+    left: -1200px;
+    opacity: 1;
+  }
+  72.5% {
+    opacity: 0.6;
+  }
+  75% {
+    left: -1800px;
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  98% {
+    left: -1800px;
+    opacity: 0;
+  }
+  100% {
+    left: 0px;
+    opacity: 0;
+  }
+}
+#slider ul {
+  -webkit-animation: slide-animation 5s infinite;
+}
+#slider ul:hover {
+  -moz-animation-play-state: paused;
+  -webkit-animation-play-state: paused;
 }
 </style>

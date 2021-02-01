@@ -55,8 +55,10 @@ export default {
 .avatar {
   background: transparent;
   position: relative !important;
+  transition: all 500ms ease;
+
   &:hover {
-    transition: all 300ms ease-in;
+    transition: all 500ms ease;
     transform: scale(1.2);
   }
 }

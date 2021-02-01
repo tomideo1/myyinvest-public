@@ -5,6 +5,8 @@ import Landing from "../views/Shared/Landing.vue";
 import Listings from "../views/Shared/listings.vue";
 import Faq from "../views/Shared/faq.vue";
 import Terms from "../views/Shared/terms.vue";
+import Disclaimer from "../views/Shared/disclaimer.vue";
+import Privacy from "../views/Shared/privacy.vue";
 import Insight from "../views/Shared/insight/insight.vue";
 import Blogs from "../views/Shared/insight/blogs.vue";
 import SingleBlog from "../views/Shared/insight/single.vue";
@@ -68,6 +70,16 @@ const routes = [
         path: "terms",
         name: "terms",
         component: Terms
+      },
+      {
+        path: "disclaimer",
+        name: "disclaimer",
+        component: Disclaimer
+      },
+      {
+        path: "privacy",
+        name: "privacy",
+        component: Privacy
       }
     ]
   },

@@ -30,7 +30,7 @@ body {
   /*  color: #2c3e50;*/
 
   &.router-link-exact-active {
-    color: color(main-red) im !important;
+    color: color(main-red) !important;
   }
 }
 </style>

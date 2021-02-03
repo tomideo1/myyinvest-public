@@ -7,7 +7,7 @@
             <div class="col-lg-6 col-md-12">
               <div class="border-left-red d-flex flex-column  ">
                 <span class="text-main-red ">WHO WE ARE</span>
-                <span class="w-50 font-weight-bold ft-14">Your investment success is built on a powerful customer experience platform.</span>
+                <span class="w-75 font-weight-bold ft-36">Your investment success is built on a powerful customer experience platform.</span>
               </div>
               <p class="w-100 mt-3  font-weight-light font-poppins" style="line-height:30px; margin-top: 80px!important;">
                 We are a Property Technology Company that helps you to Invest in Real Estate Properties Seamlessly. We believe that everybody can be an investor irrespective of their financial class
@@ -182,7 +182,7 @@
             <div class="col-12">
               <div class="border-left-red d-flex flex-column  ">
                 <span class="text-main-red ">WHO WE ARE</span>
-                <span class="w-100 font-weight-bold ft-14">Your investment success is built on a powerful customer experience platform.</span>
+                <p class="w-100 font-weight-bold" style="font-size: 36px!important;">Your investment success is built on a powerful customer experience platform.</p>
               </div>
               <p class="w-100 mt-3  font-weight-light font-poppins" style="line-height:30px; margin-top: 80px!important;">
                 We are a Property Technology Company that helps you to Invest in Real Estate Properties Seamlessly. We believe that everybody can be an investor irrespective of their financial class

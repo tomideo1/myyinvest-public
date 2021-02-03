@@ -96,11 +96,6 @@
               <div class="comment-items-wrap">
                 <ul class="comment-items">
                   <li class="comment-item clearfix" id="comment-2">
-                    <div class="image">
-                      <div style="background-image: url(images/f.jpg);">
-                        <img src="images/f.jpg" width="300" height="296" alt="admin" class="avatar avatar-300 wp-user-avatar wp-user-avatar-300 alignnone photo" />
-                      </div>
-                    </div>
                     <div class="area">
                       <div class="content">
                         Since its inception in 2013, Unit London has strived to provide a unique and experimental platform for the world’s most distinctive emerging talent, showcasing their work to a

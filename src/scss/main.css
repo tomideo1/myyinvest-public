@@ -1494,8 +1494,10 @@ Text weight
 
 .testimonial div.image {
   width: 45%;
-  background-size: cover;
-  background-position: 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 20%;
+  box-shadow: 2px 2px 9px #e1e1e1;
   /* -webkit-clip-path: polygon(0 0,100% 0,64% 100%,0 100%); */
   clip-path: polygon(0 0, 100% 0, 64% 100%, 0 100%);
   overflow: hidden;
@@ -1559,6 +1561,10 @@ hr {
   content: " \25CF";
   font-size: 10px;
   color: #c10000;
+}
+
+.custom-shadow {
+  box-shadow: inset 2px 2px 5px #acacac;
 }
 
 /* SIGN UP */
@@ -1639,7 +1645,7 @@ div.sign-up-form {
   flex-direction: column;
   position: relative;
   height: 100%;
-  padding: 0rem 5rem 10rem 5rem;
+  padding: 0 3rem 5rem 5rem;
   transition: all 0.2s 0.7s;
   grid-column: 1 / 5;
   grid-row: 1 / 2;
@@ -1652,8 +1658,8 @@ div.sign-in-form {
   justify-content: center;
   flex-direction: column;
   height: 100%;
-  padding: 0rem 5rem;
-  margin-top: -100px;
+  padding: 0rem 3.5rem;
+  margin-top: -50px !important;
   transition: all 0.2s 0.7s;
   overflow: hidden;
   grid-column: 1 / 2;
@@ -2874,15 +2880,6 @@ div.sign-in-form {
   display: flex !important;
 }
 
-.testimonial div.image {
-  width: 45%;
-  background-size: cover;
-  background-position: 50%;
-  /* -webkit-clip-path: polygon(0 0,100% 0,64% 100%,0 100%); */
-  clip-path: polygon(0 0, 100% 0, 64% 100%, 0 100%);
-  overflow: hidden;
-}
-
 .testimonial div.comment {
   width: 55%;
   display: flex;
@@ -3395,15 +3392,6 @@ blockquote {
   .inv-journey .inv-row .inv-col1 .step-2 h4,
   .inv-journey .inv-row .inv-col1 .step-3 h4 {
     font-size: 14px;
-  }
-
-  .testimonial div.image {
-    width: 40%;
-    background-size: cover;
-    background-position: 50%;
-    /* -webkit-clip-path: polygon(0 0,100% 0,64% 100%,0 100%); */
-    clip-path: none;
-    overflow: hidden;
   }
 
   .testimonial div.comment {
@@ -4891,10 +4879,10 @@ blockquote.blockquote p {
     transition: .5s;
     box-shadow: -4px 4px 14px #646464;
 } */
-/* .single-list:hover .list-details h2 {
-    color: #ffffff;
-    transition: .5s;
-} */
+.list-details p {
+  font-weight: bolder;
+}
+
 .single-list .list-image {
   transition: 0.5s;
 }

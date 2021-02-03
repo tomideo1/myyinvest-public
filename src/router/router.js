@@ -2,7 +2,9 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Index from "../views/Shared/index.vue";
 import Landing from "../views/Shared/Landing.vue";
-import Listings from "../views/Shared/listings.vue";
+import listingsIndex from "../views/Shared/listings/index";
+import Listings from "../views/Shared/listings/listings";
+import SingleListings from "../views/Shared/listings/single";
 import Faq from "../views/Shared/faq.vue";
 import Terms from "../views/Shared/terms.vue";
 import Disclaimer from "../views/Shared/disclaimer.vue";
@@ -37,8 +39,23 @@ const routes = [
       },
       {
         path: "listings",
-        name: "listings",
-        component: Listings
+        name: "listings-main",
+        component: listingsIndex,
+        redirect: {
+          name: "listings"
+        },
+        children: [
+          {
+            path: "",
+            name: "listings",
+            component: Listings
+          },
+          {
+            path: "single",
+            name: "single-listing",
+            component: SingleListings
+          }
+        ]
       },
       {
         path: "faq",

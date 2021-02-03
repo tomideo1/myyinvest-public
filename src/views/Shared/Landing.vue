@@ -7,24 +7,8 @@
             <div class="col-lg-6 col-md-6">
               <div class="d-flex flex-column position-absolute top-10">
                 <h1 class="text-main-red m-1  font-weight-bold text-bold">Build your Net worth</h1>
-                <!-- <p class="ft-18 m-1  font-weight-bold text-bold">Through Fractional Real Estate Investment.</p> -->
-
-                <div id="slider">
-                  <ul>
-                    <li>
-                      <div class="slider-container">
-                        <p>Through Fractional Real Estate Investment.</p>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="slider-container">
-                        <p>from anywhere across Africa</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-
-                <div class="d-flex flex-row">
+                <p class="m-1  font-weight-bold text-bold mb-4">Through Fractional Real Estate Investment.</p>
+                <div class="d-flex flex-row  ">
                   <main-button text="GET STARTED" size="md" class="mr-4  shadow-3" />
                   <main-button type="outline" text="WATCH NOW &#160; &#160; &#x25B6;" size="md" class="" />
                 </div>
@@ -177,12 +161,17 @@
         <div class="container-fluid  ">
           <div class="row">
             <div class="col-lg-4 col-md-4">
-              <div class="d-flex flex-column">
-                <img style="width: 100%!important;" width="100" height="100" src="@/assets/svgs/benefits_1.svg" />
-                <p class="text-center mt-5 font-weight-bold">Access to Profitable Projects</p>
-                <p class="font-weight-light">By venturing into fractional Real Estate with us, your wealth can grow in ways your savings can’t dream of.</p>
+              <div class="hover-card">
+                <div class="hover-card-benefits">
+                  <div class="d-flex flex-column">
+                    <img style="width: 100%!important;" width="100" height="100" src="@/assets/svgs/benefits_1.svg" />
+                    <p class="text-center mt-5 font-weight-bold">Access to Profitable Projects</p>
+                    <p class="font-weight-light">By venturing into fractional Real Estate with us, your wealth can grow in ways your savings can’t dream of.</p>
+                  </div>
+                </div>
               </div>
             </div>
+
             <div class="col-lg-4 col-md-4">
               <div class="card shadow-3" style="border-color: white;border-radius: 20px;">
                 <div class="card-body">
@@ -325,35 +314,28 @@
 
         <div class="p-5 m-5 ">
           <carousel :autoplay="true" :nav="false" :centre="true" :items="1">
-            <div class="testimonial d-flex ">
-              <div class="image  " style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1611136066/testimonial_avatar_n0vftt.png')"></div>
+            <div class="testimonial d-flex">
+              <div class="image" style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1612182133/mojeed_Babatunde_xhnb61.jpg')"></div>
               <div class="comment px-4 py-3">
                 <blockquote class="mb-0">
                   <p class="position-relative">
-                    <sup class="quot font-weight-bold">“</sup>
+                    <sup class="quot font-weight-bold">“</sup> Myyinvest has helped me invest funds that i could have spent on various unimportant things. But here, i still have my money and
+                    additional interests on returns. One of the smartest moves i’ve made so far.
+                    <span class="text-danger"> Blessing Ogarahdukun</span>
                   </p>
                 </blockquote>
-                <p class="text-black">
-                  Real Estate investment has always been very capita intensive and a time-consuming venture. I conducted alot of research to find out the best choice for Real Estate investment and
-                  stumbled on Myyinvest. I was impressed at the level of information each property had.
-                </p>
-                <span class="text-red"> = Mojeed Babatunde =</span>
               </div>
             </div>
-
-            <div class="testimonial d-flex ">
-              <div class="image" style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1611136066/testimonial_avatar_n0vftt.png')"></div>
+            <div class="testimonial d-flex">
+              <div class="image" style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1612182133/mojeed_Babatunde_xhnb61.jpg')"></div>
               <div class="comment px-4 py-3">
                 <blockquote class="mb-0">
                   <p class="position-relative">
-                    <sup class="quot font-weight-bold">“</sup>
+                    <sup class="quot font-weight-bold">“</sup> Myyinvest has helped me invest funds that i could have spent on various unimportant things. But here, i still have my money and
+                    additional interests on returns. One of the smartest moves i’ve made so far.
+                    <span class="text-danger"> Blessing Ogarahdukun</span>
                   </p>
                 </blockquote>
-                <p class="text-black">
-                  Real Estate investment has always been very capita intensive and a time-consuming venture. I conducted alot of research to find out the best choice for Real Estate investment and
-                  stumbled on Myyinvest. I was impressed at the level of information each property had.
-                </p>
-                <span class="text-red"> = Mojeed Babatunde =</span>
               </div>
             </div>
           </carousel>
@@ -367,9 +349,9 @@
           <div class="row p-3">
             <div class="">
               <div class="d-flex flex-column position-relative w-100 " style="top:40%!important">
-                <h5 class="text-main-red m-1 w-100 ft-18 font-weight-bold text-bold" style="font-weight: 900!important;">Build your Net worth</h5>
-                <p class="ft-12 m-1  font-weight-bold text-bold" style="font-weight: 900!important;">Through Fractional Real Estate Investment.</p>
-                <div class="d-flex flex-row mt-5 pt-4">
+                <h1 class="text-main-red m-1 w-100  font-weight-bold text-bold">Build your Net worth</h1>
+                <p class="ft-18 m-1  font-weight-bold text-bold  mb-4">Through Fractional Real Estate Investment.</p>
+                <div class="d-flex flex-row">
                   <main-button style="border-radius:30px!important; font-size:10px!important" text="GET STARTED" size="sm" class="mr-3  shadow-3" />
                   <main-button style="border-radius:30px!important; font-size:10px!important" type="outline" text="WATCH NOW &#160; &#160; &#x25B6;" size="sm" class="shadow-3" />
                 </div>
@@ -635,43 +617,25 @@
           </div>
           <p class="font-weight-light mt-2 w-100">We cherish this kind words from our investors and we are glad to be part on this journey with them.</p>
         </div>
+
+        <div class="p-5 m-5 ">
+          <carousel :autoplay="true" :nav="false" :centre="true" :items="1">
+            <div class="testimonial d-flex w-100">
+              <!--              <div class="image" style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1612182133/mojeed_Babatunde_xhnb61.jpg')">-->
+              <!--              </div>-->
+              <div class="comment px-4 py-3">
+                <blockquote class="mb-0">
+                  <p class="position-relative">
+                    <sup class="quot font-weight-bold">“</sup> Myyinvest has helped me invest funds that i could have spent on various unimportant things. But here, i still have my money and
+                    additional interests on returns. One of the smartest moves i’ve made so far.
+                    <span class="text-danger"> Blessing Ogarahdukun</span>
+                  </p>
+                </blockquote>
+              </div>
+            </div>
+          </carousel>
+        </div>
       </section>
-
-      <div class="p-4" style="width:100%!important;">
-        <carousel :autoplay="true" :nav="false" :margin="10" :centre="true" :items="1">
-          <div class="testimonial d-flex " style="height:50px!important">
-            <div class="image" style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1611136066/testimonial_avatar_n0vftt.png'); width:70%!important;"></div>
-            <div class="comment ">
-              <blockquote class="mb-0">
-                <p class="position-relative">
-                  <sup class="quot font-weight-bold">“</sup>
-                </p>
-              </blockquote>
-              <p class="text-black" style="line-height:18px!important;">
-                Real Estate investment has always been very capita intensive and a time-consuming venture. I conducted alot of research to find out the best choice for Real Estate investment and
-                stumbled on Myyinvest. I was impressed at the level of information each property had.
-              </p>
-              <span class="text-main-red"> Mojeed Babatunde =</span>
-            </div>
-          </div>
-
-          <div class="testimonial d-flex " style="height:50px!important">
-            <div class="image" style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1611136066/testimonial_avatar_n0vftt.png'); width:70%!important;"></div>
-            <div class="comment ">
-              <blockquote class="mb-0">
-                <p class="position-relative">
-                  <sup class="quot font-weight-bold">“</sup>
-                </p>
-              </blockquote>
-              <p class="text-black" style="line-height:18px!important;">
-                Real Estate investment has always been very capita intensive and a time-consuming venture. I conducted alot of research to find out the best choice for Real Estate investment and
-                stumbled on Myyinvest. I was impressed at the level of information each property had.
-              </p>
-              <span class="text-main-red"> = Mojeed Babatunde =</span>
-            </div>
-          </div>
-        </carousel>
-      </div>
     </main>
   </div>
 </template>
@@ -724,6 +688,44 @@ export default {
 p {
   font-size: 17px !important;
 }
+
+#slider,
+ul {
+  height: 50px;
+}
+
+#slider {
+  margin: auto;
+  overflow: hidden;
+  padding: 20px;
+  margin-top: 10px;
+  position: relative;
+  width: 100%;
+}
+
+#slider li {
+  float: left;
+  position: relative;
+  display: inline-block;
+  height: 200px;
+}
+
+#slider ul {
+  list-style: none;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 9000px;
+  transition: left 0.2s linear;
+  -moz-transition: left 0.2s linear;
+  -o-transition: left 0.2s linear;
+  -webkit-transition: left 0.2s linear;
+  margin-left: -25px;
+  font-family: open sans;
+  color: #666;
+}
+
+/*** Content ***/
 
 @-webkit-keyframes slide-animation {
   0% {
@@ -780,8 +782,8 @@ p {
 #slider ul {
   -webkit-animation: slide-animation 5s infinite;
 }
-#slider ul:hover {
-  -moz-animation-play-state: paused;
-  -webkit-animation-play-state: paused;
-}
+/*#slider ul:hover {*/
+/*  -moz-animation-play-state: paused;*/
+/*  -webkit-animation-play-state: paused;*/
+/*}*/
 </style>

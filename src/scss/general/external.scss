@@ -846,14 +846,14 @@
   display: flex !important;
 }
 
-.testimonial div.image {
-  width: 45%;
-  background-size: cover;
-  background-position: 50%;
-  /* -webkit-clip-path: polygon(0 0,100% 0,64% 100%,0 100%); */
-  clip-path: polygon(0 0, 100% 0, 64% 100%, 0 100%);
-  overflow: hidden;
-}
+//.testimonial div.image {
+//  width: 45%;
+//  background-size: cover;
+//  background-position: 50%;
+//  /* -webkit-clip-path: polygon(0 0,100% 0,64% 100%,0 100%); */
+//  clip-path: polygon(0 0, 100% 0, 64% 100%, 0 100%);
+//  overflow: hidden;
+//}
 
 .testimonial div.comment {
   width: 55%;
@@ -1316,14 +1316,14 @@ blockquote {
   .inv-journey .inv-row .inv-col1 .step-3 h4 {
     font-size: 14px;
   }
-  .testimonial div.image {
-    width: 40%;
-    background-size: cover;
-    background-position: 50%;
-    /* -webkit-clip-path: polygon(0 0,100% 0,64% 100%,0 100%); */
-    clip-path: none;
-    overflow: hidden;
-  }
+  //.testimonial div.image {
+  //  width: 40%;
+  //  background-size: cover;
+  //  background-position: 50%;
+  //  /* -webkit-clip-path: polygon(0 0,100% 0,64% 100%,0 100%); */
+  //  clip-path: none;
+  //  overflow: hidden;
+  //}
   .testimonial div.comment {
     width: 100%;
     display: flex;
@@ -2726,10 +2726,9 @@ blockquote.blockquote p {
     box-shadow: -4px 4px 14px #646464;
 } */
 
-/* .single-list:hover .list-details h2 {
-    color: #ffffff;
-    transition: .5s;
-} */
+.list-details p {
+  font-weight: bolder;
+}
 
 .single-list .list-image {
   transition: 0.5s;

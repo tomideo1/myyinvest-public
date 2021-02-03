@@ -1514,8 +1514,11 @@ Text weight
 
 .testimonial div.image {
   width: 45%;
-  background-size: cover;
-  background-position: 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 20%;
+  //background: red!important;
+  box-shadow: 2px 2px 9px #e1e1e1;
   /* -webkit-clip-path: polygon(0 0,100% 0,64% 100%,0 100%); */
   clip-path: polygon(0 0, 100% 0, 64% 100%, 0 100%);
   overflow: hidden;
@@ -1579,4 +1582,8 @@ hr {
   content: " \25CF";
   font-size: 10px;
   color: color(main-red);
+}
+
+.custom-shadow {
+  box-shadow: inset 2px 2px 5px #acacac;
 }

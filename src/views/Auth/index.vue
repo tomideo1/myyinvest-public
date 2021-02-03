@@ -44,9 +44,10 @@
                   <main-input class=" mb-3" label="Last Name" />
                 </div>
               </div>
-              <main-input class=" mb-3" label="Email Address" type="email" />
 
-              <div class="form__div">
+              <main-input class="mb-3" label="Email Address" type="email" />
+
+              <div class="form__div mb-3">
                 <vue-tel-input style="border-color:#efb9b9!important" :class="['width-100 text-bold form__input mb-3']"></vue-tel-input>
                 <label class="label">Phone Number</label>
                 <!-- <p class="font-poppins text-bold text-error ml-12" v-if="isInvalid">
@@ -56,7 +57,7 @@
 
               <!-- <input type="text" class="form-control" id="country"> -->
 
-              <div class="row mt-n3">
+              <div class="row ">
                 <div class="col-md-6">
                   <main-input class=" mb-3" label="Password" type="password" />
                 </div>

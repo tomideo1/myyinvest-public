@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img class="d-md-block d-lg-block d-none" style="width: 100%!important;position:absolute;z-index: -1; top:50%!important;left:2%!important;" src="@/assets/svgs/listings-path.svg" />
+    <img class="d-md-block d-lg-block d-none" style="width: 90%!important;position:absolute;z-index: -1; top:50%!important;left:2%!important;" src="@/assets/svgs/listings-path.svg" />
     <section class="search-banner"></section>
     <section>
       <main-card style="margin-top:-60px" class="w-75 d-none d-lg-block d-md-block mx-auto ">
@@ -15,7 +15,7 @@
       <main-card style="margin-top:-60px" class="w-85 d-lg-none d-md-none d-block mx-auto ">
         <div class="d-flex flex-column">
           <div class="search ">
-            <img class=" search-icon" src="@/assets/icons/search.svg" width="25" />
+            <!--            <img class=" search-icon" src="@/assets/icons/search.svg" width="25" />-->
             <input class=" p-3 mx-auto search-box" />
           </div>
           <main-button text="search" size="md" type="filled" class="ml-auto mt-3" />
@@ -90,6 +90,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+* {
+  /*background-color: red!important;*/
+}
 .search-banner {
   background: color(main-red) !important;
   height: 20% !important;

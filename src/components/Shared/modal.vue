@@ -21,7 +21,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .modal-backdrop {
-  position: fixed;
+  position: fixed; /* Stay in place */
+  z-index: 100000 !important;
   top: 0;
   bottom: 0;
   left: 0;
@@ -37,9 +38,10 @@ export default {
   /*box-shadow: 2px 2px 20px 1px;*/
   overflow-x: auto;
   display: block;
-  max-width: 400px;
-  max-height: 450px;
+  max-width: 350px;
+  max-height: 500px;
   position: absolute;
+  z-index: 2 !important;
   border-radius: 15px;
   top: 50%;
   left: 50%;

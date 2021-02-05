@@ -18,7 +18,7 @@
 
 .sign-in-form h2 {
   font-size: 30px;
-  color: color(main-red);
+  color: #ed1c24;
   font-weight: 600;
 }
 
@@ -37,7 +37,7 @@
 
 .sign-up-form h2 {
   font-size: 30px;
-  color: color(main-red);
+  color: #ed1c24;
   font-weight: 600;
 }
 
@@ -58,41 +58,99 @@
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  left: 80%;
+  left: 75%;
   width: 50%;
-  height: 55%;
   transition: 1s 0.7s ease-in-out;
   display: grid;
   grid-template-columns: 1fr;
   z-index: 5;
 }
 
+.form__title {
+  font-weight: 400;
+  margin-bottom: 3rem;
+}
+
+.form__div {
+  position: relative;
+  height: 48px;
+  margin-bottom: 1.5rem;
+}
+
+.form__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+  border: 1px solid #dadce0;
+  border-radius: 0.5rem;
+  outline: none;
+  padding: 1rem;
+  background: none;
+  z-index: 1;
+}
+
+.form__label {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  padding: 0 0.25rem;
+  background-color: #fff;
+  color: #80868b;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+/*Input focus move up label*/
+
+.form__input:focus + .form__label {
+  top: -0.5rem;
+  left: 0.8rem;
+  color: #1a73e8;
+  font-size: 12px;
+  font-weight: 500;
+  z-index: 10;
+}
+
+/*Input focus sticky top label*/
+
+.form__input:not(:placeholder-shown).form__input:not(:focus) + .form__label {
+  top: -0.5rem;
+  left: 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  z-index: 10;
+}
+
 /*Input focus*/
 
-div.sign-up-form {
+.form__input:focus {
+  border: 1.5px solid #1a73e8;
+}
+
+form.sign-up-form {
   opacity: 0;
   z-index: 1;
   display: flex;
   /* align-items: center; */
   justify-content: center;
   flex-direction: column;
-  position: relative;
-  height: 100%;
-  padding: 0 3rem 5rem 5rem;
+  padding: 0rem 5rem;
   transition: all 0.2s 0.7s;
-  grid-column: 1 / 5;
+  overflow: hidden;
+  grid-column: 1 / 2;
   grid-row: 1 / 2;
 }
 
-div.sign-in-form {
+form.sign-in-form {
   z-index: 2;
   display: flex;
   /* align-items: center; */
   justify-content: center;
   flex-direction: column;
-  height: 100%;
-  padding: 0rem 3.5rem;
-  margin-top: -50px !important;
+  padding: 0rem 5rem;
   transition: all 0.2s 0.7s;
   overflow: hidden;
   grid-column: 1 / 2;
@@ -105,41 +163,41 @@ div.sign-in-form {
   margin-bottom: 10px;
 }
 
-// .input-field {
-//   max-width: 380px;
-//   width: 100%;
-//   background-color: #f0f0f0;
-//   margin: 10px 0;
-//   height: 55px;
-//   border-radius: 55px;
-//   display: grid;
-//   grid-template-columns: 15% 85%;
-//   padding: 0 0.4rem;
-//   position: relative;
-// }
+.input-field {
+  max-width: 380px;
+  width: 100%;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  height: 55px;
+  border-radius: 55px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  padding: 0 0.4rem;
+  position: relative;
+}
 
-// .input-field i {
-//   text-align: center;
-//   line-height: 55px;
-//   color: #acacac;
-//   transition: 0.5s;
-//   font-size: 1.1rem;
-// }
+.input-field i {
+  text-align: center;
+  line-height: 55px;
+  color: #acacac;
+  transition: 0.5s;
+  font-size: 1.1rem;
+}
 
-// .input-field input {
-//   background: none;
-//   outline: none;
-//   border: none;
-//   line-height: 1;
-//   font-weight: 600;
-//   font-size: 1.1rem;
-//   color: #333;
-// }
+.input-field input {
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
 
-// .input-field input::placeholder {
-//   color: #aaa;
-//   font-weight: 500;
-// }
+.input-field input::placeholder {
+  color: #aaa;
+  font-weight: 500;
+}
 
 .panel .content .btn {
   /* background-color: #5995fd;
@@ -170,11 +228,6 @@ div.sign-in-form {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.img-fluid {
-  max-width: 100%;
-  height: auto;
-}
-
 .container-c:before {
   content: "";
   position: absolute;
@@ -192,15 +245,6 @@ div.sign-in-form {
 
 .image1 {
   width: 100%;
-  position: relative;
-  left: 45%;
-  transition: transform 1.1s ease-in-out;
-  transition-delay: 0.4s;
-}
-.image2 {
-  width: 100%;
-  position: relative;
-  left: -45%;
   transition: transform 1.1s ease-in-out;
   transition-delay: 0.4s;
 }
@@ -251,7 +295,7 @@ div.sign-in-form {
   font-size: 0.8rem;
 }
 
-.right-panel .image2,
+.right-panel .image1,
 .right-panel .content {
   transform: translateX(800px);
 }
@@ -272,17 +316,17 @@ div.sign-in-form {
   left: 25%;
 }
 
-.container-c.sign-up-mode div.sign-up-form {
+.container-c.sign-up-mode form.sign-up-form {
   opacity: 1;
   z-index: 2;
 }
 
-.container-c.sign-up-mode div.sign-in-form {
+.container-c.sign-up-mode form.sign-in-form {
   opacity: 0;
   z-index: 1;
 }
 
-.container-c.sign-up-mode .right-panel .image2,
+.container-c.sign-up-mode .right-panel .image1,
 .container-c.sign-up-mode .right-panel .content {
   transform: translateX(0%);
 }
@@ -321,7 +365,6 @@ div.sign-in-form {
     padding: 0.5rem 8%;
     grid-column: 1 / 2;
   }
-
   .right-panel {
     grid-row: 3 / 4;
   }
@@ -329,11 +372,6 @@ div.sign-in-form {
     grid-row: 1 / 2;
   }
   .image1 {
-    width: 200px;
-    transition: transform 0.9s ease-in-out;
-    transition-delay: 0.6s;
-  }
-  .image2 {
     width: 200px;
     transition: transform 0.9s ease-in-out;
     transition-delay: 0.6s;
@@ -376,11 +414,11 @@ div.sign-in-form {
   .container-c.sign-up-mode .left-panel .content {
     transform: translateY(-300px);
   }
-  .container-c.sign-up-mode .right-panel .image2,
+  .container-c.sign-up-mode .right-panel .image1,
   .container-c.sign-up-mode .right-panel .content {
     transform: translateY(0px);
   }
-  .right-panel .image2,
+  .right-panel .image1,
   .right-panel .content {
     transform: translateY(300px);
   }
@@ -389,9 +427,8 @@ div.sign-in-form {
     transform: translate(-50%, 0);
   }
   .sign-logo {
-    width: 80%;
+    width: 35%;
     margin-bottom: 20px;
-    margin-top: 20px;
   }
   .sign-up-form p {
     font-size: 16px;
@@ -413,9 +450,6 @@ div.sign-in-form {
   .image1 {
     display: none;
   }
-  .image2 {
-    display: none;
-  }
   .panel .content {
     padding: 0;
   }
@@ -430,11 +464,10 @@ div.sign-in-form {
     bottom: 21%;
     left: 50%;
   }
-  div.sign-up-form {
+  form.sign-up-form {
     padding: 0rem 2rem;
   }
 }
-
 .form__div {
   position: relative;
   height: 48px;

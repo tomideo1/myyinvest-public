@@ -5,8 +5,8 @@
         <div class="col-md-6 privy-f-t">
           <h1>Terms of Service</h1>
         </div>
-        <div class="col-md-6 privy-f-i">
-          <img src="@/assets/images/privacy.svg" class="img-fluid" alt="" />
+        <div class="col-md-6">
+          <img src="@/assets/images/privacy.svg" width="300" height="300" class="img-fluid" alt="" />
         </div>
       </div>
       <div class="main-content">
@@ -280,4 +280,8 @@
 export default {};
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+p {
+  font-size: 16px !important;
+}
+</style>

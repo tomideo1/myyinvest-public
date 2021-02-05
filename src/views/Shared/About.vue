@@ -6,8 +6,8 @@
           <div class="row ">
             <div class="col-lg-6 col-md-12">
               <div class="border-left-red d-flex flex-column  ">
-                <span class="text-main-red ">WHO WE ARE</span>
-                <span class="w-75 font-weight-bold ft-36">Your investment success is built on a powerful customer experience platform.</span>
+                <span class="font-weight-bolder ">WHO WE ARE</span>
+                <span class="w-100  text-main-red ft-36">Your investment success is built on a powerful customer experience platform.</span>
               </div>
               <p class="w-100 mt-3  font-weight-light font-poppins" style="line-height:30px; margin-top: 80px!important;">
                 We are a Property Technology Company that helps you to Invest in Real Estate Properties Seamlessly. We believe that everybody can be an investor irrespective of their financial class
@@ -76,13 +76,13 @@
       </section>
 
       <section style="background: #F2F2F2!important;">
-        <div class="container-fluid">
-          <div class="row p-5  " style="margin-left: 50px">
-            <div class="card shadow-3 col-md-5 mr-5 mb-4 " style="border-color: white;border-radius: 20px;">
-              <div class="card-body">
+        <div class="">
+          <div class="row p-5  ">
+            <div class="col-md-6 col-lg-6  mb-4">
+              <div class="card shadow-3 col-md-12" style="border-color: white;border-radius: 20px; height: 320px;">
                 <div class="d-flex flex-column align-items-start">
                   <p class="text-center mt-5 font-weight-bold">Impact</p>
-                  <p class="font-weight-light" style="line-height: 30px">
+                  <p class="font-weight-light" style="line-height: 30px;">
                     Housing is a Core Need for Every Human Being, in as much we are looking at creating the best value for our investors, we always looking at creating the best value for our
                     Communities. Creating avenues for individuals to have access to affordable housing is at the core of house we Pick our Investment Options. This makes our Investors to be Advocates
                     for Social Development.
@@ -90,8 +90,8 @@
                 </div>
               </div>
             </div>
-            <div class="card shadow-3 col-md-5 ml-5 mb-4" style="border-color: white;border-radius: 20px;">
-              <div class="card-body">
+            <div class="col-md-6 col-lg-6  mb-4">
+              <div class="card shadow-3 col-md-12" style="border-color: white;border-radius: 20px; height: 320px">
                 <div class="d-flex flex-column align-items-start">
                   <p class="text-center mt-5 font-weight-bold">Feasibility of Projects</p>
                   <p class="font-weight-light" style="line-height: 30px;">
@@ -101,9 +101,8 @@
                 </div>
               </div>
             </div>
-
-            <div class="card shadow-3 col-md-5 mr-5 mb-4 " style="border-color: white;border-radius: 20px;">
-              <div class="card-body">
+            <div class="col-lg-6 col-md-6">
+              <div class="card shadow-3 col-md-12  mb-4 " style="border-color: white;border-radius: 20px; height: 320px;">
                 <div class="d-flex flex-column align-items-start">
                   <p class="text-center mt-5 font-weight-bold">Location</p>
                   <p class="font-weight-light" style="line-height: 30px;">
@@ -113,8 +112,9 @@
                 </div>
               </div>
             </div>
-            <div class="card shadow-3 col-md-5 ml-5 mb-4" style="border-color: white;border-radius: 20px;">
-              <div class="card-body">
+
+            <div class="col-lg-6 col-md-6">
+              <div class="card shadow-3 col-md-12  mb-4 " style="border-color: white;border-radius: 20px; height: 320px;">
                 <div class="d-flex flex-column align-items-start">
                   <p class="text-center mt-5 font-weight-bold">Legal Compliance</p>
                   <p class="font-weight-light" style="line-height: 30px;">
@@ -124,11 +124,12 @@
                 </div>
               </div>
             </div>
-            <div class="card shadow-3 col-md-5 mx-auto  ml-5" style="border-color: white;border-radius: 20px;">
-              <div class="card-body">
+
+            <div class="col-lg-6 col-md-6 mx-auto">
+              <div class="card shadow-3 col-md-12   mb-4 " style="border-color: white;border-radius: 20px; height: 320px;">
                 <div class="d-flex flex-column align-items-start">
-                  <p class="text-center mt-5  font-weight-bold">Track Record</p>
-                  <p class="font-weight-light" style="line-height: 30px">
+                  <p class="text-center mt-5 font-weight-bold">Track Record</p>
+                  <p class="font-weight-light" style="line-height: 30px;">
                     We engage with Developers with a minimum of 3 years industry experience with Track Record, to make sure that they have a firm grasp of the industry they are playing in. This gives
                     us the confidence to work with them and provide suitable deals through our Platform.
                   </p>
@@ -181,8 +182,8 @@
           <div class="row ">
             <div class="col-12">
               <div class="border-left-red d-flex flex-column  ">
-                <span class="text-main-red ">WHO WE ARE</span>
-                <p class="w-100 font-weight-bold" style="font-size: 36px!important;">Your investment success is built on a powerful customer experience platform.</p>
+                <span class="font-weight-bold ">WHO WE ARE</span>
+                <p class="w-100  mt-3 text-main-red" style="font-size: 26px!important;">Your investment success is built on a powerful customer experience platform.</p>
               </div>
               <p class="w-100 mt-3  font-weight-light font-poppins" style="line-height:30px; margin-top: 80px!important;">
                 We are a Property Technology Company that helps you to Invest in Real Estate Properties Seamlessly. We believe that everybody can be an investor irrespective of their financial class

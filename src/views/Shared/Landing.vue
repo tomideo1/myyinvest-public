@@ -160,9 +160,9 @@
       <section style="margin-top: 100px; position: relative" class="ml-5">
         <div class="container-fluid  ">
           <div class="row">
-            <div class="col-lg-4 col-md-4">
-              <div class="hover-card">
-                <div class="hover-card-benefits">
+            <div class="col-lg-4 col-md-4" @mouseleave="removeClasses('access')">
+              <div :class="benefitsArray.access">
+                <div :class="benefitsArray.access[3]" @mouseover="appendClasses('access')">
                   <div class="d-flex flex-column">
                     <img style="width: 100%!important;" width="100" height="100" src="@/assets/svgs/benefits_1.svg" />
                     <p class="text-center mt-5 font-weight-bold">Access to Profitable Projects</p>
@@ -172,32 +172,28 @@
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-4">
-              <div class="card shadow-3" style="border-color: white;border-radius: 20px;">
-                <div class="card-body">
+            <div class="col-lg-4 col-md-4" @mouseleave="removeClasses('returns')">
+              <div :class="benefitsArray.returns">
+                <div :class="benefitsArray.returns[3]" @mouseover="appendClasses('returns')">
                   <div class="d-flex flex-column align-items-start">
                     <img width="100" height="100" src="@/assets/svgs/benefit_2.svg" />
-                    <p class="text-center mt-5 font-weight-bold">Diversified Portfolio</p>
+                    <p class="text-center mt-5 font-weight-bold">Steady returns on investment</p>
                     <p class="font-weight-light">Investing through myyinvest guarantees secured returns and at a regular basis.</p>
                   </div>
                 </div>
               </div>
               <img src="@/assets/svgs/lighte-red-circle.svg" width="300" height="300" class=" position-relative d-md-none d-lg-block  " style="z-index: -1; margin-top: -150px;margin-left: 150px" />
-
-              <!--              <div class="d-flex flex-column">-->
-              <!--                -->
-              <!--                <img style="width: 100%!important;" width="100" height="100" src="@/assets/svgs/benefits_1.svg">-->
-              <!--                <p class="text-center mt-5 font-weight-bold">Access to Profitable Projects</p>-->
-              <!--                <p>By venturing into fractional Real Estate with us,-->
-              <!--                  your wealth can grow in ways your savings can’t-->
-              <!--                  dream of.</p>-->
-              <!--              </div>-->
             </div>
-            <div class="col-lg-4 col-md-4">
-              <div class="d-flex flex-column">
-                <img style="width: 100%!important;" width="100" height="100" src="@/assets/svgs/benefits_3.svg" />
-                <p class="text-center mt-5 font-weight-bold">Diversified Portfolio</p>
-                <p class="font-weight-light">With myyinvest, you get access to exclusive fractional real estate properties across Africa which is monitored from your personalized dashboard.</p>
+
+            <div class="col-lg-4 col-md-4" @mouseleave="removeClasses('diversified')">
+              <div :class="benefitsArray.diversified">
+                <div :class="benefitsArray.diversified[3]" @mouseover="appendClasses('diversified')">
+                  <div class="d-flex flex-column">
+                    <img style="width: 100%!important;" width="100" height="100" src="@/assets/svgs/benefits_3.svg" />
+                    <p class="text-center mt-5 font-weight-bold">Diversified Portfolio</p>
+                    <p class="font-weight-light">With myyinvest, you get access to exclusive fractional real estate properties across Africa which is monitored from your personalized dashboard.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -272,31 +268,16 @@
       <section class="ml-5">
         <div class="container-fluid">
           <carousel :autoplay="false" :nav="false" :items="1">
-            <div class="d-flex flex-row align-items-center justify-content-center ">
-              <div class="mr-5 ">
+            <div class="d-flex flex-row align-items-center justify-content-center " v-for="i in 2" :key="i">
+              <div class="mr-5 partner-img riby ">
                 <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="@/assets/partners/riby.svg" />
                 <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="@/assets/partners/riby.svg" />
               </div>
-              <div class="mr-5">
+              <div class="mr-5 partner-img riby">
                 <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="@/assets/partners/quantum.svg" />
                 <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="@/assets/partners/quantum.svg" />
               </div>
-              <div class="mr-5">
-                <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="@/assets/partners/leadway.svg" />
-                <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="@/assets/partners/leadway.svg" />
-              </div>
-            </div>
-
-            <div class="d-flex flex-row align-items-center justify-content-center ">
-              <div class="mr-5 ">
-                <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="@/assets/partners/riby.svg" />
-                <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="@/assets/partners/riby.svg" />
-              </div>
-              <div class="mr-5">
-                <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="@/assets/partners/quantum.svg" />
-                <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="@/assets/partners/quantum.svg" />
-              </div>
-              <div class="mr-5">
+              <div class="mr-5 partner-img riby">
                 <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="@/assets/partners/leadway.svg" />
                 <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="@/assets/partners/leadway.svg" />
               </div>
@@ -314,19 +295,7 @@
 
         <div class="p-5 m-5 ">
           <carousel :autoplay="true" :nav="false" :centre="true" :items="1">
-            <div class="testimonial d-flex">
-              <div class="image" style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1612182133/mojeed_Babatunde_xhnb61.jpg')"></div>
-              <div class="comment px-4 py-3">
-                <blockquote class="mb-0">
-                  <p class="position-relative">
-                    <sup class="quot font-weight-bold">“</sup> Myyinvest has helped me invest funds that i could have spent on various unimportant things. But here, i still have my money and
-                    additional interests on returns. One of the smartest moves i’ve made so far.
-                    <span class="text-danger"> Blessing Ogarahdukun</span>
-                  </p>
-                </blockquote>
-              </div>
-            </div>
-            <div class="testimonial d-flex">
+            <div class="testimonial d-flex" style="color: #7B7E80!important;" v-for="i in 2" :key="i">
               <div class="image" style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1612182133/mojeed_Babatunde_xhnb61.jpg')"></div>
               <div class="comment px-4 py-3">
                 <blockquote class="mb-0">
@@ -482,19 +451,23 @@
       <section style="margin-top: 100px;">
         <div class="container-fluid  ">
           <div class="row m-2">
-            <div class="col-12">
-              <div class="d-flex flex-column  align-items-start">
-                <img width="100" height="100" src="@/assets/svgs/benefits_1.svg" />
-                <p class="text-left mt-5 font-weight-bold">Access to Profitable Projects</p>
-                <p class="font-weight-light">By venturing into fractional Real Estate with us, your wealth can grow in ways your savings can’t dream of.</p>
+            <div class="col-12" @mouseleave="removeClasses('access')">
+              <div :class="benefitsArray.access">
+                <div :class="benefitsArray.access[3]" @mouseover="appendClasses('access')">
+                  <div class="d-flex flex-column  align-items-start">
+                    <img width="100" height="100" src="@/assets/svgs/benefits_1.svg" />
+                    <p class="text-left mt-5 font-weight-bold">Access to Profitable Projects</p>
+                    <p class="font-weight-light">By venturing into fractional Real Estate with us, your wealth can grow in ways your savings can’t dream of.</p>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="col-12 mt-5">
-              <div class="card shadow-3" style="border-color: white;border-radius: 20px;">
-                <div class="card-body">
+            <div class="col-12" @mouseleave="removeClasses('returns')">
+              <div :class="benefitsArray.returns">
+                <div :class="benefitsArray.returns[3]" @mouseover="appendClasses('returns')">
                   <div class="d-flex flex-column align-items-start">
                     <img width="100" height="100" src="@/assets/svgs/benefit_2.svg" />
-                    <p class="text-center mt-5 font-weight-bold">Diversified Portfolio</p>
+                    <p class="text-center mt-5 font-weight-bold">Steady returns on investment</p>
                     <p class="font-weight-light">Investing through myyinvest guarantees secured returns and at a regular basis.</p>
                   </div>
                 </div>
@@ -502,11 +475,15 @@
               <img src="@/assets/svgs/lighte-red-circle.svg" width="150" height="150" class=" position-relative   " style="z-index: -1; margin-top: -100px;margin-left: 180px" />
             </div>
 
-            <div class="col-12">
-              <div class="d-flex flex-column align-items-star">
-                <img width="100" height="100" src="@/assets/svgs/benefits_3.svg" />
-                <p class="text-left mt-5 font-weight-bold">Diversified Portfolio</p>
-                <p class="font-weight-light">With myyinvest, you get access to exclusive fractional real estate properties across Africa which is monitored from your personalized dashboard.</p>
+            <div class="col-12" @mouseleave="removeClasses('diversified')">
+              <div :class="benefitsArray.diversified">
+                <div :class="benefitsArray.diversified[3]" @mouseover="appendClasses('diversified')">
+                  <div class="d-flex flex-column align-items-star">
+                    <img width="100" height="100" src="@/assets/svgs/benefits_3.svg" />
+                    <p class="text-left mt-5 font-weight-bold">Diversified Portfolio</p>
+                    <p class="font-weight-light">With myyinvest, you get access to exclusive fractional real estate properties across Africa which is monitored from your personalized dashboard.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -592,13 +569,13 @@
       <section class="ml-5">
         <div class="container-fluid">
           <carousel :autoplay="false" :nav="false" :items="1">
-            <div class="d-flex flex-row align-items-center justify-content-center ">
+            <div class="d-flex flex-row align-items-center partner-img riby justify-content-center ">
               <img width="200" height="200" class="mx-auto" src="@/assets/partners/riby.svg" />
             </div>
-            <div class="d-flex flex-row align-items-center justify-content-center ">
+            <div class="d-flex flex-row  partner-img riby align-items-center justify-content-center ">
               <img width="200" height="200" class="mx-auto" src="@/assets/partners/quantum.svg" />
             </div>
-            <div class="d-flex flex-row align-items-center justify-content-center ">
+            <div class="d-flex flex-row align-items-center partner-img riby justify-content-center ">
               <img width="200" height="200" class="mx-auto " src="@/assets/partners/leadway.svg" />
             </div>
           </carousel>
@@ -618,11 +595,9 @@
           <p class="font-weight-light mt-2 w-100">We cherish this kind words from our investors and we are glad to be part on this journey with them.</p>
         </div>
 
-        <div class="p-5 m-5 ">
+        <div class=" m-3 ">
           <carousel :autoplay="true" :nav="false" :centre="true" :items="1">
-            <div class="testimonial d-flex w-100">
-              <!--              <div class="image" style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1612182133/mojeed_Babatunde_xhnb61.jpg')">-->
-              <!--              </div>-->
+            <div class="testimonial d-flex w-100" v-for="i in 3" :key="i" style="color: #7B7E80!important;">
               <div class="comment px-4 py-3">
                 <blockquote class="mb-0">
                   <p class="position-relative">
@@ -649,7 +624,12 @@ export default {
   components: { People, MainButton, carousel },
   data() {
     return {
-      isModalVisible: false
+      isModalVisible: false,
+      benefitsArray: {
+        diversified: [],
+        access: [],
+        returns: []
+      }
     };
   },
   methods: {
@@ -658,6 +638,15 @@ export default {
     },
     closeModal() {
       this.isModalVisible = false;
+    },
+    appendClasses(benefitType) {
+      if (this.benefitsArray[benefitType].length > 1) {
+        return;
+      }
+      this.benefitsArray[benefitType].push(["card ", "shadow-3 ", "mb-4 mb-lg-0 mb-md-0", "custom-card", "card-body"]);
+    },
+    removeClasses(benefitType) {
+      this.benefitsArray[benefitType] = [];
     }
   }
 };
@@ -782,6 +771,12 @@ ul {
 #slider ul {
   -webkit-animation: slide-animation 5s infinite;
 }
+
+.custom-card {
+  border-color: white !important;
+  border-radius: 20px !important;
+}
+
 /*#slider ul:hover {*/
 /*  -moz-animation-play-state: paused;*/
 /*  -webkit-animation-play-state: paused;*/

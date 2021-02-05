@@ -6,7 +6,7 @@
 </template>
 <script>
 const sizes = ["xs", "sm", "md", "lg"];
-const types = ["inverse", "filled", "outline", "transparent"];
+const types = ["inverse", "filled", "outline", "transparent", "plain"];
 
 export default {
   name: "MainButton",
@@ -101,7 +101,7 @@ button,
   border-radius: 7px;
   border: 1px solid color(main-red);
   font-size: 0.9rem;
-  font-weight: bold;
+  font-weight: normal;
   cursor: pointer !important;
   outline: none;
   position: relative;
@@ -145,6 +145,15 @@ button,
     border: 1px solid color(bv-white);
     background-color: transparent;
     color: color(bv-white);
+    &:hover {
+      background-color: color(bv-white);
+      color: color(main-red);
+    }
+  }
+  &.btn-plain {
+    border: 1px solid color(bv-white);
+    background-color: color(bv-white);
+    color: color(main-red);
     &:hover {
       background-color: color(bv-white);
       color: color(main-red);

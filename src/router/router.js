@@ -1,46 +1,28 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Index from "../views/Shared/index.vue";
-import Landing from "../views/Shared/Landing.vue";
-import listingsIndex from "../views/Shared/listings/index";
-import Listings from "../views/Shared/listings/listings";
-import SingleListings from "../views/Shared/listings/single";
-import Faq from "../views/Shared/faq.vue";
-import Terms from "../views/Shared/terms.vue";
-import Disclaimer from "../views/Shared/disclaimer.vue";
-import Privacy from "../views/Shared/privacy.vue";
-import Insight from "../views/Shared/insight/insight.vue";
-import Blogs from "../views/Shared/insight/blogs.vue";
-import SingleBlog from "../views/Shared/insight/single.vue";
-import About from "../views/Shared/About.vue";
-import Auth from "../views/Auth/index";
-import forgotPassword from "../views/Auth/forgotPassword";
-import confirmPassword from "../views/Auth/confirmPassword";
-import confirmMessage from "../views/Auth/confirmMessage";
-
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
     name: "landing",
-    component: Index,
+    component: () => import(/* webpackChunkName: "landing" */ "../views/Shared/index.vue"),
     redirect: "/home",
     children: [
       {
         path: "about",
         name: "about",
-        component: About
+        component: () => import(/* webpackChunkName: "about" */ "../views/Shared/About.vue")
       },
       {
         path: "home",
         name: "home",
-        component: Landing
+        component: () => import(/* webpackChunkName: "home" */ "../views/Shared/Landing.vue")
       },
       {
         path: "listings",
         name: "listings-main",
-        component: listingsIndex,
+        component: () => import(/* webpackChunkName: "listings-main" */ "../views/Shared/listings/index.vue"),
         redirect: {
           name: "listings"
         },
@@ -48,24 +30,24 @@ const routes = [
           {
             path: "",
             name: "listings",
-            component: Listings
+            component: () => import(/* webpackChunkName: "listings" */ "../views/Shared/listings/listings.vue")
           },
           {
             path: "single",
             name: "single-listing",
-            component: SingleListings
+            component: () => import(/* webpackChunkName: "single" */ "../views/Shared/listings/single.vue")
           }
         ]
       },
       {
         path: "faq",
         name: "faq",
-        component: Faq
+        component: () => import(/* webpackChunkName: "faq" */ "../views/Shared/faq.vue")
       },
       {
         path: "insight",
         name: "insight",
-        component: Insight,
+        component: () => import(/* webpackChunkName: "insight" */ "../views/Shared/insight/insight.vue"),
         redirect: {
           name: "blogs"
         },
@@ -73,12 +55,12 @@ const routes = [
           {
             path: "blogs",
             name: "blogs",
-            component: Blogs
+            component: () => import(/* webpackChunkName: "blogs" */ "../views/Shared/insight/blogs.vue")
           },
           {
             path: "blogs/single",
             name: "single-blog",
-            component: SingleBlog
+            component: () => import(/* webpackChunkName: "single-blog" */ "../views/Shared/insight/single.vue")
           }
         ]
       },
@@ -86,17 +68,17 @@ const routes = [
       {
         path: "terms",
         name: "terms",
-        component: Terms
+        component: () => import(/* webpackChunkName: "terms" */ "../views/Shared/terms.vue")
       },
       {
         path: "disclaimer",
         name: "disclaimer",
-        component: Disclaimer
+        component: () => import(/* webpackChunkName: "disclaimer" */ "../views/Shared/disclaimer.vue")
       },
       {
         path: "privacy",
         name: "privacy",
-        component: Privacy
+        component: () => import(/* webpackChunkName: "privacy" */ "../views/Shared/privacy.vue")
       }
     ]
   },
@@ -104,27 +86,27 @@ const routes = [
   {
     path: "/register",
     name: "register",
-    component: Auth
+    component: () => import(/* webpackChunkName: "register" */ "../views/Auth/index.vue")
   },
   {
     path: "/login",
     name: "login",
-    component: Auth
+    component: () => import(/* webpackChunkName: "login" */ "../views/Auth/index.vue")
   },
   {
     path: "/forgot-password",
     name: "forgotPassword",
-    component: forgotPassword
+    component: () => import(/* webpackChunkName: "forgotPassword" */ "../views/Auth/forgotPassword.vue")
   },
   {
     path: "/email-sent",
     name: "confirmMessage",
-    component: confirmMessage
+    component: () => import(/* webpackChunkName: "v" */ "../views/Auth/confirmMessage.vue")
   },
   {
     path: "/change-password",
     name: "confirmPassword",
-    component: confirmPassword
+    component: () => import(/* webpackChunkName: "confirmPassword" */ "../views/Auth/confirmPassword.vue")
   }
   // {
   //   path: "/about",
@@ -132,8 +114,6 @@ const routes = [
   //   // route level code-splitting
   //   // this generates a separate chunk (about.[hash].js) for this route
   //   // which is lazy-loaded when the route is visited.
-  //   component: () =>
-  //     import(/* webpackChunkName: "about" */ "../views/About.vue")
   // }
 ];
 

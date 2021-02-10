@@ -24,8 +24,12 @@
     <section>
       <div class="row m-lg-5 m-2">
         <div class="col-12 col-md-6 mt-5 ">
-          <img src="https://res.cloudinary.com/dwpu7jpku/image/upload/v1612297295/listings_mfl4io.png" height="500" width="650" class="d-lg-block d-md-block d-none" alt="" />
-          <img src="https://res.cloudinary.com/dwpu7jpku/image/upload/v1612297295/listings_mfl4io.png" width="350" height="300" class="d-block d-lg-none d-md-none" alt="" />
+          <carousel :autoplay="false" :nav="false" :items="1">
+            <div v-for="i in 5" :key="i">
+              <img src="https://res.cloudinary.com/dwpu7jpku/image/upload/v1612297295/listings_mfl4io.png" height="500" width="650" class="d-lg-block d-md-block d-none" alt="" />
+              <img src="https://res.cloudinary.com/dwpu7jpku/image/upload/v1612297295/listings_mfl4io.png" width="350" height="300" class="d-block d-lg-none d-md-none" alt="" />
+            </div>
+          </carousel>
         </div>
         <div class="col-12  col-md-6">
           <p class="text-center text-main-red ft-14 mt-3 mb-3 ">Key Information</p>
@@ -98,7 +102,7 @@
       <div class="row p-3">
         <div class="col-md-12">
           <p class="text-main-red">Description</p>
-          <p class="p-4 font-weight-light" style="background: #A0A0A0;">
+          <p class="p-4 font-weight-light card p-3 bg-white">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, quae. Ex maiores obcaecati ab nam earum, officiis magni? Velit inventore quae magnam suscipit minus vitae porro nobis
             debitis dolorum at!
           </p>
@@ -107,17 +111,23 @@
         <div class="col-md-12">
           <p class="text-main-red">Governance bodies</p>
           <div class="d-flex flex-column">
-            <p class="p-4 d-flex flex-column font-weight-light" style="background: #A0A0A0;">
-              <span class="font-weight-bold"> Finx Reality =></span>
-              <span>
-                Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit
-                amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit ame
+            <p class="p-4 d-flex font-weight-light  card p-3 bg-white">
+              <span class="">
+                <b class="font-weight-bold"> Finx Reality =></b>
+                <span>
+                  Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit
+                  amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit ame
+                </span>
               </span>
+            </p>
 
-              <span class="font-weight-bold"> Leadway =></span>
-              <span>
-                Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit
-                amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit ame
+            <p class="p-4 d-flex flex-column font-weight-light card p-3 bg-white">
+              <span class="">
+                <b class="font-weight-bold"> Leadway => </b>
+                <span>
+                  Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit
+                  amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit ame
+                </span>
               </span>
             </p>
           </div>
@@ -126,7 +136,7 @@
     </section>
     <section class="container-fluid">
       <p class="text-main-red">Documents</p>
-      <main-card class="col-md-5 col-12 col-lg-5" style="background:#A0A0A0!important;border-radius: 0!important; ">
+      <main-card class="col-md-5 col-12 col-lg-5" style="border-radius: 0!important; ">
         <div class="row ">
           <div class="col-md-6 col-6 col-lg-6 d-flex justify-content-center ">
             <main-button class="col-md-12 shadow-3" text="Project Details" size="md" type="filled" />
@@ -145,8 +155,9 @@ import MainCard from "../../../components/Shared/mainCard";
 import MainButton from "../../../components/form/MainButton";
 import MainInput from "../../../components/form/mainInput";
 import modal from "../../../components/Shared/modal.vue";
+import carousel from "vue-owl-carousel2";
 export default {
-  components: { MainCard, MainButton, modal, MainInput },
+  components: { MainCard, MainButton, modal, MainInput, carousel },
   data() {
     return {
       isModalVisible: false

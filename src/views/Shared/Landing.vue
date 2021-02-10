@@ -6,8 +6,12 @@
           <div class="row p-5">
             <div class="col-lg-6 col-md-6">
               <div class="d-flex flex-column position-absolute top-10">
-                <h1 class="text-main-red m-1  font-weight-bold text-bold">Build your Net worth</h1>
-                <p class="m-1  font-weight-bold text-bold mb-4">Through Fractional Real Estate Investment.</p>
+                <h1 class="text-main-red m-1  w-50 font-weight-bold text-bold">Build your Net worth</h1>
+                <transition-group tag="div" class="text-slider" name="slide">
+                  <div v-for="number in [currentList]" v-bind:key="number">
+                    <p class="text-main-red">{{ landingList[Math.abs(currentList) % landingList.length] }}</p>
+                  </div>
+                </transition-group>
                 <div class="d-flex flex-row  ">
                   <main-button text="GET STARTED" size="md" class="mr-4  shadow-3" />
                   <main-button type="outline" text="WATCH NOW &#160; &#160; &#x25B6;" size="md" class="" />
@@ -319,7 +323,11 @@
             <div class="">
               <div class="d-flex flex-column position-relative w-100 " style="top:40%!important">
                 <h1 class="text-main-red m-1 w-100  font-weight-bold text-bold">Build your Net worth</h1>
-                <p class="ft-18 m-1  font-weight-bold text-bold  mb-4">Through Fractional Real Estate Investment.</p>
+                <transition-group tag="div" class="text-slider" name="slide">
+                  <div v-for="number in [currentList]" v-bind:key="number">
+                    <p class="text-main-red">{{ landingList[Math.abs(currentList) % landingList.length] }}</p>
+                  </div>
+                </transition-group>
                 <div class="d-flex flex-row">
                   <main-button style="border-radius:30px!important; font-size:10px!important" text="GET STARTED" size="sm" class="mr-3  shadow-3" />
                   <main-button style="border-radius:30px!important; font-size:10px!important" type="outline" text="WATCH NOW &#160; &#160; &#x25B6;" size="sm" class="shadow-3" />
@@ -627,9 +635,12 @@ export default {
       isModalVisible: false,
       benefitsArray: {
         diversified: [],
+        show: true,
         access: [],
         returns: []
-      }
+      },
+      landingList: ["Through Fractional Real Estate Investment", "Through Fractional Real Estate Investment and Stuff"],
+      currentList: 0
     };
   },
   methods: {
@@ -648,6 +659,11 @@ export default {
     removeClasses(benefitType) {
       this.benefitsArray[benefitType] = [];
     }
+  },
+  mounted() {
+    setInterval(() => {
+      this.currentList = this.currentList + 1;
+    }, 3000);
   }
 };
 </script>
@@ -781,4 +797,34 @@ ul {
 /*  -moz-animation-play-state: paused;*/
 /*  -webkit-animation-play-state: paused;*/
 /*}*/
+
+#demo {
+  overflow: hidden;
+}
+
+.slide-leave-active,
+.slide-enter-active {
+  transition: 1s;
+}
+.slide-enter {
+  transform: translate(100%, 0);
+}
+.slide-leave-to {
+  transform: translate(-100%, 0);
+}
+
+.text-slider {
+  overflow: hidden;
+  position: relative;
+  height: 100px;
+  width: 350px;
+}
+
+.text-slider p {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
 </style>

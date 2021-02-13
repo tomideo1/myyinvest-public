@@ -21,7 +21,7 @@
       <label for="">{{ label }}</label>
       <select name="q1" id="" class="form-control 'width-100 text-bold ">
         <option value="">Select an option</option>
-        <option v-for="(index, option) in options" :key="index" :value="option.value">{{ option.key }}</option>
+        <option v-for="(option, index) in options" :key="index" :value="option.value">{{ option.key }}</option>
       </select>
     </div>
   </div>
@@ -60,6 +60,9 @@ export default {
     inputType: {
       type: String,
       default: "input"
+    },
+    options: {
+      type: Array
     }
   },
   methods: {

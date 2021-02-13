@@ -1,6 +1,6 @@
 <template>
   <div>
-    <modal v-show="isModalVisible" @close="closeModal">
+    <modal v-show="isModalVisible" size="md">
       <div class="modal-header">
         <p class="text-white text-center mx-auto mt-2">Invest Now</p>
       </div>

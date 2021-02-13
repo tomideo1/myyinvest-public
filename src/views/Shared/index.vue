@@ -1,6 +1,6 @@
 <template>
   <div>
-    <modal v-show="isModalVisible" @close="closeModal">
+    <modal v-show="isModalVisible">
       <div class="container-fluid d-flex flex-column align-items-center">
         <img src="@/assets/svgs/news-letter.svg" width="50" height="50" />
         <p class="ft-20 font-weight-bold mt-3">NewsLetter</p>
@@ -38,6 +38,7 @@ import MainInput from "../../components/form/mainInput";
 export default {
   name: "Landing",
   components: { MainInput, BottomFooter, MainButton, TopNav, modal },
+
   data() {
     return {
       isModalVisible: false

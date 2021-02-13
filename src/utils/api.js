@@ -1,19 +1,13 @@
 import axios from "axios";
 import { store } from "@/store/store";
+
 let api_url = process.env.VUE_APP_API;
 
 const instance = axios.create({
-  //   baseURL:
-  //     window.location.hostname == "localhost"
-  //       ? process.env.VUE_APP_API
-  //       : "https://api.edc.hostville.website/v1",
-  // });
   baseURL: api_url
-  // headers: {
-  //   'App_Key' : 'TESTING'
-  // }
 });
 
+/* eslint-disable no-unused-vars */
 // request interceptor
 instance.interceptors.request.use(
   (config, reqAuth) => {
@@ -29,8 +23,7 @@ class Api {
           Authorization: `Bearer ${store.state.auth.token}`
         }
       };
-      let response = requireAuth ? await instance.get(url, config) : await instance.get(url);
-      return response;
+      return requireAuth ? await instance.get(url, config) : await instance.get(url);
     } catch (error) {
       return error.response;
     }
@@ -43,8 +36,7 @@ class Api {
           Authorization: `Bearer ${store.state.auth.token}`
         }
       };
-      let response = requireAuth ? await instance.post(url, payload, config) : await instance.post(url, payload);
-      return response;
+      return requireAuth ? await instance.post(url, payload, config) : await instance.post(url, payload);
     } catch (error) {
       return error.response;
     }
@@ -57,8 +49,7 @@ class Api {
           Authorization: `Bearer ${store.state.auth.token}`
         }
       };
-      let response = requireAuth ? await instance.patch(url, payload, config) : await instance.patch(url, payload);
-      return response;
+      return requireAuth ? await instance.patch(url, payload, config) : await instance.patch(url, payload);
     } catch (error) {
       return error.response;
     }
@@ -71,22 +62,7 @@ class Api {
           Authorization: `Bearer ${store.state.auth.token}`
         }
       };
-      let response = requireAuth ? await instance.put(url, payload, config) : await instance.put(url, payload);
-      return response;
-    } catch (error) {
-      return error.response;
-    }
-  }
-
-  static async patch(url, payload = {}, requireAuth = false) {
-    try {
-      let config = {
-        headers: {
-          Authorization: `Bearer ${store.state.auth.token}`
-        }
-      };
-      let response = requireAuth ? await instance.patch(url, payload, config) : await instance.patch(url, payload);
-      return response;
+      return requireAuth ? await instance.put(url, payload, config) : await instance.put(url, payload);
     } catch (error) {
       return error.response;
     }
@@ -100,8 +76,7 @@ class Api {
         },
         data: payload
       };
-      let response = requireAuth ? await instance.delete(url, config) : await instance.delete(url, { data: payload });
-      return response;
+      return requireAuth ? await instance.delete(url, config) : await instance.delete(url, { data: payload });
     } catch (error) {
       return error.response;
     }

@@ -1,8 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import userRoutes from "./users";
 Vue.use(VueRouter);
 
-const routes = [
+const baseRoutes = [
   {
     path: "/",
     name: "landing",
@@ -116,7 +117,7 @@ const routes = [
   //   // which is lazy-loaded when the route is visited.
   // }
 ];
-
+const routes = baseRoutes.concat(userRoutes);
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,

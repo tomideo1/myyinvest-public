@@ -2,10 +2,10 @@
   <div id="app">
     <modal size="md_noty" v-show="notify.show" show-cancel @close-modal="closeModal">
       <img src="@/assets/logos/Myylogo2.png" alt="Logo" width="98" height="15" />
-      <div class="d-flex flex-column justify-content-center align-items-center">
+      <div class="d-flex flex-column justify-content-center align-items-center ">
         <img src="@/assets/svgs/success.svg" class="mt-5" alt="Logo" width="50" height="50" />
-        <p class="mt-4 text-main-red ft-14">{{ notify.tinyMessage }}</p>
-        <p class="text-center mt-4">{{ notify.mainMessage }}</p>
+        <p class="mt-4 text-main-red text-center ft-18">{{ notify.tinyMessage }}</p>
+        <!--        <p class="text-center mt-4">{{ notify.mainMessage }}</p>-->
       </div>
     </modal>
 
@@ -43,14 +43,13 @@ export default {
       this.notify = false;
     });
     this.$Bus.$on("notify", data => {
-      console.log(data);
       this.notify = data;
     });
-    setInterval(() => {
-      if (this.notify.show) {
-        this.notify.show = false;
-      }
-    }, 3000);
+    // setInterval(() => {
+    //   if (this.notify.show) {
+    //     this.notify.show = false;
+    //   }
+    // }, 10000);
   }
 };
 </script>

@@ -38,15 +38,10 @@ const actions = {
       return res;
     }
   },
-
-  // async forgotPassword({ commit }, payload) {
-  //     let res = await Api.post(`auth/forgot-password`, payload);
-  //     if (res.status === 200 || res.status === 201) {
-  //         return true;
-  //     } else {
-  //         return res;
-  //     }
-  // },
+  /* eslint-disable no-unused-vars */
+  async forgotPassword({ commit }, payload) {
+    return await Api.post(`/users/recover`, payload);
+  },
   //
   // async passwordChange({ commit }, payload) {
   //     let res = await Api.post(`auth/change-password`, payload);
@@ -56,9 +51,17 @@ const actions = {
   //         return res;
   //     }
   // },
+
+  /* eslint-disable no-unused-vars */
   async register({ commit }, payload) {
-    // payload.uri = process.env.VUE_APP_TENANT_URI;
+    delete payload.confirm_password;
+    delete payload.phone_number;
+    delete payload.isAgreedTerms;
     return await Api.post("/users/register", payload);
+  },
+
+  async resendVerification({ commit }, payload) {
+    return await Api.post("/users/resend", payload);
   }
   // async tenantLogin({ commit, dispatch }, payload) {
   //     let res = await Api.post("auth/tenant/login", payload);

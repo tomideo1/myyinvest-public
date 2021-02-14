@@ -36,7 +36,7 @@
           </div>
           <main-input class="mb-3" label="Email Address" v-model="signUpForm.email" type="email" />
           <div class="form__div mb-3">
-            <vue-tel-input style="border-color:#efb9b9!important" :class="['width-100 text-bold form__input mb-3']"></vue-tel-input>
+            <vue-tel-input v-model="signUpForm.phone_number" style="border-color:#efb9b9!important" :class="['width-100 text-bold form__input mb-3']"></vue-tel-input>
             <label class="label">Phone Number</label>
             <!-- <p class="font-poppins text-bold text-error ml-12" v-if="isInvalid">
               {{ errorMessage }}
@@ -44,10 +44,10 @@
           </div>
           <div class="row">
             <div class="col-md-6">
-              <main-input class=" mb-3" label="Password" type="password" />
+              <main-input class=" mb-3" v-model="signUpForm.password" label="Password" type="password" />
             </div>
             <div class="col-md-6">
-              <main-input class="mb-3" label="Confirm Password" type="password" />
+              <main-input class="mb-3" v-model="signUpForm.confirm_password" label="Confirm Password" type="password" />
             </div>
           </div>
           <main-button class="w-100 " text="CONTINUE" @click="isContinue = true" type="filled" />
@@ -62,13 +62,13 @@
             </div>
             <div class="form-check m-3">
               <p class="text-main-red cursor-pointer" @click="isContinue = false">Go back</p>
-              <input type="checkbox" class="form-check-input" />
+              <input type="checkbox" class="form-check-input" v-model="signUpForm.isAgreedTerms" />
               <label class="form-check-label font-poppins ft-12 font-weight-light"
                 >I agree to the <router-link class="ft-12 font-weight-light font-poppins" to="/terms">Terms and Conditions</router-link>
               </label>
             </div>
           </div>
-          <main-button class="w-100 " @click="handleRegister" text="SIGN UP " type="filled" />
+          <main-button class="w-100 " :disable="loginText === 'Loading...' || !signUpForm.isAgreedTerms" @click="handleRegister" :text="registerText" type="filled" />
         </form>
       </div>
     </div>
@@ -109,7 +109,6 @@ export default {
       isContinue: false,
       loginText: "Login",
       registerText: "Sign Up",
-      signUpText: "",
       loginForm: {
         email: "",
         password: ""
@@ -127,55 +126,46 @@ export default {
       media_list: [
         {
           key: "facebook",
-          value: "True"
+          value: "facebook"
         },
         {
           key: "Twitter",
-          value: "True"
+          value: "Twitter"
         },
         {
           key: "Instagram",
-          value: "True"
+          value: "Instagram"
         },
         {
           key: "Fliers",
-          value: "True"
+          value: "Fliers"
         },
 
         {
           key: "Friends",
-          value: "True"
+          value: "Friends"
         }
       ],
       signUpForm: {
         firstName: "",
         lastName: "",
         email: "",
-        country: "",
+        country: "Nigeria",
         password: "",
         confirm_password: "",
         firstInvest: "",
-        hearAbout: ""
+        hearAbout: "",
+        phone_number: "",
+        isAgreedTerms: false
       }
     };
   },
   methods: {
-    ...mapActions(["login"]),
+    ...mapActions(["login", "register"]),
     async handleLogin() {
       // console.log(res)
       try {
-        if (this.loginForm.email === "") {
-          this.handleNotify({
-            message: "Email field is required",
-            status: "Error"
-          });
-          return;
-        }
-        if (this.loginForm.password === "") {
-          this.handleNotify({
-            message: "Password field is required",
-            status: "Error"
-          });
+        if (!this.handleValidation(this.loginForm)) {
           return;
         }
         this.loginText = "Loading...";
@@ -200,32 +190,68 @@ export default {
     },
     async handleRegister() {
       try {
-        this.loginText = "Loading...";
-        let res = await this.login(this.loginForm);
+        if (!this.handleValidation(this.signUpForm)) {
+          return;
+        }
+        this.registerText = "Loading...";
+        let res = await this.register(this.signUpForm);
         if (res.status === 200 || res.status === 201) {
-          this.loginText = "Login";
-
-          this.handleNotify({
-            message: res.data.message,
-            status: "Success"
+          this.registerText = "Sign Up";
+          this.$router.push({
+            name: "confirmMessage",
+            params: { email: this.signUpForm.email }
           });
         } else {
-          this.loginText = "Login";
+          this.registerText = "Sign Up";
           this.handleNotify({
             message: res.data,
             status: "Error"
           });
         }
       } catch (e) {
-        this.loginText = "Login";
+        this.registerText = "Sign Up";
       }
     },
-    handleValidation() {},
+    handleValidation(payload) {
+      let keys = Object.keys(payload);
+      let validationSuccess = true;
+
+      //check and ensures all fields are required and filled
+      for (let i = 0; i < keys.length; i++) {
+        if (payload[keys[i]] === "" || typeof payload[keys[i]] === "undefined") {
+          this.handleNotify({
+            message: `${keys[i]} field is required`,
+            status: "Error"
+          });
+          validationSuccess = false;
+          break;
+        }
+      }
+
+      //if password and confirm password exists ensure they are identical
+      if (payload.confirm_password && payload.password) {
+        if (payload.password !== payload.confirm_password) {
+          this.handleNotify({
+            message: `Password fields do not match `,
+            status: "Error"
+          });
+          validationSuccess = false;
+        }
+      }
+
+      return validationSuccess;
+    },
     handleNotify(payload) {
       this.$Bus.$emit("notify", {
         show: true,
-        mainMessage: payload.message.replace(/\\\//g, "/"),
-        tinyMessage: payload.message.replace(/\\\//g, "/"),
+        mainMessage: payload.message
+          .split("_")
+          .join(" ")
+          .replace(/\\\//g, "/"),
+        tinyMessage: payload.message
+          .split("_")
+          .join(" ")
+          .replace(/\\\//g, "/"),
         extras: "",
         status: payload.status
       });

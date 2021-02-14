@@ -11,13 +11,13 @@
         <div class="card-body d-flex justify-content-center flex-column ">
           <img src="@/assets/svgs/news-letter.svg" class="mx-auto" alt="" width="100" height="100" />
           <p class="text-center mt-5 ft-18">We sent you a recovery link at</p>
-          <p class="ft-24  text-center font-weight-normal mb-5">voffiah@gmail.com</p>
+          <p class="ft-24  text-center font-weight-normal mb-5">{{ this.$route.params.email }}</p>
           <span><hr /></span>
 
           <div class="d-flex flex-row  mx-auto ">
             <span class="ft-10 mr-4    "><router-link style="text-decoration:none" class=" text-main-red " to="/login">Return to log in</router-link></span>
             <span class="dot mt-n1"></span>
-            <span class="ft-10 ml-4 text-main-red ">Resend recovery link</span>
+            <span class="ft-10 ml-4 text-main-red cursor-pointer" @click="resendLink">Resend recovery link</span>
           </div>
         </div>
       </div>
@@ -26,9 +26,46 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "forgotPassword",
-  components: {}
+  components: {},
+  methods: {
+    ...mapActions(["resendVerification"]),
+    async resendLink() {
+      let res = await this.resendVerification({ email: this.$route.params.email });
+      if (res.status === 200 || res.status === 201) {
+        this.handleNotify({
+          message: res.data,
+          status: "Success"
+        });
+      } else {
+        this.handleNotify({
+          message: res.data.message,
+          status: "Error"
+        });
+      }
+    },
+    handleNotify(payload) {
+      this.$Bus.$emit("notify", {
+        show: true,
+        mainMessage: payload.message
+          .split("_")
+          .join(" ")
+          .replace(/\\\//g, "/"),
+        tinyMessage: payload.message
+          .split("_")
+          .join(" ")
+          .replace(/\\\//g, "/"),
+        extras: "",
+        status: payload.status
+      });
+    }
+  },
+
+  mounted() {
+    console.log();
+  }
 };
 </script>
 

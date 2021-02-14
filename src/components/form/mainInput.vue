@@ -10,6 +10,7 @@
         @input="trigger($event)"
         @focus="focus"
         :type="type"
+        :required="required"
       />
       <label class="label">{{ label }}</label>
       <p class="font-poppins text-bold text-error ml-12" v-if="isInvalid">
@@ -19,8 +20,8 @@
 
     <div class="form-group" v-if="inputType === 'select'">
       <label for="">{{ label }}</label>
-      <select name="q1" id="" class="form-control 'width-100 text-bold ">
-        <option value="">Select an option</option>
+      <select id="" class="form-control 'width-100 text-bold " v-model="currentOption" @input="$emit('input', $event.target.value)">
+        <option class="select-placeholder" value="" disabled selected>Select an Option</option>
         <option v-for="(option, index) in options" :key="index" :value="option.value">{{ option.key }}</option>
       </select>
     </div>
@@ -30,7 +31,8 @@
 export default {
   data() {
     return {
-      showLabel: false
+      showLabel: false,
+      currentOption: ""
     };
   },
   props: {
@@ -39,6 +41,7 @@ export default {
       type: Boolean,
       default: false
     },
+    onSelectedEvent: Function,
     placeholder: {
       type: String,
       default: ""
@@ -54,6 +57,9 @@ export default {
     isInvalid: {
       type: Boolean
     },
+    required: {
+      type: Boolean
+    },
     errorMessage: {
       type: String
     },
@@ -63,6 +69,12 @@ export default {
     },
     options: {
       type: Array
+    }
+  },
+
+  watch: {
+    value: function(newValue) {
+      this.currentOption = newValue;
     }
   },
   methods: {

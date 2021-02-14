@@ -99,7 +99,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "forgotPassword" */ "../views/Auth/forgotPassword.vue")
   },
   {
-    path: "/email-sent",
+    path: "/email-sent/:email",
     name: "confirmMessage",
     component: () => import(/* webpackChunkName: "v" */ "../views/Auth/confirmMessage.vue")
   },

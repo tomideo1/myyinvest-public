@@ -180,7 +180,7 @@ export default {
         } else {
           this.loginText = "Login";
           this.handleNotify({
-            message: res.data,
+            message: res.data.message,
             status: "Error"
           });
         }
@@ -204,7 +204,7 @@ export default {
         } else {
           this.registerText = "Sign Up";
           this.handleNotify({
-            message: res.data,
+            message: res.data.message,
             status: "Error"
           });
         }

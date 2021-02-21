@@ -18,7 +18,7 @@
         </form>
 
         <!-- SIGN UP -->
-        <form @submit.prevent="" class="sign-up-form" v-if="!isContinue">
+        <form @submit.prevent="" class="sign-up-form " v-if="!isContinue">
           <div class="sign-logo">
             <router-link to="/">
               <img src="@/assets/logos/Myylogo2.png" class="img-fluid" alt="" />
@@ -54,6 +54,8 @@
         </form>
         <form @submit.prevent="" class="sign-up-form" v-else>
           <div class="row">
+            <p class="text-main-red cursor-pointer" @click="isContinue = false">Go back</p>
+
             <div class="col-md-12 ">
               <main-input class="" v-model="signUpForm.firstInvest" label="Are you a first time investor?" inputType="select" :options="investment_options" />
             </div>
@@ -61,7 +63,6 @@
               <main-input class=" " v-model="signUpForm.hearAbout" label="How did you hear about us?" inputType="select" :options="media_list" />
             </div>
             <div class="form-check m-3">
-              <p class="text-main-red cursor-pointer" @click="isContinue = false">Go back</p>
               <input type="checkbox" class="form-check-input" v-model="signUpForm.isAgreedTerms" />
               <label class="form-check-label font-poppins ft-12 font-weight-light"
                 >I agree to the <router-link class="ft-12 font-weight-light font-poppins" to="/terms">Terms and Conditions</router-link>

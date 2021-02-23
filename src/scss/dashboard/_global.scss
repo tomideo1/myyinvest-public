@@ -1,27 +1,10 @@
-// Global component styles
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  height: 100%;
-}
-
-a {
-  &:focus {
-    outline: none;
-  }
-}
-
 // Main page wrapper
 #wrapper {
   display: flex;
   #content-wrapper {
-    background-color: $gray-100;
+    background-color: color(bv-white);
     width: 100%;
-    overflow-x: hidden;
+    //overflow-x: hidden;
     #content {
       flex: 1 0 auto;
     }

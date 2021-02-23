@@ -1,82 +1,78 @@
 export default function() {
-  let mobileViewRoutes = [
-    {
-      title: "Notifications",
-      routeIcon: "bell",
-      to: {
-        name: "notifications"
-      }
-    },
-    {
-      title: "Logout",
-      routeIcon: "logout",
-      to: {
-        name: "logout"
-      }
-    }
-  ];
   let customerRoutes = [
     {
       title: "Dashboard",
-      routeIcon: "dashboard",
-      activeIcon: "active-dashboard",
-      identifier: "dashboard",
+      routeIcon: "home",
+      identifier: "overview",
       to: {
-        name: "customer-dashboard"
+        name: "overview"
       }
     },
     {
-      title: "Trade",
-      routeIcon: "trade",
-      activeIcon: "active-trade",
-      identifier: "trade",
+      title: "Browse Assets",
+      routeIcon: "assets",
+      identifier: "assets",
       to: {
-        name: "customer-trade-home"
+        name: "assets"
       }
     },
     {
-      title: "Bitcoin",
-      routeIcon: "bitcoin",
-      activeIcon: "active-bitcoin",
-      identifier: "bitcoin",
+      title: "Myy Portfolio",
+      routeIcon: "portfolio",
+      identifier: "portfolio",
       to: {
-        name: "customer-bitcoin-home"
+        name: "portfolio"
       }
     },
+
     {
-      title: "History",
-      routeIcon: "history",
-      activeIcon: "active-history",
-      identifier: "history",
-      to: {
-        name: "customer-history-home"
-      }
-    },
-    {
-      title: "Rates",
-      routeIcon: "rates",
-      activeIcon: "active-rates",
-      identifier: "rates",
-      to: {
-        name: "customer-rates-home"
-      }
-    },
-    {
-      title: "Wallet",
+      title: "Transactions",
       routeIcon: "wallet",
-      activeIcon: "active-wallet",
-      identifier: "wallet",
+      identifier: "transactions",
       to: {
-        name: "customer-wallet-home"
+        name: "transactions"
       }
     },
+    {
+      title: "Bank and Cards",
+      routeIcon: "atm-card",
+      identifier: "banks",
+      to: {
+        name: "banks"
+      }
+    },
+
+    {
+      title: "Refer and Earn",
+      routeIcon: "money",
+      identifier: "refer",
+      to: {
+        name: "refer"
+      }
+    },
+    {
+      title: "Talk to us",
+      routeIcon: "phone",
+      identifier: "talk",
+      to: {
+        name: "talk"
+      }
+    },
+    {
+      title: "Profile",
+      routeIcon: "profile",
+      identifier: "profile",
+      to: {
+        name: "profile"
+      }
+    },
+
     {
       title: "Settings",
-      routeIcon: "settings",
-      activeIcon: "active-settings",
+      routeIcon: "cog",
       identifier: "settings",
       to: {
-        name: "customer-settings-home"
+        name: "settings"
       }
     }
   ];
@@ -87,6 +83,6 @@ export default function() {
     }
   ];
 
-  appRoutes[0].items = [...customerRoutes, ...mobileViewRoutes];
+  appRoutes[0].items = [...customerRoutes];
   return appRoutes[0].items;
 }

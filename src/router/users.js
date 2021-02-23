@@ -5,7 +5,7 @@ export default [
     children: [
       {
         path: "dashboard",
-        name: "user-dashboard",
+        name: "overview",
         component: () => import(/* webpackChunkName: "user-dashboard" */ "../views/users/dashboard.vue")
         // meta: {
         //     middleware: [auth],
@@ -13,7 +13,7 @@ export default [
       },
       {
         path: "profile",
-        name: "user-profile",
+        name: "profile",
         component: () => import(/* webpackChunkName: "user-profile" */ "../views/users/profile.vue")
       }
     ]

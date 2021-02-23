@@ -1,7 +1,16 @@
 <template>
-  <span :class="`icon icon-${size}`" :id="name" v-on="$listeners">
+  <span :style="active ? 'filter: invert(80%) sepia(40%) saturate(4178%) hue-rotate(338deg) brightness(101%) contrast(98%);' : ''" :class="`icon icon-${size}`" :id="name" v-on="$listeners">
     <bell v-if="name === 'bell'"></bell>
     <logo-min v-if="name === 'logo-min'"></logo-min>
+    <home v-if="name === 'home'"></home>
+    <cog v-if="name === 'cog'"></cog>
+    <phone v-if="name === 'phone'"></phone>
+    <profile v-if="name === 'profile'"></profile>
+    <wallet v-if="name === 'wallet'"></wallet>
+    <portfolio v-if="name === 'portfolio'"></portfolio>
+    <money v-if="name === 'money'"></money>
+    <atm-card v-if="name === 'atm-card'"></atm-card>
+    <assets v-if="name === 'assets'"></assets>
   </span>
 </template>
 
@@ -13,11 +22,23 @@ export default {
     },
     size: {
       type: String
+    },
+    active: {
+      type: Boolean
     }
   },
   components: {
-    Bell: () => import("@/components/__private__/media/bell"),
-    LogoMin: () => import("@/components/__private__/media/logo-min")
+    Bell: () => import(/* webpackChunkName: \"bell\" */ "@/components/__private__/media/bell"),
+    LogoMin: () => import(/* webpackChunkName: \"logo-main\" */ "@/components/__private__/media/logo-min"),
+    Home: () => import(/* webpackChunkName: \"home\" */ "@/components/__private__/media/home"),
+    Profile: () => import(/* webpackChunkName: \" profile\" */ "@/components/__private__/media/profile"),
+    Cog: () => import(/* webpackChunkName: \" Cog\" */ "@/components/__private__/media/cog"),
+    Portfolio: () => import(/* webpackChunkName: \" profile\" */ "@/components/__private__/media/portfolio"),
+    Money: () => import(/* webpackChunkName: \" Money\" */ "@/components/__private__/media/money"),
+    Wallet: () => import(/* webpackChunkName: \" Wallet\" */ "@/components/__private__/media/wallet"),
+    AtmCard: () => import(/* webpackChunkName: \" atmCard\" */ "@/components/__private__/media/atmCard"),
+    Assets: () => import(/* webpackChunkName: \" Assets\" */ "@/components/__private__/media/assets"),
+    Phone: () => import(/* webpackChunkName: \" Phone\" */ "@/components/__private__/media/phone")
   }
 };
 </script>

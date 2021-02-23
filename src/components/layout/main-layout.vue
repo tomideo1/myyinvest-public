@@ -11,12 +11,17 @@
         </a>
         <div class="mt-5 ">
           <span class="d-flex flex-column align-items-center justify-content-center">
-            <avatar :user="getUser" size="lg-2" />
-            <p class="text-white mt-4  ft-14 font-weight-normal">Welcome, {{ getUserName }}</p>
+            <avatar :user="getUser" size="lg-1" />
+            <p class="text-white mt-4 text-center  ft-14 font-weight-normal">Welcome, {{ getUserName }}</p>
           </span>
-          <li @click="$router.push(item.to)" :class="['nav-item style_item mt-3 mb-3', getCurrentRoute === item.identifier ? 'active-item' : '']" v-for="(item, index) in sidebarItems" :key="index">
+          <li
+            @click="$router.push(item.to)"
+            :class="['nav-item  p-3 style_item mt-3 mb-3', getCurrentRoute === item.identifier ? 'active-item' : '']"
+            v-for="(item, index) in sidebarItems"
+            :key="index"
+          >
             <span class="d-flex flex-row pl-3 ">
-              <main-icon :name="item.routeIcon" class="mr-3" :active="getCurrentRoute === item.identifier" />
+              <main-icon :name="item.routeIcon" class="mr-lg-3 mr-md-3 " :active="getCurrentRoute === item.identifier" />
               <a href="javascript:void(0)" class="ft-12  font-weight-lighter mt-1 text-white">
                 <span>{{ item.title }}</span>
               </a>

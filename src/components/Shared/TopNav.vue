@@ -2,7 +2,7 @@
   <div>
     <!-- <b-navbar toggleables class="navbar navbar-expand-lg bg-white shadow-3 nav-height">
       <a>
-        <img style="cursor: pointer" width="162" @click="$router.replace('/')" height="26" src="@/assets/logos/Myylogo2.png" alt="Logo" />
+        <img style="cursor: pointer" width="162" @click="$router.replace('/')" height="26" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001064/mmyyinvest-2.0/logos/Myylogo2_uwpfw9.png" alt="Logo" />
       </a>
 
 
@@ -32,14 +32,21 @@
     <b-navbar toggleable type="light" variant="light" class="navbar navbar-expand-lg bg-white shadow-3 ">
       <b-navbar-brand href="#">
         <a>
-          <img style="cursor: pointer" width="162" @click="$router.replace('/')" height="26" src="@/assets/logos/Myylogo2.png" alt="Logo" />
+          <img
+            style="cursor: pointer"
+            width="162"
+            @click="$router.replace('/')"
+            height="26"
+            src="https://res.cloudinary.com/myyinvest/image/upload/v1614001064/mmyyinvest-2.0/logos/Myylogo2_uwpfw9.png"
+            alt="Logo"
+          />
         </a>
       </b-navbar-brand>
 
       <b-navbar-toggle target="navbar-toggle-collapse" style="border:none!important">
         <template #default="{ expanded }">
-          <img src="@/assets/icons/toggle.svg" v-if="expanded" />
-          <img src="@/assets/icons/toggle.svg" v-else />
+          <main-icon name="toggle" v-if="expanded" />
+          <main-icon name="toggle" v-else />
           <!-- <b-icon v-if="expanded" icon="chevron-bar-up"></b-icon> -->
           <!-- <b-icon v-else icon="chevron-bar-down"></b-icon> -->
         </template>
@@ -83,10 +90,12 @@
 
 <script>
 import MainButton from "../form/MainButton";
+import MainIcon from "./mainIcon";
 export default {
   name: "TopNav",
 
   components: {
+    MainIcon,
     MainButton
   }
 };

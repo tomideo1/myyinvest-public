@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import userRoutes from "./users";
+import middlewarePipeline from "./kernel/middlewarePipeline";
+import { store } from "../store/store";
 Vue.use(VueRouter);
 
 const baseRoutes = [
@@ -124,6 +126,25 @@ const router = new VueRouter({
   routes,
   linkActiveClass: "active",
   linkExactActiveClass: "exact-active"
+});
+router.beforeEach((to, from, next) => {
+  if (!to.meta.middleware) {
+    return next();
+  }
+
+  const middleware = to.meta.middleware;
+  const context = {
+    to,
+    from,
+    next,
+    router,
+    store
+  };
+
+  return middleware[0]({
+    ...context,
+    next: middlewarePipeline(context, middleware, 1)
+  });
 });
 
 export default router;

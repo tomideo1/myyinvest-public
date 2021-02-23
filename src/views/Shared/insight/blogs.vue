@@ -55,7 +55,7 @@
                     <div class="single-blog-post">
                       <!-- Post Thumbnail -->
                       <div class="post-thumbnail">
-                        <img src="@/assets/images/g.jpg" alt="" />
+                        <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614039939/mmyyinvest-2.0/images/g_yswqjr.jpg" alt="" />
                         <!-- Catagory -->
                         <!-- <div class="post-cta"><a href="#">travel</a></div> -->
                       </div>

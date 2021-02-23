@@ -16,17 +16,17 @@
             </div>
 
             <div style="position: relative; " class="d-lg-block d-md-none col-lg-5  ">
-              <img id="co_invest" src="@/assets/svgs/who_we.svg" width="600" height="600" class=" mt-n5" />
+              <img id="co_invest" src="https://res.cloudinary.com/myyinvest/image/upload/v1614000923/mmyyinvest-2.0/svgs/who_we_gh98au.svg" width="600" height="600" class=" mt-n5" />
             </div>
             <div style="position: relative;" class="d-lg-none  mt-5  d-md-block col-md-6  ">
-              <img src="@/assets/svgs/who_we.svg" width="400" height="400" class=" mt-n5" />
+              <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000923/mmyyinvest-2.0/svgs/who_we_gh98au.svg" width="400" height="400" class=" mt-n5" />
             </div>
           </div>
         </div>
       </section>
 
       <section>
-        <img src="@/assets/svgs/page-slice.svg" style="width: 100%;" />
+        <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000922/mmyyinvest-2.0/svgs/page-slice_x7y9za.svg" style="width: 100%;" />
       </section>
 
       <section style="margin-top: 150px;">
@@ -34,7 +34,7 @@
           <div class="row ">
             <div class="col-lg-5 col-md-12">
               <div style="position: relative;" class="  ">
-                <img src="@/assets/svgs/we_do.svg" width="600" height="600" class=" mt-n5" />
+                <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000921/mmyyinvest-2.0/svgs/we_do_jqhjxv.svg" width="600" height="600" class=" mt-n5" />
               </div>
             </div>
 
@@ -55,7 +55,7 @@
       </section>
 
       <section>
-        <img src="@/assets/svgs/about_path_2.svg" style="width: 100%;" class=" mt-5" />
+        <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000921/mmyyinvest-2.0/svgs/about_path_2_hacsrf.svg" style="width: 100%;" class=" mt-5" />
       </section>
 
       <section style="background: #F2F2F2!important;">
@@ -141,13 +141,13 @@
       </section>
 
       <section>
-        <img src="@/assets/svgs/about_path_3.svg" style="width: 100%;" />
+        <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000920/mmyyinvest-2.0/svgs/about_path_3_zifj4e.svg" style="width: 100%;" />
       </section>
 
       <section style="margin-top: 50px;">
         <div class="container-fluid">
           <div class="d-flex justify-content-center">
-            <img src="@/assets/svgs/mission.svg" width="400" height="400" style="margin-top: -100px" />
+            <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000917/mmyyinvest-2.0/svgs/mission_who6w2.svg" width="400" height="400" style="margin-top: -100px" />
           </div>
 
           <div class="row ml-5 pl-5 mt-n5">
@@ -192,7 +192,7 @@
             </div>
 
             <div class="d-lg-block d-md-none col-12  ">
-              <img id="co_invest" src="@/assets/svgs/who_we.svg" width="300" height="300" />
+              <img id="co_invest" src="https://res.cloudinary.com/myyinvest/image/upload/v1614000923/mmyyinvest-2.0/svgs/who_we_gh98au.svg" width="300" height="300" />
             </div>
           </div>
         </div>
@@ -215,7 +215,7 @@
             </div>
             <div class="col-12">
               <div style="position: relative;" class="  ">
-                <img src="@/assets/svgs/we_do.svg" width="300" height="300" />
+                <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000921/mmyyinvest-2.0/svgs/we_do_jqhjxv.svg" width="300" height="300" />
               </div>
             </div>
           </div>
@@ -223,7 +223,7 @@
       </section>
 
       <section>
-        <img src="@/assets/svgs/about_path_2.svg" style="width: 100%;" class=" mt-5" />
+        <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000921/mmyyinvest-2.0/svgs/about_path_2_hacsrf.svg" style="width: 100%;" class=" mt-5" />
       </section>
 
       <section style="background: #F2F2F2!important;">
@@ -308,13 +308,13 @@
       </section>
 
       <section>
-        <img src="@/assets/svgs/about_path_3.svg" style="width: 100%;" />
+        <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000920/mmyyinvest-2.0/svgs/about_path_3_zifj4e.svg" style="width: 100%;" />
       </section>
 
       <section style="margin-top: 50px;">
         <div class="container-fluid">
           <div class="d-flex justify-content-center">
-            <img src="@/assets/svgs/mission.svg" width="300" height="300" />
+            <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000917/mmyyinvest-2.0/svgs/mission_who6w2.svg" width="300" height="300" />
           </div>
 
           <div class="row p-3 ">

@@ -2,7 +2,7 @@
   <div>
     <modal v-show="isModalVisible">
       <div class="container-fluid d-flex flex-column align-items-center">
-        <img src="@/assets/svgs/news-letter.svg" width="50" height="50" />
+        <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000923/mmyyinvest-2.0/svgs/news-letter_fklp7x.svg" width="50" height="50" />
         <p class="ft-20 font-weight-bold mt-3">NewsLetter</p>
         <span class="text-center d-flex flex-column ">
           <small class="ft-10 font-weight-light ">Be first in line to get info on Real estate investment Opportunities</small>

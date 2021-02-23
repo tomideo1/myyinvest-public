@@ -11,8 +11,8 @@
         </a>
         <div class="mt-5 ">
           <span class="d-flex flex-column align-items-center justify-content-center">
-            <avatar :user="{ name: 'Valentine' }" size="lg-2" />
-            <p class="text-white mt-4  ft-14 font-weight-normal">Welcome, Valentine</p>
+            <avatar :user="getUser" size="lg-2" />
+            <p class="text-white mt-4  ft-14 font-weight-normal">Welcome, {{ getUserName }}</p>
           </span>
           <li @click="$router.push(item.to)" :class="['nav-item style_item mt-3 mb-3', getCurrentRoute === item.identifier ? 'active-item' : '']" v-for="(item, index) in sidebarItems" :key="index">
             <span class="d-flex flex-row pl-3 ">
@@ -49,15 +49,15 @@
               <li class="nav-item dropdown ">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="d-flex flex-column">
-                    <span class="mr-3  d-lg-inline text-black ft-12">Hi, Valntine Offiah</span>
-                    <span class="mr-3  d-lg-inline text-black ft-10 ml-auto">Admin</span>
+                    <span class="mr-3  d-lg-inline text-black ft-12">Hi, {{ getUserName }}</span>
+                    <span class="mr-3  d-lg-inline text-black ft-10 ml-auto">{{ getUser.user_role }}</span>
                   </span>
 
-                  <avatar :user="{ name: 'valentine' }" size="md" />
+                  <avatar :user="getUser" size="md" />
                   <!--                  <img class="img-profile rounded-circle mr-4" src="@/assets/images/avatar.png" style="max-width: 60px" />-->
                 </a>
                 <div class="dropdown-menu w-25 dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
+                  <a class="dropdown-item" @click="handleLogout" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     Logout
                   </a>
@@ -78,6 +78,7 @@
 import MainIcon from "../Shared/mainIcon";
 import getSidebarItems from "@/components/data/sideBarNavItems";
 import Avatar from "../Shared/avatar";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "main-layout",
   data() {
@@ -93,11 +94,13 @@ export default {
   },
 
   computed: {
+    ...mapGetters(["getUser", "getUserName"]),
     getCurrentRoute() {
       return this.$route.name;
     }
   },
   methods: {
+    ...mapActions(["logout"]),
     toggle() {
       if (this.class1.lastIndexOf("toggled") === 1) {
         const myIndex = this.class1.indexOf("️toggled");
@@ -105,9 +108,17 @@ export default {
       } else {
         this.class1.push("toggled");
       }
+    },
+    async handleLogout() {
+      await this.logout();
+      //
+      // localStorage.clear();
+      await this.$router.push("/login");
     }
   },
-  mounted() {}
+  mounted() {
+    console.log(this.getUser);
+  }
 };
 </script>
 

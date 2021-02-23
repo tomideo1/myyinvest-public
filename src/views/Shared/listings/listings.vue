@@ -1,6 +1,10 @@
 <template>
   <div>
-    <img class="d-md-block d-lg-block d-none" style="width: 90%!important;position:absolute;z-index: -1; top:50%!important;left:2%!important;" src="@/assets/svgs/listings-path.svg" />
+    <img
+      class="d-md-block d-lg-block d-none"
+      style="width: 90%!important;position:absolute;z-index: -1; top:50%!important;left:2%!important;"
+      src="https://res.cloudinary.com/myyinvest/image/upload/v1614000915/mmyyinvest-2.0/svgs/listings-path_fcplwt.svg"
+    />
     <section class="search-banner"></section>
     <section>
       <main-card style="margin-top:-60px" class="w-75 d-none d-lg-block d-md-block mx-auto ">
@@ -48,7 +52,7 @@
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-10 " style="border-right:1px solid red;">
                     <span class="d-flex flex-lg-row  ">
-                      <img src="@/assets/svgs/naira.svg" width="15" height="15" class="ml-3 mt-2" />
+                      <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/map_ktif6c.png/naira.svg" width="15" height="15" class="ml-3 mt-2" />
                       <p class="ml-1 18 text-main-red font-weight-bolder">10,000</p>
                     </span>
                     <p class="ml-4 ft-16">Minimum</p>

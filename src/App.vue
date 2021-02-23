@@ -1,10 +1,12 @@
 <template>
   <div id="app">
     <modal size="md_noty" v-show="notify.show" show-cancel @close-modal="closeModal">
-      <img src="@/assets/logos/Myylogo2.png" alt="Logo" width="98" height="15" />
+      <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614001064/mmyyinvest-2.0/logos/Myylogo2_uwpfw9.png" alt="Logo" width="98" height="15" />
       <div class="d-flex flex-column justify-content-center align-items-center ">
-        <img src="@/assets/svgs/success.svg" class="mt-5" alt="Logo" width="50" height="50" />
-        <p class="mt-4 text-main-red text-center ft-18">{{ notify.tinyMessage }}</p>
+        <main-icon v-if="notify.status === 'Success'" name="success" size="retain" class="mt-4" />
+        <main-icon v-if="notify.status === 'Error'" name="error" size="lg" class="mt-4" />
+        <p class="mt-4 text-success text-center ft-18" v-if="notify.status === 'Success'">{{ notify.tinyMessage }}</p>
+        <p class="mt-4 text-main-red text-center ft-18" v-if="notify.status === 'Error'">{{ notify.tinyMessage }}</p>
         <!--        <p class="text-center mt-4">{{ notify.mainMessage }}</p>-->
       </div>
     </modal>
@@ -15,6 +17,7 @@
 
 <script>
 import Modal from "./components/Shared/modal";
+import MainIcon from "./components/Shared/mainIcon";
 export default {
   data() {
     return {
@@ -27,7 +30,7 @@ export default {
       }
     };
   },
-  components: { Modal },
+  components: { MainIcon, Modal },
 
   methods: {
     showModal() {

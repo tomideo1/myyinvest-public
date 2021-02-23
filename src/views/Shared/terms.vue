@@ -6,7 +6,7 @@
           <h1>Terms of Service</h1>
         </div>
         <div class="col-md-6">
-          <img src="@/assets/images/privacy.svg" width="300" height="300" class="img-fluid" alt="" />
+          <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614039821/mmyyinvest-2.0/images/privacy_ha2ezh.svg" width="300" height="300" class="img-fluid" alt="" />
         </div>
       </div>
       <div class="main-content">

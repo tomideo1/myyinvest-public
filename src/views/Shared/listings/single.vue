@@ -38,11 +38,11 @@
               <div class="col-md-6  mt-4  col-lg-6 col-12">
                 <main-card class="col-md-12">
                   <div class="d-flex flex-column justify-content-center align-items-center">
-                    <img src="@/assets/svgs/money.svg" width="20" height="20" />
+                    <main-icon name="money" />
                     <p class="mt-2">Minimum</p>
                     <p class="mt-n2">Investment</p>
                     <span class="d-flex flex-lg-row  ">
-                      <img src="@/assets/svgs/naira.svg" width="15" height="15" class="ml-3 mt-2" />
+                      <main-icon name="naira" />
                       <p class="ml-1 18 text-main-red font-weight-bolder">10,000</p>
                     </span>
                   </div>
@@ -51,7 +51,7 @@
               <div class="col-md-6  col-lg-6 mt-4 col-12">
                 <main-card class="col-md-12">
                   <div class="d-flex flex-column justify-content-center align-items-center">
-                    <img src="@/assets/svgs/roi.svg" width="20" height="20" />
+                    <main-icon name="roi" />
                     <p class="mt-2">Returns</p>
                     <p class="mt-n2">(ROI)</p>
                     <p class="text-main-red">25%</p>
@@ -62,7 +62,7 @@
               <div class="col-md-6  mt-4  col-lg-6 col-12">
                 <main-card class="col-md-12">
                   <div class="d-flex flex-column justify-content-center align-items-center">
-                    <img src="@/assets/svgs/clock.svg" width="20" height="20" />
+                    <main-icon name="clock" />
                     <p class="mt-2">Holding</p>
                     <p class="mt-n2">Period</p>
                     <p class="text-main-red">12 Months</p>
@@ -73,7 +73,7 @@
               <div class="col-md-6 mt-4 col-lg-6 col-12">
                 <main-card class="col-md-12">
                   <div class="d-flex flex-column justify-content-center align-items-center">
-                    <img src="@/assets/svgs/building.svg" width="20" height="20" />
+                    <main-icon name="building" />
                     <p class="mt-2">Investment</p>
                     <p class="mt-n2">Purpose</p>
                     <p class="text-main-red">Construction</p>
@@ -156,8 +156,9 @@ import MainButton from "../../../components/form/MainButton";
 import MainInput from "../../../components/form/mainInput";
 import modal from "../../../components/Shared/modal.vue";
 import carousel from "vue-owl-carousel2";
+import MainIcon from "../../../components/Shared/mainIcon";
 export default {
-  components: { MainCard, MainButton, modal, MainInput, carousel },
+  components: { MainIcon, MainCard, MainButton, modal, MainInput, carousel },
   data() {
     return {
       isModalVisible: false

@@ -3,7 +3,7 @@
     <div class="container " style="height: 100%!important;">
       <div class="post blog-post ">
         <div class="post-single">
-          <div class="post-thumbnail"><img src="@/assets/images/g.jpg" alt="..." class="img-fluid" /></div>
+          <div class="post-thumbnail"><img src="https://res.cloudinary.com/myyinvest/image/upload/v1614039939/mmyyinvest-2.0/images/g_yswqjr.jpg" alt="..." class="img-fluid" /></div>
           <div class="post-details">
             <div class="user_details">
               <div class="float-left">

@@ -6,7 +6,7 @@
         <form @submit.prevent="" class="sign-in-form mt-lg-0 mt-5   ">
           <div class="sign-logo">
             <router-link to="/">
-              <img src="@/assets/logos/Myylogo2.png" class="img-fluid" alt="" />
+              <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614001064/mmyyinvest-2.0/logos/Myylogo2_uwpfw9.png" class="img-fluid" alt="" />
             </router-link>
           </div>
           <h2>Welcome back!</h2>
@@ -21,7 +21,7 @@
         <form @submit.prevent="" class="sign-up-form " v-if="!isContinue">
           <div class="sign-logo">
             <router-link to="/">
-              <img src="@/assets/logos/Myylogo2.png" class="img-fluid" alt="" />
+              <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614001064/mmyyinvest-2.0/logos/Myylogo2_uwpfw9.png" class="img-fluid" alt="" />
             </router-link>
           </div>
           <h2>Welcome!</h2>
@@ -83,7 +83,7 @@
           </p>
           <main-button type="transparent" @click="authClasses.push('sign-up-mode')" text="Sign Up " size="md" />
         </div>
-        <img src="@/assets/svgs/login.svg" class="image1" alt="" />
+        <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000920/mmyyinvest-2.0/svgs/login_wkklzv.svg" class="image1" alt="" />
       </div>
       <div class="panel right-panel">
         <div class="content">
@@ -91,7 +91,7 @@
 
           <main-button type="transparent" @click="authClasses.pop(-1)" text="Sign In " size="md" />
         </div>
-        <img src="@/assets/svgs/register.svg" class="image1" alt="" />
+        <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000918/mmyyinvest-2.0/svgs/register_os012l.svg" class="image1" alt="" />
       </div>
     </div>
   </div>
@@ -178,9 +178,10 @@ export default {
             message: res.data.message,
             status: "Success"
           });
+          await this.$router.push({ name: "overview" });
         } else {
           this.loginText = "Login";
-          this.handleNotify({
+          await this.handleNotify({
             message: res.data.message,
             status: "Error"
           });

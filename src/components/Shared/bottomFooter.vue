@@ -96,7 +96,7 @@
       </div>
 
       <div class="final-footer">
-        <img class="text-center" src="@/assets/svgs/footer_logo.svg" alt="Logo" />
+        <img class="text-center" src="https://res.cloudinary.com/myyinvest/image/upload/v1614000924/mmyyinvest-2.0/svgs/footer_logo_nwedef.svg" alt="Logo" />
       </div>
       <div id="footer">
         <div class="social-icons">

@@ -1,9 +1,9 @@
 <template>
   <div>
     <div :class="`avatar avatar-${size}`" :style="{ background: avatarBackground }">
-      <img v-if="user.image" :src="user.image" alt="avatar" />
+      <img v-if="user.image !== null && user.image !== ''" :src="user.image" alt="avatar" />
       <div v-else class="text-center ">
-        <span>{{ user.name | userLetter }}</span>
+        <span>{{ user.firstName | userLetter }}</span>
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@ export default {
     user: {
       type: Object,
       required: true,
-      validator: value => !!value.image || !!value.name
+      validator: value => !!value.image || !!value.firstName
     },
     // the size of the avatar
     size: {

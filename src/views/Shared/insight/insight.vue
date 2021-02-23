@@ -21,7 +21,7 @@
                 <div v-for="i in 6" :key="i" class="single-blog-post post-style-2 d-flex mb-3 align-items-center widget-post side-port p-lg-2 ">
                   <!-- Post Thumbnail -->
                   <div class="post-thumbnail">
-                    <img src="@/assets/images/f.jpg" alt="" />
+                    <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614039990/mmyyinvest-2.0/images/f_asqxxa.jpg" alt="" />
                   </div>
                   <!-- Post Content -->
                   <div class="post-cntent">

@@ -11,6 +11,16 @@
     <money v-if="name === 'money'"></money>
     <atm-card v-if="name === 'atm-card'"></atm-card>
     <assets v-if="name === 'assets'"></assets>
+    <toggle v-if="name === 'toggle'"></toggle>
+    <shield v-if="name === 'shield'"></shield>
+    <eye v-if="name === 'eye'"></eye>
+    <clock v-if="name === 'clock'"></clock>
+    <building v-if="name === 'building'"></building>
+    <naira v-if="name === 'naira'"></naira>
+    <roi v-if="name === 'roi'"></roi>
+    <security-asset v-if="name === 'security-asset'"></security-asset>
+    <success v-if="name === 'success'"></success>
+    <error v-if="name === 'error'"></error>
   </span>
 </template>
 
@@ -28,17 +38,27 @@ export default {
     }
   },
   components: {
-    Bell: () => import(/* webpackChunkName: \"bell\" */ "@/components/__private__/media/bell"),
-    LogoMin: () => import(/* webpackChunkName: \"logo-main\" */ "@/components/__private__/media/logo-min"),
-    Home: () => import(/* webpackChunkName: \"home\" */ "@/components/__private__/media/home"),
-    Profile: () => import(/* webpackChunkName: \" profile\" */ "@/components/__private__/media/profile"),
-    Cog: () => import(/* webpackChunkName: \" Cog\" */ "@/components/__private__/media/cog"),
-    Portfolio: () => import(/* webpackChunkName: \" profile\" */ "@/components/__private__/media/portfolio"),
-    Money: () => import(/* webpackChunkName: \" Money\" */ "@/components/__private__/media/money"),
-    Wallet: () => import(/* webpackChunkName: \" Wallet\" */ "@/components/__private__/media/wallet"),
-    AtmCard: () => import(/* webpackChunkName: \" atmCard\" */ "@/components/__private__/media/atmCard"),
-    Assets: () => import(/* webpackChunkName: \" Assets\" */ "@/components/__private__/media/assets"),
-    Phone: () => import(/* webpackChunkName: \" Phone\" */ "@/components/__private__/media/phone")
+    Bell: () => import("@/components/__private__/media/bell"),
+    LogoMin: () => import("@/components/__private__/media/logo"),
+    Home: () => import("@/components/__private__/media/home"),
+    Profile: () => import("@/components/__private__/media/profile"),
+    Cog: () => import("@/components/__private__/media/cog"),
+    Portfolio: () => import("@/components/__private__/media/portfolio"),
+    Money: () => import("@/components/__private__/media/money"),
+    Wallet: () => import("@/components/__private__/media/wallet"),
+    AtmCard: () => import("@/components/__private__/media/atmCard"),
+    Assets: () => import("@/components/__private__/media/assets"),
+    Phone: () => import("@/components/__private__/media/phone"),
+    Toggle: () => import("@/components/__private__/media/toggle"),
+    Shield: () => import("@/components/__private__/media/shield"),
+    Eye: () => import("@/components/__private__/media/eye"),
+    Clock: () => import("@/components/__private__/media/clock"),
+    Roi: () => import("@/components/__private__/media/roi"),
+    Naira: () => import("@/components/__private__/media/naira"),
+    Building: () => import("@/components/__private__/media/building"),
+    securityAsset: () => import("@/components/__private__/media/securityAsset"),
+    Success: () => import("@/components/__private__/media/success"),
+    Error: () => import("@/components/__private__/media/error")
   }
 };
 </script>

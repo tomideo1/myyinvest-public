@@ -7,7 +7,7 @@
           <p>Here are answers to some of your most pressing questions and concerns</p>
         </div>
         <div class="col-md-6 f-h-img">
-          <img width="350" height="350" src="@/assets/images/faq.svg" alt="" />
+          <img width="350" height="350" src="https://res.cloudinary.com/myyinvest/image/upload/v1614039876/mmyyinvest-2.0/images/faq_i8ci7h.svg" alt="" />
         </div>
       </div>
       <div class="input-box">

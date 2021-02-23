@@ -17,11 +17,11 @@
                   <main-button type="outline" text="WATCH NOW &#160; &#160; &#x25B6;" size="md" class="" />
                 </div>
               </div>
-              <img style="width:95%;position: absolute;right:10%;top:-5%; z-index: -1" src="@/assets/svgs/incoming.png" />
+              <img style="width:95%;position: absolute;right:10%;top:-5%; z-index: -1" src="https://res.cloudinary.com/myyinvest/image/upload/v1614000932/mmyyinvest-2.0/svgs/incoming_p86skz.png" />
             </div>
 
             <div class="col-lg-6 col-md-6 mt-5">
-              <img style="width: 90%; position: relative; z-index: -1" src="@/assets/svgs/map.png" />
+              <img style="width: 90%; position: relative; z-index: -1" src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/map_ktif6c.png" />
 
               <span>
                 <people class="position-absolute top-0 mt-2   d-lg-block d-md-none" flag-position="right" style="left: 40%;" size="xl-2" />
@@ -50,8 +50,8 @@
       <section class="ml-5">
         <div class="container-fluid">
           <div class="d-flex flex-column">
-            <!-- <img src="@/assets/svgs/light-circle.svg" width="400" height="400" class="  position-relative d-md-none d-lg-block  mt-n5" style="z-index: -1" />
-            <img src="@/assets/svgs/light-circle.svg" width="300" height="300" class="d-md-block d-lg-none " style="margin-top: 100px" alt="" /> -->
+            <!-- <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg" width="400" height="400" class="  position-relative d-md-none d-lg-block  mt-n5" style="z-index: -1" />
+            <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg" width="300" height="300" class="d-md-block d-lg-none " style="margin-top: 100px" alt="" /> -->
             <div class="border-left-red d-flex flex-column  " style="margin-top: 50px">
               <span class="text-main-red ">INVESTMENTS</span>
               <span>Our Investment Options</span>
@@ -77,10 +77,10 @@
             </div>
 
             <div style="position: relative;" class="d-lg-block d-md-none col-lg-5  ">
-              <img id="co_invest" src="@/assets/images/co-invest.svg" width="600" height="600" class=" mt-n5" />
+              <img id="co_invest" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001037/mmyyinvest-2.0/images/co-invest_jbjr29.svg" width="600" height="600" class=" mt-n5" />
             </div>
             <div style="position: relative;" class="d-lg-none d-md-block col-md-12 ">
-              <img src="@/assets/images/co-invest.svg" width="700" height="700" class=" mt-n5" />
+              <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614001037/mmyyinvest-2.0/images/co-invest_jbjr29.svg" width="700" height="700" class=" mt-n5" />
             </div>
           </div>
         </div>
@@ -91,7 +91,7 @@
           <div class="row ">
             <div class="col-lg-5 col-md-12">
               <div style="position: relative;" class="  ">
-                <img src="@/assets/images/co-own.svg" width="600" height="600" class=" mt-n5" />
+                <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614001034/mmyyinvest-2.0/images/co-own_deccup.svg" width="600" height="600" class=" mt-n5" />
               </div>
             </div>
 
@@ -106,8 +106,22 @@
               </p>
 
               <main-button class="float-right" type="filled" text="Invest Now" size="md" />
-              <img id="co_own_circle" src="@/assets/svgs/light-circle.svg" width="400" height="400" class=" position-relative d-md-none d-lg-block  " style="z-index: -1; margin-top: -100px;" />
-              <img src="@/assets/svgs/light-circle.svg" width="300" height="300" class="d-md-block d-lg-none " style="margin-top: -100px" alt="" />
+              <img
+                id="co_own_circle"
+                src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg"
+                width="400"
+                height="400"
+                class=" position-relative d-md-none d-lg-block  "
+                style="z-index: -1; margin-top: -100px;"
+              />
+              <img
+                src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg"
+                width="300"
+                height="300"
+                class="d-md-block d-lg-none "
+                style="margin-top: -100px"
+                alt=""
+              />
             </div>
           </div>
         </div>
@@ -126,7 +140,13 @@
                 with a minimum of
                 <span class="text-main-red">5000 Naira</span>
               </p>
-              <img src="@/assets/svgs/light-circle.svg" width="400" height="400" class=" position-relative d-md-none d-lg-block  " style="z-index: -1; margin-top: -300px;margin-left: 200px" />
+              <img
+                src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg"
+                width="400"
+                height="400"
+                class=" position-relative d-md-none d-lg-block  "
+                style="z-index: -1; margin-top: -300px;margin-left: 200px"
+              />
 
               <main-button type="filled" class="float-right mt-4" text="Learn More" size="md" />
             </div>
@@ -145,10 +165,10 @@
             </div>
 
             <div style="position: relative; margin-top: -100px;" class="d-lg-block d-md-none col-lg-5  ">
-              <img id="smart_invest" src="@/assets/images/smart-invest.svg" width="600" height="600" class=" mt-n5" />
+              <img id="smart_invest" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001034/mmyyinvest-2.0/images/smart-invest_yxzjgc.svg" width="600" height="600" class=" mt-n5" />
             </div>
             <div style="position: relative; margin-top: 80px" class="d-lg-none d-md-block col-md-12 ">
-              <img src="@/assets/images/smart-invest.svg" width="500" height="500" class=" mt-n5" />
+              <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614001034/mmyyinvest-2.0/images/smart-invest_yxzjgc.svg" width="500" height="500" class=" mt-n5" />
             </div>
           </div>
         </div>
@@ -168,7 +188,7 @@
               <div :class="benefitsArray.access">
                 <div :class="benefitsArray.access[3]" @mouseover="appendClasses('access')">
                   <div class="d-flex flex-column">
-                    <img style="width: 100%!important;" width="100" height="100" src="@/assets/svgs/benefits_1.svg" />
+                    <img style="width: 100%!important;" width="100" height="100" src="https://res.cloudinary.com/myyinvest/image/upload/v1614000930/mmyyinvest-2.0/svgs/benefits_1_fqwytu.svg" />
                     <p class="text-center mt-5 font-weight-bold">Access to Profitable Projects</p>
                     <p class="font-weight-light">By venturing into fractional Real Estate with us, your wealth can grow in ways your savings can’t dream of.</p>
                   </div>
@@ -180,20 +200,26 @@
               <div :class="benefitsArray.returns">
                 <div :class="benefitsArray.returns[3]" @mouseover="appendClasses('returns')">
                   <div class="d-flex flex-column align-items-start">
-                    <img width="100" height="100" src="@/assets/svgs/benefit_2.svg" />
+                    <img width="100" height="100" src="https://res.cloudinary.com/myyinvest/image/upload/v1614000928/mmyyinvest-2.0/svgs/benefit_2_s7lmrq.svg" />
                     <p class="text-center mt-5 font-weight-bold">Steady returns on investment</p>
                     <p class="font-weight-light">Investing through myyinvest guarantees secured returns and at a regular basis.</p>
                   </div>
                 </div>
               </div>
-              <img src="@/assets/svgs/lighte-red-circle.svg" width="300" height="300" class=" position-relative d-md-none d-lg-block  " style="z-index: -1; margin-top: -150px;margin-left: 150px" />
+              <img
+                src="https://res.cloudinary.com/myyinvest/image/upload/v1614000928/mmyyinvest-2.0/svgs/lighte-red-circle_eqvn74.svg"
+                width="300"
+                height="300"
+                class=" position-relative d-md-none d-lg-block  "
+                style="z-index: -1; margin-top: -150px;margin-left: 150px"
+              />
             </div>
 
             <div class="col-lg-4 col-md-4" @mouseleave="removeClasses('diversified')">
               <div :class="benefitsArray.diversified">
                 <div :class="benefitsArray.diversified[3]" @mouseover="appendClasses('diversified')">
                   <div class="d-flex flex-column">
-                    <img style="width: 100%!important;" width="100" height="100" src="@/assets/svgs/benefits_3.svg" />
+                    <img style="width: 100%!important;" width="100" height="100" src="https://res.cloudinary.com/myyinvest/image/upload/v1614000929/mmyyinvest-2.0/svgs/benefits_3_zder2i.svg" />
                     <p class="text-center mt-5 font-weight-bold">Diversified Portfolio</p>
                     <p class="font-weight-light">With myyinvest, you get access to exclusive fractional real estate properties across Africa which is monitored from your personalized dashboard.</p>
                   </div>
@@ -202,7 +228,10 @@
             </div>
           </div>
         </div>
-        <img style="width: 100%!important;position:absolute;z-index: -1; top:20%!important;" src="@/assets/svgs/line-path.svg" />
+        <img
+          style="width: 100%!important;position:absolute;z-index: -1; top:20%!important;"
+          src="https://res.cloudinary.com/myyinvest/image/upload/v1614000930/mmyyinvest-2.0/svgs/line-path_m9m288.svg"
+        />
       </section>
 
       <section style="margin-top: 200px;" class="ml-5">
@@ -219,7 +248,7 @@
               <div class="card shadow-3" style="border-bottom: 5px solid red;  border-radius: 20px;">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-middle">
-                    <img width="100" height="100" class="mx-auto" src="@/assets/svgs/security_asset.svg" />
+                    <main-icon name="security-asset" size="retain" class="mx-auto" />
                     <p class="text-center mt-5 font-weight-bold">ASSET MANAGEMENT</p>
                     <p class="font-weight-light  text-center">
                       Assets are held in Trust by Quantum Zenith Trustees, a Trustee arm of Zenith Bank and an entity regulated by Securities and Exchange Commission, Nigeria (SEC). Assets and Legal
@@ -233,7 +262,7 @@
               <div class="card shadow-3" style="border-bottom: 5px solid red;  border-radius: 20px;">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-middle">
-                    <img width="100" height="100" class="mx-auto" src="@/assets/svgs/eye.svg" />
+                    <main-icon name="eye" size="retain" class="mx-auto" />
                     <p class="text-center mt-5 font-weight-bold">SECURE ENCRYPTION</p>
                     <p class="font-weight-light  text-center">
                       Assets are held in Trust by Quantum Zenith Trustees, a Trustee arm of Zenith Bank and an entity regulated by Securities and Exchange Commission, Nigeria (SEC). Assets and Legal
@@ -247,7 +276,7 @@
               <div class="card shadow-3" style="border-bottom: 5px solid red;  border-radius: 20px;">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-middle">
-                    <img width="100" height="100" class="mx-auto" src="@/assets/svgs/shield.svg" />
+                    <main-icon name="shield" size="retain" class="mx-auto" />
                     <p class="text-center mt-5 font-weight-bold">BANK GRADE SECURITY</p>
                     <p class="font-weight-light  text-center">
                       Assets are held in Trust by Quantum Zenith Trustees, a Trustee arm of Zenith Bank and an entity regulated by Securities and Exchange Commission, Nigeria (SEC). Assets and Legal
@@ -274,16 +303,16 @@
           <carousel :autoplay="false" :nav="false" :items="1">
             <div class="d-flex flex-row align-items-center justify-content-center " v-for="i in 2" :key="i">
               <div class="mr-5 partner-img riby ">
-                <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="@/assets/partners/riby.svg" />
-                <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="@/assets/partners/riby.svg" />
+                <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001126/mmyyinvest-2.0/partners/riby_csqijz.svg" />
+                <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001126/mmyyinvest-2.0/partners/riby_csqijz.svg" />
               </div>
               <div class="mr-5 partner-img riby">
-                <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="@/assets/partners/quantum.svg" />
-                <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="@/assets/partners/quantum.svg" />
+                <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001126/mmyyinvest-2.0/partners/quantum_bxuwmd.svg" />
+                <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001126/mmyyinvest-2.0/partners/quantum_bxuwmd.svg" />
               </div>
               <div class="mr-5 partner-img riby">
-                <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="@/assets/partners/leadway.svg" />
-                <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="@/assets/partners/leadway.svg" />
+                <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001126/mmyyinvest-2.0/partners/leadway_rha16c.svg" />
+                <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001126/mmyyinvest-2.0/partners/leadway_rha16c.svg" />
               </div>
             </div>
           </carousel>
@@ -333,11 +362,11 @@
                   <main-button style="border-radius:30px!important; font-size:10px!important" type="outline" text="WATCH NOW &#160; &#160; &#x25B6;" size="sm" class="shadow-3" />
                 </div>
               </div>
-              <img style="width:100%;position: absolute;left:-20%;top:5%; z-index: -1;" src="@/assets/svgs/incoming.png" />
+              <img style="width:100%;position: absolute;left:-20%;top:5%; z-index: -1;" src="https://res.cloudinary.com/myyinvest/image/upload/v1614000932/mmyyinvest-2.0/svgs/incoming_p86skz.png" />
             </div>
 
             <div class="col-12" style="margin-top:220px">
-              <img style="width: 100%; position: relative; z-index: -1" src="@/assets/svgs/map.png" />
+              <img style="width: 100%; position: relative; z-index: -1" src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/map_ktif6c.png" />
 
               <span>
                 <people class="position-absolute top-0 mt-2  " flag-position="right" style="left: 0%;" size="xl-2" />
@@ -362,8 +391,8 @@
       <section class="" style="margin-top: 100px">
         <div class="container-fluid">
           <div class="d-flex flex-column">
-            <!-- <img src="@/assets/svgs/light-circle.svg" width="200" height="200" class="  position-relative d-md-none d-lg-block  mt-n5" style="z-index: -1" /> -->
-            <!-- <img src="@/assets/svgs/light-circle.svg" width="200" height="200" class="d-md-block d-lg-none " style="margin-top: 100px" alt="" /> -->
+            <!-- <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg" width="200" height="200" class="  position-relative d-md-none d-lg-block  mt-n5" style="z-index: -1" /> -->
+            <!-- <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg" width="200" height="200" class="d-md-block d-lg-none " style="margin-top: 100px" alt="" /> -->
             <div class="border-left-red d-flex flex-column  ">
               <span class="text-main-red ">INVESTMENTS</span>
               <span>Our Investment Options</span>
@@ -389,7 +418,7 @@
             </div>
 
             <div class="col-12  mt-4">
-              <img src="@/assets/images/co-invest.svg" width="300" height="300" />
+              <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614001037/mmyyinvest-2.0/images/co-invest_jbjr29.svg" width="300" height="300" />
             </div>
           </div>
         </div>
@@ -413,7 +442,7 @@
 
             <div class="col-12">
               <div class="  ">
-                <img src="@/assets/images/co-own.svg" width="300" height="300" class=" mt-5" />
+                <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614001034/mmyyinvest-2.0/images/co-own_deccup.svg" width="300" height="300" class=" mt-5" />
               </div>
             </div>
           </div>
@@ -437,7 +466,7 @@
               <main-button type="filled" class="float-left mt-4" text="Learn More" size="md" />
             </div>
             <div style="position: relative; margin-top: 80px" class=" col-md-12 ">
-              <img src="@/assets/images/smart-invest.svg" width="300" height="300" class=" mt-n5" />
+              <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614001034/mmyyinvest-2.0/images/smart-invest_yxzjgc.svg" width="300" height="300" class=" mt-n5" />
             </div>
           </div>
         </div>
@@ -446,8 +475,8 @@
       <section class="" style="margin-top: 100px">
         <div class="container-fluid">
           <div class="d-flex flex-column">
-            <!-- <img src="@/assets/svgs/light-circle.svg" width="200" height="200" class="  position-relative d-md-none d-lg-block  mt-n5" style="z-index: -1" /> -->
-            <!-- <img src="@/assets/svgs/light-circle.svg" width="200" height="200" class="d-md-block d-lg-none " style="margin-top: 100px" alt="" /> -->
+            <!-- <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg" width="200" height="200" class="  position-relative d-md-none d-lg-block  mt-n5" style="z-index: -1" /> -->
+            <!-- <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg" width="200" height="200" class="d-md-block d-lg-none " style="margin-top: 100px" alt="" /> -->
             <div class="border-left-red d-flex flex-column  ">
               <span class="text-main-red ">Benefits</span>
               <span>Why you should choose us</span>
@@ -463,7 +492,7 @@
               <div :class="benefitsArray.access">
                 <div :class="benefitsArray.access[3]" @mouseover="appendClasses('access')">
                   <div class="d-flex flex-column  align-items-start">
-                    <img width="100" height="100" src="@/assets/svgs/benefits_1.svg" />
+                    <img width="100" height="100" src="https://res.cloudinary.com/myyinvest/image/upload/v1614000930/mmyyinvest-2.0/svgs/benefits_1_fqwytu.svg" />
                     <p class="text-left mt-5 font-weight-bold">Access to Profitable Projects</p>
                     <p class="font-weight-light">By venturing into fractional Real Estate with us, your wealth can grow in ways your savings can’t dream of.</p>
                   </div>
@@ -474,20 +503,26 @@
               <div :class="benefitsArray.returns">
                 <div :class="benefitsArray.returns[3]" @mouseover="appendClasses('returns')">
                   <div class="d-flex flex-column align-items-start">
-                    <img width="100" height="100" src="@/assets/svgs/benefit_2.svg" />
+                    <img width="100" height="100" src="https://res.cloudinary.com/myyinvest/image/upload/v1614000928/mmyyinvest-2.0/svgs/benefit_2_s7lmrq.svg" />
                     <p class="text-center mt-5 font-weight-bold">Steady returns on investment</p>
                     <p class="font-weight-light">Investing through myyinvest guarantees secured returns and at a regular basis.</p>
                   </div>
                 </div>
               </div>
-              <img src="@/assets/svgs/lighte-red-circle.svg" width="150" height="150" class=" position-relative   " style="z-index: -1; margin-top: -100px;margin-left: 180px" />
+              <img
+                src="https://res.cloudinary.com/myyinvest/image/upload/v1614000928/mmyyinvest-2.0/svgs/lighte-red-circle_eqvn74.svg"
+                width="150"
+                height="150"
+                class=" position-relative   "
+                style="z-index: -1; margin-top: -100px;margin-left: 180px"
+              />
             </div>
 
             <div class="col-12" @mouseleave="removeClasses('diversified')">
               <div :class="benefitsArray.diversified">
                 <div :class="benefitsArray.diversified[3]" @mouseover="appendClasses('diversified')">
                   <div class="d-flex flex-column align-items-star">
-                    <img width="100" height="100" src="@/assets/svgs/benefits_3.svg" />
+                    <img width="100" height="100" src="https://res.cloudinary.com/myyinvest/image/upload/v1614000929/mmyyinvest-2.0/svgs/benefits_3_zder2i.svg" />
                     <p class="text-left mt-5 font-weight-bold">Diversified Portfolio</p>
                     <p class="font-weight-light">With myyinvest, you get access to exclusive fractional real estate properties across Africa which is monitored from your personalized dashboard.</p>
                   </div>
@@ -501,8 +536,8 @@
       <section class="" style="margin-top: 100px">
         <div class="container-fluid">
           <div class="d-flex flex-column">
-            <!-- <img src="@/assets/svgs/light-circle.svg" width="200" height="200" class="  position-relative d-md-none d-lg-block  mt-n5" style="z-index: -1" /> -->
-            <!-- <img src="@/assets/svgs/light-circle.svg" width="200" height="200" class="d-md-block d-lg-none " style="margin-top: 100px" alt="" /> -->
+            <!-- <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg" width="200" height="200" class="  position-relative d-md-none d-lg-block  mt-n5" style="z-index: -1" /> -->
+            <!-- <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg" width="200" height="200" class="d-md-block d-lg-none " style="margin-top: 100px" alt="" /> -->
             <div class="border-left-red d-flex flex-column  ">
               <span class="text-main-red ">SAFETY AND SECURITY</span>
               <span>Why we are Reliable</span>
@@ -518,7 +553,7 @@
               <div class="card shadow-3" style="border-bottom: 5px solid red;  border-radius: 20px;">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-middle">
-                    <img width="100" height="100" class="mx-auto" src="@/assets/svgs/security_asset.svg" />
+                    <main-icon name="security-asset" size="retain" class="mx-auto" />
                     <p class="text-center mt-5 font-weight-bold">ASSET MANAGEMENT</p>
                     <p class="font-weight-light  text-center">
                       Assets are held in Trust by Quantum Zenith Trustees, a Trustee arm of Zenith Bank and an entity regulated by Securities and Exchange Commission, Nigeria (SEC). Assets and Legal
@@ -532,7 +567,7 @@
               <div class="card shadow-3" style="border-bottom: 5px solid red;  border-radius: 20px;">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-middle">
-                    <img width="100" height="100" class="mx-auto" src="@/assets/svgs/eye.svg" />
+                    <main-icon name="eye" size="retain" class="mx-auto" />
                     <p class="text-center mt-5 font-weight-bold">SECURE ENCRYPTION</p>
                     <p class="font-weight-light  text-center">
                       Assets are held in Trust by Quantum Zenith Trustees, a Trustee arm of Zenith Bank and an entity regulated by Securities and Exchange Commission, Nigeria (SEC). Assets and Legal
@@ -546,7 +581,7 @@
               <div class="card shadow-3" style="border-bottom: 5px solid red;  border-radius: 20px;">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-middle">
-                    <img width="100" height="100" class="mx-auto" src="@/assets/svgs/shield.svg" />
+                    <main-icon name="shield" size="retain" class="mx-auto" />
                     <p class="text-center mt-5 font-weight-bold">BANK GRADE SECURITY</p>
                     <p class="font-weight-light  text-center">
                       Assets are held in Trust by Quantum Zenith Trustees, a Trustee arm of Zenith Bank and an entity regulated by Securities and Exchange Commission, Nigeria (SEC). Assets and Legal
@@ -563,8 +598,8 @@
       <section class="" style="margin-top: 100px">
         <div class="container-fluid">
           <div class="d-flex flex-column">
-            <!-- <img src="@/assets/svgs/light-circle.svg" width="200" height="200" class="  position-relative d-md-none d-lg-block  mt-n5" style="z-index: -1" /> -->
-            <!-- <img src="@/assets/svgs/light-circle.svg" width="200" height="200" class="d-md-block d-lg-none " style="margin-top: 100px" alt="" /> -->
+            <!-- <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg" width="200" height="200" class="  position-relative d-md-none d-lg-block  mt-n5" style="z-index: -1" /> -->
+            <!-- <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg" width="200" height="200" class="d-md-block d-lg-none " style="margin-top: 100px" alt="" /> -->
             <div class="border-left-red d-flex flex-column  ">
               <span class="text-main-red ">OUR PARTNERS</span>
               <span>Collaborators</span>
@@ -578,13 +613,13 @@
         <div class="container-fluid">
           <carousel :autoplay="false" :nav="false" :items="1">
             <div class="d-flex flex-row align-items-center partner-img riby justify-content-center ">
-              <img width="200" height="200" class="mx-auto" src="@/assets/partners/riby.svg" />
+              <img width="200" height="200" class="mx-auto" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001126/mmyyinvest-2.0/partners/riby_csqijz.svg" />
             </div>
             <div class="d-flex flex-row  partner-img riby align-items-center justify-content-center ">
-              <img width="200" height="200" class="mx-auto" src="@/assets/partners/quantum.svg" />
+              <img width="200" height="200" class="mx-auto" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001126/mmyyinvest-2.0/partners/quantum_bxuwmd.svg" />
             </div>
             <div class="d-flex flex-row align-items-center partner-img riby justify-content-center ">
-              <img width="200" height="200" class="mx-auto " src="@/assets/partners/leadway.svg" />
+              <img width="200" height="200" class="mx-auto " src="https://res.cloudinary.com/myyinvest/image/upload/v1614001126/mmyyinvest-2.0/partners/leadway_rha16c.svg" />
             </div>
           </carousel>
         </div>
@@ -593,8 +628,8 @@
       <section class="" style="margin-top: 100px">
         <div class="container-fluid">
           <div class="d-flex flex-column">
-            <!-- <img src="@/assets/svgs/light-circle.svg" width="200" height="200" class="  position-relative d-md-none d-lg-block  mt-n5" style="z-index: -1" /> -->
-            <!-- <img src="@/assets/svgs/light-circle.svg" width="200" height="200" class="d-md-block d-lg-none " style="margin-top: 100px" alt="" /> -->
+            <!-- <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg" width="200" height="200" class="  position-relative d-md-none d-lg-block  mt-n5" style="z-index: -1" /> -->
+            <!-- <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg" width="200" height="200" class="d-md-block d-lg-none " style="margin-top: 100px" alt="" /> -->
             <div class="border-left-red d-flex flex-column  ">
               <span class="text-main-red ">TESTIMONIES</span>
               <span>What Our Clients Say</span>
@@ -627,9 +662,10 @@
 import MainButton from "../../components/form/MainButton";
 import People from "../../components/Shared/people";
 import carousel from "vue-owl-carousel2";
+import MainIcon from "../../components/Shared/mainIcon";
 export default {
   name: "Landing",
-  components: { People, MainButton, carousel },
+  components: { MainIcon, People, MainButton, carousel },
   data() {
     return {
       isModalVisible: false,

@@ -1,0 +1,137 @@
+<!-- eslint-disable -->
+<template>
+  <div class="empty-notification">
+    <div class="empty-notification__icons">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="empty-notification__bell svg-icon" width="262.841" height="201.124" viewBox="0 0 262.841 201.124">
+        <defs>
+          <filter id="Path_18" x="120.36" y="0" width="73.372" height="106.499" filterUnits="userSpaceOnUse">
+            <feOffset dx="-1" input="SourceAlpha" />
+            <feGaussianBlur stdDeviation="1" result="blur" />
+            <feFlood flood-opacity="0.22" />
+            <feComposite operator="in" in2="blur" />
+            <feComposite in="SourceGraphic" />
+          </filter>
+          <filter id="Path_19" x="118.891" y="111.015" width="89.908" height="67.186" filterUnits="userSpaceOnUse">
+            <feOffset dx="-1" input="SourceAlpha" />
+            <feGaussianBlur stdDeviation="1" result="blur-2" />
+            <feFlood flood-opacity="0.22" />
+            <feComposite operator="in" in2="blur-2" />
+            <feComposite in="SourceGraphic" />
+          </filter>
+        </defs>
+        <g id="Group_20" data-name="Group 20" transform="translate(-911.089 -207.876)">
+          <path id="Path_15" data-name="Path 15" d="M1008.212,380.04c-1.066,15.3,10.529,28.106,24.1,28.919,14.62.876,28.364-12.364,27.312-28.919Z" fill="#680303" />
+          <path
+            id="Path_16"
+            data-name="Path 16"
+            d="M1101.752,301.068c-2.023-16.7-3.035-25.045-4.06-29.232-6.365-25.987-31.409-38.017-33.291-38.974-8.347-4.247-15.223-6.644-20.3-7.308a28.536,28.536,0,0,0-.812-8.12,8.763,8.763,0,0,0-2.436-4.872,6.8,6.8,0,0,0-9.743.812,11.432,11.432,0,0,0-1.624,6.5c0,2.436.109,4.979,0,6.5-10.971,2.83-36.657,10.981-47.907,32.479a70.032,70.032,0,0,0-4.934,12.665l91.723,28.809-33.1-10.621,33.1,10.621,34.534,10.847C1102.669,308.907,1102.336,305.894,1101.752,301.068Z"
+            fill="#c10000"
+          />
+          <path
+            id="Path_17"
+            data-name="Path 17"
+            d="M1114.743,374.146a199.014,199.014,0,0,1-6.919-27.716l-74.068-24.939,74.068,24.939c-.019-.1-.038-.2-.057-.3L971.282,299.916c-.446,5.39-.595,10.653-1.071,17.391-1.407,19.94-2.693,30.1-5.684,41.411a139.779,139.779,0,0,1-8.931,24.359h162.395C1117.219,381.106,1116.046,378,1114.743,374.146Z"
+            fill="#c10000"
+          />
+          <g transform="matrix(1, 0, 0, 1, 911.09, 207.88)" filter="url(#Path_18)">
+            <path
+              id="Path_18-2"
+              data-name="Path 18"
+              d="M1101.649,301.068c-2.023-16.7-3.035-25.045-4.06-29.232-6.365-25.987-31.409-38.017-33.291-38.974-8.347-4.247-15.223-6.644-20.3-7.308a28.536,28.536,0,0,0-.812-8.12,8.759,8.759,0,0,0-2.435-4.872,6.231,6.231,0,0,0-4.061-1.686l-1.241,78.88,67.372,21.619C1102.586,309.093,1102.252,306.045,1101.649,301.068Z"
+              transform="translate(-911.09 -207.88)"
+              fill="#870303"
+            />
+          </g>
+          <g transform="matrix(1, 0, 0, 1, 911.09, 207.88)" filter="url(#Path_19)">
+            <path
+              id="Path_19-2"
+              data-name="Path 19"
+              d="M1117.888,383.077c-.772-1.971-1.945-5.081-3.248-8.931a198.978,198.978,0,0,1-6.926-27.753l-72.771-24.5-.963,61.186Z"
+              transform="translate(-911.09 -207.88)"
+              fill="#870303"
+            />
+          </g>
+          <g id="Group_19" data-name="Group 19">
+            <path id="Path_20" data-name="Path 20" d="M1035.447,313.5,916.242,274.263a7.492,7.492,0,0,1-4.775-9.459h0a7.492,7.492,0,0,1,9.459-4.774l112.417,37" fill="#c10000" />
+            <path id="Path_21" data-name="Path 21" d="M1032.373,296.935l136.48,46.175a7.492,7.492,0,0,1,4.675,9.509h0a7.492,7.492,0,0,1-9.509,4.675l-128.714-43.869" fill="#870303" />
+          </g>
+        </g>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="empty-notification__alert svg-icon" width="119" height="111.946" viewBox="0 0 119 111.946">
+        <g id="Group_18" data-name="Group 18" transform="translate(-780 -376.094)">
+          <g id="Group_17" data-name="Group 17">
+            <path
+              id="Path_12"
+              data-name="Path 12"
+              d="M899,487.641l-33.473-8.225.246-.039a55.639,55.639,0,0,1-28.9,8.663,60.44,60.44,0,0,1-17.9-2.614,55.37,55.37,0,0,1-17.449-9.25,56.085,56.085,0,0,1-21.111-37.306,55.4,55.4,0,0,1,14.382-44.689,58.115,58.115,0,0,1,9.7-8.447c1.81-1.117,3.594-2.278,5.459-3.261l2.847-1.37,1.419-.682,1.474-.539a56.468,56.468,0,0,1,24.067-3.665,55.718,55.718,0,0,1,49.119,37.5,57.75,57.75,0,0,1,3.093,18.073,55.5,55.5,0,0,1-8.019,28.995l0-.3c9.308,16.8,14.01,25.281,15.048,27.154-1.073-1.852-5.939-10.245-15.57-26.858l-.087-.15.091-.153a55.13,55.13,0,0,0,7.723-28.682,57.109,57.109,0,0,0-3.129-17.782,54.84,54.84,0,0,0-48.342-36.726,55.475,55.475,0,0,0-23.6,3.619l-1.445.529-1.39.67-2.79,1.345c-1.828.963-3.575,2.1-5.35,3.2a57.041,57.041,0,0,0-9.5,8.283,54.957,54.957,0,0,0,6.515,80.47,54.537,54.537,0,0,0,17.121,9.154,59.791,59.791,0,0,0,17.616,2.653,55.216,55.216,0,0,0,28.57-8.368l.117-.074.13.035Z"
+              fill="#1a2e35"
+            />
+          </g>
+          <path
+            id="Path_13"
+            data-name="Path 13"
+            d="M831.388,407.231l1.77,27.961a4.537,4.537,0,0,0,4.258,4.242h0a4.538,4.538,0,0,0,4.78-4.031l3.1-28.1a3.56,3.56,0,0,0-3.588-3.951l-6.821.1A3.561,3.561,0,0,0,831.388,407.231Z"
+            fill="#c10000"
+          />
+          <path id="Path_14" data-name="Path 14" d="M844.828,455.162a6.824,6.824,0,1,1-4.326-8.628A6.825,6.825,0,0,1,844.828,455.162Z" fill="#c10000" />
+        </g>
+      </svg>
+    </div>
+    <div class="empty-notification__text">
+      <p>No notifications yet</p>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "EmptyNotification"
+};
+</script>
+
+<style lang="scss" scoped>
+.empty-notification {
+  min-height: 55vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__icons {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    width: 100%;
+    max-width: 34.5em;
+    margin-bottom: 1em;
+    // border: 1px solid red;
+    // padding-bottom: 5em;
+  }
+
+  &__bell {
+    // border: 1px solid green;
+    margin-bottom: 5.5em;
+
+    @media screen and (max-width: 600px) {
+      padding: 1.75em;
+    }
+  }
+
+  &__alert {
+    // border: 1px solid blue;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    @media screen and (max-width: 600px) {
+      padding: 1.5em;
+    }
+  }
+
+  &__text {
+    color: #666565;
+    font-weight: 600;
+  }
+}
+</style>

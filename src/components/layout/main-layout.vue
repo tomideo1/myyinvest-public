@@ -11,7 +11,7 @@
         </a>
         <div class="mt-5 ">
           <span class="d-flex flex-column align-items-center justify-content-center">
-            <avatar :user="getUser" size="lg-1" />
+            <avatar :user="getUser" size="lg" />
             <p class="text-white mt-4 text-center  ft-14 font-weight-normal">Welcome, {{ getUserName }}</p>
           </span>
           <li
@@ -47,7 +47,7 @@
             <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown no-arrow ">
                 <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <main-icon name="bell" />
+                  <main-icon name="bell" @click="$router.push({ name: 'notifications' }).catch({})" />
                 </a>
               </li>
               <div class="topbar-divider d-none d-sm-block"></div>
@@ -70,7 +70,7 @@
               </li>
             </ul>
           </nav>
-          <div class="container-fluid bg-danger" id="container-wrapper">
+          <div class="container-fluid " id="container-wrapper">
             <slot />
           </div>
         </div>

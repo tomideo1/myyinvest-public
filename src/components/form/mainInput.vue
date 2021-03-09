@@ -1,29 +1,32 @@
 <template>
-  <div class="form__div">
-    <div v-if="inputType === 'input'">
-      <input
-        :class="['width-100 text-bold form__input', isInvalid ? 'is-invalid' : '']"
-        @keyup="keyup($event)"
-        :value="value"
-        :placeholder="placeholder"
-        :disabled="disable"
-        @input="trigger($event)"
-        @focus="focus"
-        :type="type"
-        :required="required"
-      />
-      <label class="label">{{ label }}</label>
-      <p class="font-poppins text-bold text-error ml-12" v-if="isInvalid">
-        {{ errorMessage }}
-      </p>
-    </div>
+  <div>
+    <label v-if="labelType === 'full'">{{ label }}</label>
+    <div class="form__div">
+      <div v-if="inputType === 'input'">
+        <input
+          :class="['width-100 text-bold form__input', isInvalid ? 'is-invalid' : '']"
+          @keyup="keyup($event)"
+          :value="value"
+          :placeholder="placeholder"
+          :disabled="disable"
+          @input="trigger($event)"
+          @focus="focus"
+          :type="type"
+          :required="required"
+        />
+        <label class="label" v-if="labelType !== 'full'">{{ label }}</label>
+        <p class="font-poppins text-bold text-error ml-12" v-if="isInvalid">
+          {{ errorMessage }}
+        </p>
+      </div>
 
-    <div class="form-group" v-if="inputType === 'select'">
-      <label for="">{{ label }}</label>
-      <select id="" class="form-control 'width-100 text-bold " v-model="currentOption" @input="$emit('input', $event.target.value)">
-        <option class="select-placeholder" value="" disabled selected>Select an Option</option>
-        <option v-for="(option, index) in options" :key="index" :value="option.value">{{ option.key }}</option>
-      </select>
+      <div class="" v-if="inputType === 'select'">
+        <select id="" class="form__input 'width-100 text-bold " v-model="currentOption" @input="$emit('input', $event.target.value)">
+          <option class="select-placeholder" value="" disabled selected>Select an Option</option>
+          <option v-for="(option, index) in options" :key="index" :value="option.value">{{ option.key }}</option>
+        </select>
+        <label v-if="labelType !== 'full'" class="label">{{ label }}</label>
+      </div>
     </div>
   </div>
 </template>
@@ -62,6 +65,10 @@ export default {
     },
     errorMessage: {
       type: String
+    },
+    labelType: {
+      type: String,
+      default: "normal"
     },
     inputType: {
       type: String,

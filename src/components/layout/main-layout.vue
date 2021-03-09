@@ -11,7 +11,7 @@
         </a>
         <div class="mt-5 ">
           <span class="d-flex flex-column align-items-center justify-content-center">
-            <avatar :user="getUser" size="lg-1" />
+            <avatar :user="getUser" size="lg" />
             <p class="text-white mt-4 text-center  ft-14 font-weight-normal">Welcome, {{ getUserName }}</p>
           </span>
           <li
@@ -79,8 +79,9 @@
               </li>
             </ul>
           </nav>
-          <!-- <div class="container-fluid bg-danger" id="container-wrapper"> -->
-          <div class="container-fluid" id="container-wrapper">
+          <div class="container-fluid " id="container-wrapper">
+            <!-- <div class="container-fluid bg-danger" id="container-wrapper"> -->
+
             <slot />
           </div>
         </div>

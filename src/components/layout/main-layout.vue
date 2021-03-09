@@ -54,7 +54,7 @@
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
-                  @click="$router.push({ name: 'Notifications' })"
+                  @click="$router.push({ name: 'notifications' })"
                 >
                   <main-icon name="bell" />
                 </a>

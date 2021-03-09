@@ -1,7 +1,7 @@
 <template>
   <EmptyNotification v-if="false" />
   <div class="notification-container" v-else>
-    <NotificationItem v-for="color in colors" :key="color" :color="color" />
+    <NotificationItem v-for="(color, index) in colors" :key="index" :color="color" />
   </div>
 </template>
 
@@ -25,11 +25,13 @@ export default {
 
 <style lang="scss" scoped>
 .notification-container {
-  // border: 1px solid red;
+  border: 1px solid red;
   display: grid;
   justify-items: center;
   row-gap: 2.5em;
   width: 100%;
+  max-width: 100em;
+  margin: 0 auto;
 
   @media screen and (min-width: 1025px) {
     grid-template-columns: 48.5% 48.5%;

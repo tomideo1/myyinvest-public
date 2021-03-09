@@ -18,7 +18,7 @@
               <main-input class="col-md-12" label="Last Name" v-model="profile.lastName" />
             </div>
             <div class="col-lg-6 col-md-6 col-12">
-              <main-input class="col-md-12" label="Email" v-model="profile.email" />
+              <main-input disable class="col-md-12" label="Email" v-model="profile.email" />
             </div>
             <div class="col-lg-6 col-md-6 col-12">
               <main-input
@@ -33,8 +33,12 @@
               />
             </div>
             <div class="col-lg-6 col-md-6 col-12">
-              <main-input class="col-md-12" label="Date of Birth" v-model="profile.dob" />
+              <div class=" form__div ">
+                <date-picker style=" " prefix-class="xmx" v-model="profile.dob" class="w-75" type="date"></date-picker>
+                <!--              <main-input class="col-md-12" label="Date of Birth" v-model="profile.dob" />-->
+              </div>
             </div>
+
             <div class="col-lg-6 col-md-6 col-12">
               <main-input
                 class="col-md-12"
@@ -155,6 +159,8 @@ import { mapActions, mapGetters } from "vuex";
 import MainCard from "../../components/Shared/mainCard";
 import MainInput from "../../components/form/mainInput";
 import MainButton from "../../components/form/MainButton";
+import DatePicker from "vue2-datepicker";
+import "vue2-datepicker/index.css";
 // import StepNavigationStep from "../../components/form/multiStep/stepNavigationStep";
 export default {
   name: "profile",
@@ -195,7 +201,7 @@ export default {
       steps: [{ label: "one" }, { label: "two" }, { label: "three" }, { label: "complete" }]
     };
   },
-  components: { MainButton, MainCard, MainInput },
+  components: { MainButton, MainCard, MainInput, DatePicker },
   methods: {
     ...mapActions(["createNextOfKin", "createInvestmentPlan", "createPersonalDetails"]),
     goNext(type) {
@@ -210,7 +216,10 @@ export default {
     async handlePersonalProfileUpdate() {}
   },
   computed: {
-    ...mapGetters(["getPersonalDetails", "getInvestmentDetails", "getNextOfKinDetails"])
+    ...mapGetters(["getPersonalDetails", "getInvestmentDetails", "getNextOfKinDetails", "getUser"])
+  },
+  mounted() {
+    this.profile = this.getUser;
   }
 };
 </script>

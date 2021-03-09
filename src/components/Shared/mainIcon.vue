@@ -21,6 +21,7 @@
     <security-asset v-if="name === 'security-asset'"></security-asset>
     <success v-if="name === 'success'"></success>
     <error v-if="name === 'error'"></error>
+    <empty-noty v-if="name === 'empty-noty'"></empty-noty>
   </span>
 </template>
 
@@ -58,7 +59,8 @@ export default {
     Building: () => import("@/components/__private__/media/building"),
     securityAsset: () => import("@/components/__private__/media/securityAsset"),
     Success: () => import("@/components/__private__/media/success"),
-    Error: () => import("@/components/__private__/media/error")
+    Error: () => import("@/components/__private__/media/error"),
+    emptyNoty: () => import("@/components/__private__/media/emptyNoty")
   }
 };
 </script>

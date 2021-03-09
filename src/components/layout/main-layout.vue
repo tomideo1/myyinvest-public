@@ -46,8 +46,17 @@
             </ul>
             <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown no-arrow ">
-                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <main-icon name="bell" @click="$router.push({ name: 'notifications' }).catch({})" />
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="alertsDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  @click="$router.push({ name: 'Notifications' })"
+                >
+                  <main-icon name="bell" />
                 </a>
               </li>
               <div class="topbar-divider d-none d-sm-block"></div>
@@ -71,6 +80,8 @@
             </ul>
           </nav>
           <div class="container-fluid " id="container-wrapper">
+            <!-- <div class="container-fluid bg-danger" id="container-wrapper"> -->
+
             <slot />
           </div>
         </div>

@@ -34,7 +34,8 @@
             </div>
             <div class="col-lg-6 col-md-6 col-12">
               <div class=" form__div ">
-                <date-picker style=" " prefix-class="xmx" v-model="profile.dob" class="w-75" type="date"></date-picker>
+                <date-picker style=" padding:1rem; line-height: 1.3!important;" prefix-class="xmx" v-model="profile.dob" class="w-75" type="date"></date-picker>
+                <label class="label">Date Of Birth</label>
                 <!--              <main-input class="col-md-12" label="Date of Birth" v-model="profile.dob" />-->
               </div>
             </div>

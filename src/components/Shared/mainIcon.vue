@@ -22,6 +22,8 @@
     <success v-if="name === 'success'"></success>
     <error v-if="name === 'error'"></error>
     <empty-noty v-if="name === 'empty-noty'"></empty-noty>
+    <trans-icon v-if="name === 'trans-icon'"></trans-icon>
+    <gift-card v-if="name === 'gift-card'"></gift-card>
   </span>
 </template>
 
@@ -60,7 +62,9 @@ export default {
     securityAsset: () => import("@/components/__private__/media/securityAsset"),
     Success: () => import("@/components/__private__/media/success"),
     Error: () => import("@/components/__private__/media/error"),
-    emptyNoty: () => import("@/components/__private__/media/emptyNoty")
+    emptyNoty: () => import("@/components/__private__/media/emptyNoty"),
+    transIcon: () => import("@/components/__private__/media/transIcon"),
+    giftCard: () => import("@/components/__private__/media/giftCard")
   }
 };
 </script>

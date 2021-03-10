@@ -1,0 +1,95 @@
+.refer {
+  border: 1px solid color(main-red);
+  box-shadow: 0 0 0.5625rem 0 rgba(0, 0, 0, 0.35);
+  min-height: 80vh;
+  border-radius: 0.7rem;
+  padding: 1.35em;
+  display: flex;
+  flex-direction: column;
+
+  > div {
+    flex: 1;
+  }
+
+  &__user {
+    display: flex;
+    // border: 1px solid red;
+  }
+
+  &-info {
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+    border-right: 1px solid #000;
+  }
+}
+
+.trans {
+  border-top: 1px solid #000;
+  text-transform: capitalize;
+  color: #3a3a3a;
+  padding-top: 2em;
+
+  &__head,
+  &__item {
+    box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.35);
+    border-radius: 0.52rem;
+    margin-bottom: 1.75em;
+    display: flex;
+    align-items: center;
+
+    > div {
+      // border: 1px solid red;
+      flex: 1;
+      text-align: center;
+
+      &:nth-of-type(2),
+      &:nth-of-type(3) {
+        flex: 1.5;
+      }
+    }
+  }
+
+  &__head {
+    padding: 0.5em 0.3em 0.5em 1.55em;
+    font-weight: 600;
+  }
+
+  &__item {
+    padding: 0.8em 0.3em;
+
+    > div:nth-of-type(4) {
+      color: #089b12;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: flex-end;
+    // border: 1px solid red;
+  }
+
+  &__btn {
+    font-weight: 500;
+    background: color(bv-white);
+    // border: 1px solid color(main-red);
+    border: 1px solid rgba(193, 0, 0, 0.6);
+    border-radius: 0.3rem;
+    margin-left: 0.5em;
+    color: color(main-red);
+    box-shadow: 0.05rem 0.05rem 0.3rem 0 rgba(0, 0, 0, 0.4);
+    padding: 0.15em 0.425em;
+
+    &--active,
+    &:hover {
+      background: color(main-red);
+      color: color(bv-white);
+    }
+
+    &:first-child,
+    &:last-child {
+      padding-right: 0.75em;
+      padding-left: 0.75em;
+    }
+  }
+}

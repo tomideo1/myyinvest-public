@@ -79,9 +79,8 @@
               </li>
             </ul>
           </nav>
-          <div class="container-fluid " id="container-wrapper">
+          <div class="container-fluid" id="container-wrapper">
             <!-- <div class="container-fluid bg-danger" id="container-wrapper"> -->
-
             <slot />
           </div>
         </div>

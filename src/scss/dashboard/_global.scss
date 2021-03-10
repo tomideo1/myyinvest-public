@@ -18,6 +18,13 @@
   padding-right: $grid-gutter-width;
 }
 
+// centered the container and set a limit on the width
+.container-fluid {
+  margin: 0 auto;
+  max-width: 102em;
+  // border: 1px solid green;
+}
+
 // Scroll to top button
 .scroll-to-top {
   position: fixed;

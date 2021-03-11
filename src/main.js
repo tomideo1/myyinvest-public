@@ -13,6 +13,9 @@ import helpers from "./utils/helper";
 // import "bootstrap/dist/css/bootstrap.css";
 // import "bootstrap-vue/dist/bootstrap-vue.css";
 // Make BootstrapVue available throughout your project
+import moment from "moment";
+
+Vue.prototype.moment = moment;
 Vue.use(BootstrapVue);
 
 // Optionally install the BootstrapVue icon components plugin

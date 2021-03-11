@@ -11,7 +11,7 @@
         </a>
         <div class="mt-5 ">
           <span class="d-flex flex-column align-items-center justify-content-center">
-            <avatar :user="getUser" size="lg" />
+            <avatar :user="getProfile" size="lg" />
             <p class="text-white mt-4 text-center  ft-14 font-weight-normal">Welcome, {{ getUserName }}</p>
           </span>
           <li
@@ -67,7 +67,7 @@
                     <span class="mr-3  d-lg-inline text-black ft-10 ml-auto">{{ getUser.user_role }}</span>
                   </span>
 
-                  <avatar :user="getUser" size="md" />
+                  <avatar :user="getProfile" size="md" />
                   <!--                  <img class="img-profile rounded-circle mr-4" src="@/assets/images/avatar.png" style="max-width: 60px" />-->
                 </a>
                 <div class="dropdown-menu w-25 dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -109,7 +109,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["getUser", "getUserName"]),
+    ...mapGetters(["getUser", "getUserName", "getProfile"]),
     getCurrentRoute() {
       return this.$route.name;
     }
@@ -132,7 +132,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.getUser);
+    console.log(this.getProfile);
   }
 };
 </script>

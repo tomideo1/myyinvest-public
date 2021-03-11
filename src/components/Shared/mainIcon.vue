@@ -25,6 +25,8 @@
     <trans-icon v-if="name === 'trans-icon'"></trans-icon>
     <gift-card v-if="name === 'gift-card'"></gift-card>
     <socials v-if="name === 'socials'"></socials>
+    <camera v-if="name === 'camera'"></camera>
+    <attachment v-if="name === 'attachment'"></attachment>
   </span>
 </template>
 
@@ -66,7 +68,9 @@ export default {
     emptyNoty: () => import("@/components/__private__/media/emptyNoty"),
     transIcon: () => import("@/components/__private__/media/transIcon"),
     giftCard: () => import("@/components/__private__/media/giftCard"),
-    socials: () => import("@/components/__private__/media/socials")
+    socials: () => import("@/components/__private__/media/socials"),
+    camera: () => import("@/components/__private__/media/camera"),
+    attachment: () => import("@/components/__private__/media/attachment")
   }
 };
 </script>

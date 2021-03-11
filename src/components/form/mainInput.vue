@@ -21,12 +21,27 @@
       </div>
 
       <div class="" v-if="inputType === 'select'">
-        <select id="" class="form__input 'width-100 text-bold " v-model="currentOption" @input="$emit('input', $event.target.value)">
+        <select id="" class="form__input 'width-100 text-bold  " v-model="currentOption" @input="$emit('input', $event.target.value)">
           <option class="select-placeholder" value="" disabled selected>Select an Option</option>
           <option v-for="(option, index) in options" :key="index" :value="option.value">{{ option.key }}</option>
         </select>
         <label v-if="labelType !== 'full'" class="label">{{ label }}</label>
       </div>
+
+      <!--      <div class="" v-if="inputType === 'date'">-->
+      <!--        <label class="mt-n3" >{{ label }}</label>-->
+      <!--        <date-picker-->
+      <!--          @keyup="keyup($event)"-->
+      <!--          :value="value"-->
+      <!--          :placeholder="placeholder"-->
+      <!--          :disabled="disable"-->
+      <!--          @input="trigger($event)"-->
+      <!--          @focus="focus"-->
+      <!--          prefix-class="xmx"-->
+      <!--          class=" width-100"-->
+      <!--          type="date"-->
+      <!--        ></date-picker>-->
+      <!--      </div>-->
     </div>
   </div>
 </template>
@@ -95,7 +110,7 @@ export default {
   }
 };
 </script>
-<style scoped lang="scss">
+<style lang="scss">
 .form__div {
   position: relative;
   height: 48px;

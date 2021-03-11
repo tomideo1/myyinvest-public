@@ -62,6 +62,37 @@ const actions = {
     } else {
       return res;
     }
+  },
+
+  async getUserProfileDetails({ commit }) {
+    let res = await Api.get(`profile/getSingle`, true);
+    if (res.status === 200 || res.status === 201) {
+      commit("setProfile", res.data.profileDetails);
+      return res;
+    } else {
+      return res;
+    }
+  },
+
+  // eslint-disable-next-line no-unused-vars
+  async uploadUserAvatar({ commit, dispatch }, payload) {
+    let res = await Api.post(`settings/image`, payload, true);
+    if (res.status === 200 || res.status === 201) {
+      dispatch("getUserProfileDetails");
+      return res;
+    } else {
+      return res;
+    }
+  },
+
+  // eslint-disable-next-line no-unused-vars
+  async changeUserPassword({ commit }, payload) {
+    let res = await Api.post(`settings/change-password`, payload, true);
+    if (res.status === 200 || res.status === 201) {
+      return res;
+    } else {
+      return res;
+    }
   }
 };
 

@@ -24,6 +24,7 @@
     <empty-noty v-if="name === 'empty-noty'"></empty-noty>
     <trans-icon v-if="name === 'trans-icon'"></trans-icon>
     <gift-card v-if="name === 'gift-card'"></gift-card>
+    <socials v-if="name === 'socials'"></socials>
   </span>
 </template>
 
@@ -64,7 +65,8 @@ export default {
     Error: () => import("@/components/__private__/media/error"),
     emptyNoty: () => import("@/components/__private__/media/emptyNoty"),
     transIcon: () => import("@/components/__private__/media/transIcon"),
-    giftCard: () => import("@/components/__private__/media/giftCard")
+    giftCard: () => import("@/components/__private__/media/giftCard"),
+    socials: () => import("@/components/__private__/media/socials")
   }
 };
 </script>

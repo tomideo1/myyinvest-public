@@ -16,7 +16,7 @@
         <feComposite in="SourceGraphic" />
       </filter>
     </defs>
-    <g id="Group_77" data-name="Group 77" transform="translate(-780 -207.876)">
+    <g style="border: 1px solid blue;" id="Group_77" data-name="Group 77" transform="translate(-780 -207.876)">
       <g id="Group_18" data-name="Group 18">
         <g id="Group_17" data-name="Group 17">
           <path

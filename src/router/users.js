@@ -36,8 +36,16 @@ export default [
       },
       {
         path: "notifications",
-        name: "Notifications",
-        component: () => import(/* webpackChunkName: "user-notifications" */ "../views/users/Notifications.vue"),
+        name: "notifications",
+        component: () => import(/* webpackChunkName: "user-notifications" */ "../views/general/notifications.vue"),
+        meta: {
+          middleware: [auth]
+        }
+      },
+      {
+        path: "refer-and-earn",
+        name: "refer",
+        component: () => import(/* webpackChunkName: "refer-and-earn" */ "../views/users/ReferAndEarn.vue"),
         meta: {
           middleware: [auth]
         }

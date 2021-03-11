@@ -54,7 +54,7 @@
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
-                  @click="$router.push({ name: 'Notifications' })"
+                  @click="$router.push({ name: 'notifications' })"
                 >
                   <main-icon name="bell" />
                 </a>
@@ -79,9 +79,8 @@
               </li>
             </ul>
           </nav>
-          <div class="container-fluid " id="container-wrapper">
+          <div class="container-fluid" id="container-wrapper">
             <!-- <div class="container-fluid bg-danger" id="container-wrapper"> -->
-
             <slot />
           </div>
         </div>

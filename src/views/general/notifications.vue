@@ -25,7 +25,7 @@ export default {
 
 <style lang="scss" scoped>
 .notification-container {
-  border: 1px solid red;
+  // border: 1px solid red;
   display: grid;
   justify-items: center;
   row-gap: 2.5em;

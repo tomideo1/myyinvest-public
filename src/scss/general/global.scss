@@ -161,6 +161,10 @@ h6 {
   background-color: color(bv-primary) !important;
 }
 
+.bg-primary-default {
+  background-color: color(bv-primary) !important;
+}
+
 .bg-success {
   background-color: color(bv-success) !important;
 }
@@ -1125,6 +1129,16 @@ Text weight
   }
   &50 {
     width: 50% !important;
+  }
+  &75 {
+    width: 75% !important;
+  }
+  &80 {
+    width: 80% !important;
+  }
+
+  &95 {
+    width: 95% !important;
   }
   &100 {
     width: 100% !important;

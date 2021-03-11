@@ -22,6 +22,8 @@
     <success v-if="name === 'success'"></success>
     <error v-if="name === 'error'"></error>
     <empty-noty v-if="name === 'empty-noty'"></empty-noty>
+    <camera v-if="name === 'camera'"></camera>
+    <attachment v-if="name === 'attachment'"></attachment>
   </span>
 </template>
 
@@ -60,7 +62,9 @@ export default {
     securityAsset: () => import("@/components/__private__/media/securityAsset"),
     Success: () => import("@/components/__private__/media/success"),
     Error: () => import("@/components/__private__/media/error"),
-    emptyNoty: () => import("@/components/__private__/media/emptyNoty")
+    emptyNoty: () => import("@/components/__private__/media/emptyNoty"),
+    camera: () => import("@/components/__private__/media/camera"),
+    attachment: () => import("@/components/__private__/media/attachment")
   }
 };
 </script>

@@ -2,6 +2,7 @@ import Api from "@/utils/api";
 
 const state = {
   user: {},
+  profile: {},
   token: null,
   prefix: null,
   isLoading: false
@@ -9,6 +10,9 @@ const state = {
 const getters = {
   getUser(state) {
     return state.user;
+  },
+  getProfile(state) {
+    return state.profile;
   },
   getUserName(state) {
     return `${state.user.firstName}  ${state.user.lastName}`;
@@ -26,16 +30,20 @@ const mutations = {
   },
   setUser(state, data) {
     return (state.user = data);
+  },
+  setProfile(state, data) {
+    return (state.profile = data);
   }
 };
 const actions = {
-  async login({ commit }, payload) {
+  async login({ commit, dispatch }, payload) {
     let res = await Api.post("auth", payload);
     if (res.status === 200 || res.status === 201) {
       localStorage.setItem("myyinvest-user", JSON.stringify(res.data.decodeDetails));
       localStorage.setItem("myyinvest-token", JSON.stringify(res.data.token));
       commit("setToken", res.data.token);
       commit("setUser", res.data.decodeDetails);
+      dispatch("getUserProfileDetails");
       return res;
     } else {
       return res;

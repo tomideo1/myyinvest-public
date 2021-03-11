@@ -37,7 +37,10 @@
 import MainButton from "../../components/form/MainButton";
 import MainInput from "../../components/form/mainInput";
 import { mapActions } from "vuex";
+import notify from "@/mixins/validations";
 export default {
+  mixins: [notify],
+
   name: "forgotPassword",
   components: { MainButton, MainInput },
   data() {
@@ -72,21 +75,6 @@ export default {
           status: "Error"
         });
       }
-    },
-    handleNotify(payload) {
-      this.$Bus.$emit("notify", {
-        show: true,
-        mainMessage: payload.message
-          .split("_")
-          .join(" ")
-          .replace(/\\\//g, "/"),
-        tinyMessage: payload.message
-          .split("_")
-          .join(" ")
-          .replace(/\\\//g, "/"),
-        extras: "",
-        status: payload.status
-      });
     }
   }
 };

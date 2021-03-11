@@ -1,15 +1,20 @@
 <template>
   <button @click="$emit('click', $event)" :class="[classes, icon ? iconClass : '']" :disabled="disable" :style="styles">
     <!-- Button Text -->
-    <span v-if="text" v-html="textProp"> </span>
+    <span class="d-flex flex-row">
+      <main-icon class="mr-4" v-if="Icon" :name="Icon" />
+      <span v-if="text" v-html="textProp"> </span>
+    </span>
   </button>
 </template>
 <script>
+import MainIcon from "../Shared/mainIcon";
 const sizes = ["xs", "sm", "md", "lg"];
 const types = ["inverse", "filled", "outline", "transparent", "plain"];
 
 export default {
   name: "MainButton",
+  components: { MainIcon },
   data() {
     return {
       widths: {
@@ -27,6 +32,10 @@ export default {
       type: String,
       default: types[1],
       required: false
+    },
+
+    Icon: {
+      type: String
     },
     // The size of the button
     size: {
@@ -91,7 +100,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 button,
 .btn {
   font-family: fonts(main-poppins);

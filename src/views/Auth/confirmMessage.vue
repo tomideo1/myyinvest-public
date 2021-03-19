@@ -27,7 +27,7 @@
           <span><hr /></span>
 
           <div class="d-flex flex-row  mx-auto ">
-            <span class="ft-10 mr-4    "><router-link style="text-decoration:none" class=" text-main-red " to="/login">Return to log in</router-link></span>
+            <span class="ft-10 mr-4 "><router-link style="text-decoration:none" class=" text-main-red " to="/login">Return to log in</router-link></span>
             <span class="dot mt-n1"></span>
             <span class="ft-10 ml-4 text-main-red cursor-pointer" @click="resendLink">Resend recovery link</span>
           </div>
@@ -42,7 +42,8 @@ import { mapActions } from "vuex";
 import notify from "@/mixins/notify";
 export default {
   mixins: [notify],
-  name: "forgotPassword",
+  // name: "forgotPassword",
+  name: "confirmMessage",
   components: {},
   methods: {
     ...mapActions(["resendVerification"]),

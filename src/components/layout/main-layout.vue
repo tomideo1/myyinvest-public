@@ -10,25 +10,21 @@
           </div>
         </a> -->
         <div class="sidebar-brand d-flex align-items-center justify-content-center" style="background: white!important;">
-          <a class="sidebar__logo" :href="getCurrentRoute">
+          <router-link class="sidebar__logo" to="/">
             <main-icon size="lg" name="logo-min" />
-          </a>
+          </router-link>
         </div>
-        <div class="mt-5 ">
+        <!-- eslint-disable -->
+        <!-- <div class="mt-5 "> -->
+        <div class="navbar-items">
           <span class="d-flex flex-column align-items-center justify-content-center">
-            <!-- <avatar :user="getProfile" size="lg" /> -->
-            <avatar :user="getUser" size="lg" />
+            <avatar :user="getProfile" size="lg" />
             <p class="text-white mt-4 text-center  ft-14 font-weight-normal">Welcome, {{ getUserName }}</p>
           </span>
-          <li
-            @click="$router.push(item.to)"
-            :class="['nav-item  p-3 style_item mt-3 mb-3', getCurrentRoute === item.identifier ? 'active-item' : '']"
-            v-for="(item, index) in sidebarItems"
-            :key="index"
-          >
+          <li @click="$router.push(item.to)" :class="['nav-item p-3 style_item mt-3', getCurrentRoute === item.identifier ? 'active-item' : '']" v-for="(item, index) in sidebarItems" :key="index">
             <span class="d-flex flex-row pl-3 ">
               <main-icon :name="item.routeIcon" class="mr-lg-3 mr-md-3 " :active="getCurrentRoute === item.identifier" />
-              <a href="javascript:void(0)" class="ft-12  font-weight-lighter mt-1 text-white">
+              <a href="javascript:void(0)" class="ft-12 font-weight-lighter mt-1 text-white">
                 <span>{{ item.title }}</span>
               </a>
             </span>
@@ -80,8 +76,7 @@
                     <span class="mr-3  d-lg-inline text-black ft-10 ml-auto">{{ getUser.user_role }}</span>
                   </span>
 
-                  <!-- <avatar :user="getProfile" size="md" /> -->
-                  <avatar :user="getUser" size="md" />
+                  <avatar :user="getProfile" size="md" />
                   <!--                  <img class="img-profile rounded-circle mr-4" src="@/assets/images/avatar.png" style="max-width: 60px" />-->
                 </a>
                 <div class="dropdown-menu w-25 dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -162,8 +157,7 @@ export default {
     }
   },
   mounted() {
-    // console.log(this.getUser);
-    // console.log(this.getProfile);
+    console.log(this.getProfile);
   }
 };
 </script>

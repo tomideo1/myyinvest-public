@@ -77,16 +77,17 @@ export default {
   width: 100%;
   max-width: 37em;
   box-shadow: 0.05rem 0.03rem 0.2rem 0.1rem rgba(0, 0, 0, 0.6);
-  border-radius: 0.35rem;
+  border-radius: $border-radius-sm;
 
   &__text {
-    // padding: 0.8em 0;
+    padding: 0.5em 0;
     max-width: 80%;
 
     > p {
-      font-size: 1.1rem !important;
+      font-size: 1.025rem !important;
 
       &:first-child {
+        font-size: 110% !important;
         font-weight: 600;
         margin-bottom: 0.25em;
       }

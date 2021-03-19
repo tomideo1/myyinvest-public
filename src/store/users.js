@@ -64,11 +64,18 @@ const actions = {
     }
   },
 
-  async getUserProfileDetails({ commit }) {
+  async getUserProfileDetails({ commit, getters }) {
     let res = await Api.get(`profile/getSingle`, true);
+    // console.log(res);
     if (res.status === 200 || res.status === 201) {
-      commit("setProfile", res.data.profileDetails);
-      console.log(res.data.profileDetails);
+      // commit("setProfile", res.data.profileDetails);
+      const user = getters.getUser;
+      const profileDetails = res.data.profileDetails;
+      profileDetails.email = user.email;
+      profileDetails.firstName = user.firstName;
+      profileDetails.lastName = user.lastName;
+      // console.log(profileDetails);
+      commit("setProfile", profileDetails);
       return res;
     } else {
       return res;

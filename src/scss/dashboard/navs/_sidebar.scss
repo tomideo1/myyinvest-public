@@ -18,8 +18,21 @@
     }
   }
 
+  .navbar-items {
+    margin-top: 2.75em;
+
+    @media screen and (max-width: 599px) {
+      margin-top: 1.5em;
+    }
+  }
+
   .nav-item {
     position: relative;
+
+    @media screen and (max-width: 599px) {
+      margin-top: 0.625em !important;
+    }
+
     &:last-child {
       margin-bottom: 1rem;
     }

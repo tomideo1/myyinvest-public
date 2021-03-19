@@ -4,6 +4,10 @@
   #sidebarToggleTop {
     height: 2.5rem;
     width: 2.5rem;
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
     &:hover {
       background-color: $gray-200;
     }

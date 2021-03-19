@@ -3431,14 +3431,16 @@ blockquote.blockquote p {
 }
 
 .sign-in-form h2 {
-  font-size: 30px;
+  // font-size: 30px;
+  font-size: 35px !important;
   color: #ed1c24;
   font-weight: 600;
 }
 
 .sign-in-form p {
   font-size: 16px;
-  font-weight: 600;
+  // font-weight: 600;
+  font-weight: 500;
   color: #393939;
   margin-bottom: 40px;
 }
@@ -3450,14 +3452,16 @@ blockquote.blockquote p {
 }
 
 .sign-up-form h2 {
-  font-size: 30px;
+  // font-size: 30px;
+  font-size: 35px !important;
   color: #ed1c24;
   font-weight: 600;
 }
 
 .sign-up-form p {
   font-size: 16px;
-  font-weight: 600;
+  // font-weight: 600;
+  font-weight: 500;
   color: #393939;
   margin-bottom: 40px;
 }
@@ -3651,9 +3655,11 @@ form.sign-in-form {
 }
 
 .panel h3 {
-  font-weight: 600;
+  // font-weight: 600;
+  font-weight: 500 !important;
   line-height: 1;
-  font-size: 1.5rem;
+  // font-size: 1.5rem;
+  font-size: 1.825rem !important;
 }
 
 .panel p {

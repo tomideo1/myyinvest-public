@@ -373,10 +373,9 @@ export default {
   mounted() {
     this.states = states;
     this.profile = this.getProfile;
-    this.profile.email = this.getUser.email;
-    this.profile.lastName = this.getUser.lastName;
-    this.profile.firstName = this.getUser.firstName;
-    // console.log(this.profile);
+    // this.profile.email = this.getUser.email;
+    // this.profile.lastName = this.getUser.lastName;
+    // this.profile.firstName = this.getUser.firstName;
     // this.investment = this.getProfile;
     // this.kin = this.getProfile;
   }

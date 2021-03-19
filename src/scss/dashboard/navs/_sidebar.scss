@@ -6,6 +6,18 @@
   -webkit-box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
   box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
   z-index: 0;
+
+  // disabling the sidebar on potrait tablets and below
+  @media screen and (max-width: 768px) {
+    display: none !important;
+  }
+
+  &__logo {
+    @media screen and (min-width: 769px) {
+      margin-right: auto;
+    }
+  }
+
   .nav-item {
     position: relative;
     &:last-child {
@@ -243,6 +255,45 @@
   &.toggled {
     #sidebarToggle::after {
       color: fade-out($white, 0.5);
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .responsive-sidebar {
+    display: initial !important;
+    position: absolute;
+    animation: menu-enter 0.5s ease-in;
+    z-index: 15;
+    min-height: 100vh;
+    max-width: 65vw;
+
+    + #content-wrapper {
+      .block-1 {
+        transform-origin: 15% 0%;
+        transform: rotate(45deg);
+      }
+
+      .block-2 {
+        opacity: 0;
+        transform: translateX(-200%);
+      }
+
+      .block-3 {
+        transform-origin: 0% 0%;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  @keyframes menu-enter {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0%);
+      opacity: 1;
     }
   }
 }

@@ -37,7 +37,7 @@ export default [
       {
         path: "notifications",
         name: "notifications",
-        component: () => import(/* webpackChunkName: "user-notifications" */ "../views/general/notifications.vue"),
+        component: () => import(/* webpackChunkName: "user-notifications" */ "../views/general/Notifications.vue"),
         meta: {
           middleware: [auth]
         }

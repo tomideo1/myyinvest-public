@@ -73,24 +73,26 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.25em;
+  padding: 0.5em 0.25em;
   width: 100%;
-  max-width: 40.5em;
+  max-width: 37em;
   box-shadow: 0.05rem 0.03rem 0.2rem 0.1rem rgba(0, 0, 0, 0.6);
   border-radius: 0.35rem;
 
   &__text {
-    padding: 0.75em 0;
+    // padding: 0.8em 0;
     max-width: 80%;
-    // border: 1px solid red;
 
-    > p:first-child {
-      font-weight: 600;
-      margin-bottom: 0.25em;
-    }
+    > p {
+      font-size: 1.1rem !important;
 
-    > p:last-child {
-      margin-bottom: 0;
+      &:first-child {
+        font-weight: 600;
+        margin-bottom: 0.25em;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 

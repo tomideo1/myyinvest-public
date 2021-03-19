@@ -34,6 +34,7 @@
             </div>
             <div class=" col-lg-6 col-md-6 col-12">
               <div class="form__div">
+                <!-- added custom styles for xmx-datepicker and xmx-input classes in this View file -->
                 <date-picker prefix-class="xmx" :formatter="momentFormat" class="width-95 " v-model="profile.dob" valueType="format"></date-picker>
                 <label class="label ft-10 mt-n4">Date Of Birth (DOB)</label>
               </div>
@@ -59,16 +60,7 @@
               <main-input class="col-md-12" label="Phone Number" v-model="profile.phoneNumber" />
             </div>
             <div class="col-lg-6 col-md-6 col-12">
-              <main-input
-                class="col-md-12 "
-                label="State of origin"
-                inputType="select"
-                v-model="profile.state"
-                :options="[
-                  { key: 'Anambra', value: 'Anambra' },
-                  { key: 'Lagos', value: 'lagos' }
-                ]"
-              />
+              <main-input class="col-md-12 " label="State of origin" inputType="select" v-model="profile.state" :options="states" />
             </div>
 
             <div class="col-lg-6 col-md-6 col-12 d-none d-lg-block d-md-none">
@@ -101,31 +93,38 @@
         <div class="container-fluid ">
           <div class="row">
             <div class="col-lg-12 col-md-12 col-12">
-              <main-input class="col-md-12" label-type="full" label="What is the Primary Reason you are Interested in Investing with Myyinvest?" v-model="investment.primaryInvReason" />
+              <!-- <main-input class="col-md-12" label-type="full" label="What is the Primary Reason you are Interested in Investing with Myyinvest?" v-model="investment.primaryInvReason" /> -->
+              <main-input class="col-md-12" label-type="full" label="What is the Primary Reason you are Interested in Investing with Myyinvest?" v-model="profile.primaryInvReason" />
             </div>
 
             <div class="col-lg-12 col-md-12 col-12">
-              <main-input class="col-md-12" label-type="full" label="What kind of investor are you?" v-model="investment.kindOfInvestor" />
+              <!-- <main-input class="col-md-12" label-type="full" label="What kind of investor are you?" v-model="investment.kindOfInvestor" /> -->
+              <main-input class="col-md-12" label-type="full" label="What kind of investor are you?" v-model="profile.kindOfInvestor" />
             </div>
 
             <div class="col-lg-12 col-md-12 col-12">
-              <main-input class="col-md-12" label-type="full" label="Who advises you on your financial decisions?" v-model="investment.finDecision" />
+              <!-- <main-input class="col-md-12" label-type="full" label="Who advises you on your financial decisions?" v-model="investment.finDecision" /> -->
+              <main-input class="col-md-12" label-type="full" label="Who advises you on your financial decisions?" v-model="profile.finDecision" />
             </div>
 
             <div class="col-lg-12 col-md-12 col-12">
-              <main-input class="col-md-12" label-type="full" label="Do you need a financial advisor?" v-model="investment.finAdvisor" />
+              <!-- <main-input class="col-md-12" label-type="full" label="Do you need a financial advisor?" v-model="investment.finAdvisor" /> -->
+              <main-input class="col-md-12" label-type="full" label="Do you need a financial advisor?" v-model="profile.finAdvisor" />
             </div>
 
             <div class="col-lg-12 col-md-12 col-12">
-              <main-input class="col-md-12" label-type="full" label="What is your monthly income range?" v-model="investment.monthlyIncome" />
+              <!-- <main-input class="col-md-12" label-type="full" label="What is your monthly income range?" v-model="investment.monthlyIncome" /> -->
+              <main-input class="col-md-12" label-type="full" label="What is your monthly income range?" v-model="profile.monthlyIncome" />
             </div>
 
             <div class="col-lg-12 col-md-12 col-12">
-              <main-input class="col-md-12" label-type="full" label="How much do you want invest in the next 12 Months?" v-model="investment.expectedInv" />
+              <!-- <main-input class="col-md-12" label-type="full" label="How much do you want invest in the next 12 Months?" v-model="investment.expectedInv" /> -->
+              <main-input class="col-md-12" label-type="full" label="How much do you want invest in the next 12 Months?" v-model="profile.expectedInv" />
             </div>
 
             <div class="col-lg-12 col-md-12 col-12">
-              <main-input class="col-md-12" label-type="full" label="What investment holding period do you prefer? " v-model="investment.holdingPeriodPrefer" />
+              <!-- <main-input class="col-md-12" label-type="full" label="What investment holding period do you prefer? " v-model="investment.holdingPeriodPrefer" /> -->
+              <main-input class="col-md-12" label-type="full" label="What investment holding period do you prefer? " v-model="profile.holdingPeriodPrefer" />
             </div>
           </div>
         </div>
@@ -139,21 +138,26 @@
         <div class="container-fluid ">
           <div class="row">
             <div class="col-lg-6 col-md-6 col-12">
-              <main-input class="col-md-12" label="First Name" v-model="kin.firstName" />
+              <!-- <main-input class="col-md-12" label="First Name" v-model="kin.firstName" /> -->
+              <main-input class="col-md-12" label="First Name" v-model="profile.firstNameOfKin" />
             </div>
             <div class="col-lg-6 col-md-6 col-12">
-              <main-input class="col-md-12" label="Last Name" v-model="kin.lastName" />
-            </div>
-
-            <div class="col-lg-6 col-md-6 col-12">
-              <main-input class="col-md-12" label="Relationship" v-model="kin.relationship" />
+              <!-- <main-input class="col-md-12" label="Last Name" v-model="kin.lastName" /> -->
+              <main-input class="col-md-12" label="Last Name" v-model="profile.lastNameOfKin" />
             </div>
 
             <div class="col-lg-6 col-md-6 col-12">
-              <main-input class="col-md-12" label="Phone Number" v-model="kin.phoneNumber" />
+              <!-- <main-input class="col-md-12" label="Relationship" v-model="kin.relationship" /> -->
+              <main-input class="col-md-12" label="Relationship" v-model="profile.relationship" />
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-12">
+              <!-- <main-input class="col-md-12" label="Phone Number" v-model="kin.phoneNumber" /> -->
+              <main-input class="col-md-12" label="Phone Number" v-model="profile.phoneNumberOfKin" />
             </div>
             <div class="col-lg-12 col-md-12 col-12">
-              <main-input class="col-md-12" label="Email" v-model="kin.email" />
+              <!-- <main-input class="col-md-12" label="Email" v-model="kin.email" /> -->
+              <main-input class="col-md-12" label="Email" v-model="profile.emailOfKin" />
             </div>
           </div>
         </div>
@@ -174,6 +178,8 @@ import "vue2-datepicker/index.css";
 import validations from "@/mixins/validations";
 import notify from "@/mixins/notify";
 import moment from "moment";
+import states from "@/components/data/states.js";
+
 export default {
   mixins: [validations, notify],
   name: "profile",
@@ -191,20 +197,23 @@ export default {
       currentStep: 1,
       continueButtonText: "Continue",
       isLoading: false,
+      states: [],
       profile: {
         firstName: "",
+        firstNameOfKin: "",
         lastName: "",
+        lastNameOfKin: "",
+        relationship: "",
         gender: "",
         phoneNumber: "",
+        phoneNumberOfKin: "",
         state: "",
         dob: "",
-        marriageStatus: "",
+        maritalStatus: "",
         email: "",
+        emailOfKin: "",
         homeAddress: "",
-        bvn: ""
-      },
-
-      investment: {
+        bvn: "",
         primaryInvReason: "",
         kindOfInvestor: "",
         finDecision: "",
@@ -213,13 +222,22 @@ export default {
         expectedInv: "",
         holdingPeriodPrefer: ""
       },
-      kin: {
-        firstName: "",
-        lastName: "",
-        relationship: "",
-        email: "",
-        phoneNumber: ""
-      },
+      // investment: {
+      //   primaryInvReason: "",
+      //   kindOfInvestor: "",
+      //   finDecision: "",
+      //   finAdvisor: "",
+      //   monthlyIncome: "",
+      //   expectedInv: "",
+      //   holdingPeriodPrefer: ""
+      // },
+      // kin: {
+      //   firstName: "",
+      //   lastName: "",
+      //   relationship: "",
+      //   email: "",
+      //   phoneNumber: ""
+      // },
       steps: [{ label: "one" }, { label: "two" }, { label: "three" }, { label: "complete" }]
     };
   },
@@ -242,22 +260,34 @@ export default {
           break;
         case "investment":
           await this.handleInvestmentProfileUpdate({
-            primaryInvReason: this.investment.primaryInvReason,
-            kindOfInvestor: this.investment.kindOfInvestor,
-            finDecision: this.investment.finDecision,
-            finAdvisor: this.investment.finAdvisor,
-            monthlyIncome: this.investment.monthlyIncome,
-            expectedInv: this.investment.expectedInv,
-            holdingPeriodPrefer: this.investment.holdingPeriodPrefer
+            // primaryInvReason: this.investment.primaryInvReason,
+            // kindOfInvestor: this.investment.kindOfInvestor,
+            // finDecision: this.investment.finDecision,
+            // finAdvisor: this.investment.finAdvisor,
+            // monthlyIncome: this.investment.monthlyIncome,
+            // expectedInv: this.investment.expectedInv,
+            // holdingPeriodPrefer: this.investment.holdingPeriodPrefer
+            primaryInvReason: this.profile.primaryInvReason,
+            kindOfInvestor: this.profile.kindOfInvestor,
+            finDecision: this.profile.finDecision,
+            finAdvisor: this.profile.finAdvisor,
+            monthlyIncome: this.profile.monthlyIncome,
+            expectedInv: this.profile.expectedInv,
+            holdingPeriodPrefer: this.profile.holdingPeriodPrefer
           });
           break;
         case "kin":
           await this.handleNextOfKinProfileUpdate({
-            firstName: this.kin.firstName,
-            lastName: this.kin.lastName,
-            relationship: this.kin.relationship,
-            email: this.kin.email,
-            phoneNumber: this.kin.phoneNumber
+            // firstName: this.kin.firstName,
+            // lastName: this.kin.lastName,
+            // relationship: this.kin.relationship,
+            // email: this.kin.email,
+            // phoneNumber: this.kin.phoneNumber
+            firstName: this.profile.firstNameOfKin,
+            lastName: this.profile.lastNameOfKin,
+            relationship: this.profile.relationship,
+            email: this.profile.emailOfKin,
+            phoneNumber: this.profile.phoneNumberOfKin
           });
           break;
         default:
@@ -341,12 +371,14 @@ export default {
     ...mapGetters(["getProfile", "getUser"])
   },
   mounted() {
+    this.states = states;
     this.profile = this.getProfile;
     this.profile.email = this.getUser.email;
     this.profile.lastName = this.getUser.lastName;
     this.profile.firstName = this.getUser.firstName;
-    this.investment = this.getProfile;
-    this.kin = this.getProfile;
+    // console.log(this.profile);
+    // this.investment = this.getProfile;
+    // this.kin = this.getProfile;
   }
 };
 </script>
@@ -427,6 +459,23 @@ export default {
 #progressbar li.active:after {
   background: color(main-red) !important;
 }
+
+// custom styles
+.xmx-datepicker {
+  width: 93.325% !important;
+
+  + .label {
+    left: 1.675rem;
+    font-weight: 500;
+    font-size: 0.75rem !important;
+  }
+
+  &:focus-within + .label {
+    color: color(main-red);
+    font-size: 0.8rem !important;
+  }
+}
+
 .xmx-input {
   position: relative;
   top: 0;
@@ -438,8 +487,14 @@ export default {
   /*color: #999999;*/
   /*font-family: fonts(main-poppins), serif;*/
   line-height: 1.3;
-  padding: 1.3rem;
+  // padding: 1.3rem;
+  padding: 1rem;
   border-radius: 0.5rem;
+  border: 1px solid #efb9b9 !important;
   /*outline: none;*/
+
+  &:focus-within {
+    border-color: color(main-red) !important;
+  }
 }
 </style>

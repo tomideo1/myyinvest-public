@@ -50,14 +50,14 @@ export default function() {
         name: "refer"
       }
     },
-    {
-      title: "Talk to us",
-      routeIcon: "phone",
-      identifier: "talk",
-      to: {
-        name: "talk"
-      }
-    },
+    // {
+    //   title: "Talk to us",
+    //   routeIcon: "phone",
+    //   identifier: "talk",
+    //   to: {
+    //     name: "talk"
+    //   }
+    // },
     {
       title: "Profile",
       routeIcon: "profile",
@@ -65,16 +65,16 @@ export default function() {
       to: {
         name: "profile"
       }
-    },
-
-    {
-      title: "Settings",
-      routeIcon: "cog",
-      identifier: "settings",
-      to: {
-        name: "settings"
-      }
     }
+
+    // {
+    //   title: "Settings",
+    //   routeIcon: "cog",
+    //   identifier: "settings",
+    //   to: {
+    //     name: "settings"
+    //   }
+    // }
   ];
   let appRoutes = [
     {

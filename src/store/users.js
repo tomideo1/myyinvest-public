@@ -68,6 +68,7 @@ const actions = {
     let res = await Api.get(`profile/getSingle`, true);
     if (res.status === 200 || res.status === 201) {
       commit("setProfile", res.data.profileDetails);
+      console.log(res.data.profileDetails);
       return res;
     } else {
       return res;

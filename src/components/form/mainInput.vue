@@ -21,7 +21,8 @@
       </div>
 
       <div class="" v-if="inputType === 'select'">
-        <select id="" class="form__input 'width-100 text-bold  " v-model="currentOption" @input="$emit('input', $event.target.value)">
+        <!-- added custom styles with form__select class -->
+        <select id="" class="form__input 'width-100 text-bold form__select " v-model="currentOption" @input="$emit('input', $event.target.value)">
           <option class="select-placeholder" value="" disabled selected>Select an Option</option>
           <option v-for="(option, index) in options" :key="index" :value="option.value">{{ option.key }}</option>
         </select>
@@ -133,6 +134,20 @@ export default {
   outline: none;
   background: none;
   z-index: 1;
+}
+
+.form__select {
+  padding: 0 1rem;
+  appearance: none;
+  background-image: url("data:image/svg+xml,<svg width='24' height='24' xmlns='http://www.w3.org/2000/svg'><path fill='%23c10000' d='m0,6l12,12l12,-12l-24,0z'/><path fill='none' d='m0,0l24,0l0,24l-24,0l0,-24z'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 0.825rem;
+  background-position: 97.25% 50%;
+  // color: #e42c2c;
+
+  &::-ms-expand {
+    display: none;
+  }
 }
 
 .label {

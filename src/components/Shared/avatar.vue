@@ -33,6 +33,7 @@ export default {
     }
   },
   computed: {
+    // probably modify this to only pick and use one
     avatarBackground: () => {
       const backgroundColors = ["#F27979", "#79DBF2", "#F2A879", "#F279DB", "#79B5F2"];
       const num = Math.floor(Math.random() * backgroundColors.length);

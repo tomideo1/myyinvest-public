@@ -1,17 +1,23 @@
 <template>
   <div>
-    <div id="wrapper">
+    <div id="wrapper" :class="{ 'scroll-lock': mobileNavOn }">
       <!-- Sidebar -->
       <!--      <b-sidebar id="sidebar-no-header" :visible="true" :shadow="true" no-header>-->
       <ul :class="class1" id="accordionSidebar" style="background: url('https://res.cloudinary.com/myyinvest/image/upload/v1614000904/mmyyinvest-2.0/svgs/sidebarclip_u5hmun.svg') no-repeat bottom;">
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html" style="background: white!important;">
+        <!-- <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/" style="background: white!important;">
           <div class="mr-auto">
             <main-icon size="lg" name="logo-min" />
           </div>
-        </a>
+        </a> -->
+        <div class="sidebar-brand d-flex align-items-center justify-content-center" style="background: white!important;">
+          <a class="sidebar__logo" :href="getCurrentRoute">
+            <main-icon size="lg" name="logo-min" />
+          </a>
+        </div>
         <div class="mt-5 ">
           <span class="d-flex flex-column align-items-center justify-content-center">
-            <avatar :user="getProfile" size="lg" />
+            <!-- <avatar :user="getProfile" size="lg" /> -->
+            <avatar :user="getUser" size="lg" />
             <p class="text-white mt-4 text-center  ft-14 font-weight-normal">Welcome, {{ getUserName }}</p>
           </span>
           <li
@@ -35,9 +41,16 @@
         <div id="content">
           <!-- TopBar -->
           <nav class="navbar navbar-expand navbar-light bg-navbar bg-white shadow-3 topbar mb-4 static-top">
-            <button id="sidebarToggleTop" @click="toggle" :class="'btn btn-link rounded-circle mr-3'">
+            <!-- <button id="sidebarToggleTop" @click="toggle" :class="'btn btn-link rounded-circle mr-3'"> -->
+            <button id="sidebarToggleTop" @click="toggleDesktopNav" :class="'btn btn-link rounded-circle mr-3'">
               <i class="fa fa-bars text-black"></i>
             </button>
+            <!-- hamburger menu style is in _topbar.scss -->
+            <div class="nav-hamburger" @click="toggleMobileNav">
+              <div class="block-1"></div>
+              <div class="block-2"></div>
+              <div class="block-3"></div>
+            </div>
 
             <ul class="navbar-nav mx-auto d-none d-lg-block d-md-none ">
               <li class="nav-item ">
@@ -67,10 +80,15 @@
                     <span class="mr-3  d-lg-inline text-black ft-10 ml-auto">{{ getUser.user_role }}</span>
                   </span>
 
-                  <avatar :user="getProfile" size="md" />
+                  <!-- <avatar :user="getProfile" size="md" /> -->
+                  <avatar :user="getUser" size="md" />
                   <!--                  <img class="img-profile rounded-circle mr-4" src="@/assets/images/avatar.png" style="max-width: 60px" />-->
                 </a>
                 <div class="dropdown-menu w-25 dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                  <router-link class="dropdown-item" :to="{ name: 'settings' }">
+                    <main-icon name="cog" class="settings-icon" />
+                    Settings
+                  </router-link>
                   <a class="dropdown-item" @click="handleLogout" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     Logout
@@ -99,7 +117,9 @@ export default {
   data() {
     return {
       sidebarItems: getSidebarItems(),
-      class1: ["navbar-nav sidebar sidebar-light accordion"]
+      mobileNavOn: false,
+      desktopToggled: false
+      // class1: ["navbar-nav sidebar sidebar-light accordion"]
     };
   },
   components: {
@@ -112,17 +132,27 @@ export default {
     ...mapGetters(["getUser", "getUserName", "getProfile"]),
     getCurrentRoute() {
       return this.$route.name;
+    },
+    class1() {
+      // responsive-sidebar style is in _sidebar.scss
+      return [{ "responsive-sidebar": this.mobileNavOn, toggled: this.desktopToggled }, "navbar-nav sidebar sidebar-light accordion"];
     }
   },
   methods: {
     ...mapActions(["logout"]),
-    toggle() {
-      if (this.class1.lastIndexOf("toggled") === 1) {
-        const myIndex = this.class1.indexOf("️toggled");
-        this.class1.splice(myIndex, 1);
-      } else {
-        this.class1.push("toggled");
-      }
+    // toggle() {
+    //   if (this.class1.lastIndexOf("toggled") === 1) {
+    //     const myIndex = this.class1.indexOf("️toggled");
+    //     this.class1.splice(myIndex, 1);
+    //   } else {
+    //     this.class1.push("toggled");
+    //   }
+    // },
+    toggleDesktopNav() {
+      this.desktopToggled = !this.desktopToggled;
+    },
+    toggleMobileNav() {
+      this.mobileNavOn = !this.mobileNavOn;
     },
     async handleLogout() {
       await this.logout();
@@ -132,12 +162,18 @@ export default {
     }
   },
   mounted() {
-    console.log(this.getProfile);
+    // console.log(this.getUser);
+    // console.log(this.getProfile);
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.scroll-lock {
+  position: fixed;
+  width: 100vw;
+}
+
 .style_item {
   position: relative;
   z-index: 100;
@@ -180,5 +216,25 @@ export default {
   transition: height 275ms ease-in;
   visibility: visible;
   z-index: -1;
+}
+
+.settings-icon {
+  margin-left: -0.3em;
+  margin-right: 0.15em;
+  filter: none !important;
+}
+
+// modifying default bootstrap hover and active styles for dropdown-item
+.dropdown-item {
+  color: color(bv-grey-800);
+
+  &:hover {
+    color: color(main-red);
+    background: color(bv-grey-200);
+  }
+  &.active {
+    color: color(bv-white) !important;
+    pointer-events: none;
+  }
 }
 </style>

@@ -34,10 +34,11 @@
               <main-input v-model="signUpForm.lastName" class=" mb-3" label="Last Name" />
             </div>
           </div>
-          <main-input class="mb-3" label="Email Address" v-model="signUpForm.email" type="email" />
-          <div class="form__div mb-3">
-            <vue-tel-input v-model="signUpForm.phone_number" style="border-color:#efb9b9!important" :class="['width-100 text-bold form__input mb-3']"></vue-tel-input>
-            <label class="label">Phone Number</label>
+          <main-input class="mb-1" label="Email Address" v-model="signUpForm.email" type="email" />
+          <div class="form__div mb-5">
+            <!-- added custom styles with vue-tel-input class in external.scss -->
+            <vue-tel-input v-model="signUpForm.phone_number" :class="['width-100 text-bold form__input mb-3']"></vue-tel-input>
+            <label class="label" style="z-index: 11;">Phone Number</label>
             <!-- <p class="font-poppins text-bold text-error ml-12" v-if="isInvalid">
               {{ errorMessage }}
             </p> -->
@@ -64,8 +65,8 @@
             </div>
             <div class="form-check m-3">
               <input type="checkbox" class="form-check-input" v-model="signUpForm.isAgreedTerms" />
-              <label class="form-check-label font-poppins ft-12 font-weight-light"
-                >I agree to the <router-link class="ft-12 font-weight-light font-poppins" to="/terms">Terms and Conditions</router-link>
+              <label class="form-check-label font-poppins ft-12 font-weight-light">
+                I agree to the <router-link class="ft-12 font-weight-light font-poppins" to="/terms">Terms and Conditions</router-link>
               </label>
             </div>
           </div>
@@ -81,15 +82,16 @@
           <p>
             Join us to explore our investment options
           </p>
-          <main-button type="transparent" @click="authClasses.push('sign-up-mode')" text="Sign Up " size="md" />
+          <!-- <main-button type="transparent" @click="authClasses.push('sign-up-mode')" text="Sign Up " size="md" /> -->
+          <main-button type="transparent" @click="switchToSignup" text="Sign Up " size="md" />
         </div>
         <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000920/mmyyinvest-2.0/svgs/login_wkklzv.svg" class="image1" alt="" />
       </div>
       <div class="panel right-panel">
         <div class="content">
           <h3 class="mb-4">Already an investor ?</h3>
-
-          <main-button type="transparent" @click="authClasses.pop(-1)" text="Sign In " size="md" />
+          <!-- <main-button type="transparent" @click="authClasses.pop(-1)" text="Sign In " size="md" /> -->
+          <main-button type="transparent" @click="switchToLogin" text="Sign In " size="md" />
         </div>
         <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000918/mmyyinvest-2.0/svgs/register_os012l.svg" class="image1" alt="" />
       </div>
@@ -103,6 +105,7 @@ import MainInput from "../../components/form/mainInput";
 import { mapActions } from "vuex";
 import validations from "@/mixins/validations";
 import notify from "@/mixins/notify";
+
 export default {
   mixins: [validations, notify],
   name: "register",
@@ -216,6 +219,14 @@ export default {
       } catch (e) {
         this.registerText = "Sign Up";
       }
+    },
+    switchToSignup() {
+      this.$router.push({ name: "register" });
+      this.authClasses.push("sign-up-mode");
+    },
+    switchToLogin() {
+      this.authClasses.pop(-1);
+      this.$router.push({ name: "login" });
     }
   },
   mounted() {

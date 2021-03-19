@@ -3518,6 +3518,21 @@ form.sign-in-form {
   grid-row: 1 / 2;
 }
 
+// custom styles for vue-tel-input
+.vue-tel-input {
+  z-index: 11 !important;
+
+  &:focus-within {
+    box-shadow: none !important;
+    border: 1.5px solid color(main-red) !important;
+
+    + .label {
+      font-size: 0.8rem !important;
+      color: color(main-red);
+    }
+  }
+}
+
 .title {
   font-size: 2.2rem;
   color: #444;
@@ -3702,8 +3717,9 @@ form.sign-in-form {
 
 @media (max-width: 870px) {
   .container-c {
-    min-height: 800px;
-    height: 100vh;
+    // min-height: 800px;
+    min-height: 980px;
+    // height: 100vh;
   }
 
   .signin-signup {
@@ -3852,7 +3868,7 @@ form.sign-in-form {
   }
 
   form.sign-up-form {
-    padding: 0rem 2rem;
+    padding: 0 2em;
   }
 }
 

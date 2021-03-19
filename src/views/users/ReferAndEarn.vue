@@ -30,10 +30,10 @@
           <MainIcon name="gift-card" size="retain" class="r-user__svg-card" />
         </div>
         <div class="r-user__summary">
-          <div>
+          <!-- <div>
             Total Clicks
             <p class="r-user__text">4000</p>
-          </div>
+          </div> -->
           <div>
             Total Sign Ups
             <p class="r-user__text">4000</p>
@@ -52,7 +52,7 @@
             <p class="r-user__alt-text" style="padding-left: 3em;">OR</p>
             <p class="r-user__alt-text" style="font-size: 0.9rem;">Copy referral message and link <span>(tap message to copy)</span></p>
           </div>
-          <div class="r-user__col-2">
+          <div class="r-user__mc-2">
             <button type="button" class="r-user__btn-share">SHARE INVITE LINK</button>
             <MainIcon name="socials" size="retain" class="r-user__svg-socials" />
           </div>

@@ -10,6 +10,10 @@
     &:active {
       background-color: $gray-300;
     }
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
   }
   .navbar-search {
     width: 25rem;
@@ -109,5 +113,28 @@
         }
       }
     }
+  }
+}
+
+// custom hamburger styles
+@media screen and (max-width: 768px) {
+  .nav-hamburger {
+    position: absolute;
+    top: 36.75%;
+    left: 5%;
+    z-index: 15;
+
+    > div {
+      height: 2px;
+      width: 1.7em;
+      background: color(bv-grey-800);
+      border-radius: $border-radius-sm;
+      transition: transform 0.3s ease-in;
+    }
+  }
+
+  .block-1,
+  .block-2 {
+    margin-bottom: 6px;
   }
 }

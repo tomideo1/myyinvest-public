@@ -20,9 +20,10 @@
 
 // centered the container and set a limit on the width
 .container-fluid {
-  margin: 0 auto;
+  // margin: 0 auto;
   max-width: 102em;
-  // border: 1px solid green;
+  display: flex;
+  justify-content: center;
 }
 
 // Scroll to top button

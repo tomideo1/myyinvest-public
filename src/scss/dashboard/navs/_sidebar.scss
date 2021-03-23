@@ -7,11 +7,6 @@
   box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
   z-index: 0;
 
-  // disabling the sidebar on potrait tablets and below
-  @media screen and (max-width: 768px) {
-    display: none !important;
-  }
-
   &__logo {
     @media screen and (min-width: 769px) {
       margin-right: auto;
@@ -273,13 +268,32 @@
 }
 
 @media screen and (max-width: 768px) {
+  // disabling the sidebar on potrait tablets and below
+  #accordionSidebar:not(.responsive-sidebar) {
+    display: none;
+  }
+
+  // #accordionSidebar {
+  // position: absolute;
+  // z-index: 15;
+  // min-height: 100vh;
+  // max-width: 65vw;
+  // transition: transform 0.5s ease-in, opacity 0.5s ease-in;
+
+  // &:not(.responsive-sidebar) {
+  //   transform: translateX(-110%);
+  //   opacity: 0;
+  // }
+  // }
+
   .responsive-sidebar {
-    display: initial !important;
     position: absolute;
     animation: menu-enter 0.5s ease-in;
     z-index: 15;
     min-height: 100vh;
     max-width: 65vw;
+    // transform: translateX(0);
+    // opacity: 1;
 
     + #content-wrapper {
       .block-1 {

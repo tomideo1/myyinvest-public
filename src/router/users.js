@@ -43,6 +43,14 @@ export default [
         }
       },
       {
+        path: "banks-and-cards",
+        name: "banks",
+        component: () => import(/* webpackChunkName: "banks-and-cards" */ "../views/users/BanksAndCards.vue"),
+        meta: {
+          middleware: [auth]
+        }
+      },
+      {
         path: "refer-and-earn",
         name: "refer",
         component: () => import(/* webpackChunkName: "refer-and-earn" */ "../views/users/ReferAndEarn.vue"),

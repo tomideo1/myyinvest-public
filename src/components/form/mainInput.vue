@@ -126,7 +126,8 @@ export default {
   height: 100%;
   font-size: 14px;
   border: 1px solid #efb9b9;
-  color: #999999;
+  // color: #999999;
+  color: #7e7d7d;
   font-family: fonts(main-poppins), serif;
   line-height: 1.3;
   padding: 1rem;
@@ -187,5 +188,9 @@ export default {
 
 .form__input:focus {
   border: 1.5px solid color(main-red);
+}
+
+[disabled] {
+  opacity: 0.7;
 }
 </style>

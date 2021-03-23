@@ -1,6 +1,6 @@
 .refer-container {
   border: 1px solid color(main-red);
-  box-shadow: 0 0 0.5625rem 0 rgba(0, 0, 0, 0.35);
+  box-shadow: $box-shadow-alt;
   min-height: 80vh;
   border-radius: 0.7rem;
   padding: 1.35em;
@@ -78,7 +78,7 @@
   &__box {
     max-width: 29.5em;
     border: 1px solid color(main-red);
-    box-shadow: 0 0 0.5625rem 0 rgba(0, 0, 0, 0.35);
+    box-shadow: $box-shadow-alt;
     padding: 1em 2em;
     color: #0766a0;
     font-weight: 300;

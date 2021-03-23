@@ -12,8 +12,6 @@
 
     <div class="bc-cards" v-if="isSelected('banks')">
       <AddCard text="Add Bank" />
-      <AddCard text="Add Bank" />
-      <AddCard text="Add Bank" />
     </div>
     <div class="bc-cards" v-else>
       <AddCard text="Add New Card" />
@@ -64,8 +62,8 @@ export default {
     // border: 1px solid red;
     display: flex;
     align-items: center;
-    padding: 0;
     margin: 0;
+    padding: 0;
 
     > li {
       flex: 1;

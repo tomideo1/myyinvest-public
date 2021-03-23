@@ -404,10 +404,14 @@ export default {
   position: relative;
   z-index: 4 !important;
 }
+
 #progressbar {
   margin-bottom: 30px;
   overflow: hidden;
   color: lightgrey;
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
 }
 
 #progressbar #personal:before {

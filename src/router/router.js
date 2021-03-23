@@ -3,6 +3,9 @@ import VueRouter from "vue-router";
 import userRoutes from "./users";
 import middlewarePipeline from "./kernel/middlewarePipeline";
 import { store } from "../store/store";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
+
 Vue.use(VueRouter);
 
 const baseRoutes = [
@@ -127,6 +130,19 @@ const router = new VueRouter({
   linkActiveClass: "active",
   linkExactActiveClass: "exact-active"
 });
+
+router.beforeResolve((to, from, next) => {
+  // Start the route progress bar.
+  NProgress.start();
+  next();
+});
+
+/* eslint-disable no-unused-vars */
+router.afterEach((to, from) => {
+  // Complete the animation of the route progress bar.
+  NProgress.done();
+});
+
 router.beforeEach((to, from, next) => {
   if (!to.meta.middleware) {
     return next();

@@ -22,8 +22,8 @@
   }
 
   .navbar-username {
-    margin-top: 1.25em;
-    margin-bottom: 0.25em;
+    margin-top: 1.125em;
+    margin-bottom: 0.275em;
     text-align: center;
     color: white;
   }
@@ -32,9 +32,17 @@
     position: relative;
     margin-top: 1.125em;
 
+    @media screen and (max-width: 768px) {
+      padding-left: 1em !important;
+    }
+
     @media screen and (max-width: 599px) {
       // margin-top: 0.625em !important;
-      margin-top: 0.3em;
+      margin-top: 0.35em;
+    }
+
+    .icon {
+      margin-right: 0.675em;
     }
 
     &:last-child {
@@ -282,7 +290,6 @@
     position: absolute;
     z-index: 13;
     min-height: 100vh;
-    max-width: 65vw;
 
     &:not(.responsive-sidebar) {
       display: none;
@@ -337,5 +344,11 @@
       transform: translateX(0%);
       opacity: 1;
     }
+  }
+}
+
+@media screen and (max-width: 599px) {
+  #accordionSidebar {
+    max-width: 16em;
   }
 }

@@ -372,6 +372,7 @@ export default {
   },
   mounted() {
     this.states = states;
+    console.log(this.getProfile);
     this.profile = this.getProfile;
     // this.profile.email = this.getUser.email;
     // this.profile.lastName = this.getUser.lastName;
@@ -385,6 +386,11 @@ export default {
 <style lang="scss">
 .form-border {
   border: 1px solid color(main-red) !important;
+
+  @media screen and (max-width: 768px) {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
 #msform {
   text-align: center;

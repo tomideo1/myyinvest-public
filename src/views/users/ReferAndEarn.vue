@@ -1,14 +1,14 @@
 <template>
   <!-- eslint-disable -->
   <div class="refer-container">
-    <div class="r-user">
-      <div class="r-user__col">
-        <div class="r-user__main">
+    <div class="rf-user">
+      <div class="rf-user__col">
+        <div class="rf-user__main">
           <div>
             <h5>Refer and Earn</h5>
             <div>
-              <p class="r-user__alt-text">Total Referral Amount</p>
-              <p class="r-user__amount">
+              <p class="rf-user__alt-text">Total Referral Amount</p>
+              <p class="rf-user__amount">
                 <svg xmlns="http://www.w3.org/2000/svg" width="44.673" height="36.855" viewBox="0 0 44.673 36.855">
                   <g id="Group_19" data-name="Group 19" transform="translate(-422.739 -266.504)">
                     <g id="Group_18" data-name="Group 18">
@@ -23,49 +23,50 @@
                     </g>
                   </g>
                 </svg>
-                <span class="r-user__text">90,000</span>
+                <!-- <span class="rf-user__text">90,000</span> -->
+                <span class="rf-user__text">{{ getReferralDetails.totalAmount }}</span>
               </p>
             </div>
           </div>
-          <MainIcon name="gift-card" size="retain" class="r-user__svg-card" />
+          <MainIcon name="gift-card" size="retain" class="rf-user__svg-card" />
         </div>
-        <div class="r-user__summary">
+        <div class="rf-user__summary">
           <!-- <div>
             Total Clicks
-            <p class="r-user__text">4000</p>
+            <p class="rf-user__text">4000</p>
           </div> -->
           <div>
             Total Sign Ups
-            <p class="r-user__text">4000</p>
+            <p class="rf-user__text">{{ getReferralDetails.totalSignUps }}</p>
           </div>
           <div>
             Sign Ups that invested
-            <p class="r-user__text">50</p>
+            <p class="rf-user__text">{{ getReferralDetails.investedSignUps }}</p>
           </div>
         </div>
       </div>
-      <div class="r-user__col">
-        <div class="r-user__main">
-          <div class="r-user__mc-1">
-            <p class="r-user__alt-text">Your Referral code</p>
-            <p class="r-user__text">CVXYUEW</p>
-            <p class="r-user__alt-text" style="padding-left: 3em;">OR</p>
-            <p class="r-user__alt-text" style="font-size: 0.9rem;">Copy referral message and link <span>(tap message to copy)</span></p>
+      <div class="rf-user__col">
+        <div class="rf-user__main">
+          <div class="rf-user__mc-1">
+            <p class="rf-user__alt-text">Your Referral code</p>
+            <p class="rf-user__text">{{ getReferralDetails.referralCode }}</p>
           </div>
-          <div class="r-user__mc-2">
-            <button type="button" class="r-user__btn-share">SHARE INVITE LINK</button>
-            <MainIcon name="socials" size="retain" class="r-user__svg-socials" />
+          <div class="rf-user__mc-2">
+            <button type="button" class="rf-user__btn-share">SHARE INVITE LINK</button>
+            <MainIcon name="socials" size="retain" class="rf-user__svg-socials" />
           </div>
         </div>
         <div>
-          <div class="r-user__box">
-            I use myyinvest to invest securly, sign up with my link and get started on your investment journey with secured and guaranteed ROI https://www.myyinvest.com/register?ref=MYY-2565
+          <p class="rf-user__alt-text" style="padding-left: 3em; margin-bottom: 2em;">OR</p>
+          <p class="rf-user__alt-text" style="font-size: 0.9rem;">Copy referral message and link <span>(tap message to copy)</span></p>
+          <div class="rf-user__message-box">
+            I use myyinvest to invest securely, sign up with my link and get started on your investment journey with secured and guaranteed ROI {{ getReferralDetails.referralLink }}
           </div>
         </div>
       </div>
     </div>
-    <div class="trans">
-      <div class="trans__head">
+    <div class="rf-trans">
+      <div class="rf-trans__head">
         <div>date</div>
         <div>name</div>
         <div>project</div>
@@ -76,12 +77,12 @@
       <ReferTransaction name="john doe" commission="7500" status="invested" />
       <ReferTransaction name="Inwuosu njeakor" project="flutterwave investment" />
       <ReferTransaction name="ogbeni ogbanje" />
-      <div class="trans__pagination">
-        <button type="button" class="trans__btn">Previous</button>
-        <button type="button" class="trans__btn" :class="{ 'trans__btn--active': num === 1 }" v-for="num in 5" :key="num">
+      <div class="rf-trans__pagination">
+        <button type="button" class="rf-trans__btn">Previous</button>
+        <button type="button" class="rf-trans__btn" :class="{ 'rf-trans__btn--active': num === 1 }" v-for="num in 5" :key="num">
           {{ num }}
         </button>
-        <button type="button" class="trans__btn">Next</button>
+        <button type="button" class="rf-trans__btn">Next</button>
       </div>
     </div>
   </div>
@@ -90,12 +91,20 @@
 <script>
 import ReferTransaction from "@/components/ReferTransaction.vue";
 import MainIcon from "@/components/Shared/mainIcon.vue";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "ReferAndEarn",
   components: {
     ReferTransaction,
     MainIcon
+  },
+  methods: mapActions(["fetchReferralDetails"]),
+  computed: {
+    ...mapGetters(["getReferralDetails"])
+  },
+  created() {
+    this.fetchReferralDetails();
   }
 };
 </script>

@@ -17,15 +17,24 @@
     margin-top: 2.75em;
 
     @media screen and (max-width: 599px) {
-      margin-top: 1.5em;
+      margin-top: 0.725em;
     }
+  }
+
+  .navbar-username {
+    margin-top: 1.25em;
+    margin-bottom: 0.25em;
+    text-align: center;
+    color: white;
   }
 
   .nav-item {
     position: relative;
+    margin-top: 1.125em;
 
     @media screen and (max-width: 599px) {
-      margin-top: 0.625em !important;
+      // margin-top: 0.625em !important;
+      margin-top: 0.3em;
     }
 
     &:last-child {
@@ -269,8 +278,18 @@
 
 @media screen and (max-width: 768px) {
   // disabling the sidebar on potrait tablets and below
-  #accordionSidebar:not(.responsive-sidebar) {
-    display: none;
+  #accordionSidebar {
+    position: absolute;
+    z-index: 13;
+    min-height: 100vh;
+    max-width: 65vw;
+
+    &:not(.responsive-sidebar) {
+      display: none;
+    }
+    &:active {
+      display: block;
+    }
   }
 
   // #accordionSidebar {
@@ -287,11 +306,7 @@
   // }
 
   .responsive-sidebar {
-    position: absolute;
     animation: menu-enter 0.5s ease-in;
-    z-index: 15;
-    min-height: 100vh;
-    max-width: 65vw;
     // transform: translateX(0);
     // opacity: 1;
 

@@ -3,7 +3,9 @@ import Api from "@/utils/api";
 const state = {
   userPersonalDetails: {},
   userInvestmentDetails: {},
-  userNextOfKinDetails: {}
+  userNextOfKinDetails: {},
+  userReferralDetails: {}
+  // referredUsers: []
 };
 
 const getters = {
@@ -17,6 +19,10 @@ const getters = {
 
   getNextOfKinDetails(state) {
     return state.userNextofKinDetails;
+  },
+
+  getReferralDetails(state) {
+    return state.userReferralDetails;
   }
 };
 
@@ -31,6 +37,14 @@ const mutations = {
 
   setInvestmentDetails(state, data) {
     return (state.userInvestmentDetails = data);
+  },
+
+  setReferralDetails(state, data) {
+    return (state.userReferralDetails = data);
+  },
+
+  setReferredUsers(state, data) {
+    state.referredUsers = data;
   }
 };
 
@@ -66,16 +80,31 @@ const actions = {
 
   async getUserProfileDetails({ commit, getters }) {
     let res = await Api.get(`profile/getSingle`, true);
-    // console.log(res);
     if (res.status === 200 || res.status === 201) {
       // commit("setProfile", res.data.profileDetails);
       const user = getters.getUser;
-      const profileDetails = res.data.profileDetails;
+      console.log(res.data);
+      const { profileDetails } = res.data;
       profileDetails.email = user.email;
       profileDetails.firstName = user.firstName;
       profileDetails.lastName = user.lastName;
       // console.log(profileDetails);
       commit("setProfile", profileDetails);
+      return res;
+    } else {
+      return res;
+    }
+  },
+
+  async fetchReferralDetails({ commit }) {
+    const res = await Api.get("referrals/get", true);
+    if (res.status === 200 || res.status === 201) {
+      const { referredUsers } = res.data;
+      const refData = { ...res.data.referralDetails, referredUsers };
+      console.log(refData);
+      commit("setReferralDetails", refData);
+      // commit("setReferralDetails", res.data.referralDetails);
+      // commit("setReferredUsers", res.data.referredUsers);
       return res;
     } else {
       return res;

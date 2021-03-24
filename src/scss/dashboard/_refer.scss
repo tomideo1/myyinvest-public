@@ -6,9 +6,13 @@
   padding: 1.35em;
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 768px) {
+    padding: 1em;
+  }
 }
 
-.r-user {
+.rf-user {
   display: flex;
 
   @media screen and (max-width: 768px) {
@@ -70,26 +74,27 @@
       margin-top: 7em;
     }
 
-    .r-user__text {
+    .rf-user__text {
       margin-top: 0.25em;
     }
   }
 
-  &__box {
-    max-width: 29.5em;
+  &__message-box {
+    max-width: 29.75em;
     border: 1px solid color(main-red);
     box-shadow: $box-shadow-alt;
-    padding: 1em 2em;
+    padding: 0.875em 1.125em;
     color: #0766a0;
     font-weight: 300;
-    border-radius: 0.5rem;
-    margin-top: 0.5em;
+    border-radius: 0.75rem;
+    margin-top: 0.675em;
+    word-break: break-word;
   }
 
   &__alt-text {
     color: #686565;
     font-weight: 500;
-    margin-bottom: 0.75em;
+    margin-bottom: 0.25em;
     font-size: 98% !important;
 
     span {
@@ -106,9 +111,10 @@
   &__btn-share {
     background: color(main-red);
     color: color(bv-white);
-    padding: 0.6em 0;
+    padding: 0.45em 0;
+    margin-bottom: 1em;
     width: 100%;
-    font-size: 120%;
+    font-size: 110%;
     font-weight: 500;
     border: 1px solid transparent;
     position: relative;
@@ -117,15 +123,15 @@
       content: "";
       position: absolute;
       left: 0;
-      top: 135%;
-      height: 3px;
+      top: 125%;
+      height: 2px;
       width: 100%;
       background: lightgrey;
     }
   }
 }
 
-.trans {
+.rf-trans {
   border-top: 1px solid #000;
   text-transform: capitalize;
   color: #3a3a3a;

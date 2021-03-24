@@ -80,6 +80,7 @@ const actions = {
   async logout({ commit }) {
     commit("setToken", "");
     commit("setUser", {});
+    commit("setProfile", {});
     localStorage.clear();
   }
 };

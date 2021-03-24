@@ -19,9 +19,10 @@
         <div class="navbar-items">
           <span class="d-flex flex-column align-items-center justify-content-center">
             <avatar :user="getProfile" size="lg" />
-            <p class="text-white mt-4 text-center  ft-14 font-weight-normal">Welcome, {{ getUserName }}</p>
+            <!-- navbar-username style is in _sidebar.scss -->
+            <p class="ft-14 font-weight-normal navbar-username">Welcome, {{ getUserName }}</p>
           </span>
-          <li @click="$router.push(item.to)" :class="['nav-item p-3 style_item mt-3', getCurrentRoute === item.identifier ? 'active-item' : '']" v-for="(item, index) in sidebarItems" :key="index">
+          <li @click="$router.push(item.to)" :class="['nav-item p-3 style_item', getCurrentRoute === item.identifier ? 'active-item' : '']" v-for="(item, index) in sidebarItems" :key="index">
             <span class="d-flex flex-row pl-3 ">
               <main-icon :name="item.routeIcon" class="mr-lg-3 mr-md-3 " :active="getCurrentRoute === item.identifier" />
               <a href="javascript:void(0)" class="ft-12 font-weight-lighter mt-1 text-white">
@@ -36,13 +37,13 @@
       <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
           <!-- TopBar -->
-          <nav class="navbar navbar-expand navbar-light bg-navbar bg-white shadow-3 topbar mb-4 static-top">
+          <nav class="navbar navbar-expand navbar-light bg-navbar bg-white shadow-3 topbar mb-4 static-top" @focusout="mobileNavOn = false">
             <!-- <button id="sidebarToggleTop" @click="toggle" :class="'btn btn-link rounded-circle mr-3'"> -->
             <button id="sidebarToggleTop" @click="toggleDesktopNav" :class="'btn btn-link rounded-circle mr-3'">
               <i class="fa fa-bars text-black"></i>
             </button>
             <!-- hamburger menu style is in _topbar.scss -->
-            <div class="nav-hamburger" @click="toggleMobileNav">
+            <div class="nav-hamburger" @click="toggleMobileNav" tabindex="-1">
               <div class="block-1"></div>
               <div class="block-2"></div>
               <div class="block-3"></div>
@@ -155,10 +156,10 @@ export default {
       // localStorage.clear();
       await this.$router.push("/login");
     }
-  },
-  mounted() {
-    console.log(this.getProfile);
   }
+  // mounted() {
+  //   console.log(this.getProfile);
+  // }
 };
 </script>
 

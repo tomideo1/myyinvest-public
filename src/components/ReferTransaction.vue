@@ -1,5 +1,5 @@
 <template>
-  <div class="trans__item">
+  <div class="rf-trans__item">
     <MainIcon name="trans-icon" />
     <div>{{ date }}</div>
     <div>{{ name }}</div>

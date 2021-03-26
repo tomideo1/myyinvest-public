@@ -3,7 +3,12 @@
     <div id="wrapper" :class="{ 'scroll-lock': mobileNavOn }">
       <!-- Sidebar -->
       <!--      <b-sidebar id="sidebar-no-header" :visible="true" :shadow="true" no-header>-->
-      <ul :class="class1" id="accordionSidebar" style="background: url('https://res.cloudinary.com/myyinvest/image/upload/v1614000904/mmyyinvest-2.0/svgs/sidebarclip_u5hmun.svg') no-repeat bottom;">
+      <ul
+        :class="class1"
+        tabindex="-1"
+        id="accordionSidebar"
+        style="background: url('https://res.cloudinary.com/myyinvest/image/upload/v1614000904/mmyyinvest-2.0/svgs/sidebarclip_u5hmun.svg') no-repeat bottom;"
+      >
         <!-- <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/" style="background: white!important;">
           <div class="mr-auto">
             <main-icon size="lg" name="logo-min" />
@@ -34,10 +39,10 @@
       </ul>
       <!--      </b-sidebar>-->
 
-      <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content-wrapper" class="d-flex flex-column" @click="mobileNavCheck">
         <div id="content">
           <!-- TopBar -->
-          <nav class="navbar navbar-expand navbar-light bg-navbar bg-white shadow-3 topbar mb-4 static-top" @focusout="mobileNavOn = false">
+          <nav class="navbar navbar-expand navbar-light bg-navbar bg-white shadow-3 topbar mb-4 static-top">
             <!-- <button id="sidebarToggleTop" @click="toggle" :class="'btn btn-link rounded-circle mr-3'"> -->
             <button id="sidebarToggleTop" @click="toggleDesktopNav" :class="'btn btn-link rounded-circle mr-3'">
               <i class="fa fa-bars text-black"></i>
@@ -114,14 +119,14 @@ export default {
     return {
       sidebarItems: getSidebarItems(),
       mobileNavOn: false,
-      desktopToggled: false
+      desktopToggled: false,
+      navElem: ""
       // class1: ["navbar-nav sidebar sidebar-light accordion"]
     };
   },
   components: {
     Avatar,
     MainIcon
-    // eslint-disable-next-line vue/no-unused-components
   },
 
   computed: {
@@ -150,16 +155,25 @@ export default {
     toggleMobileNav() {
       this.mobileNavOn = !this.mobileNavOn;
     },
+    // this function is used to close the navigation bar once the outside of it is clicked
+    // there's a click event on the main container (id="content-wrapper") outside the sidebar
+    mobileNavCheck($event) {
+      // if the element that was clicked is not part of the hamburger menu and mobile nav is on, close the mobile nav
+      if (!this.navElem.contains($event.target) && this.mobileNavOn) {
+        this.mobileNavOn = false;
+      }
+    },
     async handleLogout() {
       await this.logout();
       //
       // localStorage.clear();
       await this.$router.push("/login");
     }
+  },
+  mounted() {
+    this.navElem = document.querySelector(".nav-hamburger");
+    // console.log(this.getProfile);
   }
-  // mounted() {
-  //   console.log(this.getProfile);
-  // }
 };
 </script>
 

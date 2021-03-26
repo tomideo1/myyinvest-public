@@ -84,11 +84,12 @@ const actions = {
       // commit("setProfile", res.data.profileDetails);
       const user = getters.getUser;
       console.log(res.data);
-      const { profileDetails } = res.data;
+      // const { profileDetails } = res.data;
+      const profileDetails = {};
       profileDetails.email = user.email;
       profileDetails.firstName = user.firstName;
       profileDetails.lastName = user.lastName;
-      // console.log(profileDetails);
+      console.log(`profile Details = ${JSON.stringify(profileDetails)}`);
       commit("setProfile", profileDetails);
       return res;
     } else {
@@ -101,7 +102,7 @@ const actions = {
     if (res.status === 200 || res.status === 201) {
       const { referredUsers } = res.data;
       const refData = { ...res.data.referralDetails, referredUsers };
-      console.log(refData);
+      // console.log(refData);
       commit("setReferralDetails", refData);
       // commit("setReferralDetails", res.data.referralDetails);
       // commit("setReferredUsers", res.data.referredUsers);

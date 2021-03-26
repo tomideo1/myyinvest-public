@@ -11,8 +11,8 @@
           </div>
           <h2>Welcome back!</h2>
           <p>Start your investment journey.</p>
-          <main-input v-model="loginForm.email" class=" " label="Email" type="email" />
-          <main-input type="password" v-model="loginForm.password" class=" " label="Password" />
+          <main-input v-model="loginForm.email" class=" " name="email" label="Email" type="email" />
+          <main-input type="password" name="password" v-model="loginForm.password" class=" " label="Password" />
           <router-link style="color: #2EAAEF;" class="  mb-4 float-right" to="/forgot-password">Forgot Password?</router-link>
           <main-button :disable="loginText === 'Loading...'" class="w-100" @click="handleLogin" :text="loginText" type="filled" />
         </form>
@@ -28,13 +28,13 @@
           <p>Start your investment journey.</p>
           <div class="row">
             <div class="col-md-6">
-              <main-input v-model="signUpForm.firstName" class=" mb-3" label="First Name" />
+              <main-input v-model="signUpForm.firstName" name="firstname" class=" mb-3" label="First Name" />
             </div>
             <div class="col-md-6">
-              <main-input v-model="signUpForm.lastName" class=" mb-3" label="Last Name" />
+              <main-input v-model="signUpForm.lastName" name="lastname" class=" mb-3" label="Last Name" />
             </div>
           </div>
-          <main-input class="mb-1" label="Email Address" v-model="signUpForm.email" type="email" />
+          <main-input class="mb-1" name="email" label="Email Address" v-model="signUpForm.email" type="email" />
           <div class="form__div mb-5">
             <!-- added custom styles with vue-tel-input class in external.scss -->
             <vue-tel-input v-model="signUpForm.phone_number" :class="['width-100 text-bold form__input mb-3']"></vue-tel-input>
@@ -45,10 +45,10 @@
           </div>
           <div class="row">
             <div class="col-md-6">
-              <main-input class=" mb-3" v-model="signUpForm.password" label="Password" type="password" />
+              <main-input class=" mb-3" name="password1" v-model="signUpForm.password" label="Password" type="password" />
             </div>
             <div class="col-md-6">
-              <main-input class="mb-3" v-model="signUpForm.confirm_password" label="Confirm Password" type="password" />
+              <main-input class="mb-3" name="password1" v-model="signUpForm.confirm_password" label="Confirm Password" type="password" />
             </div>
           </div>
           <main-button class="w-100 " text="CONTINUE" @click="isContinue = true" type="filled" />

@@ -11,7 +11,7 @@
     </nav>
 
     <div class="bc-cards" v-if="isSelected('banks')">
-      <AddCard text="Add Bank" />
+      <AddCard text="Add Bank" @click.native="$router.push({ name: 'addbank' })" />
     </div>
     <div class="bc-cards" v-else>
       <AddCard text="Add New Card" />
@@ -48,9 +48,13 @@ export default {
   max-width: 85.75em;
   margin: 0 auto;
 
-  @media screen and (min-width: 600px) {
+  @include breakpoint(tablet-potrait-up) {
     padding: 0 1em;
   }
+
+  // @media screen and (min-width: 600px) {
+  //   padding: 0 1em;
+  // }
 }
 
 .bc-nav {
@@ -80,7 +84,11 @@ export default {
     background: color(bv-white);
     color: color(main-red);
 
-    @media screen and (max-width: 599px) {
+    // @media screen and (max-width: 599px) {
+    //   font-size: 1.05rem;
+    // }
+
+    @include breakpoint(mobile-only) {
       font-size: 1.05rem;
     }
 
@@ -102,17 +110,14 @@ export default {
   padding: 2.75em 0;
   display: grid;
   row-gap: 2.75em;
+  grid-template-columns: minmax(40%, 28.25em);
+  justify-content: center;
 
   @media screen and (min-width: 769px) {
     grid-template-columns: repeat(auto-fit, 28.75em);
     justify-content: space-between;
     padding-left: 2.375em;
     padding-right: 2.375em;
-  }
-
-  @media screen and (max-width: 768px) {
-    grid-template-columns: minmax(40%, 28.25em);
-    justify-content: center;
   }
 }
 </style>

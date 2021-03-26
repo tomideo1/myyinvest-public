@@ -6,6 +6,7 @@
         <input
           :class="['width-100 text-bold form__input', isInvalid ? 'is-invalid' : '']"
           @keyup="keyup($event)"
+          :name="name"
           :value="value"
           :placeholder="placeholder"
           :disabled="disable"
@@ -62,8 +63,8 @@ export default {
     },
     onSelectedEvent: Function,
     placeholder: {
-      type: String,
-      default: ""
+      type: String
+      // default: ""
     },
     label: {
       type: String,
@@ -89,6 +90,9 @@ export default {
     inputType: {
       type: String,
       default: "input"
+    },
+    name: {
+      type: String
     },
     options: {
       type: Array
@@ -137,6 +141,7 @@ export default {
   z-index: 1;
 }
 
+// my custom styles for select
 .form__select {
   padding: 0 1rem;
   appearance: none;
@@ -191,6 +196,7 @@ export default {
 }
 
 [disabled] {
+  pointer-events: none;
   opacity: 0.7;
 }
 </style>

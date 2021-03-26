@@ -33,12 +33,13 @@
     margin-top: 1.125em;
 
     @media screen and (max-width: 768px) {
-      padding-left: 1em !important;
+      // padding-left: 1em !important;
+      padding-left: 1.25em !important;
     }
 
     @media screen and (max-width: 599px) {
       // margin-top: 0.625em !important;
-      margin-top: 0.35em;
+      margin-top: 0.325em;
     }
 
     .icon {
@@ -313,6 +314,7 @@
   // }
 
   .responsive-sidebar {
+    box-shadow: 0.2rem 0 0.325rem 0 rgba(0, 0, 0, 0.7) !important;
     animation: menu-enter 0.5s ease-in;
     // transform: translateX(0);
     // opacity: 1;

@@ -23,7 +23,6 @@
                     </g>
                   </g>
                 </svg>
-                <!-- <span class="rf-user__text">90,000</span> -->
                 <span class="rf-user__text">{{ getReferralDetails.totalAmount }}</span>
               </p>
             </div>
@@ -57,10 +56,13 @@
           </div>
         </div>
         <div>
-          <p class="rf-user__alt-text" style="padding-left: 3em; margin-bottom: 2em;">OR</p>
-          <p class="rf-user__alt-text" style="font-size: 0.9rem;">Copy referral message and link <span>(tap message to copy)</span></p>
-          <div class="rf-user__message-box">
-            I use myyinvest to invest securely, sign up with my link and get started on your investment journey with secured and guaranteed ROI {{ getReferralDetails.referralLink }}
+          <p class="rf-user__alt-text" style="padding-left: 3em; margin-bottom: 1.5em;">OR</p>
+          <p class="rf-user__alt-text">Copy referral message and link <span>(tap message to copy)</span></p>
+          <div class="rf-tooltip">
+            <span class="rf-tooltip__text">{{ tooltipText }}</span>
+            <div class="rf-user__message-box" tabindex="0" @click="copyText" @blur="revertText">
+              I use myyinvest to invest securely, sign up with my link and get started on your investment journey with secured and guaranteed ROI {{ getReferralDetails.referralLink }}
+            </div>
           </div>
         </div>
       </div>
@@ -95,11 +97,25 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "ReferAndEarn",
+  data() {
+    return {
+      tooltipText: "Copy to clipboard"
+    };
+  },
   components: {
     ReferTransaction,
     MainIcon
   },
-  methods: mapActions(["fetchReferralDetails"]),
+  methods: {
+    ...mapActions(["fetchReferralDetails"]),
+    async copyText($event) {
+      await navigator.clipboard.writeText($event.target.textContent);
+      this.tooltipText = "Text Copied!";
+    },
+    revertText() {
+      this.tooltipText = "Copy to clipboard";
+    }
+  },
   computed: {
     ...mapGetters(["getReferralDetails"])
   },

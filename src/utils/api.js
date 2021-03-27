@@ -16,13 +16,22 @@ instance.interceptors.request.use(
     NProgress.start();
     return config;
   },
-  error => {}
+  error => {
+    NProgress.done();
+    return Promise.reject(error);
+  }
 );
 
-instance.interceptors.response.use(response => {
-  NProgress.done();
-  return response;
-});
+instance.interceptors.response.use(
+  response => {
+    NProgress.done();
+    return response;
+  },
+  error => {
+    NProgress.done();
+    Promise.reject(error);
+  }
+);
 
 class Api {
   static async get(url, requireAuth = false) {

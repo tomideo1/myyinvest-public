@@ -1,32 +1,11 @@
 <template>
-  <div class="body">
-    <nav class="top-nav">
-      <the-nav />
-    </nav>
-    <main>
-      <nav class="side-nav">
-        <the-side-nav />
-      </nav>
-      <article>
-        <div class="content-wrapper">
-          <!-- <the-main-layout> -->
-          <view-insights />
-          <!-- </the-main-layout> -->
-        </div>
-      </article>
-    </main>
-  </div>
+  <the-admin-layout>
+    <p>Overview</p>
+  </the-admin-layout>
 </template>
 
 <script>
-import ViewInsights from "@/components/admin/ViewInsights.vue";
-import TheNav from "../../components/layout/admin/TheNav.vue";
-import TheSideNav from "../../components/layout/admin/TheSideNav.vue";
-// import TheMainLayout from '../../components/layout/admin/TheMainLayout.vue';
-
-export default {
-  components: { ViewInsights, TheNav, TheSideNav }
-};
+export default {};
 </script>
 
 <style scoped>

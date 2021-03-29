@@ -47,7 +47,7 @@
         </svg>
         <span>Transactions</span>
       </router-link>
-      <router-link to="/admin/insights" class="main-route">
+      <div :class="[myPath('-insights'), 'main-route']" @click="noInsight = !noInsight">
         <svg width="15" height="10" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000">
           <svg xmlns="http://www.w3.org/2000/svg" width="15" height="10">
             <path
@@ -58,10 +58,12 @@
           </svg>
         </svg>
         <span>Insights</span>
-      </router-link>
-      <div class="sub-nav">
-        <router-link to="/admin/insights/view"> <span></span> View Insights</router-link>
-        <router-link to="/admin/insights/add"> <span></span> Add Insights</router-link>
+      </div>
+      <div class="sub-nav" v-if="!noInsight">
+        <transition name="expand-fly">
+          <router-link to="/admin/view-insights"> <span></span> View Insights</router-link>
+          <router-link to="/admin/add-insights"> <span></span> Add Insights</router-link>
+        </transition>
       </div>
       <router-link to="/admin/notifications" class="main-route">
         <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000">
@@ -104,7 +106,27 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      noInsight: true
+    };
+  },
+
+  methods: {
+    myPath(route) {
+      if (this.currentPath.includes(route)) {
+        return "active-main-route";
+      } else "";
+    }
+  },
+
+  computed: {
+    currentPath() {
+      return this.$route.path;
+    }
+  }
+};
 </script>
 
 <style scoped>
@@ -124,27 +146,35 @@ aside img {
 }
 
 aside p {
-  margin-top: 20px;
+  margin: var(--base-size) var(--base-size) 0;
   text-align: center;
 }
 
 .menu {
   display: flex;
   flex-direction: column;
+  padding-bottom: 100px;
+  /* background-color: red; */
+  background-image: url("/assets/admin/images/nav-background.svg");
 }
 
-.menu a.main-route {
+.menu a.main-route,
+.menu div.main-route {
   max-width: 75%;
-  padding: 10px 20px;
+  padding: 10px var(--base-size);
   border: 1px solid transparent;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-top-right-radius: var(--base-size);
+  border-bottom-right-radius: var(--base-size);
+  font-weight: 600;
 }
 
-.menu a.main-route:not(:last-child) {
+.menu a.main-route:not(:last-child),
+.menu div.main-route:not(:last-child) {
   margin-bottom: 10px;
 }
 
+.menu div.main-route:hover,
+.active-main-route,
 .menu a.main-route:hover,
 .menu a.main-route.exact-active.active {
   color: var(--myyinvest-white) !important;
@@ -152,13 +182,16 @@ aside p {
   cursor: pointer;
 }
 
+.menu div.main-route:hover svg,
 .menu a.main-route:hover svg,
+.menu .active-main-route svg,
 .menu a.main-route.exact-active.active {
   fill: var(--myyinvest-white) !important;
 }
 
-.menu a.main-route span {
-  margin-left: 20px;
+.menu a.main-route span,
+.menu div.main-route span {
+  margin-left: var(--base-size);
 }
 
 .menu .sub-nav {
@@ -198,4 +231,6 @@ aside p {
 .menu .sub-nav a:not(:last-child) {
   margin-bottom: 5px;
 }
+
+/* .expand-fly-in */
 </style>

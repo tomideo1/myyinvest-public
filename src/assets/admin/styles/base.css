@@ -1,8 +1,12 @@
 * {
+  --font-sm: 10px;
   --font-normal: 12px;
   --font-md: 14px;
+  --font-lg: 16px;
   --myyinvest-red: #c10000;
+  --myyinvest-red-fade: #ff8484;
   --myyinvest-white: #ffffff;
   --myyinvest-black: #000000;
-  --topnav-height: 50px;
+  --topnav-height: 60px;
+  --base-size: 20px;
 }

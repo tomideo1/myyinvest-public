@@ -16,6 +16,9 @@ import helpers from "./utils/helper";
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue);
 
+import TheAdminLayout from "./layouts/TheAdminLayout.vue";
+Vue.component("TheAdminLayout", TheAdminLayout);
+
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin);
 

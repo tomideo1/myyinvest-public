@@ -11,32 +11,78 @@
     </nav>
 
     <div class="bc-cards" v-if="isSelected('banks')">
-      <AddCard text="Add Bank" @click.native="$router.push({ name: 'addbank' })" />
+      <BankItem />
+      <AddCardItem text="Add Bank" @click.native="$router.push({ name: 'addbank' })" />
     </div>
     <div class="bc-cards" v-else>
-      <AddCard text="Add New Card" />
+      <!-- <AddCardItem text="Add New Card" @click.native="$router.push({ name: 'addcard' })" /> -->
+      <AddCardItem text="Add New Card" @click.native="showModal = true" />
+      <div :class="[{ hide: !showModal }, 'ac-modal']">
+        <div class="ac-modal__dialog">
+          <div class="ac-dialog">
+            <p class="ac-dialog__title">Add Card</p>
+            <p class="ac-dialog__message">To add and verify your card, <span>N100</span> will be charged and added to your wallet.</p>
+          </div>
+          <div class="ac-modal__btn-container">
+            <button type="button" @click="showModal = false" class="ac-modal__btn ac-modal__btn--grey">Cancel</button>
+            <paystack class="ac-modal__btn ac-modal__btn--red" :amount="amount" :email="email" :paystackkey="paystackkey" :reference="reference" :callback="callback" :close="close" :embed="false">
+              Proceed
+            </paystack>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import AddCard from "../../components/AddCard";
+import BankItem from "../../components/BankItem.vue";
+import AddCardItem from "../../components/AddCardItem";
+import { mapGetters } from "vuex";
+import paystack from "vue-paystack";
 
 export default {
   name: "BanksAndCards",
   components: {
-    AddCard
+    AddCardItem,
+    BankItem,
+    paystack
   },
   data() {
     return {
       selected: "banks",
-      options: ["banks", "cards"]
+      options: ["banks", "cards"],
+      showModal: false,
+      paystackkey: "",
+      email: "",
+      amount: 100000
     };
   },
   methods: {
     isSelected(item) {
       return this.selected === item;
+    },
+    callback(response) {
+      console.log(response);
+    },
+    close() {
+      console.log("Payment closed");
     }
+  },
+  computed: {
+    ...mapGetters(["getUser"]),
+    reference() {
+      let text = "";
+      let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+      for (let i = 0; i < 10; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
+    }
+  },
+  mounted() {
+    this.email = this.getUser.email;
   }
 };
 </script>
@@ -119,5 +165,74 @@ export default {
     padding-left: 2.375em;
     padding-right: 2.375em;
   }
+}
+
+.ac-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 15;
+
+  &__dialog {
+    background: color(bv-white);
+    min-height: 15em;
+    width: 92%;
+    max-width: 28.75em;
+    padding: 2em 1.5em;
+    border-radius: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__btn-container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  &__btn {
+    padding: 0.625em 1.5em;
+    font-size: 92% !important;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+
+    &--red {
+      color: color(bv-white);
+      background: color(main-red);
+    }
+
+    &--grey {
+      background: #f2f2f2;
+      color: color(main-red);
+    }
+  }
+}
+
+.ac-dialog {
+  text-align: center;
+
+  &__title {
+    color: color(main-red);
+    font-size: 115% !important;
+    font-weight: 500;
+  }
+
+  &__message {
+    font-size: 1.05rem !important;
+
+    > span {
+      color: color(main-red);
+    }
+  }
+}
+
+.hide {
+  display: none;
 }
 </style>

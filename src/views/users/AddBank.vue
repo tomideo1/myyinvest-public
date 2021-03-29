@@ -9,9 +9,12 @@
       <form method="POST" @submit.prevent="" class="ab-card__form">
         <div class="ab-card__input-box">
           <MainInput v-model="accountNumber" label="Account Number" />
-          <MainInput v-model="bankName" label="Bank Name" inputType="select" :options="banks" />
+          <MainInput v-model="bankName" label="Bank Name" inputType="select" :options="getBanksList" :disabled="!banksLoaded" />
+          <div class="ab-card__fullname" v-if="isAccountVerified">
+            {{ fullname }}
+          </div>
         </div>
-        <button class="ab-card__btn" tyoe="submit" :disabled="true">Add Bank</button>
+        <button class="ab-card__btn" tyoe="submit" :disabled="!isAccountVerified">Add Bank</button>
       </form>
     </div>
   </div>
@@ -19,6 +22,7 @@
 
 <script>
 import MainInput from "@/components/form/mainInput.vue";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "AddBank",
@@ -29,11 +33,23 @@ export default {
     return {
       accountNumber: "",
       bankName: "",
-      banks: [
-        { key: "Access Bank", value: "accessbank" },
-        { key: "GoMoney", value: "gomoney" }
-      ]
+      fullname: ""
     };
+  },
+  methods: {
+    ...mapActions(["fetchBanksList"])
+  },
+  computed: {
+    ...mapGetters(["getBanksList"]),
+    banksLoaded() {
+      return this.getBanksList !== null || this.getBanksList !== undefined;
+    },
+    isAccountVerified() {
+      return !!this.fullname;
+    }
+  },
+  created() {
+    this.fetchBanksList();
   }
 };
 </script>
@@ -69,7 +85,7 @@ export default {
   }
 
   &__input-box {
-    padding: 3.25em 2.5em 1.25em 2.5em;
+    padding: 3.25em 2.5em;
     box-shadow: 0.05rem 0.05rem 0.2rem 0.05rem rgba(0, 0, 0, 0.6);
     border-radius: 0.75rem;
     margin: 1.25em 0;
@@ -79,7 +95,7 @@ export default {
     // }
 
     @include breakpoint(mobile-only) {
-      padding: 2.25em 1.675em 0.25em 1.675em;
+      padding: 2.25em 1.675em;
     }
   }
 
@@ -95,6 +111,13 @@ export default {
     &:hover {
       background-color: #b90101;
     }
+  }
+
+  &__fullname {
+    color: color(bv-white);
+    background: color(main-red);
+    border-radius: 1.5rem;
+    padding: 0.75em 0;
   }
 }
 </style>

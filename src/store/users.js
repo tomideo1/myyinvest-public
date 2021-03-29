@@ -4,7 +4,8 @@ const state = {
   userPersonalDetails: {},
   userInvestmentDetails: {},
   userNextOfKinDetails: {},
-  userReferralDetails: {}
+  userReferralDetails: {},
+  banksList: []
   // referredUsers: []
 };
 
@@ -23,6 +24,10 @@ const getters = {
 
   getReferralDetails(state) {
     return state.userReferralDetails;
+  },
+
+  getBanksList(state) {
+    return state.banksList;
   }
 };
 
@@ -43,9 +48,13 @@ const mutations = {
     return (state.userReferralDetails = data);
   },
 
-  setReferredUsers(state, data) {
-    state.referredUsers = data;
+  setBanksList(state, data) {
+    return (state.banksList = data);
   }
+
+  // setReferredUsers(state, data) {
+  //   state.referredUsers = data;
+  // }
 };
 
 const actions = {
@@ -83,9 +92,7 @@ const actions = {
     if (res.status === 200 || res.status === 201) {
       // commit("setProfile", res.data.profileDetails);
       const user = getters.getUser;
-      console.log(res.data);
-      // const { profileDetails } = res.data;
-      const profileDetails = {};
+      const profileDetails = res.data.profileDetails || {};
       profileDetails.email = user.email;
       profileDetails.firstName = user.firstName;
       profileDetails.lastName = user.lastName;
@@ -94,6 +101,17 @@ const actions = {
       return res;
     } else {
       return res;
+    }
+  },
+
+  async fetchBanksList({ commit }) {
+    const res = await Api.get("banks/all", true);
+    if (res.status === 200 || res.status === 201) {
+      const { banks } = res.data;
+      const banksList = banks.map(bank => {
+        return { key: bank.name, value: bank.code };
+      });
+      commit("setBanksList", banksList);
     }
   },
 

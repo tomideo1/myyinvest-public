@@ -68,6 +68,14 @@ export default {};
 </script>
 
 <style scoped>
+*:focus:not(:-moz-focusring) {
+  outline: none;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .wrapper {
   display: grid;
   grid-template-columns: 60% 40%;
@@ -134,14 +142,6 @@ textarea:focus {
 input,
 select::-ms-expand {
   display: none;
-}
-
-*:focus:not(:-moz-focusring) {
-  outline: none;
-}
-
-*:focus:not(:focus-visible) {
-  outline: none;
 }
 
 /* option:hover {

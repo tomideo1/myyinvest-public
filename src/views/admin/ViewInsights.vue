@@ -74,7 +74,7 @@
         <div class="author">Valentine Offiah</div>
         <div class="tags">Real Estates Investments, Finance</div>
         <div class="category">Blog</div>
-        <div class="status">Published</div>
+        <div class="status" :style="changeColor(status)">{{ status }}</div>
         <div class="date">17th Feb. 2021</div>
         <div class="options">
           <span>OINP</span>
@@ -127,12 +127,19 @@
 export default {
   data() {
     return {
+      status: "Published",
       currentPage: 1,
       noDeleteModal: true
     };
   },
 
   methods: {
+    changeColor(val) {
+      if (val.toLowerCase().normalize() === "published") {
+        return "color: var(--myyinvest-green)";
+      } else return "color: var(--myyinvest-danger)";
+    },
+
     deleteItem() {
       this.noDeleteModal = !this.noDeleteModal;
     },
@@ -182,6 +189,15 @@ section div {
   padding: 2px;
 }
 
+section div.drag {
+  width: 6%;
+}
+
+section div.title-p,
+section div.options {
+  width: 14%;
+}
+
 section:first-child {
   position: sticky;
   position: -webkit-sticky;
@@ -198,18 +214,9 @@ section:first-child div {
   font-weight: 600;
 }
 
-section div.drag {
-  width: 6%;
-}
-
-section div.title,
-section div.options {
-  width: 14%;
-}
-
-section:not(:first-child) div.status {
-  color: green;
-}
+/* section:not(:first-child) div.status {
+  color: var(--myyinvest-green);
+} */
 
 section div img {
   width: 100%;
@@ -231,6 +238,7 @@ div.options {
   padding: 5px 10px;
   border: 1px solid var(--myyinvest-red);
   border-radius: 5px;
+  color: var(--myyinvest-red);
   background-color: var(--myinvest-white);
 }
 

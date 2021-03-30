@@ -14,10 +14,16 @@
         </nav>
 
         <div class="main-contents">
-          <div class="sort-by" v-if="viewInsights">
-            <select name="" id="">
-              <option value="">Sort by date</option>
-            </select>
+          <div class="sort-by" v-if="hasOptions">
+            <button>Download</button>
+
+            <div class="input-grp">
+              <input type="text" name="search" id="search_query" placeholder="Search" />
+
+              <select name="" id="">
+                <option value="">Sort by date</option>
+              </select>
+            </div>
           </div>
 
           <article :style="smallHeight()">
@@ -55,7 +61,11 @@ export default {
     },
 
     smallHeight() {
-      if (this.$route.path.includes("/admin/view-insights")) {
+      // const currentRoute = this.$route.path;
+      // const routes = ["/admin/view-", "transactions"];
+      // if (currentRoute.some((i) => routes.includes(i))) {
+      // if (this.$route.path.some((i) => ["/admin/view-", "/admin/transactions"].includes(i))) {
+      if (this.$route.path.includes("/admin/view-") || this.$route.path.includes("/admin/transactions")) {
         return "height: 78vh;";
       } else return "";
     }
@@ -66,12 +76,12 @@ export default {
   },
 
   computed: {
-    viewInsights() {
-      return this.$route.path.includes("/admin/view-insights");
+    hasOptions() {
+      return this.$route.path.includes("/admin/view-") || this.$route.path.includes("/admin/transactions");
     },
 
     supportedDevice() {
-      return this.deviceType() === "tablet" || this.deviceType() === "desktop";
+      return this.deviceType() === "desktop";
     }
 
     // layout() {
@@ -176,11 +186,33 @@ main article .content-wrapper {
 
 .sort-by {
   display: flex;
-  justify-content: right;
+  /* justify-content: right; */
   align-items: center;
   margin-bottom: var(--base-size);
 }
 
+.sort-by button,
+.sort-by button {
+  padding: 5px 10px;
+  color: var(--myyinvest-white);
+  font-weight: 600;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  background-color: var(--myyinvest-red);
+}
+
+.sort-by button:hover,
+.sort-by button:focus {
+  color: var(--myyinvest-red);
+  border: 2px solid var(--myyinvest-red);
+  background-color: var(--myyinvest-white);
+}
+
+.sort-by .input-grp {
+  margin-left: auto;
+}
+
+.sort-by input,
 .sort-by select {
   /* width: 100%; */
   height: fit-content;
@@ -194,5 +226,10 @@ main article .content-wrapper {
   -webkit-appearance: none;
   text-indent: 0.01px;
   text-overflow: "";
+}
+
+.sort-by input:not(:first-child),
+.sort-by select:not(:first-child) {
+  margin-left: var(--base-size);
 }
 </style>

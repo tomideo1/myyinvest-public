@@ -61,11 +61,9 @@ export default {
     },
 
     smallHeight() {
-      // const currentRoute = this.$route.path;
-      // const routes = ["/admin/view-", "transactions"];
-      // if (currentRoute.some((i) => routes.includes(i))) {
-      // if (this.$route.path.some((i) => ["/admin/view-", "/admin/transactions"].includes(i))) {
-      if (this.$route.path.includes("/admin/view-") || this.$route.path.includes("/admin/transactions")) {
+      const currentRoute = this.$route.path;
+      const routes = ["/admin/view-", "/admin/transactions"];
+      if (routes.includes(currentRoute)) {
         return "height: 78vh;";
       } else return "";
     }

@@ -74,7 +74,7 @@
         <div class="project">Cambridge Apartment</div>
         <div class="payment-channel">RIBY</div>
         <div class="status">
-          <div class="status-content" :style="changeBackgroundColor(status)">{{ status }}</div>
+          <div class="status-content" :style="changeBackgroundColor(status[x])">{{ status[x] }}</div>
         </div>
         <div class="date">17th Feb. 2021</div>
       </section>
@@ -92,12 +92,26 @@
 export default {
   data() {
     return {
-      status: "Success",
+      // status: "Success",
       currentPage: 1
     };
   },
 
   methods: {
+    randomizedStatus() {
+      let statuses = ["In progress", "In progress", "Success", "Success", "Success", "Success", "Success", "Failed", "Failed", "Failed", "Failed"];
+      // return statuses[Math.floor(Math.random() * statuses.length)];
+
+      let arr2 = [];
+      while (statuses.length !== 0) {
+        let ri = Math.floor(Math.random() * statuses.length);
+        arr2.push(statuses[ri]);
+        statuses.splice(ri, 1);
+      }
+
+      return (statuses = arr2);
+    },
+
     zeroPrefix(num) {
       if (num < 10) {
         return 0;
@@ -105,9 +119,17 @@ export default {
     },
 
     changeBackgroundColor(val) {
-      if (val.toLowerCase().normalize() === "success") {
+      if (val.toLowerCase().normalize() === "in progress") {
+        return "background-color: gray";
+      } else if (val.toLowerCase().normalize() === "success") {
         return "background-color: var(--myyinvest-green)";
       } else return "background-color: var(--myyinvest-danger)";
+    }
+  },
+
+  computed: {
+    status() {
+      return this.randomizedStatus();
     }
   }
 };

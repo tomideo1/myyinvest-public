@@ -61,6 +61,13 @@ export default {
     transition: all 500ms ease;
     transform: scale(1.2);
   }
+
+  &.avatar-xxl {
+    margin-top: 0.25em;
+    margin-left: 0.25em;
+    height: 17rem !important;
+    width: 17rem !important;
+  }
 }
 .avatar:before {
   content: "";

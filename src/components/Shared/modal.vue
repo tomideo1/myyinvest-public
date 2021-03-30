@@ -10,6 +10,7 @@
     </div>
   </transition>
 </template>
+
 <script>
 const sizes = ["xs", "sm", "md", "lg"];
 export default {
@@ -32,7 +33,8 @@ export default {
         md_noty: 45,
         lg: 60,
         xl: 500
-      }
+      },
+      modalTimeout: null
     };
   },
   props: {

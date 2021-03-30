@@ -74,7 +74,7 @@
 
     h5 {
       margin-bottom: 0.75em !important;
-      font-size: 155% !important;
+      font-size: 145% !important;
     }
   }
 
@@ -126,7 +126,7 @@
   }
 
   &__text {
-    font-size: 2.1em !important;
+    font-size: 2em !important;
     font-weight: 600;
     color: color(main-red);
   }
@@ -134,10 +134,10 @@
   &__btn-share {
     background: color(main-red);
     color: color(bv-white);
-    padding: 0.45em 0.2em;
+    padding: 0.45em 0.25em;
     margin-bottom: 1em;
     width: 100%;
-    font-size: 110%;
+    font-size: 105%;
     font-weight: 500;
     border: 1px solid transparent;
     position: relative;
@@ -225,6 +225,13 @@
       &:nth-of-type(2),
       &:nth-of-type(3) {
         flex: 1.5;
+      }
+
+      @include breakpoint(mobile-only) {
+        &:nth-of-type(4),
+        &:nth-of-type(5) {
+          display: none;
+        }
       }
     }
   }

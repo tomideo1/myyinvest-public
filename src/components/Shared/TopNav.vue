@@ -75,7 +75,7 @@
         </b-navbar-nav>
         <b-navbar-nav>
           <div class=" d-lg-flex flex-row-reverse d-none d-lg-block d-md-block  ">
-            <MainButton type="filled" @click="$router.replace('/register')" class="ml-3" text="Sign Up" size="sm" />
+            <MainButton type="filled" @click="$router.replace('/register')" class="ml-3 mr-3" text="Sign Up" size="sm" />
             <MainButton type="outline" @click="$router.replace('/login')" text="Login " size="sm" />
           </div>
           <div class=" d-block d-lg-none d-md-none ">

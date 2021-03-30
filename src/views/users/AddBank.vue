@@ -61,16 +61,16 @@ export default {
   display: flex;
   align-items: center;
   font-size: 98%;
+  color: color(bv-grey-800);
 
   > i {
-    color: grey;
     margin-right: 0.5em;
   }
 }
 
 .ab-card {
   // border: 1px solid green;
-  max-width: 32em;
+  max-width: 30em;
   margin: 0 auto;
   text-align: center;
   padding-top: 2.5em;
@@ -85,9 +85,9 @@ export default {
   }
 
   &__input-box {
-    padding: 3.25em 2.5em;
-    box-shadow: 0.05rem 0.05rem 0.2rem 0.05rem rgba(0, 0, 0, 0.6);
-    border-radius: 0.75rem;
+    padding: 3em 2.675em 0.5em 2.675em;
+    box-shadow: 0.05rem 0.05rem 0.4rem 0.1rem rgba(0, 0, 0, 0.6);
+    border-radius: 0.9rem;
     margin: 1.25em 0;
 
     // @media screen and (max-width: 599px) {
@@ -95,8 +95,13 @@ export default {
     // }
 
     @include breakpoint(mobile-only) {
-      padding: 2.25em 1.675em;
+      // padding: 2.25em 1.675em;
+      padding: 2.5em 1.675em 0.05em 1.675em;
     }
+  }
+
+  &__input {
+    margin-bottom: 1em !important;
   }
 
   &__btn {

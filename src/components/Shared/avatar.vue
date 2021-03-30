@@ -1,7 +1,8 @@
 <template>
   <div>
     <div :class="`avatar avatar-${size}`" :style="{ background: avatarBackground }">
-      <img v-if="user.image !== null && user.image !== ''" :src="user.image" alt="avatar" />
+      <!-- <img v-if="user.image !== null && user.image !== ''" :src="user.image" alt="avatar" /> -->
+      <img v-if="user.image" :src="user.image" alt="avatar" />
       <div v-else class="text-center ">
         <span>{{ user.firstName | userLetter }}</span>
       </div>

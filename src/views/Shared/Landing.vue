@@ -13,7 +13,7 @@
                   </div>
                 </transition-group>
                 <div class="d-flex flex-row  ">
-                  <main-button text="GET STARTED" size="md" class="mr-4  shadow-3" />
+                  <main-button text="GET STARTED" size="md" class="mr-4 shadow-3" @click="goToLogin" />
                   <main-button type="outline" text="WATCH NOW &#160; &#160; &#x25B6;" size="md" class="" />
                 </div>
               </div>
@@ -65,18 +65,24 @@
           <div class="row ">
             <div class="col-lg-6 col-md-12">
               <span class="d-flex flex-column ">
-                <h3>Co - Invest</h3>
+                <!-- <h3>Co - Invest</h3> -->
+                <h3>Income Plan</h3>
                 <span class="header-underline" style="margin-left: 150px;"></span>
               </span>
-              <p class="w-100 mt-3  font-weight-normal font-poppins" style="line-height:40px">
+              <!-- <p class="w-100 mt-3  font-weight-normal font-poppins" style="line-height:40px">
                 Earn short-term returns when you invest in our vetted fractional real estate’s project. We carry out proper due diligence and carefully vet every real estate project with our governing
                 body, we regulate the process to ensure risks are mitigated to the bear minimum and project is safe for investment.
+              </p> -->
+              <p class="w-100 mt-3  font-weight-normal font-poppins" style="line-height:40px">
+                Earn short term returns within <span class="text-main-red">6 - 12months</span>, when you invest in a vetted Fractional Real Estate project. We carry out proper due diligence and
+                carefully vet every Real Estate project provided by Reputable Property development companies, we regulate the process to ensure risks are mitigated to the bare minimum and projects are
+                safe for investment.
               </p>
 
-              <main-button type="filled" text="Invest Now" size="md" />
+              <main-button type="filled" text="Invest Now" size="md" class="mb-4" @click="goToLogin" />
             </div>
 
-            <div style="position: relative;" class="d-lg-block d-md-none col-lg-5  ">
+            <div style="position: relative;" class="d-lg-block d-md-none col-lg-5 ">
               <img id="co_invest" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001037/mmyyinvest-2.0/images/co-invest_jbjr29.svg" width="600" height="600" class=" mt-n5" />
             </div>
             <div style="position: relative;" class="d-lg-none d-md-block col-md-12 ">
@@ -97,15 +103,21 @@
 
             <div id="co_own" class="col-lg-6  col-md-10  ml-md-5 mt-md-4 mt-lg-0 ml-lg-5">
               <span class="d-flex flex-column text-align-right ">
-                <h3>Co - Own</h3>
+                <!-- <h3>Co - Own</h3> -->
+                <h3>Rental Plan</h3>
                 <span class="header-underline ml-auto"></span>
               </span>
-              <p id="co_own_text" class="w-100 mt-3 text-align-right co-own font-weight-normal font-poppins" style="line-height:40px">
+              <!-- <p id="co_own_text" class="w-100 mt-3 text-align-right co-own font-weight-normal font-poppins" style="line-height:40px">
                 Earn short-term returns when you invest in our vetted fractional real estate’s project. We carry out proper due diligence and carefully vet every real estate project with our governing
                 body, we regulate the process to ensure risks are mitigated to the bear minimum and project is safe for investment.
+              </p> -->
+              <p id="co_own_text" class="w-100 mt-3 text-align-right co-own font-weight-normal font-poppins" style="line-height:40px">
+                Earn Rental Income at every <span class="text-main-red">4 months</span> interval for as long as <span class="text-main-red">10 - 15years</span>, when you Co-Own a property in this
+                category. Properties available for Co-ownership are sought after in high Rental Yield areas. You can also choose to exit on Capital Appreciation through Peer - to - Peer transfer
+                (Secondary Market).
               </p>
 
-              <main-button class="float-right" type="filled" text="Invest Now" size="md" />
+              <main-button class="float-right" type="filled" text="Invest Now" size="md" @click="goToLogin" />
               <img
                 id="co_own_circle"
                 src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg"
@@ -132,14 +144,20 @@
           <div class="row ">
             <div class="col-lg-6  col-md-11  mr-5 d-lg-block d-md-none ">
               <span class="d-flex flex-column align-items-end  ">
-                <h3>Smart Invest</h3>
+                <!-- <h3>Smart Invest</h3> -->
+                <h3>Secondary Market</h3>
                 <span class="header-underline" style="margin-left: 150px;"></span>
               </span>
-              <p id="smart_text" class="w-100 mt-3  text-align-right  font-weight-normal font-poppins" style="line-height:40px">
+              <!-- <p id="smart_text" class="w-100 mt-3  text-align-right  font-weight-normal font-poppins" style="line-height:40px">
                 Smart Invest is an Automated Investment Option that allows you to shape your finances the way you want and allow our technology handle the rest. You can start building your finances
                 with a minimum of
                 <span class="text-main-red">5000 Naira</span>
+              </p> -->
+              <p id="smart_text" class="w-100 mt-3  text-align-right  font-weight-normal font-poppins" style="line-height:40px">
+                This is a marketplace where peer - to - peer transfer of ownership occurs, you can choose to exit your fractional ownership, by selling it off to another individual at the value
+                (price) of the Capital Appreciation of your fractional property
               </p>
+
               <img
                 src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg"
                 width="400"
@@ -351,14 +369,14 @@
           <div class="row p-3">
             <div class="">
               <div class="d-flex flex-column position-relative w-100 " style="top:40%!important">
-                <h1 class="text-main-red m-1 w-100  font-weight-bold text-bold">Build your Net worth</h1>
+                <h3 class="text-main-red m-1 w-100  font-weight-bold text-bold">Build your Net worth</h3>
                 <transition-group tag="div" class="text-slider" name="slide">
                   <div v-for="number in [currentList]" v-bind:key="number">
                     <p class="text-main-red">{{ landingList[Math.abs(currentList) % landingList.length] }}</p>
                   </div>
                 </transition-group>
                 <div class="d-flex flex-row">
-                  <main-button style="border-radius:30px!important; font-size:10px!important" text="GET STARTED" size="sm" class="mr-3  shadow-3" />
+                  <main-button @click="goToLogin" style="border-radius:30px!important; font-size:10px!important" text="GET STARTED" size="sm" class="mr-3  shadow-3" />
                   <main-button style="border-radius:30px!important; font-size:10px!important" type="outline" text="WATCH NOW &#160; &#160; &#x25B6;" size="sm" class="shadow-3" />
                 </div>
               </div>
@@ -406,15 +424,21 @@
           <div class="row ">
             <div class="col-12">
               <span class="d-flex flex-column ">
-                <h5>Co - Invest</h5>
+                <!-- <h5>Co - Invest</h5> -->
+                <h5>Income Plan</h5>
                 <span class="header-underline" style="margin-left: 100px;"></span>
               </span>
-              <p class="w-100 mt-3  font-weight-light font-poppins" style="line-height:30px">
+              <!-- <p class="w-100 mt-3  font-weight-light font-poppins" style="line-height:30px">
                 Earn short-term returns when you invest in our vetted fractional real estate’s project. We carry out proper due diligence and carefully vet every real estate project with our governing
                 body, we regulate the process to ensure risks are mitigated to the bear minimum and project is safe for investment.
+              </p> -->
+              <p class="w-100 mt-3  font-weight-light font-poppins" style="line-height:30px">
+                Earn short term returns within <span class="text-main-red">6 - 12months</span>, when you invest in a vetted Fractional Real Estate project. We carry out proper due diligence and
+                carefully vet every Real Estate project provided by Reputable Property development companies, we regulate the process to ensure risks are mitigated to the bare minimum and projects are
+                safe for investment.
               </p>
 
-              <main-button type="filled" text="Invest Now" class="mt-4" size="md" />
+              <main-button @click="goToLogin" type="filled" text="Invest Now" class="mt-4" size="md" />
             </div>
 
             <div class="col-12  mt-4">
@@ -429,15 +453,21 @@
           <div class="row ">
             <div class="col-12">
               <span class="d-flex flex-column text-align-right ">
-                <h5>Co - Own</h5>
+                <!-- <h5>Co - Own</h5> -->
+                <h5>Rental Plan</h5>
                 <span class="header-underline ml-auto"></span>
               </span>
-              <p class="w-100 mt-3 text-align-right co-own font-weight-light font-poppins" style="line-height:40px">
+              <!-- <p class="w-100 mt-3 text-align-right co-own font-weight-light font-poppins" style="line-height:30px">
                 Earn short-term returns when you invest in our vetted fractional real estate’s project. We carry out proper due diligence and carefully vet every real estate project with our governing
                 body, we regulate the process to ensure risks are mitigated to the bear minimum and project is safe for investment.
+              </p> -->
+              <p class="w-100 mt-3 text-align-right co-own font-weight-light font-poppins" style="line-height:30px">
+                Earn Rental Income at every <span class="text-main-red">4 months</span> interval for as long as <span class="text-main-red">10 - 15years</span>, when you Co-Own a property in this
+                category. Properties available for Co-ownership are sought after in high Rental Yield areas. You can also choose to exit on Capital Appreciation through Peer - to - Peer transfer
+                (Secondary Market).
               </p>
 
-              <main-button class="float-right" type="filled" text="Invest Now" size="md" />
+              <main-button @click="goToLogin" class="float-right" type="filled" text="Invest Now" size="md" />
             </div>
 
             <div class="col-12">
@@ -457,10 +487,14 @@
                 <h5>Smart Invest</h5>
                 <span class="header-underline" style="margin-left: 150px;"></span>
               </span>
-              <p id="smart_text" class="w-100 mt-3  text-align-left  font-weight-light font-poppins" style="line-height:40px">
+              <!-- <p id="smart_text" class="w-100 mt-3  text-align-left  font-weight-light font-poppins" style="line-height:30px">
                 Smart Invest is an Automated Investment Option that allows you to shape your finances the way you want and allow our technology handle the rest. You can start building your finances
                 with a minimum of
                 <span class="text-main-red">5000 Naira</span>
+              </p> -->
+              <p id="smart_text" class="w-100 mt-3  text-align-left  font-weight-normal font-poppins" style="line-height:30px">
+                This is a marketplace where peer - to - peer transfer of ownership occurs, you can choose to exit your fractional ownership, by selling it off to another individual at the value
+                (price) of the Capital Appreciation of your fractional property
               </p>
 
               <main-button type="filled" class="float-left mt-4" text="Learn More" size="md" />
@@ -694,6 +728,9 @@ export default {
     },
     removeClasses(benefitType) {
       this.benefitsArray[benefitType] = [];
+    },
+    goToLogin() {
+      this.$router.push({ name: "login" });
     }
   },
   mounted() {

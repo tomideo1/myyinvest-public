@@ -96,7 +96,7 @@ const actions = {
       profileDetails.email = user.email;
       profileDetails.firstName = user.firstName;
       profileDetails.lastName = user.lastName;
-      console.log(`profile Details = ${JSON.stringify(profileDetails)}`);
+      // console.log(`profile Details = ${JSON.stringify(profileDetails)}`);
       commit("setProfile", profileDetails);
       return res;
     } else {
@@ -118,9 +118,10 @@ const actions = {
   async fetchReferralDetails({ commit }) {
     const res = await Api.get("referrals/get", true);
     if (res.status === 200 || res.status === 201) {
+      console.log(res.data);
       const { referredUsers } = res.data;
       const refData = { ...res.data.referralDetails, referredUsers };
-      // console.log(refData);
+      console.log(refData);
       commit("setReferralDetails", refData);
       // commit("setReferralDetails", res.data.referralDetails);
       // commit("setReferredUsers", res.data.referredUsers);

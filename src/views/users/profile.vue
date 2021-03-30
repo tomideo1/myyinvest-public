@@ -372,7 +372,7 @@ export default {
   },
   mounted() {
     this.states = states;
-    console.log(this.getProfile);
+    // console.log(this.getProfile);
     this.profile = this.getProfile;
     // this.profile.email = this.getUser.email;
     // this.profile.lastName = this.getUser.lastName;

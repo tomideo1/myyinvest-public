@@ -27,10 +27,20 @@ export default {
         tinyMessage: "",
         extras: "",
         status: ""
-      }
+      },
+      modalTimeout: null
     };
   },
   components: { MainIcon, Modal },
+  watch: {
+    // automatically close the modal after 4 seconds
+    notify(newNotify) {
+      if (newNotify && newNotify.show) {
+        clearTimeout(this.modalTimeout);
+        this.modalTimeout = setTimeout(this.closeModal, 4000);
+      }
+    }
+  },
 
   methods: {
     showModal() {
@@ -38,7 +48,10 @@ export default {
     },
     closeModal() {
       console.log("clicked");
-      this.notify.show = false;
+      // this.notify.show = false;
+      if (this.notify) {
+        this.notify.show = false;
+      }
     }
   },
   created() {

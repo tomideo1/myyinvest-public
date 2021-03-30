@@ -18,7 +18,7 @@
         />
       </svg>
     </svg>
-    <p>{{ text }}</p>
+    <p class="bc-card__text">{{ text }}</p>
   </button>
 </template>
 
@@ -41,19 +41,19 @@ export default {
   border-radius: 0.9rem;
   background: color(bv-white);
   color: color(main-red);
-  height: 14.875em;
+  height: 15.25em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 1.1rem;
+  font-size: 1.0325rem;
   transition: box-shadow 0.3s ease;
 
   @media screen and (max-width: 599px) {
-    font-size: 0.9625rem;
+    font-size: 0.9275rem;
   }
 
-  > p {
+  &__text {
     margin-top: 0.8em;
     font-size: inherit !important;
     font-weight: 600;

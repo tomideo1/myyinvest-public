@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import userRoutes from "./users";
+import AdminRoutes from "./Admin";
 Vue.use(VueRouter);
 
 const baseRoutes = [
@@ -108,7 +109,9 @@ const baseRoutes = [
     path: "/change-password",
     name: "confirmPassword",
     component: () => import(/* webpackChunkName: "confirmPassword" */ "../views/Auth/confirmPassword.vue")
-  }
+  },
+
+  ...AdminRoutes
   // {
   //   path: "/about",
   //   name: "About",

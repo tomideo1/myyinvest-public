@@ -3,13 +3,12 @@
     <div class="main-content">
       <section class="content-titles">
         <div class="drag"></div>
-        <div class="title-p">Post Title</div>
-        <div class="image">Post Image</div>
-        <div class="author">Post Author</div>
-        <div class="tags">Post Tags</div>
-        <div class="category">Post Category</div>
-        <div class="status">Post Status</div>
-        <div class="date">Post Date</div>
+        <div class="fname">First Name</div>
+        <div class="lname">Last Name</div>
+        <div class="email">Email Address</div>
+        <div class="phone">Phone Number</div>
+        <div class="dob">Date of Birth</div>
+        <div class="dor">Date of registration</div>
         <div class="options"></div>
       </section>
 
@@ -67,17 +66,13 @@
             </svg>
           </svg>
         </div>
-        <div class="title-p">How to invest seamlessly in Real Estate</div>
-        <div class="image">
-          <img src="@/assets/admin/images/dummy-img.jpg" alt="Content Image" />
-        </div>
-        <div class="author">Valentine Offiah</div>
-        <div class="tags">Real Estates Investments, Finance</div>
-        <div class="category">Blog</div>
-        <div class="status" :style="changeColor(status)">{{ status }}</div>
-        <div class="date">17th Feb. 2021</div>
+        <div class="fname">Valentine</div>
+        <div class="lname">Offiah</div>
+        <div class="email">voffiah@gmail.com</div>
+        <div class="phone">09051843790</div>
+        <div class="dob">17th Feb. 2021</div>
+        <div class="dor">17th Feb. 2021</div>
         <div class="options">
-          <span>OINP</span>
           <span>
             <svg width="17" height="11" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#0baa12">
               <svg xmlns="http://www.w3.org/2000/svg" width="17" height="11">
@@ -127,19 +122,12 @@
 export default {
   data() {
     return {
-      status: "Published",
       currentPage: 1,
       noDeleteModal: true
     };
   },
 
   methods: {
-    changeColor(val) {
-      if (val.toLowerCase().normalize() === "published") {
-        return "color: var(--myyinvest-green)";
-      } else return "color: var(--myyinvest-danger)";
-    },
-
     deleteItem() {
       this.noDeleteModal = !this.noDeleteModal;
     },
@@ -185,7 +173,7 @@ section:not(:last-child) {
 section div {
   display: flex;
   justify-content: center;
-  width: 11%;
+  width: 14%;
   padding: 2px;
 }
 
@@ -193,9 +181,14 @@ section div.drag {
   width: 6%;
 }
 
-section div.title-p,
+/* section div.fname,
+section div.lname,
+section div.email {
+    width: 16%;
+} */
+
 section div.options {
-  width: 14%;
+  width: 10%;
 }
 
 section:first-child {
@@ -214,7 +207,7 @@ section:first-child div {
   font-weight: 600;
 }
 
-/* section:not(:first-child) div.status {
+/* section:not(:first-child) div.dob {
   color: var(--myyinvest-green);
 } */
 

@@ -20,7 +20,7 @@
         </svg>
         <span>Statistics</span>
       </router-link>
-      <router-link to="/admin/user" class="main-route">
+      <div :class="[myPath('-users'), 'main-route']" @click="noUser = !noUser">
         <svg width="10" height="11" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000">
           <svg xmlns="http://www.w3.org/2000/svg" width="10" height="11">
             <path
@@ -31,7 +31,13 @@
           </svg>
         </svg>
         <span>User</span>
-      </router-link>
+      </div>
+      <div class="sub-nav" v-if="!noUser">
+        <!-- <transition name="expand-fly"> -->
+        <router-link to="/admin/view-users"> <span></span> View Users</router-link>
+        <router-link to="/admin/add-users"> <span></span> Add Users</router-link>
+        <!-- </transition> -->
+      </div>
       <router-link to="/admin/projects" class="main-route">
         <span>Projects</span>
       </router-link>
@@ -60,10 +66,10 @@
         <span>Insights</span>
       </div>
       <div class="sub-nav" v-if="!noInsight">
-        <transition name="expand-fly">
-          <router-link to="/admin/view-insights"> <span></span> View Insights</router-link>
-          <router-link to="/admin/add-insights"> <span></span> Add Insights</router-link>
-        </transition>
+        <!-- <transition name="expand-fly"> -->
+        <router-link to="/admin/view-insights"> <span></span> View Insights</router-link>
+        <router-link to="/admin/add-insights"> <span></span> Add Insights</router-link>
+        <!-- </transition> -->
       </div>
       <router-link to="/admin/notifications" class="main-route">
         <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000">
@@ -77,7 +83,7 @@
         </svg>
         <span>Notifications</span>
       </router-link>
-      <router-link to="/admin/talk-to-us" class="main-route">
+      <div :class="[myPath('-posts'), 'main-route']" @click="noPost = !noPost">
         <svg width="11" height="11" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000">
           <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11">
             <path
@@ -88,7 +94,13 @@
           </svg>
         </svg>
         <span>Talk to us</span>
-      </router-link>
+      </div>
+      <div class="sub-nav" v-if="!noPost">
+        <!-- <transition name="expand-fly"> -->
+        <router-link to="/admin/view-posts"> <span></span> View Posts</router-link>
+        <router-link to="/admin/add-posts"> <span></span> Add Posts</router-link>
+        <!-- </transition> -->
+      </div>
       <router-link to="/admin/newsletter" class="main-route">
         <svg width="14" height="10" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10">
@@ -109,7 +121,9 @@
 export default {
   data() {
     return {
-      noInsight: true
+      noInsight: true,
+      noPost: true,
+      noUser: true
     };
   },
 

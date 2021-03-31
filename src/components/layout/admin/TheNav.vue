@@ -33,6 +33,15 @@ export default {
         case "/admin/add-insights":
           val = "Add Insights";
           break;
+        case "/admin/view-users":
+          val = "View Users";
+          break;
+        case "/admin/add-users":
+          val = "Add Users";
+          break;
+        case "/admin/transactions":
+          val = "Transactions";
+          break;
         default:
       }
       return val;

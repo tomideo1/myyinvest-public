@@ -3,12 +3,12 @@
     <div class="main-content">
       <section class="content-titles">
         <div class="drag"></div>
-        <div class="title-p">Post Title</div>
-        <div class="image">Post Image</div>
-        <div class="author">Post Author</div>
-        <div class="tags">Post Tags</div>
-        <div class="category">Post Category</div>
-        <div class="status">Post Status</div>
+        <div class="name">Post Name</div>
+        <!-- <div class="image">Post Image</div> -->
+        <div class="author">Written by</div>
+        <!-- <div class="tags">Post Tags</div> -->
+        <div class="content">Post Content</div>
+        <!-- <div class="status">Post Status</div> -->
         <div class="date">Post Date</div>
         <div class="options"></div>
       </section>
@@ -67,14 +67,17 @@
             </svg>
           </svg>
         </div>
-        <div class="title-p">How to invest seamlessly in Real Estate</div>
-        <div class="image">
+        <div class="name">How to invest seamlessly in Real Estate</div>
+        <!-- <div class="image">
           <img src="@/assets/admin/images/dummy-img.jpg" alt="Content Image" />
-        </div>
+        </div> -->
         <div class="author">Valentine Offiah</div>
-        <div class="tags">Real Estates Investments, Finance</div>
-        <div class="category">Blog</div>
-        <div class="status" :style="changeColor(status)">{{ status }}</div>
+        <!-- <div class="tags">Real Estates Investments, Finance</div> -->
+        <div class="content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus alias qui excepturi obcaecati, facere fugit asperiores perspiciatis ipsam earum, nihil iusto, numquam quo. Earum tempore a,
+          ut odio debitis repellendus.
+        </div>
+        <!-- <div class="status">Published</div> -->
         <div class="date">17th Feb. 2021</div>
         <div class="options">
           <span>OINP</span>
@@ -127,19 +130,12 @@
 export default {
   data() {
     return {
-      status: "Published",
       currentPage: 1,
       noDeleteModal: true
     };
   },
 
   methods: {
-    changeColor(val) {
-      if (val.toLowerCase().normalize() === "published") {
-        return "color: var(--myyinvest-green)";
-      } else return "color: var(--myyinvest-danger)";
-    },
-
     deleteItem() {
       this.noDeleteModal = !this.noDeleteModal;
     },
@@ -185,7 +181,7 @@ section:not(:last-child) {
 section div {
   display: flex;
   justify-content: center;
-  width: 11%;
+  width: 16%;
   padding: 2px;
 }
 
@@ -193,9 +189,8 @@ section div.drag {
   width: 6%;
 }
 
-section div.title-p,
-section div.options {
-  width: 14%;
+section div.content {
+  width: 30%;
 }
 
 section:first-child {
@@ -214,9 +209,13 @@ section:first-child div {
   font-weight: 600;
 }
 
-/* section:not(:first-child) div.status {
-  color: var(--myyinvest-green);
+/* section div.options {
+  width: 14%;
 } */
+
+section:not(:first-child) div.status {
+  color: var(--myyinvest-red);
+}
 
 section div img {
   width: 100%;

@@ -190,7 +190,7 @@
 
             <div class="col-lg-6 col-md-6 col-12">
               <!-- <main-input class="col-md-12" label="Relationship" v-model="kin.relationship" /> -->
-              <main-input class="col-md-12" label="Relationship" v-model="profile.relationship" />
+              <main-input class="col-md-12" label="Relationship To Kin" v-model="profile.relationshipToKin" />
             </div>
 
             <div class="col-lg-6 col-md-6 col-12">
@@ -245,7 +245,7 @@ export default {
         firstNameOfKin: "",
         lastName: "",
         lastNameOfKin: "",
-        relationship: "",
+        relationshipToKin: "",
         gender: "",
         phoneNumber: "",
         phoneNumberOfKin: "",
@@ -325,11 +325,11 @@ export default {
             // relationship: this.kin.relationship,
             // email: this.kin.email,
             // phoneNumber: this.kin.phoneNumber
-            firstName: this.profile.firstNameOfKin,
-            lastName: this.profile.lastNameOfKin,
-            relationship: this.profile.relationship,
-            email: this.profile.emailOfKin,
-            phoneNumber: this.profile.phoneNumberOfKin
+            firstNameOfKin: this.profile.firstNameOfKin,
+            lastNameOfKin: this.profile.lastNameOfKin,
+            relationshipToKin: this.profile.relationshipToKin,
+            emailOfKin: this.profile.emailOfKin,
+            phoneNumberOfKin: this.profile.phoneNumberOfKin
           });
           break;
         default:

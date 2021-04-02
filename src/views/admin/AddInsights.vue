@@ -3,29 +3,29 @@
     <form class="wrapper">
       <div class="left-area">
         <fieldset class="input-grp">
-          <legend>Post Title</legend>
+          <legend><label for="ptitle">Post Title</label></legend>
           <input type="text" id="ptitle" placeholder="How to invest in Real Estates Seamlessly" />
         </fieldset>
 
         <fieldset class="input-grp">
-          <legend>Post Author</legend>
+          <legend><label for="pauthor">Post Author</label></legend>
           <input type="text" id="pauthor" placeholder="Valentine Offiah" />
         </fieldset>
 
         <fieldset class="input-grp">
-          <legend>Post Tags</legend>
+          <legend><label for="ptags">Post Tags</label></legend>
           <input type="text" id="ptags" placeholder="Investments, Finance, Money, Real Estates" />
         </fieldset>
 
         <fieldset class="input-grp">
-          <legend>Post Status</legend>
+          <legend><label for="pstatus">Post Status</label></legend>
           <select name="" id="pstatus">
             <option key="category.value" value="category.value">Option</option>
           </select>
         </fieldset>
 
         <fieldset class="input-grp">
-          <legend>Post Category</legend>
+          <legend><label for="pcategory">Post Category</label></legend>
           <select name="" id="pcategory">
             <option key="category.value" value="category.value">Option</option>
           </select>
@@ -34,21 +34,13 @@
       <div class="right-area">
         <div class="upload">
           <div class="upload-window">
-            <svg width="56" height="49" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#6b6a6a">
-              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="49">
-                <path
-                  paint-order="stroke fill markers"
-                  fill-rule="evenodd"
-                  d="M55.018 12.807v30.75a5.127 5.127 0 0 1-5.125 5.126H5.475A5.126 5.126 0 0 1 .35 43.558V12.807a5.125 5.125 0 0 1 5.125-5.125h9.396l1.313-3.513A5.119 5.119 0 0 1 20.978.848h13.4a5.118 5.118 0 0 1 4.795 3.32l1.324 3.514h9.396a5.126 5.126 0 0 1 5.125 5.125zM40.497 28.182c0-7.068-5.745-12.813-12.813-12.813-7.07 0-12.813 5.745-12.813 12.813 0 7.069 5.744 12.813 12.813 12.813 7.068 0 12.813-5.744 12.813-12.813zm-3.417 0c0 5.179-4.218 9.396-9.396 9.396-5.18 0-9.396-4.217-9.396-9.396 0-5.178 4.217-9.396 9.396-9.396 5.178 0 9.396 4.218 9.396 9.396z"
-                />
-              </svg>
-            </svg>
+            <img src="@/assets/admin/icons/camera.svg" alt="User Image Preview" />
           </div>
-          <input type="image" src="" alt="Select Image" />
+          <input type="file" name="" id="" />
         </div>
 
         <fieldset class="input-grp pcontent">
-          <legend>Post Content</legend>
+          <legend><label for="pcontent">Post Content</label></legend>
           <textarea
             name=""
             id="pcontent"
@@ -64,7 +56,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+  metaInfo: {
+    title: "Myyinvest - Add Insights (Admin)",
+    titleTemplate: null
+  }
+};
 </script>
 
 <style scoped>
@@ -79,7 +76,6 @@ export default {};
 .wrapper {
   display: grid;
   grid-template-columns: 60% 40%;
-  /* grid-template-columns: repeat(2, 50%); */
   padding: var(--base-size);
 }
 
@@ -108,7 +104,11 @@ legend {
   width: max-content;
   padding: 0 5px;
   font-size: var(--font-normal);
-  /* border: 1px solid red; */
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0;
 }
 
 input,
@@ -144,11 +144,6 @@ select::-ms-expand {
   display: none;
 }
 
-/* option:hover {
-  padding: 5px;
-  background-color: var(--myyinvest-red-fade);
-} */
-
 .upload {
   width: 150px;
   height: fit-content;
@@ -157,7 +152,6 @@ select::-ms-expand {
 }
 
 .upload-window {
-  /* position: relative; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -165,6 +159,7 @@ select::-ms-expand {
   height: 150px;
   border: 1px solid gray;
   border-radius: 10px;
+  object-fit: contain;
 }
 
 .upload input,
@@ -172,10 +167,6 @@ button {
   margin-top: 10px;
   color: var(--myyinvest-white);
   background-color: var(--myyinvest-red);
-}
-
-.upload input {
-  background-image: url("/assets/admin/icons/clip.svg");
 }
 
 .pcontent {

@@ -2,7 +2,6 @@
   <the-admin-layout>
     <div class="main-content">
       <section class="content-titles">
-        <div class="drag"></div>
         <div class="sn">S/N</div>
         <div class="email">Email Address</div>
         <div class="investment-cost">Investment Cost</div>
@@ -14,59 +13,6 @@
       </section>
 
       <section class="contents" v-for="x in 10" :key="x">
-        <div class="drag">
-          <svg width="17" height="22" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="394 756 17 22">
-            <svg width="5" height="5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000" x="394" y="756">
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="5" height="5">
-                <path
-                  paint-order="stroke fill markers"
-                  fill-rule="evenodd"
-                  d="M2.425 4.8A2.023 2.023 0 0 1 .4 2.775C.4 1.655 1.305.75 2.425.75c1.12 0 2.025.905 2.025 2.025 0 1.12-.906 2.025-2.025 2.025z"
-                />
-              </svg></svg
-            ><svg width="5" height="5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000" x="406" y="756">
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="5" height="5">
-                <path
-                  paint-order="stroke fill markers"
-                  fill-rule="evenodd"
-                  d="M2.575 4.8A2.023 2.023 0 0 1 .55 2.775C.55 1.655 1.455.75 2.575.75c1.12 0 2.025.905 2.025 2.025 0 1.12-.905 2.025-2.025 2.025z"
-                />
-              </svg></svg
-            ><svg width="5" height="5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000" x="406" y="764">
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="5" height="5">
-                <path
-                  paint-order="stroke fill markers"
-                  fill-rule="evenodd"
-                  d="M2.575 4.9A2.023 2.023 0 0 1 .55 2.875C.55 1.755 1.455.85 2.575.85c1.12 0 2.025.905 2.025 2.025 0 1.12-.905 2.025-2.025 2.025z"
-                />
-              </svg></svg
-            ><svg width="5" height="5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000" x="394" y="764">
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="5" height="5">
-                <path
-                  paint-order="stroke fill markers"
-                  fill-rule="evenodd"
-                  d="M2.425 4.9A2.023 2.023 0 0 1 .4 2.875C.4 1.755 1.305.85 2.425.85c1.12 0 2.025.905 2.025 2.025 0 1.12-.906 2.025-2.025 2.025z"
-                />
-              </svg></svg
-            ><svg width="5" height="6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000" x="394" y="772">
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="5" height="6">
-                <path
-                  paint-order="stroke fill markers"
-                  fill-rule="evenodd"
-                  d="M2.425 5A2.023 2.023 0 0 1 .4 2.975C.4 1.855 1.305.95 2.425.95c1.12 0 2.025.905 2.025 2.025C4.45 4.095 3.544 5 2.425 5z"
-                />
-              </svg></svg
-            ><svg width="5" height="6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000" x="406" y="772">
-              <svg xmlns="http://www.w3.org/2000/svg" width="5" height="6">
-                <path
-                  paint-order="stroke fill markers"
-                  fill-rule="evenodd"
-                  d="M2.575 5A2.023 2.023 0 0 1 .55 2.975C.55 1.855 1.455.95 2.575.95c1.12 0 2.025.905 2.025 2.025C4.6 4.095 3.695 5 2.575 5z"
-                />
-              </svg>
-            </svg>
-          </svg>
-        </div>
         <div class="sn">{{ zeroPrefix(x) }}{{ x }}</div>
         <div class="email">voffiah@gmail.com</div>
         <div class="investment-cost">₦70000</div>
@@ -90,17 +36,22 @@
 
 <script>
 export default {
+  metaInfo: {
+    title: "Myyinvest - Transactions (Admin)",
+    titleTemplate: null
+  },
+
   data() {
     return {
       // status: "Success",
-      currentPage: 1
+      currentPage: 1,
+      totalpages: 5
     };
   },
 
   methods: {
     randomizedStatus() {
       let statuses = ["In progress", "In progress", "Success", "Success", "Success", "Success", "Success", "Failed", "Failed", "Failed", "Failed"];
-      // return statuses[Math.floor(Math.random() * statuses.length)];
 
       let arr2 = [];
       while (statuses.length !== 0) {
@@ -124,12 +75,32 @@ export default {
       } else if (val.toLowerCase().normalize() === "success") {
         return "background-color: var(--myyinvest-green)";
       } else return "background-color: var(--myyinvest-danger)";
+    },
+
+    previousPage() {
+      if (!this.isFirstPage) {
+        this.currentPage--;
+      }
+    },
+
+    nextPage() {
+      if (!this.isLastPage) {
+        this.currentPage++;
+      }
     }
   },
 
   computed: {
     status() {
       return this.randomizedStatus();
+    },
+
+    isFirstPage() {
+      return this.currentPage === 1;
+    },
+
+    isLastPage() {
+      return this.currentPage === this.totalpages;
     }
   }
 };
@@ -137,8 +108,7 @@ export default {
 
 <style scoped>
 .main-content {
-  /* width: 100%; */
-  height: 95%;
+  /* height: 95%; */
   padding: 1px;
   overflow-y: auto;
   -ms-overflow-style: none;
@@ -158,6 +128,10 @@ section {
   border-radius: 5px;
 }
 
+section:not(:first-child) div.investment-cost {
+  color: var(--myyinvest-green);
+}
+
 section:not(:last-child) {
   margin-bottom: var(--base-size);
 }
@@ -169,21 +143,17 @@ section div {
   padding: 2px;
 }
 
-section div.drag {
-  width: 6%;
-}
-
 section div.sn {
   width: 8%;
 }
 
 section div.email,
 section div.payment-channel {
-  width: 14%;
+  width: 16%;
 }
 
 section div.project {
-  width: 16%;
+  width: 18%;
 }
 
 section:first-child {
@@ -225,6 +195,10 @@ section div.status .status-content {
   border-radius: 5px;
   color: var(--myyinvest-red);
   background-color: var(--myinvest-white);
+}
+
+.pagination button:first-child {
+  margin-left: auto;
 }
 
 .pagination button:not(:first-child) {

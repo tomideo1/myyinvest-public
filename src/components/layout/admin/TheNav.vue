@@ -1,19 +1,20 @@
 <template>
   <div class="wrapper">
     <div class="nav-icon">
-      <img src="@/assets/admin/images/myyinvest-logo.jpg" alt="Myyinvest Logo" />
+      <!-- <img src="@/assets/admin/images/myyinvest-logo.jpg" alt="Myyinvest Logo" /> -->
+      <img style="cursor: pointer" width="162" @click="$router.replace('/')" height="26" src="@/assets/logos/Myylogo2.png" alt="Logo" />
     </div>
     <div class="nav-details">
       <div class="nav-title">
         <span>{{ name }}</span>
       </div>
-      <div class="nav-profile">
+      <!-- <div class="nav-profile">
         <div>
           <p class="greetings">Hi, Valentine Offiah</p>
           <p class="ranking">Author</p>
         </div>
         <img src="@/assets/admin/images/profile-pic.svg" alt="User Profile Picture" />
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -23,6 +24,7 @@ export default {
   computed: {
     name() {
       let val = "";
+      // replace with arr.include()
       switch (this.$route.path) {
         case "/admin":
           val = "Overview";
@@ -31,18 +33,34 @@ export default {
           val = "View Insights";
           break;
         case "/admin/add-insights":
-          val = "Add Insights";
+          val = "Add Insight";
           break;
-        case "/admin/view-users":
-          val = "View Users";
+        case "/admin/all-users":
+          val = "All Users";
           break;
-        case "/admin/add-users":
-          val = "Add Users";
+        case "/admin/users/":
+          val = "User Details";
           break;
         case "/admin/transactions":
           val = "Transactions";
           break;
+        case "/admin/view-notifications":
+          val = "View Notifications";
+          break;
+        case "/admin/add-notifications":
+          val = "Add Notification";
+          break;
+        case "/admin/view-faqs":
+          val = "View FAQs";
+          break;
+        case "/admin/add-faqs":
+          val = "Add FAQ";
+          break;
+        case "/admin/newsletters":
+          val = "Newsletters";
+          break;
         default:
+          val = "User Details";
       }
       return val;
     }
@@ -65,11 +83,11 @@ div.nav-icon {
   grid-row: 1 / 2;
 }
 
-.nav-icon img {
+/* .nav-icon img {
   width: 40px;
   height: 30px;
   object-fit: contain;
-}
+} */
 
 div.nav-details {
   display: flex;
@@ -82,12 +100,12 @@ div.nav-details {
 }
 
 div.nav-details div.nav-title {
-  width: 60%;
-  padding-right: calc(2 * var(--base-size));
-  text-align: right;
+  /* width: 60%; */
+  /* padding-right: calc(2 * var(--base-size)); */
+  /* text-align: right; */
 }
 
-div.nav-details div.nav-profile {
+/* div.nav-details div.nav-profile {
   display: flex;
   flex-direction: row;
   justify-content: right;
@@ -95,13 +113,13 @@ div.nav-details div.nav-profile {
   width: 40%;
   margin-right: var(--base-size);
   color: gray;
-}
+} */
 
 /* div.nav-details div.nav-profile div {
   margin-left: auto !important;
 } */
 
-div.nav-details div.nav-profile .greetings {
+/* div.nav-details div.nav-profile .greetings {
   margin: 0;
   font-size: var(--font-normal) !important;
 }
@@ -116,5 +134,5 @@ div.nav-details div.nav-profile img {
   width: 40px;
   height: 40px;
   margin-left: var(--base-size);
-}
+} */
 </style>

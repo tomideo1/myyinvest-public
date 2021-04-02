@@ -2,17 +2,17 @@
   <the-admin-layout>
     <form class="wrapper">
       <fieldset class="input-grp">
-        <legend>Post Name</legend>
+        <legend><label for="pname">Post Name</label></legend>
         <input type="text" id="pname" placeholder="How to buy tokens in Myyinvest" />
       </fieldset>
 
       <fieldset class="input-grp">
-        <legend>Written by</legend>
+        <legend><label for="pauthor">Written by</label></legend>
         <input type="text" id="pauthor" placeholder="Valentine Offiah" />
       </fieldset>
 
       <fieldset class="input-grp pcontent">
-        <legend>Post Content</legend>
+        <legend><label for="pcontent">Post Content</label></legend>
         <textarea
           name=""
           id="pcontent"
@@ -27,7 +27,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+  metaInfo: {
+    title: "Myyinvest - Add FAQs (Admin)",
+    titleTemplate: null
+  }
+};
 </script>
 
 <style scoped>
@@ -46,8 +51,14 @@ export default {};
   align-items: center;
   width: 60%;
   margin: var(--base-size) auto 0;
-  /* 200px */
-  /* border: 1px solid var(--myyinvest-red-fade); */
+  padding: 1px;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 fieldset {
@@ -69,6 +80,11 @@ legend {
   padding: 0 5px;
   font-size: var(--font-normal);
   /* border: 1px solid red; */
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0;
 }
 
 input,

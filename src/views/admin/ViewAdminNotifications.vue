@@ -3,12 +3,9 @@
     <div class="main-content">
       <section class="content-titles">
         <div class="sn">S/N</div>
-        <div class="title-p">Post Title</div>
+        <div class="title-p">Post Name</div>
         <div class="image">Post Image</div>
-        <div class="author">Post Author</div>
-        <div class="tags">Post Tags</div>
-        <div class="category">Post Category</div>
-        <div class="status">Post Status</div>
+        <div class="content">Post Content</div>
         <div class="date">Post Date</div>
         <div class="options"></div>
       </section>
@@ -19,10 +16,10 @@
         <div class="image">
           <img src="@/assets/admin/images/dummy-img.jpg" alt="Content Image" />
         </div>
-        <div class="author">Valentine Offiah</div>
-        <div class="tags">Real Estates Investments, Finance</div>
-        <div class="category">Blog</div>
-        <div class="status" :style="changeColor(status)">{{ status }}</div>
+        <div class="content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, accusamus. Reiciendis assumenda quae quod labore sit ut earum quos, voluptatem, cupiditate culpa magnam? Consectetur provident
+          odio optio omnis, accusamus dolor.
+        </div>
         <div class="date">17th Feb. 2021</div>
         <div class="options">
           <span>OINP</span>
@@ -74,7 +71,7 @@
 <script>
 export default {
   metaInfo: {
-    title: "Myyinvest - View Insights (Admin)",
+    title: "Myyinvest - View Notifications (Admin)",
     titleTemplate: null
   },
 
@@ -116,6 +113,7 @@ export default {
 
 <style scoped>
 .main-content {
+  /* height: 95%; */
   padding: 1px;
   overflow-y: auto;
   -ms-overflow-style: none;
@@ -142,17 +140,21 @@ section:not(:last-child) {
 section div {
   display: flex;
   justify-content: center;
-  width: 11%;
+  width: 20%;
   padding: 2px;
 }
 
 section div.sn {
-  width: 6%;
+  width: 8%;
 }
 
-section div.title-p,
+section div.content {
+  width: 36%;
+}
+
+section div.image,
 section div.options {
-  width: 14%;
+  width: 18%;
 }
 
 section:first-child {

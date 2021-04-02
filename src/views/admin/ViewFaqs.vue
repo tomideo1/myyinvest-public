@@ -3,26 +3,21 @@
     <div class="main-content">
       <section class="content-titles">
         <div class="sn">S/N</div>
-        <div class="title-p">Post Title</div>
-        <div class="image">Post Image</div>
-        <div class="author">Post Author</div>
-        <div class="tags">Post Tags</div>
-        <div class="category">Post Category</div>
-        <div class="status">Post Status</div>
+        <div class="name">Post Name</div>
+        <div class="author">Written by</div>
+        <div class="content">Post Content</div>
         <div class="date">Post Date</div>
         <div class="options"></div>
       </section>
 
       <section class="contents" v-for="x in 10" :key="x">
         <div class="sn">{{ zeroPrefix(x) }}{{ x }}</div>
-        <div class="title-p">How to invest seamlessly in Real Estate</div>
-        <div class="image">
-          <img src="@/assets/admin/images/dummy-img.jpg" alt="Content Image" />
-        </div>
+        <div class="name">How to invest seamlessly in Real Estate</div>
         <div class="author">Valentine Offiah</div>
-        <div class="tags">Real Estates Investments, Finance</div>
-        <div class="category">Blog</div>
-        <div class="status" :style="changeColor(status)">{{ status }}</div>
+        <div class="content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus alias qui excepturi obcaecati, facere fugit asperiores perspiciatis ipsam earum, nihil iusto, numquam quo. Earum tempore a,
+          ut odio debitis repellendus.
+        </div>
         <div class="date">17th Feb. 2021</div>
         <div class="options">
           <span>OINP</span>
@@ -37,8 +32,8 @@
               </svg>
             </svg>
           </span>
-          <span>
-            <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000" @click="deleteItem">
+          <span @click="deleteItem">
+            <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000">
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="14">
                 <path
                   paint-order="stroke fill markers"
@@ -74,13 +69,12 @@
 <script>
 export default {
   metaInfo: {
-    title: "Myyinvest - View Insights (Admin)",
+    title: "Myyinvest - View FAQs (Admin)",
     titleTemplate: null
   },
 
   data() {
     return {
-      status: "Published",
       currentPage: 1,
       noDeleteModal: true
     };
@@ -91,12 +85,6 @@ export default {
       if (num < 10) {
         return 0;
       } else return "";
-    },
-
-    changeColor(val) {
-      if (val.toLowerCase().normalize() === "published") {
-        return "color: var(--myyinvest-green)";
-      } else return "color: var(--myyinvest-danger)";
     },
 
     deleteItem() {
@@ -142,7 +130,7 @@ section:not(:last-child) {
 section div {
   display: flex;
   justify-content: center;
-  width: 11%;
+  width: 16%;
   padding: 2px;
 }
 
@@ -150,9 +138,8 @@ section div.sn {
   width: 6%;
 }
 
-section div.title-p,
-section div.options {
-  width: 14%;
+section div.content {
+  width: 30%;
 }
 
 section:first-child {
@@ -169,6 +156,10 @@ section.contents {
 section:first-child div {
   color: gray;
   font-weight: 600;
+}
+
+section:not(:first-child) div.status {
+  color: var(--myyinvest-red);
 }
 
 section div img {
@@ -217,6 +208,7 @@ div.options {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
+  /* opacity: 0.5; */
   z-index: 1111;
 }
 

@@ -19,6 +19,14 @@ Vue.use(BootstrapVue);
 import TheAdminLayout from "./layouts/TheAdminLayout.vue";
 Vue.component("TheAdminLayout", TheAdminLayout);
 
+import VueMeta from "vue-meta";
+
+Vue.use(VueMeta);
+// Vue.use(VueMeta, {
+//   // optional pluginOptions
+//   refreshOnceOnNavigation: true
+// });
+
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin);
 

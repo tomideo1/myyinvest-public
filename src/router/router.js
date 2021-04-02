@@ -111,7 +111,7 @@ const baseRoutes = [
     component: () => import(/* webpackChunkName: "confirmPassword" */ "../views/Auth/confirmPassword.vue")
   },
 
-  ...AdminRoutes
+  ...AdminRoutes,
   // {
   //   path: "/about",
   //   name: "About",
@@ -119,7 +119,13 @@ const baseRoutes = [
   //   // this generates a separate chunk (about.[hash].js) for this route
   //   // which is lazy-loaded when the route is visited.
   // }
+  {
+    path: "/:pathMatch(.*)*",
+    name: "PageNotFound",
+    component: () => import("../views/Shared/PageNotFound.vue")
+  }
 ];
+
 const routes = baseRoutes.concat(userRoutes);
 const router = new VueRouter({
   mode: "history",
@@ -128,5 +134,10 @@ const router = new VueRouter({
   linkActiveClass: "active",
   linkExactActiveClass: "exact-active"
 });
+
+router.resolve({
+  name: "PageNotFound"
+  // params: { pathMatch: [""]}
+}).href;
 
 export default router;

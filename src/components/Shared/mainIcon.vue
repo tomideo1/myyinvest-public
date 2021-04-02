@@ -24,9 +24,10 @@
     <empty-noty v-if="name === 'empty-noty'"></empty-noty>
     <trans-icon v-if="name === 'trans-icon'"></trans-icon>
     <gift-card v-if="name === 'gift-card'"></gift-card>
-    <socials v-if="name === 'socials'"></socials>
+    <socials v-if="name === 'socials'" :refText="refText" :refLink="refLink"></socials>
     <camera v-if="name === 'camera'"></camera>
     <attachment v-if="name === 'attachment'"></attachment>
+    <bank-card v-if="name === 'bank-card'"></bank-card>
   </span>
 </template>
 
@@ -41,6 +42,12 @@ export default {
     },
     active: {
       type: Boolean
+    },
+    refText: {
+      type: String
+    },
+    refLink: {
+      type: String
     }
   },
   components: {
@@ -70,7 +77,8 @@ export default {
     giftCard: () => import("@/components/__private__/media/giftCard"),
     socials: () => import("@/components/__private__/media/socials"),
     camera: () => import("@/components/__private__/media/camera"),
-    attachment: () => import("@/components/__private__/media/attachment")
+    attachment: () => import("@/components/__private__/media/attachment"),
+    bankCard: () => import("@/components/__private__/media/bankCard")
   }
 };
 </script>

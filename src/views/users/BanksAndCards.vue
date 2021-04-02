@@ -20,6 +20,7 @@
       <div :class="['ac-modal', { 'ac-modal--hidden': !showModal }]">
         <div class="ac-modal__dialog-box">
           <div class="ac-modal__info-container">
+            <MainIcon name="bank-card" size="lg" class="ac-modal__bank-card" />
             <p class="ac-modal__title">Add Card</p>
             <p class="ac-modal__message">To add and verify your card, <span>N100</span> will be charged and added to your wallet.</p>
           </div>
@@ -38,6 +39,7 @@
 <script>
 import BankItem from "../../components/BankItem.vue";
 import AddCardItem from "../../components/AddCardItem";
+import MainIcon from "@/components/Shared/mainIcon.vue";
 import { mapGetters } from "vuex";
 import paystack from "vue-paystack";
 
@@ -46,6 +48,7 @@ export default {
   components: {
     AddCardItem,
     BankItem,
+    MainIcon,
     paystack
   },
   data() {
@@ -86,5 +89,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped></style>

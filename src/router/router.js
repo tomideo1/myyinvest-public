@@ -3,8 +3,9 @@ import VueRouter from "vue-router";
 import userRoutes from "./users";
 import middlewarePipeline from "./kernel/middlewarePipeline";
 import { store } from "../store/store";
-import NProgress from "nprogress";
-import "nprogress/nprogress.css";
+// import NProgress from "nprogress";
+// import "nprogress/nprogress.css";
+import progressFns from "@/utils/helper.js";
 
 Vue.use(VueRouter);
 
@@ -122,6 +123,9 @@ const baseRoutes = [
   //   // which is lazy-loaded when the route is visited.
   // }
 ];
+
+const { start: progressStart, stop: progressStop } = progressFns();
+
 const routes = baseRoutes.concat(userRoutes);
 const router = new VueRouter({
   mode: "history",
@@ -133,14 +137,16 @@ const router = new VueRouter({
 
 router.beforeResolve((to, from, next) => {
   // Start the route progress bar.
-  NProgress.start();
+  // NProgress.start();
+  progressStart();
   next();
 });
 
 /* eslint-disable no-unused-vars */
 router.afterEach((to, from) => {
   // Complete the animation of the route progress bar.
-  NProgress.done();
+  // NProgress.done();
+  progressStop();
 });
 
 router.beforeEach((to, from, next) => {

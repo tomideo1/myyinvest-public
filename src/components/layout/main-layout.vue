@@ -87,11 +87,12 @@
                 </a>
                 <div class="dropdown-menu w-25 dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                   <router-link class="dropdown-item" :to="{ name: 'settings' }">
-                    <main-icon name="cog" class="settings-icon" />
+                    <main-icon name="cog" class="settings-icon" size="xs" />
                     Settings
                   </router-link>
                   <a class="dropdown-item" @click="handleLogout" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <!-- <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> -->
+                    <i class="fas fa-sign-out-alt fa-fw text-gray-400"></i>
                     Logout
                   </a>
                 </div>
@@ -228,12 +229,16 @@ export default {
 }
 
 .settings-icon {
-  margin-left: -0.3em;
-  margin-right: 0.15em;
+  // margin-right: 0.15em;
   filter: none !important;
 }
 
-// modifying default bootstrap hover and active styles for dropdown-item
+// modifying the default bootstrap dropdown menu size
+.dropdown-menu {
+  max-width: 20em !important;
+}
+
+// modifying default bootstrap dropdown-item hover and active styles and our custom icons
 .dropdown-item {
   color: color(bv-grey-800);
 
@@ -244,6 +249,12 @@ export default {
   &.active {
     color: color(bv-white) !important;
     pointer-events: none;
+  }
+
+  i,
+  .icon {
+    // .icon is from main-icon and i tag is for the font-awesome icon
+    margin-right: 0.4em;
   }
 }
 </style>

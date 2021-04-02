@@ -4,14 +4,16 @@
   min-height: 80vh;
   border-radius: 0.7rem;
   padding: 1.5em 1.25em;
-  // display: flex;
-  // flex-direction: column;
 
   // @media screen and (max-width: 768px) {
   //   padding: 1em;
   // }
   @include breakpoint(tablet-potrait-down) {
     padding: 1em;
+  }
+
+  @include breakpoint(mobile-only) {
+    font-size: 0.85rem;
   }
 }
 
@@ -58,11 +60,10 @@
   }
 
   &__main {
-    // border: 1px solid blue;
     display: flex;
 
     > div:first-child {
-      flex: 1.75;
+      flex: 1.625;
     }
 
     > :last-child {
@@ -72,15 +73,34 @@
       align-items: flex-end;
     }
 
-    h5 {
-      margin-bottom: 0.75em !important;
-      font-size: 145% !important;
+    &--referral > div:first-child {
+      flex: 1.375;
+
+      @include breakpoint(mobile-only) {
+        flex: 1.05;
+      }
     }
+  }
+
+  &__page-title {
+    margin-bottom: 1.25em !important;
+    // font-size: 145% !important;
+    font-size: 1.4em !important;
   }
 
   &__amount {
     display: flex;
     align-items: center;
+  }
+
+  &__naira {
+    width: 1.325em;
+    height: 1.325em;
+
+    @include breakpoint(mobile-only) {
+      width: 1em;
+      height: 1em;
+    }
   }
 
   &__summary {
@@ -117,7 +137,7 @@
   &__alt-text {
     color: #686565;
     font-weight: 500;
-    margin-bottom: 0.25em;
+    margin-bottom: 0.125em;
     font-size: 99% !important;
 
     span {
@@ -126,18 +146,23 @@
   }
 
   &__text {
-    font-size: 2em !important;
+    font-size: 1.925rem !important;
     font-weight: 600;
     color: color(main-red);
+
+    @include breakpoint(mobile-only) {
+      font-size: 1.45rem !important;
+    }
   }
 
-  &__btn-share {
+  &__share-div {
     background: color(main-red);
     color: color(bv-white);
-    padding: 0.45em 0.25em;
-    margin-bottom: 1em;
+    padding: 0.4em 0.25em;
+    margin-bottom: 0.8em;
     width: 100%;
-    font-size: 105%;
+    text-align: center;
+    font-size: 1em;
     font-weight: 500;
     border: 1px solid transparent;
     position: relative;
@@ -179,7 +204,7 @@
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 0.9rem;
+    font-size: 0.9em;
     opacity: 0;
     transition: opacity 0.3s ease-in;
 
@@ -200,7 +225,6 @@
 .rf-trans {
   text-transform: capitalize;
   color: #3a3a3a;
-  // padding-top: 2em;
 
   // @media screen and (max-width: 768px) {
   //   margin-top: 1.5em;
@@ -211,7 +235,7 @@
 
   &__head,
   &__item {
-    box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 0.35rem 0 rgba(0, 0, 0, 0.35);
     border-radius: 0.52rem;
     margin-bottom: 1.75em;
     display: flex;
@@ -221,6 +245,7 @@
       // border: 1px solid red;
       flex: 1;
       text-align: center;
+      padding: 0 0.25em;
 
       &:nth-of-type(2),
       &:nth-of-type(3) {
@@ -237,12 +262,12 @@
   }
 
   &__head {
-    padding: 0.5em 0.3em 0.5em 1.55em;
+    padding: 0.5em 0.25em 0.5em 1.35em;
     font-weight: 600;
   }
 
   &__item {
-    padding: 0.8em 0.3em;
+    padding: 0.8em 0.25em;
 
     > div:nth-of-type(4) {
       color: #089b12;
@@ -279,4 +304,14 @@
       padding-left: 0.75em;
     }
   }
+
+  &__icon {
+    width: 0.95em;
+    height: 0.95em;
+  }
+}
+
+.or-text {
+  padding-left: 3em;
+  margin-bottom: 1.5em;
 }

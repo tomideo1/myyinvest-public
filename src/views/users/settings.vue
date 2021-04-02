@@ -2,7 +2,8 @@
   <div>
     <h4 class="ft-16 font-weight-normal p-4 ">Change Password</h4>
     <section class="m-lg-3 p-lg-3">
-      <main-card class="form-border p-4">
+      <!-- <main-card class="form-border p-4"> -->
+      <main-card class="form-border change-password">
         <div class="container-fluid ">
           <div class="row">
             <div class="col-lg-6 col-md-6 col-12">
@@ -18,9 +19,10 @@
       </main-card>
     </section>
 
-    <h4 class="ft-16 font-weight-normal p-4 ">Upload Profile Image</h4>
+    <!-- <h4 class="ft-16 font-weight-normal p-4 ">Upload Profile Image</h4> -->
+    <h4 class="ft-16 font-weight-normal p-4" style="margin-top: 1.5em !important;">Upload Profile Image</h4>
     <section class="m-lg-3 p-lg-3">
-      <main-card class="form-border p-4">
+      <main-card class="form-border p-4 upl-image">
         <div class="container-fluid ">
           <div class="control-group file-upload" id="file-upload1">
             <div class="image-box ">
@@ -32,9 +34,10 @@
                 <img class="img-fluid" v-if="preview" :src="preview" alt="" />
               </div>
             </div>
-            <label class="btn btn-block btn-sm btn-filled mt-3 col-md-4">
+            <!-- <label class="btn btn-block btn-sm btn-filled mt-3 col-md-4"> -->
+            <label class="btn btn-block btn-filled mt-3 col-md-4 upl-image__select-btn">
               <span>
-                <main-icon name="attachment" class="mr-2" />
+                <main-icon name="attachment" class="mr-2" size="sm" />
                 Select Image
               </span>
               <input type="file" @change="onFileChange" />
@@ -126,9 +129,15 @@ export default {
       const imageFormData = new FormData();
       imageFormData.append("image", this.image);
       let res = await this.uploadUserAvatar(imageFormData);
-      if (res.status === 200 || res.status === 201) {
+      if (res.status && (res.status === 200 || res.status === 201)) {
         this.profileImageText = "Upload";
         this.isLoading = false;
+        console.log(res.data.message);
+
+        this.handleNotify({
+          message: res.data.message,
+          status: "Success"
+        });
       } else {
         this.profileImageText = "Upload";
         this.isLoading = false;
@@ -149,10 +158,24 @@ export default {
   border: 1px solid color(main-red) !important;
 }
 
+.change-password {
+  padding: 2em;
+
+  @include breakpoint(mobile-only) {
+    padding: 1.5em 0;
+
+    button {
+      margin-right: 1.25em;
+    }
+  }
+}
+
 .file-upload {
   .image-box {
-    height: 250px;
-    width: 250px;
+    // height: 250px;
+    // width: 250px;
+    height: 15.5rem;
+    width: 15.5rem;
     cursor: pointer;
     position: relative;
     background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='23' ry='23' stroke='black' stroke-width='3' stroke-dasharray='6%2c 24' stroke-dashoffset='49' stroke-linecap='square'/%3e%3c/svg%3e");
@@ -201,6 +224,18 @@ export default {
         border-color: darken(color(main-red), 5%);
       }
     }
+  }
+}
+
+.upl-image {
+  @include breakpoint(mobile-only) {
+    display: flex;
+    align-items: center;
+  }
+
+  &__select-btn {
+    max-width: 15.5rem;
+    padding: 0.55em 0.25em !important;
   }
 }
 </style>

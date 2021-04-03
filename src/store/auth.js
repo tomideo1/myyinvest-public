@@ -77,6 +77,17 @@ const actions = {
     return await Api.post("/users/resend", payload);
   },
 
+  async saveToken({ commit }, payload) {
+    return await Api.post(
+      "/admin/pusher/auth",
+      {
+        socket_id: payload.interest,
+        channel_name: "private-myyinvest"
+      },
+      true
+    );
+  },
+
   async logout({ commit }) {
     commit("setToken", "");
     commit("setUser", {});

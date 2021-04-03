@@ -124,25 +124,33 @@ export default {
       }
     },
     async uploadImage() {
-      this.isLoading = true;
-      this.profileImageText = "loading..";
-      const imageFormData = new FormData();
-      imageFormData.append("image", this.image);
-      let res = await this.uploadUserAvatar(imageFormData);
-      if (res.status && (res.status === 200 || res.status === 201)) {
+      try {
+        this.isLoading = true;
+        this.profileImageText = "loading..";
+        const imageFormData = new FormData();
+        imageFormData.append("image", this.image);
+        let res = await this.uploadUserAvatar(imageFormData);
+        if (res.status && (res.status === 200 || res.status === 201)) {
+          this.profileImageText = "Upload";
+          this.isLoading = false;
+          console.log(res.data.message);
+          this.handleNotify({
+            message: res.data.message,
+            status: "Success"
+          });
+        } else {
+          this.profileImageText = "Upload";
+          this.isLoading = false;
+          this.handleNotify({
+            message: res.data.message,
+            status: "Error"
+          });
+        }
+      } catch (e) {
         this.profileImageText = "Upload";
         this.isLoading = false;
-        console.log(res.data.message);
-
         this.handleNotify({
-          message: res.data.message,
-          status: "Success"
-        });
-      } else {
-        this.profileImageText = "Upload";
-        this.isLoading = false;
-        this.handleNotify({
-          message: res.data.message,
+          message: "Something went wrong",
           status: "Error"
         });
       }

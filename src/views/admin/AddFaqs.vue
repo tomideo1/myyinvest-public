@@ -11,6 +11,18 @@
         <input type="text" id="pauthor" placeholder="Valentine Offiah" />
       </fieldset>
 
+      <fieldset class="input-grp">
+        <legend><label for="pauthor">Post Category</label></legend>
+        <div class="dropdown-wrap">
+          <div class="dropdown">
+            <button class="dropbtn">{{ selectedCategory || "Category" }} <img src="@/assets/admin/icons/caret-down.svg" alt="Dropdown" /></button>
+            <div class="dropdown-content">
+              <div class="option" v-for="(option, index) in categories" :key="index" @click="newCategory(option.name)">{{ option.name }}</div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
       <fieldset class="input-grp pcontent">
         <legend><label for="pcontent">Post Content</label></legend>
         <textarea
@@ -28,9 +40,38 @@
 
 <script>
 export default {
+  name: "AddFaqs",
+
   metaInfo: {
     title: "Myyinvest - Add FAQs (Admin)",
     titleTemplate: null
+  },
+
+  data() {
+    return {
+      selectedCategory: "",
+      categories: [
+        {
+          name: "General"
+        },
+        {
+          name: "Investment"
+        },
+        {
+          name: "Payment"
+        },
+        {
+          name: "Security"
+        }
+      ]
+    };
+  },
+
+  methods: {
+    newCategory(val) {
+      this.selectedCategory = val;
+      alert(val);
+    }
   }
 };
 </script>
@@ -51,8 +92,8 @@ export default {
   align-items: center;
   width: 60%;
   margin: var(--base-size) auto 0;
-  padding: 1px;
-  overflow-y: auto;
+  /* padding: 1px;
+  overflow-y: auto; */
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -127,10 +168,73 @@ select::-ms-expand {
 button {
   /* float: right !important; */
   margin-top: 10px;
+  margin-top: 10px;
+  margin-bottom: var(--base-size);
   padding: 5px 10px;
   color: var(--myyinvest-white);
   background-color: var(--myyinvest-red);
   border: 1px solid transparent;
   border-radius: 5px;
+}
+
+.dropdown-wrap {
+  width: 100%;
+  margin-bottom: var(--base-size);
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.dropbtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  height: -moz-fit-content;
+  height: max-content;
+  margin: 0;
+  padding: 5px 10px;
+  color: black !important;
+  border: 1px solid gray;
+  border-radius: 5px;
+  background-color: var(--myyinvest-white);
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 120px;
+  background-color: var(--myyinvest-white);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content .option {
+  display: block;
+  padding: 12px 16px;
+  color: black;
+  text-decoration: none;
+}
+
+.dropdown-content .option:hover {
+  color: var(--myyinvest-white);
+  background-color: var(--myyinvest-red-fade);
+  cursor: pointer;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  border-color: var(--myyinvest-red);
+  box-shadow: 0 0 3px 3px var(--myyinvest-red-fade);
 }
 </style>

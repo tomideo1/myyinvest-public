@@ -69,15 +69,6 @@ import TheSideNav from "@/components/layout/admin/TheSideNav.vue";
 export default {
   name: "TheAdminLayout",
 
-  metaInfo: {
-    title: "Myyinvest",
-    titleTemplate: "%s - Home (Admin)",
-    htmlAttrs: {
-      lang: "en",
-      amp: true
-    }
-  },
-
   components: { TheNav, TheSideNav },
 
   data() {
@@ -111,7 +102,7 @@ export default {
 
     smallHeight() {
       const currentRoute = this.$route.path;
-      const routes = ["/admin/view-users", "/admin/transactions", "/admin/view-insights", "/admin/view-notifications", "/admin/view-posts"];
+      const routes = ["/admin/view-users", "/admin/transactions", "/admin/view-insights", "/admin/view-notifications", "/admin/view-faqs"];
       // const routes = ["/admin/view-", "/admin/transactions"];
       if (routes.includes(currentRoute)) {
         return "height: 78vh;";

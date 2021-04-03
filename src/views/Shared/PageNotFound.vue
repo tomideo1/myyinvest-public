@@ -3,7 +3,7 @@
     <top-nav />
     <p class="warning-info">
       Hello friend, <br />
-      We understand you did not intended to be here. Let's help you <span @click="router.go(-1)">return back</span> or <span @click="goHome">return home</span>. <br />
+      We understand you did not intended to be here. Let's help you <span @click="goBack">return back</span> or <span @click="goHome">return home</span>. <br />
       It is best advised to use our navigation options.
     </p>
   </div>

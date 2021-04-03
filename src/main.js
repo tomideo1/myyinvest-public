@@ -21,18 +21,17 @@ Vue.component("TheAdminLayout", TheAdminLayout);
 
 import VueMeta from "vue-meta";
 
-Vue.use(VueMeta);
 // Vue.use(VueMeta, {
 //   // optional pluginOptions
 //   refreshOnceOnNavigation: true
 // });
 
 // Optionally install the BootstrapVue icon components plugin
-Vue.use(IconsPlugin);
+// Vue.use(IconsPlugin);
 
 Vue.prototype.$Bus = new Vue();
 
-Vue.use(VueTelInput);
+// Vue.use(VueTelInput);
 
 const plugin = {
   install() {
@@ -41,7 +40,8 @@ const plugin = {
   }
 };
 
-Vue.use(plugin);
+// Vue.use(plugin);
+Vue.use(VueMeta, IconsPlugin, VueTelInput, plugin);
 
 Vue.config.productionTip = false;
 

@@ -141,6 +141,8 @@
 
 <script>
 export default {
+  name: "ViewUserDetails",
+
   metaInfo: {
     title: "Myyinvest - User Details (Admin)",
     titleTemplate: null
@@ -161,9 +163,6 @@ export default {
   display: grid;
   grid-template-columns: 75% 25%;
   padding: var(--base-size);
-  /* height: 95%; */
-  padding: 1px;
-  overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }

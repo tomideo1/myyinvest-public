@@ -1,20 +1,12 @@
 <template>
   <div class="wrapper">
     <div class="nav-icon">
-      <!-- <img src="@/assets/admin/images/myyinvest-logo.jpg" alt="Myyinvest Logo" /> -->
-      <img style="cursor: pointer" width="162" @click="$router.replace('/')" height="26" src="@/assets/logos/Myylogo2.png" alt="Logo" />
+      <img style="cursor: pointer" width="162" @click="$router.push('/')" height="26" src="@/assets/logos/Myylogo2.png" alt="Logo" />
     </div>
     <div class="nav-details">
       <div class="nav-title">
         <span>{{ name }}</span>
       </div>
-      <!-- <div class="nav-profile">
-        <div>
-          <p class="greetings">Hi, Valentine Offiah</p>
-          <p class="ranking">Author</p>
-        </div>
-        <img src="@/assets/admin/images/profile-pic.svg" alt="User Profile Picture" />
-      </div> -->
     </div>
   </div>
 </template>
@@ -83,12 +75,6 @@ div.nav-icon {
   grid-row: 1 / 2;
 }
 
-/* .nav-icon img {
-  width: 40px;
-  height: 30px;
-  object-fit: contain;
-} */
-
 div.nav-details {
   display: flex;
   justify-content: center;
@@ -98,41 +84,4 @@ div.nav-details {
   font-size: var(--font-md);
   font-weight: 600;
 }
-
-div.nav-details div.nav-title {
-  /* width: 60%; */
-  /* padding-right: calc(2 * var(--base-size)); */
-  /* text-align: right; */
-}
-
-/* div.nav-details div.nav-profile {
-  display: flex;
-  flex-direction: row;
-  justify-content: right;
-  align-items: center;
-  width: 40%;
-  margin-right: var(--base-size);
-  color: gray;
-} */
-
-/* div.nav-details div.nav-profile div {
-  margin-left: auto !important;
-} */
-
-/* div.nav-details div.nav-profile .greetings {
-  margin: 0;
-  font-size: var(--font-normal) !important;
-}
-
-div.nav-details div.nav-profile .ranking {
-  margin: 0;
-  font-size: var(--font-sm) !important;
-  text-align: right;
-}
-
-div.nav-details div.nav-profile img {
-  width: 40px;
-  height: 40px;
-  margin-left: var(--base-size);
-} */
 </style>

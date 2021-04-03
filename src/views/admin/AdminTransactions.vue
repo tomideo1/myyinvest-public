@@ -36,6 +36,8 @@
 
 <script>
 export default {
+  name: "AdminTransactions",
+
   metaInfo: {
     title: "Myyinvest - Transactions (Admin)",
     titleTemplate: null

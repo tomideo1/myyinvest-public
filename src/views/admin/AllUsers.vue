@@ -68,6 +68,8 @@
 
 <script>
 export default {
+  name: "AllUsers",
+
   metaInfo: {
     title: "Myyinvest - All Users (Admin)",
     titleTemplate: null
@@ -108,7 +110,6 @@ export default {
 
 <style scoped>
 .main-content {
-  /* height: 95%; */
   padding: 1px;
   overflow-y: auto;
   -ms-overflow-style: none;

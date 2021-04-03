@@ -86,6 +86,15 @@ import MainButton from "../form/MainButton";
 export default {
   name: "TopNav",
 
+  metaInfo: {
+    title: "Myyinvest",
+    titleTemplate: "%s - Home",
+    htmlAttrs: {
+      lang: "en",
+      amp: true
+    }
+  },
+
   components: {
     MainButton
   }

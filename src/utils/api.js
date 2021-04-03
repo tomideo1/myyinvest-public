@@ -1,7 +1,8 @@
 import axios from "axios";
 import { store } from "@/store/store";
-import NProgress from "nprogress";
-import "nprogress/nprogress.css";
+// import NProgress from "nprogress";
+// import "nprogress/nprogress.css";
+import progressFns from "./helper.js";
 
 let api_url = process.env.VUE_APP_API;
 
@@ -9,26 +10,32 @@ const instance = axios.create({
   baseURL: api_url
 });
 
+const { start: progressStart, stop: progressStop } = progressFns();
+
 /* eslint-disable no-unused-vars */
 // request interceptor
 instance.interceptors.request.use(
   (config, reqAuth) => {
-    NProgress.start();
+    // NProgress.start();
+    progressStart();
     return config;
   },
   error => {
-    NProgress.done();
+    // NProgress.done();
+    progressStop();
     return Promise.reject(error);
   }
 );
 
 instance.interceptors.response.use(
   response => {
-    NProgress.done();
+    // NProgress.done();
+    progressStop();
     return response;
   },
   error => {
-    NProgress.done();
+    // NProgress.done();
+    progressStop();
     Promise.reject(error);
   }
 );

@@ -8,13 +8,18 @@
       <p class="ab-card__header">Add your bank details</p>
       <form method="POST" @submit.prevent="" class="ab-card__form">
         <div class="ab-card__input-box">
-          <MainInput v-model="accountNumber" label="Account Number" />
-          <MainInput v-model="bankName" label="Bank Name" inputType="select" :options="getBanksList" :disabled="!banksLoaded" />
+          <MainInput v-model="bank.account_number" label="Account Number" />
+          <MainInput v-model="bank.code" label="Bank Name" inputType="select" :options="getBankList" :disabled="!isBankListLoaded" />
           <div class="ab-card__fullname" v-if="isAccountVerified">
             {{ fullname }}
           </div>
         </div>
-        <button class="ab-card__btn" tyoe="submit" :disabled="!isAccountVerified">Add Bank</button>
+        <button class="ab-card__btn" type="button" v-if="!isAccountVerified" @click="verifyUserDetails" :disabled="isLoading || !isEachFieldFilled">
+          {{ verifyBtnText }}
+        </button>
+        <button class="ab-card__btn" type="submit" v-if="isAccountVerified" :disabled="isLoading">
+          Add Bank
+        </button>
       </form>
     </div>
   </div>
@@ -31,25 +36,46 @@ export default {
   },
   data() {
     return {
-      accountNumber: "",
-      bankName: "",
-      fullname: ""
+      bank: {
+        account_number: "",
+        code: ""
+      },
+      fullname: "",
+      verifyBtnText: "Continue",
+      isAccountVerified: false,
+      isLoading: false
     };
   },
   methods: {
-    ...mapActions(["fetchBanksList"])
-  },
-  computed: {
-    ...mapGetters(["getBanksList"]),
-    banksLoaded() {
-      return this.getBanksList !== null || this.getBanksList !== undefined;
-    },
-    isAccountVerified() {
-      return !!this.fullname;
+    ...mapActions(["fetchBankList", "verifyBankAccount"]),
+    async verifyUserDetails() {
+      this.verifyBtnText = "Verifying...";
+      this.isLoading = true;
+      const res = await this.verifyBankAccount(this.bank);
+      if (res.status === 200 || res.status === 201) {
+        console.log(res.data);
+        // this.verifyBtnText = "Continue";
+      } else {
+        // this.verifyBtnText = "Continue";
+      }
+      this.verifyBtnText = "Continue";
+      console.log(res.data);
     }
   },
+  computed: {
+    ...mapGetters(["getBankList"]),
+    isBankListLoaded() {
+      return this.getBankList && this.getBankList !== [];
+    },
+    isEachFieldFilled() {
+      return this.bank.account_number.length >= 8 && this.bank.code;
+    }
+    // isAccountVerified() {
+    //   return !!this.fullname;
+    // }
+  },
   created() {
-    this.fetchBanksList();
+    this.fetchBankList();
   }
 };
 </script>
@@ -86,7 +112,7 @@ export default {
 
   &__input-box {
     padding: 3em 2.675em 0.5em 2.675em;
-    box-shadow: 0.05rem 0.05rem 0.4rem 0.1rem rgba(0, 0, 0, 0.6);
+    box-shadow: 0.05rem 0.05rem 0.35rem 0.05rem rgba(0, 0, 0, 0.6);
     border-radius: 0.9rem;
     margin: 1.25em 0;
 

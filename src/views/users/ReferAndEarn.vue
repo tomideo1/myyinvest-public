@@ -5,11 +5,11 @@
       <div class="rf-user__col">
         <div class="rf-user__main">
           <div>
-            <h5>Refer and Earn</h5>
+            <h5 class="rf-user__page-title">Refer and Earn</h5>
             <div>
               <p class="rf-user__alt-text">Total Referral Amount</p>
               <p class="rf-user__amount">
-                <svg xmlns="http://www.w3.org/2000/svg" width="44.673" height="36.855" viewBox="0 0 44.673 36.855">
+                <svg xmlns="http://www.w3.org/2000/svg" width="44.673" height="36.855" viewBox="0 0 44.673 36.855" class="rf-user__naira">
                   <g id="Group_19" data-name="Group 19" transform="translate(-422.739 -266.504)">
                     <g id="Group_18" data-name="Group 18">
                       <g id="Group_17" data-name="Group 17">
@@ -23,11 +23,12 @@
                     </g>
                   </g>
                 </svg>
+                <!-- <MainIcon name="naira" class="rf-user__naira" /> -->
                 <span class="rf-user__text">{{ getReferralDetails.totalAmount }}</span>
               </p>
             </div>
           </div>
-          <MainIcon name="gift-card" size="retain" class="rf-user__svg-card" />
+          <MainIcon name="gift-card" size="retain" />
         </div>
         <div class="rf-user__summary">
           <!-- <div>
@@ -45,24 +46,22 @@
         </div>
       </div>
       <div class="rf-user__col">
-        <div class="rf-user__main">
-          <div class="rf-user__mc-1">
+        <div class="rf-user__main rf-user__main--referral">
+          <div>
             <p class="rf-user__alt-text">Your Referral code</p>
             <p class="rf-user__text">{{ getReferralDetails.referralCode }}</p>
           </div>
-          <div class="rf-user__mc-2">
-            <button type="button" class="rf-user__btn-share">SHARE INVITE LINK</button>
-            <MainIcon name="socials" size="retain" class="rf-user__svg-socials" />
+          <div>
+            <div class="rf-user__share-div">SHARE INVITE LINK</div>
+            <MainIcon name="socials" size="retain" :refText="refText" :refLink="getReferralDetails.referralLink" />
           </div>
         </div>
         <div>
-          <p class="rf-user__alt-text" style="padding-left: 3em; margin-bottom: 1.5em;">OR</p>
+          <p class="rf-user__alt-text or-text">OR</p>
           <p class="rf-user__alt-text">Copy referral message and link <span>(tap message to copy)</span></p>
           <div class="rf-tooltip">
             <span class="rf-tooltip__text">{{ tooltipText }}</span>
-            <div class="rf-user__message-box" tabindex="0" @click="copyText" @blur="revertText">
-              I use myyinvest to invest securely, sign up with my link and get started on your investment journey with secured and guaranteed ROI {{ getReferralDetails.referralLink }}
-            </div>
+            <div class="rf-user__message-box" tabindex="0" @click="copyText" @blur="revertText">{{ refText }} {{ getReferralDetails.referralLink }}</div>
           </div>
         </div>
       </div>
@@ -81,7 +80,7 @@
       <ReferTransaction name="ogbeni ogbanje" />
       <div class="rf-trans__pagination">
         <button type="button" class="rf-trans__btn">Previous</button>
-        <button type="button" class="rf-trans__btn" :class="{ 'rf-trans__btn--active': num === 1 }" v-for="num in 5" :key="num">
+        <button type="button" class="rf-trans__btn" :class="{ 'rf-trans__btn--active': num === 1 }" v-for="num in 4" :key="num">
           {{ num }}
         </button>
         <button type="button" class="rf-trans__btn">Next</button>
@@ -99,7 +98,8 @@ export default {
   name: "ReferAndEarn",
   data() {
     return {
-      tooltipText: "Copy to clipboard"
+      tooltipText: "Copy to clipboard",
+      refText: "I use myyinvest to invest securely, sign up with my link and get started on your investment journey with secured and guaranteed ROI"
     };
   },
   components: {
@@ -122,5 +122,6 @@ export default {
   created() {
     this.fetchReferralDetails();
   }
+  // `.replace(/\s+/g, " ");
 };
 </script>

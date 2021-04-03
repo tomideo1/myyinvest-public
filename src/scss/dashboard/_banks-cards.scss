@@ -103,11 +103,17 @@
     border-radius: 0.9rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    // justify-content: space-between;
   }
 
   &__info-container {
     text-align: center;
+    margin-bottom: 0.5em;
+  }
+
+  &__bank-card {
+    width: 2em;
+    height: 2em;
   }
 
   &__title {

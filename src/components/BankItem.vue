@@ -32,7 +32,10 @@ export default {
   font-size: 1.0325rem;
   transition: box-shadow 0.3s ease;
 
-  @media screen and (max-width: 599px) {
+  // @media screen and (max-width: 599px) {
+  //   font-size: 0.9275rem;
+  // }
+  @include breakpoint(mobile-only) {
     font-size: 0.9275rem;
   }
 

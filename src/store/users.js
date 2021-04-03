@@ -5,7 +5,7 @@ const state = {
   userInvestmentDetails: {},
   userNextOfKinDetails: {},
   userReferralDetails: {},
-  banksList: []
+  bankList: []
   // referredUsers: []
 };
 
@@ -26,8 +26,8 @@ const getters = {
     return state.userReferralDetails;
   },
 
-  getBanksList(state) {
-    return state.banksList;
+  getBankList(state) {
+    return state.bankList;
   }
 };
 
@@ -48,8 +48,8 @@ const mutations = {
     return (state.userReferralDetails = data);
   },
 
-  setBanksList(state, data) {
-    return (state.banksList = data);
+  setBankList(state, data) {
+    return (state.bankList = data);
   }
 
   // setReferredUsers(state, data) {
@@ -104,28 +104,39 @@ const actions = {
     }
   },
 
-  async fetchBanksList({ commit }) {
+  async fetchBankList({ commit }) {
     const res = await Api.get("banks/all", true);
+    // const { data } = await Api.get("banks/userbank", true);
+    // console.log(data);
     if (res.status === 200 || res.status === 201) {
       const { banks } = res.data;
-      const banksList = banks.map(bank => {
-        return { key: bank.name, value: bank.code };
+      const bankList = banks.map(bank => {
+        return { key: bank.name, value: bank.code, slug: bank.slug, longCode: bank.longcode };
       });
-      commit("setBanksList", banksList);
+      commit("setBankList", bankList);
     }
   },
 
   async fetchReferralDetails({ commit }) {
     const res = await Api.get("referrals/get", true);
     if (res.status === 200 || res.status === 201) {
-      console.log(res.data);
       const { referredUsers } = res.data;
       const refData = { ...res.data.referralDetails, referredUsers };
-      console.log(refData);
+      // console.log(refData);
       commit("setReferralDetails", refData);
       // commit("setReferralDetails", res.data.referralDetails);
       // commit("setReferredUsers", res.data.referredUsers);
       return res;
+    } else {
+      return res;
+    }
+  },
+
+  // eslint-disable-next-line no-unused-vars
+  async verifyBankAccount({ commit }, { account_number, code }) {
+    const res = await Api.get(`banks/verify?account_number=${account_number}&code=${code}`, true);
+    if (res.status === 200 || res.status === 201) {
+      console.log(res.data);
     } else {
       return res;
     }

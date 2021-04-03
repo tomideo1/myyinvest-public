@@ -54,13 +54,13 @@
               />
             </div>
             <div class="col-lg-6 col-md-6 col-12">
-              <main-input class="col-md-12" label="Occupation" v-model="profile.occupation" />
+              <main-input class="col-md-12" label="Occupation" inputType="select" v-model="profile.occupation" :options="profileItemOptions.occupation" />
             </div>
             <div class="col-lg-6 col-md-6 col-12">
               <main-input class="col-md-12" label="Phone Number" v-model="profile.phoneNumber" />
             </div>
             <div class="col-lg-6 col-md-6 col-12">
-              <main-input class="col-md-12 " label="State of origin" inputType="select" v-model="profile.state" :options="states" />
+              <main-input class="col-md-12 " label="State of origin" inputType="select" v-model="profile.state" :options="profileItemOptions.states" />
             </div>
 
             <div class="col-lg-6 col-md-6 col-12 d-none d-lg-block d-md-none">
@@ -94,37 +94,79 @@
           <div class="row">
             <div class="col-lg-12 col-md-12 col-12">
               <!-- <main-input class="col-md-12" label-type="full" label="What is the Primary Reason you are Interested in Investing with Myyinvest?" v-model="investment.primaryInvReason" /> -->
-              <main-input class="col-md-12" label-type="full" label="What is the Primary Reason you are Interested in Investing with Myyinvest?" v-model="profile.primaryInvReason" />
+              <main-input
+                class="col-md-12"
+                label-type="full"
+                label="What is the Primary Reason you are Interested in Investing with Myyinvest?"
+                inputType="select"
+                v-model="profile.primaryInvReason"
+                :options="profileItemOptions.primaryInvReason"
+              />
             </div>
 
             <div class="col-lg-12 col-md-12 col-12">
               <!-- <main-input class="col-md-12" label-type="full" label="What kind of investor are you?" v-model="investment.kindOfInvestor" /> -->
-              <main-input class="col-md-12" label-type="full" label="What kind of investor are you?" v-model="profile.kindOfInvestor" />
+              <main-input
+                class="col-md-12 "
+                label-type="full"
+                label="What kind of investor are you?"
+                inputType="select"
+                v-model="profile.kindOfInvestor"
+                :options="profileItemOptions.kindOfInvestor"
+              />
             </div>
 
             <div class="col-lg-12 col-md-12 col-12">
               <!-- <main-input class="col-md-12" label-type="full" label="Who advises you on your financial decisions?" v-model="investment.finDecision" /> -->
-              <main-input class="col-md-12" label-type="full" label="Who advises you on your financial decisions?" v-model="profile.finDecision" />
+              <main-input
+                class="col-md-12"
+                label-type="full"
+                label="Who advises you on your financial decisions?"
+                inputType="select"
+                v-model="profile.finDecision"
+                :options="profileItemOptions.finDecision"
+              />
             </div>
 
             <div class="col-lg-12 col-md-12 col-12">
               <!-- <main-input class="col-md-12" label-type="full" label="Do you need a financial advisor?" v-model="investment.finAdvisor" /> -->
-              <main-input class="col-md-12" label-type="full" label="Do you need a financial advisor?" v-model="profile.finAdvisor" />
+              <main-input class="col-md-12" label-type="full" label="Do you need a financial advisor?" inputType="select" v-model="profile.finAdvisor" :options="profileItemOptions.finAdvisor" />
             </div>
 
             <div class="col-lg-12 col-md-12 col-12">
               <!-- <main-input class="col-md-12" label-type="full" label="What is your monthly income range?" v-model="investment.monthlyIncome" /> -->
-              <main-input class="col-md-12" label-type="full" label="What is your monthly income range?" v-model="profile.monthlyIncome" />
+              <main-input
+                class="col-md-12"
+                label-type="full"
+                label="What is your monthly income range?"
+                inputType="select"
+                v-model="profile.monthlyIncome"
+                :options="profileItemOptions.monthlyIncome"
+              />
             </div>
 
             <div class="col-lg-12 col-md-12 col-12">
               <!-- <main-input class="col-md-12" label-type="full" label="How much do you want invest in the next 12 Months?" v-model="investment.expectedInv" /> -->
-              <main-input class="col-md-12" label-type="full" label="How much do you want invest in the next 12 Months?" v-model="profile.expectedInv" />
+              <main-input
+                class="col-md-12"
+                label-type="full"
+                label="How much do you want invest in the next 12 Months?"
+                inputType="select"
+                v-model="profile.expectedInv"
+                :options="profileItemOptions.expectedInv"
+              />
             </div>
 
             <div class="col-lg-12 col-md-12 col-12">
               <!-- <main-input class="col-md-12" label-type="full" label="What investment holding period do you prefer? " v-model="investment.holdingPeriodPrefer" /> -->
-              <main-input class="col-md-12" label-type="full" label="What investment holding period do you prefer? " v-model="profile.holdingPeriodPrefer" />
+              <main-input
+                class="col-md-12"
+                label-type="full"
+                label="What investment holding period do you prefer?"
+                inputType="select"
+                v-model="profile.holdingPeriodPrefer"
+                :options="profileItemOptions.holdingPeriodPrefer"
+              />
             </div>
           </div>
         </div>
@@ -148,7 +190,7 @@
 
             <div class="col-lg-6 col-md-6 col-12">
               <!-- <main-input class="col-md-12" label="Relationship" v-model="kin.relationship" /> -->
-              <main-input class="col-md-12" label="Relationship" v-model="profile.relationship" />
+              <main-input class="col-md-12" label="Relationship To Kin" v-model="profile.relationshipToKin" />
             </div>
 
             <div class="col-lg-6 col-md-6 col-12">
@@ -178,7 +220,7 @@ import "vue2-datepicker/index.css";
 import validations from "@/mixins/validations";
 import notify from "@/mixins/notify";
 import moment from "moment";
-import states from "@/components/data/states.js";
+import profileItemOptions from "@/components/data/profileItemOptions.js";
 
 export default {
   mixins: [validations, notify],
@@ -197,13 +239,13 @@ export default {
       currentStep: 1,
       continueButtonText: "Continue",
       isLoading: false,
-      states: [],
+      profileItemOptions: {},
       profile: {
         firstName: "",
         firstNameOfKin: "",
         lastName: "",
         lastNameOfKin: "",
-        relationship: "",
+        relationshipToKin: "",
         gender: "",
         phoneNumber: "",
         phoneNumberOfKin: "",
@@ -283,11 +325,11 @@ export default {
             // relationship: this.kin.relationship,
             // email: this.kin.email,
             // phoneNumber: this.kin.phoneNumber
-            firstName: this.profile.firstNameOfKin,
-            lastName: this.profile.lastNameOfKin,
-            relationship: this.profile.relationship,
-            email: this.profile.emailOfKin,
-            phoneNumber: this.profile.phoneNumberOfKin
+            firstNameOfKin: this.profile.firstNameOfKin,
+            lastNameOfKin: this.profile.lastNameOfKin,
+            relationshipToKin: this.profile.relationshipToKin,
+            emailOfKin: this.profile.emailOfKin,
+            phoneNumberOfKin: this.profile.phoneNumberOfKin
           });
           break;
         default:
@@ -353,6 +395,7 @@ export default {
       if (res.status === 200 || res.status === 201) {
         this.continueButtonText = "Continue";
         this.isLoading = false;
+        this.$router.push({ name: "overview" });
         this.handleNotify({
           message: "Profile Update Complete",
           status: "Success"
@@ -371,7 +414,7 @@ export default {
     ...mapGetters(["getProfile", "getUser"])
   },
   mounted() {
-    this.states = states;
+    this.profileItemOptions = profileItemOptions;
     // console.log(this.getProfile);
     this.profile = this.getProfile;
 

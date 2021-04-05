@@ -179,7 +179,6 @@ export default {
         let res = await this.login(this.loginForm);
         if (res.status === 200 || res.status === 201) {
           this.loginText = "Login";
-
           this.handleNotify({
             message: res.data.message,
             status: "Success"

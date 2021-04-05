@@ -1,7 +1,7 @@
 import axios from "axios";
 import { store } from "@/store/store";
-import NProgress from "nprogress";
-import "nprogress/nprogress.css";
+// import NProgress from "nprogress";
+// import "nprogress/nprogress.css";
 
 let api_url = process.env.VUE_APP_API;
 
@@ -13,13 +13,25 @@ const instance = axios.create({
 // request interceptor
 instance.interceptors.request.use(
   (config, reqAuth) => {
-    NProgress.start();
+    // NProgress.start();
     return config;
   },
   error => {
-    NProgress.done();
+    // NProgress.done();
+    Promise.reject(error);
   }
 );
+
+// instance.interceptors.response.use(
+//   response => {
+//     NProgress.done();
+//     // return response;
+//   },
+//   error => {
+//     NProgress.done();
+//     // Promise.reject(error);
+//   }
+// );
 class Api {
   static async get(url, requireAuth = false) {
     try {

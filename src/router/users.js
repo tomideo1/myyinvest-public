@@ -65,6 +65,14 @@ export default [
         meta: {
           middleware: [auth]
         }
+      },
+      {
+        path: "myy-portfolio",
+        name: "portfolio",
+        component: () => import(/* webpackChunkName: "myy-portfolio" */ "../views/users/MyyPortfolio.vue"),
+        meta: {
+          middleware: [auth]
+        }
       }
     ]
   }

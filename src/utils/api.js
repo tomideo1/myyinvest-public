@@ -2,6 +2,7 @@ import axios from "axios";
 import { store } from "@/store/store";
 // import NProgress from "nprogress";
 // import "nprogress/nprogress.css";
+import progressFns from "@/utils/helper.js";
 
 let api_url = process.env.VUE_APP_API;
 
@@ -9,29 +10,36 @@ const instance = axios.create({
   baseURL: api_url
 });
 
+const { start: progressStart, stop: progressStop } = progressFns();
+
 /* eslint-disable no-unused-vars */
 // request interceptor
 instance.interceptors.request.use(
   (config, reqAuth) => {
     // NProgress.start();
+    progressStart();
     return config;
   },
   error => {
     // NProgress.done();
-    Promise.reject(error);
+    progressStop();
+    return Promise.reject(error);
   }
 );
 
-// instance.interceptors.response.use(
-//   response => {
-//     NProgress.done();
-//     // return response;
-//   },
-//   error => {
-//     NProgress.done();
-//     // Promise.reject(error);
-//   }
-// );
+instance.interceptors.response.use(
+  response => {
+    // NProgress.done();
+    progressStop();
+    return response;
+  },
+  error => {
+    // NProgress.done();
+    progressStop();
+    return Promise.reject(error);
+  }
+);
+
 class Api {
   static async get(url, requireAuth = false) {
     try {
@@ -55,6 +63,7 @@ class Api {
       };
       return requireAuth ? await instance.post(url, payload, config) : await instance.post(url, payload);
     } catch (error) {
+      console.log(`My Error: ${error}`);
       return error.response;
     }
   }

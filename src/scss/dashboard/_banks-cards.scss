@@ -1,11 +1,11 @@
 .bc-container {
   // border: 1px solid black;
-  width: 100%;
-  max-width: 85.75em;
-  margin: 0 auto;
+  // width: 100%;
+  // max-width: 90em;
+  // margin: 0 auto;
 
   @include breakpoint(tablet-potrait-up) {
-    padding: 0 1em;
+    padding: 0.5em 1em;
   }
 }
 
@@ -127,6 +127,7 @@
 
     > span {
       color: color(main-red);
+      font-weight: 500;
     }
   }
 

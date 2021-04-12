@@ -28,6 +28,7 @@
     <camera v-if="name === 'camera'"></camera>
     <attachment v-if="name === 'attachment'"></attachment>
     <bank-card v-if="name === 'bank-card'"></bank-card>
+    <vector-dots v-if="name === 'vector-dots'"></vector-dots>
   </span>
 </template>
 
@@ -44,10 +45,12 @@ export default {
       type: Boolean
     },
     refText: {
-      type: String
+      type: String,
+      required: false
     },
     refLink: {
-      type: String
+      type: String,
+      required: false
     }
   },
   components: {
@@ -78,7 +81,8 @@ export default {
     socials: () => import("@/components/__private__/media/socials"),
     camera: () => import("@/components/__private__/media/camera"),
     attachment: () => import("@/components/__private__/media/attachment"),
-    bankCard: () => import("@/components/__private__/media/bankCard")
+    bankCard: () => import("@/components/__private__/media/bankCard"),
+    vectorDots: () => import("@/components/__private__/media/vectorDots")
   }
 };
 </script>

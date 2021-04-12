@@ -66,24 +66,25 @@
         </div>
       </div>
     </div>
-    <div class="rf-trans">
-      <div class="rf-trans__head">
-        <div>date</div>
-        <div>name</div>
-        <div>project</div>
-        <div>commission</div>
-        <div>status</div>
+    <div class="trans ref-trans">
+      <div class="trans__row ref-trans__heading">
+        <!-- <MainIcon name="trans-icon" class="trans__icon" /> -->
+        <div class="trans__head">date</div>
+        <div class="trans__head">name</div>
+        <div class="trans__head">project</div>
+        <div class="trans__head">commission</div>
+        <div class="trans__head">status</div>
       </div>
       <ReferTransaction />
       <ReferTransaction name="john doe" commission="7500" status="invested" />
       <ReferTransaction name="Inwuosu njeakor" project="flutterwave investment" />
       <ReferTransaction name="ogbeni ogbanje" />
-      <div class="rf-trans__pagination">
-        <button type="button" class="rf-trans__btn">Previous</button>
-        <button type="button" class="rf-trans__btn" :class="{ 'rf-trans__btn--active': num === 1 }" v-for="num in 4" :key="num">
+      <div class="trans__pagination">
+        <button type="button" class="trans__btn trans__btn--lg">Previous</button>
+        <button type="button" class="trans__btn" :class="{ 'trans__btn--active': num === 1 }" v-for="num in 4" :key="num">
           {{ num }}
         </button>
-        <button type="button" class="rf-trans__btn">Next</button>
+        <button type="button" class="trans__btn trans__btn--lg">Next</button>
       </div>
     </div>
   </div>

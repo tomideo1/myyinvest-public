@@ -1,11 +1,11 @@
 <template>
-  <div class="rf-trans__item">
-    <MainIcon name="trans-icon" class="rf-trans__icon" />
-    <div>{{ date }}</div>
-    <div>{{ name }}</div>
-    <div>{{ project }}</div>
-    <div>N{{ commission }}</div>
-    <div>{{ status }}</div>
+  <div class="trans__row ref-trans__item">
+    <MainIcon name="trans-icon" class="trans__icon" />
+    <div class="trans__data">{{ date }}</div>
+    <div class="trans__data">{{ name }}</div>
+    <div class="trans__data">{{ project }}</div>
+    <div class="trans__data">N{{ commission }}</div>
+    <div class="trans__data">{{ status }}</div>
   </div>
 </template>
 
@@ -14,6 +14,7 @@ import MainIcon from "./Shared/mainIcon.vue";
 
 export default {
   name: "ReferTrasanction",
+  components: { MainIcon },
   props: {
     date: {
       type: String,
@@ -35,7 +36,6 @@ export default {
       name: String,
       default: "Not Invested"
     }
-  },
-  components: { MainIcon }
+  }
 };
 </script>

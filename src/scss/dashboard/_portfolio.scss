@@ -1,0 +1,33 @@
+.portfolio-container {
+  // border: 1px solid red;
+  min-height: 80vh;
+}
+
+.inv-plan {
+  &__title {
+    font-size: 1.25em !important;
+    font-weight: 600;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: 1024px) {
+      flex-direction: column;
+    }
+  }
+
+  &__graph {
+    // flex: 1;
+    min-height: 100px;
+    border-radius: 0.5rem;
+    background: lightgrey;
+  }
+
+  &__trans {
+    // border: 1px solid color(main-red);
+    // flex: 1.35;
+    color: #000;
+  }
+}

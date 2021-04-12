@@ -9,7 +9,7 @@ const progressFns = () => {
     count++;
     progressTimeout = setTimeout(() => {
       NProgress.start();
-    }, 300);
+    }, 200);
   };
 
   const stop = () => {

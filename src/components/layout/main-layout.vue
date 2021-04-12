@@ -44,7 +44,7 @@
           <!-- TopBar -->
           <nav class="navbar navbar-expand navbar-light bg-navbar bg-white shadow-3 topbar mb-4 static-top">
             <!-- <button id="sidebarToggleTop" @click="toggle" :class="'btn btn-link rounded-circle mr-3'"> -->
-            <button id="sidebarToggleTop" @click="toggleDesktopNav" :class="'btn btn-link rounded-circle mr-3'">
+            <button id="sidebarToggleTop" @click="toggleDesktopNav" :class="'btn btn-link rounded-circle mr-3'" title="toggle navigation bar">
               <i class="fa fa-bars text-black"></i>
             </button>
             <!-- hamburger menu style is in _topbar.scss -->

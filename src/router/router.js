@@ -42,6 +42,11 @@ const baseRoutes = [
             component: () => import(/* webpackChunkName: "listings" */ "../views/Shared/listings/listings.vue")
           },
           {
+            path: "listing",
+            name: "listing",
+            component: () => import(/* webpackChunkName: "listing" */ "../views/Shared/listings/listing.vue")
+          },
+          {
             path: "single",
             name: "single-listing",
             component: () => import(/* webpackChunkName: "single" */ "../views/Shared/listings/single.vue")

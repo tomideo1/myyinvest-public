@@ -5,8 +5,8 @@ const state = {
   userInvestmentDetails: {},
   userNextOfKinDetails: {},
   userReferralDetails: {},
-  bankList: []
-  // referredUsers: []
+  bankList: [],
+  userBanks: []
 };
 
 const getters = {
@@ -28,6 +28,10 @@ const getters = {
 
   getBankList(state) {
     return state.bankList;
+  },
+
+  getUserBanks(state) {
+    return state.userBanks;
   }
 };
 
@@ -51,10 +55,6 @@ const mutations = {
   setBankList(state, data) {
     return (state.bankList = data);
   }
-
-  // setReferredUsers(state, data) {
-  //   state.referredUsers = data;
-  // }
 };
 
 const actions = {
@@ -106,8 +106,6 @@ const actions = {
 
   async fetchBankList({ commit }) {
     const res = await Api.get("banks/all", true);
-    // const { data } = await Api.get("banks/userbank", true);
-    // console.log(data);
     if (res.status === 200 || res.status === 201) {
       const { banks } = res.data;
       const bankList = banks.map(bank => {
@@ -122,7 +120,6 @@ const actions = {
     if (res.status === 200 || res.status === 201) {
       const { referredUsers } = res.data;
       const refData = { ...res.data.referralDetails, referredUsers };
-      // console.log(refData);
       commit("setReferralDetails", refData);
       // commit("setReferralDetails", res.data.referralDetails);
       // commit("setReferredUsers", res.data.referredUsers);
@@ -136,10 +133,14 @@ const actions = {
   async verifyBankAccount({ commit }, { account_number, code }) {
     const res = await Api.get(`banks/verify?account_number=${account_number}&code=${code}`, true);
     if (res.status === 200 || res.status === 201) {
-      console.log(res.data);
+      return res;
     } else {
       return res;
     }
+  },
+
+  async addBankAccount({ commit }, payload) {
+    const res = null;
   },
 
   // eslint-disable-next-line no-unused-vars

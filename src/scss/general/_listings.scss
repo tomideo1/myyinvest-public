@@ -1,0 +1,138 @@
+.listing-wrapper {
+  min-height: 50vh;
+  padding-top: 2em;
+  overflow: hidden;
+}
+
+#dot-vector-1,
+#dot-vector-2 {
+  position: absolute;
+  width: 12.5em;
+  height: 10em;
+}
+
+#dot-vector-1 {
+  bottom: 21.5%;
+  left: -17.35%;
+}
+
+#dot-vector-2 {
+  top: 12.5%;
+  right: -17.35%;
+}
+
+.listing-bg-red {
+  min-height: 10em;
+  background: color(main-red);
+}
+
+.listing-item-container {
+  position: relative;
+  top: -3em;
+  width: 81%;
+  max-width: 86.75em;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @include breakpoint(mobile-only) {
+    justify-content: center;
+  }
+}
+
+.listing-item {
+  border-radius: 0.75rem;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.15);
+  text-align: center;
+  background: color(bv-white);
+  width: 100%;
+  // min-width: 20em;
+  max-width: 19.5em;
+  margin-bottom: 3em;
+  z-index: 2;
+
+  &__img {
+    width: 100%;
+    // border-radius: inherit;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 1.35em !important;
+    color: #505050;
+  }
+
+  &__details {
+    padding: 1.25em 1em;
+  }
+
+  &__sub-title {
+    font-size: 1em !important;
+    font-weight: 500;
+
+    &--red {
+      color: color(main-red);
+    }
+  }
+
+  &__returns,
+  &__min-invest {
+    font-weight: 700;
+    font-size: 2em !important;
+  }
+
+  &__returns {
+    color: color(main-red);
+  }
+
+  &__min-invest {
+    color: #068503;
+    @include flex-center;
+  }
+
+  &__plan-summary {
+    border-bottom: 1px solid #dadada;
+    padding-bottom: 1em;
+    margin-bottom: 1.35em;
+  }
+
+  &__benefits {
+    color: #4a4a4a;
+    font-size: 0.925em;
+
+    > p {
+      font-size: inherit !important;
+    }
+  }
+
+  &__btn {
+    display: block;
+    background: color(main-red);
+    color: color(bv-white);
+    border-radius: $border-radius-sm;
+    padding: 0.625em 2.5em;
+    box-shadow: 0 0 0.65rem 0.1rem rgba(0, 0, 0, 0.1);
+    margin: 2.5em auto 1em auto;
+
+    &:hover {
+      background: #b10606;
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid transparent;
+      box-shadow: 0 0 0.1rem 0.2rem rgba(62, 156, 233, 0.7);
+    }
+  }
+
+  &__link {
+    color: #4886e3;
+    font-size: 0.95em;
+
+    &:hover {
+      font-weight: 500;
+    }
+  }
+}

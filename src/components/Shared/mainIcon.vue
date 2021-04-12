@@ -29,6 +29,11 @@
     <attachment v-if="name === 'attachment'"></attachment>
     <bank-card v-if="name === 'bank-card'"></bank-card>
     <vector-dots v-if="name === 'vector-dots'"></vector-dots>
+    <database v-if="name === 'database'"></database>
+    <reload v-if="name === 'reload'"></reload>
+    <money-blue v-if="name === 'money-blue'"></money-blue>
+    <total v-if="name === 'total'"></total>
+    <green-naira v-if="name === 'green-naira'"></green-naira>
   </span>
 </template>
 
@@ -82,7 +87,12 @@ export default {
     camera: () => import("@/components/__private__/media/camera"),
     attachment: () => import("@/components/__private__/media/attachment"),
     bankCard: () => import("@/components/__private__/media/bankCard"),
-    vectorDots: () => import("@/components/__private__/media/vectorDots")
+    vectorDots: () => import("@/components/__private__/media/vectorDots"),
+    total: () => import("@/components/__private__/media/total"),
+    reload: () => import("@/components/__private__/media/greenReload"),
+    moneyBlue: () => import("@/components/__private__/media/blueMoney"),
+    database: () => import("@/components/__private__/media/database"),
+    greenNaira: () => import("@/components/__private__/media/greenNaira")
   }
 };
 </script>

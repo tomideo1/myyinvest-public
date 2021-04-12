@@ -3,8 +3,9 @@
   text-transform: capitalize;
 
   &__row {
-    box-shadow: 0 0 0.35rem 0 rgba(0, 0, 0, 0.35);
+    box-shadow: 0 5px 20px -5px $bv-shadow !important;
     margin-bottom: 1.75em;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     padding: 0.9em 0.35em;

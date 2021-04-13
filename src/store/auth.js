@@ -90,6 +90,11 @@ const actions = {
   },
 
   async logout({ commit }) {
+    const beamsClient = new PusherPushNotifications.Client({
+      instanceId: "152ee166-ce1b-4279-a308-a88e57d847cb"
+    });
+    beamsClient.stop().catch(console.error);
+
     commit("setToken", "");
     commit("setUser", {});
     commit("setProfile", {});

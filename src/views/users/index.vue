@@ -11,9 +11,6 @@ import MainLayout from "../../components/layout/main-layout";
 import * as PusherPushNotifications from "@pusher/push-notifications-web";
 import { mapActions, mapGetters } from "vuex";
 import { store } from "@/store/store";
-const beamsClient = new PusherPushNotifications.Client({
-  instanceId: "152ee166-ce1b-4279-a308-a88e57d847cb"
-});
 
 export default {
   name: "index",
@@ -32,9 +29,14 @@ export default {
       headers: { "x-auth-token": `${store.state.auth.token}` } // Headers your auth endpoint needs
     });
 
+    const beamsClient = new PusherPushNotifications.Client({
+      instanceId: "152ee166-ce1b-4279-a308-a88e57d847cb"
+    });
+
     beamsClient
       .start()
       .then(() => beamsClient.setUserId(store.state.auth.user._id, tokenProvider))
+      .then(() => console.log("User ID has been set"))
       .catch(store.state.auth.user._id);
   }
 };

@@ -1,4 +1,5 @@
 import Api from "@/utils/api";
+import * as PusherPushNotifications from "@pusher/push-notifications-web";
 
 const state = {
   user: {},

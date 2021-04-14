@@ -1,23 +1,28 @@
 <template>
-  <the-admin-layout>
+  <div>
     <div class="main-content">
-      <section class="content-titles">
+      <section class="table content-titles">
         <div class="sn">S/N</div>
-        <div class="name">Post Name</div>
-        <div class="author">Written by</div>
-        <div class="content">Post Content</div>
+        <div class="title-p">Post Title</div>
+        <div class="image">Post Image</div>
+        <div class="author">Post Author</div>
+        <div class="tags">Post Tags</div>
+        <div class="category">Post Category</div>
+        <div class="status">Post Status</div>
         <div class="date">Post Date</div>
         <div class="options"></div>
       </section>
 
-      <section class="contents" v-for="x in 10" :key="x">
+      <section class="table contents" v-for="x in 10" :key="x">
         <div class="sn">{{ zeroPrefix(x) }}{{ x }}</div>
-        <div class="name">How to invest seamlessly in Real Estate</div>
-        <div class="author">Valentine Offiah</div>
-        <div class="content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus alias qui excepturi obcaecati, facere fugit asperiores perspiciatis ipsam earum, nihil iusto, numquam quo. Earum tempore a,
-          ut odio debitis repellendus.
+        <div class="title-p">How to invest seamlessly in Real Estate</div>
+        <div class="image">
+          <img src="@/assets/admin/images/dummy-img.jpg" alt="Content Image" />
         </div>
+        <div class="author">Valentine Offiah</div>
+        <div class="tags">Real Estates Investments, Finance</div>
+        <div class="category">Blog</div>
+        <div class="status" :style="changeColor(status)">{{ status }}</div>
         <div class="date">17th Feb. 2021</div>
         <div class="options">
           <span>
@@ -42,8 +47,8 @@
               </svg>
             </svg>
           </span>
-          <span @click="deleteItem">
-            <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000">
+          <span>
+            <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000" @click="deleteItem">
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="14">
                 <path
                   paint-order="stroke fill markers"
@@ -57,13 +62,14 @@
       </section>
     </div>
 
-    <div class="pagination">
+    <!-- <div class="pagination">
       <button>Previous</button>
       <button v-for="n in 5" :key="n" :class="[n === currentPage ? 'button-active' : '']">{{ n }}</button>
       <button>Next</button>
-    </div>
+    </div> -->
+    <base-pagination :currentPage="currentPage" />
 
-    <div class="delete-overlay" v-if="!noDeleteModal">
+    <!-- <div class="delete-overlay" v-if="!noDeleteModal">
       <div class="delete-modal">
         <p>Delete post</p>
         <p>Are you sure you want to delete post?</p>
@@ -72,21 +78,30 @@
           <button @click="proceedDelete">Proceed</button>
         </div>
       </div>
-    </div>
-  </the-admin-layout>
+    </div> -->
+    <base-delete-modal :noDeleteModal="noDeleteModal" @closeModal="closeModal" v-if="!noDeleteModal" />
+  </div>
 </template>
 
 <script>
+// import "@/assets/admin/styles/table.css";
+// import "@/assets/admin/styles/delete-modal.css";
+import BasePagination from "@/components/admin/BasePagination.vue";
+import BaseDeleteModal from "@/components/admin/BaseDeleteModal.vue";
+
 export default {
-  name: "ViewFaqs",
+  name: "ViewAdminInsights",
 
   metaInfo: {
-    title: "Myyinvest - View FAQs (Admin)",
+    title: "Myyinvest - View Insights (Admin)",
     titleTemplate: null
   },
 
+  components: { BasePagination, BaseDeleteModal },
+
   data() {
     return {
+      status: "Published",
       currentPage: 1,
       noDeleteModal: true
     };
@@ -99,23 +114,29 @@ export default {
       } else return "";
     },
 
+    changeColor(val) {
+      if (val.toLowerCase().normalize() === "published") {
+        return "color: var(--myyinvest-green)";
+      } else return "color: var(--myyinvest-danger)";
+    },
+
     deleteItem() {
       this.noDeleteModal = !this.noDeleteModal;
     },
 
-    cancelDelete() {
+    closeModal() {
       this.noDeleteModal = !this.noDeleteModal;
-    },
-
-    proceedDelete() {
-      alert("What next?");
     }
+
+    // proceedDelete() {
+    //   alert("What next?");
+    // }
   }
 };
 </script>
 
 <style scoped>
-.main-content {
+/* .main-content {
   padding: 1px;
   overflow-y: auto;
   -ms-overflow-style: none;
@@ -137,57 +158,54 @@ section {
 
 section:not(:last-child) {
   margin-bottom: var(--base-size);
-}
+} */
 
 section div {
-  display: flex;
-  justify-content: center;
-  width: 16%;
-  padding: 2px;
+  /* display: flex;
+  justify-content: center; */
+  width: 11%;
+  /* padding: 2px; */
 }
 
 section div.sn {
   width: 6%;
 }
 
-section div.content {
-  width: 30%;
+section div.title-p,
+section div.options {
+  width: 14%;
 }
 
-section:first-child {
+/* section:first-child {
   position: sticky;
   position: -webkit-sticky;
   top: 0;
   background-color: var(--myyinvest-white);
-}
+} */
 
-section.contents {
+/* section.contents {
   margin-bottom: var(--base-size);
-}
+} */
 
-section:first-child div {
+/* section:first-child div {
   color: gray;
   font-weight: 600;
-}
+} */
 
-section:not(:first-child) div.status {
-  color: var(--myyinvest-red);
-}
-
-section div img {
+/* section div img {
   width: 100%;
   height: 60px;
 }
 
 div.options {
   justify-content: space-around !important;
-}
+} */
 
-.pagination {
+/* .pagination {
   display: flex;
   justify-content: right;
   align-items: center;
-  margin-top: var(--base-size);
+  margin-bottom: var(--base-size);
 }
 
 .pagination button {
@@ -195,7 +213,7 @@ div.options {
   border: 1px solid var(--myyinvest-red);
   border-radius: 5px;
   color: var(--myyinvest-red);
-  background-color: var(--myinvest-white);
+  background-color: var(--myyinvest-white);
 }
 
 .pagination button:first-child {
@@ -213,14 +231,18 @@ div.options {
   color: var(--myyinvest-white);
 }
 
-.delete-overlay {
+.pagination button:focus {
+  outline: none;
+  box-shadow: 0 0 3px 3px var(--myyinvest-red-fade);
+} */
+
+/* .delete-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
-  /* opacity: 0.5; */
   z-index: 1111;
 }
 
@@ -273,5 +295,5 @@ div.options {
   border: 2px solid transparent;
   color: var(--myyinvest-white);
   background-color: var(--myyinvest-red);
-}
+} */
 </style>

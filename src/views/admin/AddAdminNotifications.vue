@@ -1,55 +1,59 @@
 <template>
-  <the-admin-layout>
-    <form class="wrapper">
-      <fieldset class="input-grp">
-        <legend><label for="pname">Post Name</label></legend>
-        <input type="text" id="pname" placeholder="How to buy tokens in Myyinvest" />
-      </fieldset>
+  <form :class="[!validForm ? 'invalid-form' : '', 'wrapper']" @submit.prevent="submit">
+    <fieldset class="input-grp">
+      <legend><label for="pname">Post Name</label></legend>
+      <input type="text" id="pname" placeholder="How to buy tokens in Myyinvest" minlength="3" required v-model.trim.lazy="post_name" />
+    </fieldset>
 
-      <fieldset class="input-grp">
-        <legend><label for="precepient">Recipient</label></legend>
-        <input type="text" id="precepient" placeholder="Project One" />
-        <div class="dropdown-wrap">
-          <div class="dropdown">
-            <button class="dropbtn">{{ selectedProject || "Category" }} <img src="@/assets/admin/icons/caret-down.svg" alt="Dropdown" /></button>
-            <div class="dropdown-content">
-              <div class="option" v-for="(option, index) in newProjectNames" :key="index" @click="newProjectName(option.name)">{{ option.name }}</div>
-            </div>
+    <fieldset class="input-grp">
+      <legend><label for="precepient">Recipient</label></legend>
+      <div class="dropdown-wrap">
+        <div class="dropdown">
+          <div class="dropbtn">{{ selectedProject || "Category" }} <img src="@/assets/admin/icons/caret-down.svg" /></div>
+          <div class="dropdown-content" :style="[selected === true ? { display: 'none' } : '']">
+            <div class="option" v-for="(option, index) in newProjectNames" :key="index" @click="newProjectName(option.name)">{{ option.name }}</div>
           </div>
         </div>
-      </fieldset>
+      </div>
+    </fieldset>
 
-      <div class="upload">
-        <div class="upload-window">
-          <img :src="imgURL" alt="User Image Preview" class="img-fluid" />
-        </div>
-
-        <div class="file-input">
-          <input type="file" accept="image/*" id="file" class="file" @change="updateFilename" />
-          <label for="file">
-            Select file
-          </label>
-
-          <p class="file-name">{{ selectedFilename }}</p>
-        </div>
+    <div class="upload">
+      <div class="upload-window">
+        <img :src="post_imgURL || require('@/assets/admin/icons/camera.svg')" alt="User Image Preview" class="img-fluid" />
       </div>
 
-      <fieldset class="input-grp pcontent">
-        <legend><label for="pcontent">Post Content</label></legend>
-        <textarea
-          name=""
-          id="pcontent"
-          placeholder="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore fugit quibusdam praesentium molestiae debitis autem fugiat iure ratione voluptas fuga, consequuntur dignissimos minima, veniam dolorum! Debitis quae officiis et sint."
-          cols="30"
-          rows="10"
-        ></textarea>
-      </fieldset>
-      <button>SUBMIT</button>
-    </form>
-  </the-admin-layout>
+      <div class="file-input">
+        <input type="file" accept="image/*" id="file" class="file" required @change="updateFilename" />
+        <label for="file">
+          <img src="@/assets/admin/icons/clip.svg" />
+          Select file
+        </label>
+
+        <p class="file-name">{{ selectedFilename || "No file selected" }}</p>
+      </div>
+    </div>
+
+    <fieldset class="input-grp pcontent">
+      <legend><label for="pcontent">Post Content</label></legend>
+      <textarea
+        name=""
+        id="pcontent"
+        placeholder="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore fugit quibusdam praesentium molestiae debitis autem fugiat iure ratione voluptas fuga, consequuntur dignissimos minima, veniam dolorum! Debitis quae officiis et sint."
+        cols="30"
+        rows="10"
+        required
+        v-model.trim.lazy="post_content"
+      ></textarea>
+    </fieldset>
+
+    <p v-if="!validForm">Kindly fill the form correctly.</p>
+    <button type="submit" @click.prevent="submit" :disabled="submitStatus === 'PENDING'">{{ btn_msg }}</button>
+  </form>
 </template>
 
 <script>
+import { required } from "vuelidate/lib/validators";
+
 export default {
   name: "AddAdminNotification",
 
@@ -60,31 +64,64 @@ export default {
 
   data() {
     return {
+      post_name: "",
+      post_content: "",
+
       selectedProject: "",
+      selected: false,
       newProjectNames: [
         {
-          name: "Project One"
+          name: "General"
         },
         {
-          name: "Project Two"
+          name: "Income Plan for 6 months"
         },
         {
-          name: "Project Three"
+          name: "Income plan 12 months"
         },
         {
-          name: "Project Four"
+          name: "Rental Plan"
+        },
+        {
+          name: "Special Plan"
         }
       ],
 
-      imgURL: require("../../assets/admin/icons/camera.svg"),
-      selectedFilename: "No file selected"
+      post_imgURL: "",
+      selectedFilename: "",
+
+      submitStatus: null,
+      validForm: true,
+      btn_msg: "SUBMIT"
     };
+  },
+
+  validations: {
+    post_name: {
+      required
+    },
+
+    post_imgURL: {
+      required
+    },
+
+    post_content: {
+      required
+    },
+
+    selectedProject: {
+      required
+    }
   },
 
   methods: {
     newProjectName(val) {
       this.selectedProject = val;
-      alert(val);
+      this.selected = true;
+
+      setTimeout(() => {
+        this.selected = false;
+      }, 500);
     },
 
     updateFilename(event) {
@@ -98,10 +135,30 @@ export default {
 
         const reader = new FileReader();
         reader.onload = e => {
-          this.imgURL = e.target.result;
+          this.post_imgURL = e.target.result;
         };
 
         reader.readAsDataURL(event.target.files[0]);
+      }
+    },
+
+    submit() {
+      console.log("submitting...");
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        this.submitStatus = "ERROR";
+        this.validForm = false;
+
+        setTimeout(() => {
+          this.validForm = true;
+        }, 2000);
+      } else {
+        // do your submit logic here
+        this.submitStatus = "PENDING";
+        this.btn_msg = "SUBMITTING";
+        setTimeout(() => {
+          this.submitStatus = "OK";
+        }, 500);
       }
     }
   }
@@ -109,14 +166,6 @@ export default {
 </script>
 
 <style scoped>
-*:focus:not(:-moz-focusring) {
-  outline: none;
-}
-
-*:focus:not(:focus-visible) {
-  outline: none;
-}
-
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -124,20 +173,6 @@ export default {
   align-items: center;
   width: 60%;
   margin: var(--base-size) auto 0;
-  padding: 1px;
-  scrollbar-width: none;
-}
-
-.wrapper::-webkit-scrollbar {
-  display: none;
-}
-
-fieldset {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid var(--myyinvest-red-fade);
-  border-radius: 5px;
-  stroke-opacity: 0.5;
 }
 
 .image-upload-wrapper,
@@ -145,128 +180,8 @@ fieldset:not(:last-child) {
   margin-bottom: var(--base-size);
 }
 
-fieldset:not(:first-child) {
-  margin-top: var(--base-size);
-}
-
-legend {
-  width: fit-content;
-  width: -moz-fit-content;
-  width: max-content;
-  padding: 0 5px;
-  font-size: var(--font-normal);
-}
-
-label {
-  display: inline-block;
-  margin-bottom: 0;
-}
-
-input,
-/* select, */
-textarea {
-  width: 100%;
-  height: fit-content;
-  height: -moz-fit-content;
-  height: max-content;
-  padding: 5px;
-  font-size: var(--font-md);
-  border: 1px solid transparent;
-  border-radius: 5px;
-  background-color: var(--myyinvest-white);
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  text-indent: 0.01px;
-  text-overflow: "";
-}
-
-textarea {
-  height: 200px;
-}
-
-input:hover:not(.upload input),
-input:focus:not(.upload input),
-/* select:hover,
-select:focus, */
-textarea:hover,
-textarea:focus {
-  border-color: var(--myyinvest-red-fade);
-  outline: none;
-}
-
-input {
-  /* select::-ms-expand { */
-  display: none;
-}
-
-button {
-  margin: 10px 0 var(--base-size);
-  padding: 5px 10px;
-  color: var(--myyinvest-white);
-  background-color: var(--myyinvest-red);
-  border: 1px solid transparent;
-  border-radius: 5px;
-}
-
-.dropdown-wrap {
-  width: 100%;
-  margin-bottom: var(--base-size);
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-}
-
-.dropbtn {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: fit-content;
-  height: -moz-fit-content;
-  height: max-content;
-  margin: 0;
-  padding: 5px 10px;
-  color: black !important;
-  border: 1px solid gray;
-  border-radius: 5px;
-  background-color: var(--myyinvest-white);
-  cursor: pointer;
-}
-
 .dropdown-content {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  width: 120px;
-  background-color: var(--myyinvest-white);
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.dropdown-content .option {
-  display: block;
-  padding: 12px 16px;
-  color: black;
-  text-decoration: none;
-}
-
-.dropdown-content .option:hover {
-  color: var(--myyinvest-white);
-  background-color: var(--myyinvest-red-fade);
-  cursor: pointer;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.dropdown:hover .dropbtn {
-  border-color: var(--myyinvest-red);
-  box-shadow: 0 0 3px 3px var(--myyinvest-red-fade);
+  width: 200px;
 }
 
 .upload {
@@ -280,7 +195,6 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 150px; */
   max-width: 250px;
   height: 150px;
   border: 1px solid gray;
@@ -322,8 +236,22 @@ input:focus + label {
   transform: scale(1.02);
 }
 
+.file-input label img {
+  height: 15px;
+  padding-right: 10px;
+}
+
 .file-name {
-  font-size: var(--font-sm) !important;
+  font-size: var(--font-normal) !important;
   color: #555;
+}
+
+p {
+  font-size: 14px !important;
+  color: var(--myyinvest-danger);
+}
+
+button {
+  padding: 10px calc(3 * var(--base-size));
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <the-admin-layout>
+  <div>
     <div class="main-content">
-      <section class="content-titles">
+      <section class="table content-titles">
         <div class="sn">S/N</div>
         <div class="title-p">Post Name</div>
         <div class="image">Post Image</div>
@@ -10,7 +10,7 @@
         <div class="options"></div>
       </section>
 
-      <section class="contents" v-for="x in 10" :key="x">
+      <section class="table contents" v-for="x in 10" :key="x">
         <div class="sn">{{ zeroPrefix(x) }}{{ x }}</div>
         <div class="title-p">How to invest seamlessly in Real Estate</div>
         <div class="image">
@@ -59,13 +59,14 @@
       </section>
     </div>
 
-    <div class="pagination">
+    <!-- <div class="pagination">
       <button>Previous</button>
       <button v-for="n in 5" :key="n" :class="[n === currentPage ? 'button-active' : '']">{{ n }}</button>
       <button>Next</button>
-    </div>
+    </div> -->
+    <base-pagination :currentPage="currentPage" />
 
-    <div class="delete-overlay" v-if="!noDeleteModal">
+    <!-- <div class="delete-overlay" v-if="!noDeleteModal">
       <div class="delete-modal">
         <p>Delete post</p>
         <p>Are you sure you want to delete post?</p>
@@ -74,11 +75,17 @@
           <button @click="proceedDelete">Proceed</button>
         </div>
       </div>
-    </div>
-  </the-admin-layout>
+    </div> -->
+    <base-delete-modal :noDeleteModal="noDeleteModal" @closeModal="closeModal" v-if="!noDeleteModal" />
+  </div>
 </template>
 
 <script>
+// import "@/assets/admin/styles/pagination.css";
+// import "@/assets/admin/styles/delete-modal.css";
+import BasePagination from "@/components/admin/BasePagination.vue";
+import BaseDeleteModal from "@/components/admin/BaseDeleteModal.vue";
+
 export default {
   name: "ViewAdminNotifications",
 
@@ -86,6 +93,15 @@ export default {
     title: "Myyinvest - View Notifications (Admin)",
     titleTemplate: null
   },
+
+  components: { BasePagination, BaseDeleteModal },
+
+  // props: {
+  //   preview: {
+  //     type: Function,
+  //     required: true
+  //   }
+  // },
 
   data() {
     return {
@@ -112,13 +128,13 @@ export default {
       this.noDeleteModal = !this.noDeleteModal;
     },
 
-    cancelDelete() {
+    closeModal() {
       this.noDeleteModal = !this.noDeleteModal;
-    },
-
-    proceedDelete() {
-      alert("What next?");
     }
+
+    // proceedDelete() {
+    //   alert("What next?");
+    // }
   }
 };
 </script>
@@ -194,11 +210,11 @@ div.options {
   justify-content: space-around !important;
 }
 
-.pagination {
+/* .pagination {
   display: flex;
   justify-content: right;
   align-items: center;
-  margin-top: var(--base-size);
+  margin-bottom: var(--base-size);
 }
 
 .pagination button {
@@ -206,7 +222,7 @@ div.options {
   border: 1px solid var(--myyinvest-red);
   border-radius: 5px;
   color: var(--myyinvest-red);
-  background-color: var(--myinvest-white);
+  background-color: var(--myyinvest-white);
 }
 
 .pagination button:first-child {
@@ -224,7 +240,12 @@ div.options {
   color: var(--myyinvest-white);
 }
 
-.delete-overlay {
+.pagination button:focus {
+  outline: none;
+  box-shadow: 0 0 3px 3px var(--myyinvest-red-fade);
+} */
+
+/* .delete-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -283,5 +304,5 @@ div.options {
   border: 2px solid transparent;
   color: var(--myyinvest-white);
   background-color: var(--myyinvest-red);
-}
+} */
 </style>

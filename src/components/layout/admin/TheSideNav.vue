@@ -1,57 +1,63 @@
 <template>
   <div class="menu">
     <router-link to="/admin" class="main-route">
-      <img src="@/assets/admin/icons/home.svg" alt="Overview Logo" class="logo" />
+      <img src="@/assets/admin/icons/home.svg" alt="Overview icon" class="icon" />
       <span>Overview</span>
     </router-link>
     <router-link to="/admin/statistics" class="main-route">
-      <img src="@/assets/admin/icons/statistics.svg" alt="Statistics Logo" class="logo" />
+      <img src="@/assets/admin/icons/statistics.svg" alt="Statistics icon" class="icon" />
       <span>Statistics</span>
     </router-link>
     <router-link to="/admin/all-users" :class="[myPath('/admin/users/'), 'main-route']">
-      <img src="@/assets/admin/icons/user.svg" alt="User Logo" class="logo" />
+      <img src="@/assets/admin/icons/user.svg" alt="User icon" class="icon" />
       <span>Users</span>
     </router-link>
     <router-link to="/admin/projects" class="main-route">
-      <img src="@/assets/admin/icons/checklist.svg" alt="Projects Logo" class="logo" />
+      <img src="@/assets/admin/icons/checklist.svg" alt="Projects icon" class="icon" />
       <span>Projects</span>
     </router-link>
-    <router-link to="/admin/transactions" class="main-route">
-      <img src="@/assets/admin/icons/money.svg" alt="Transactions Logo" class="logo" />
-      <span>Transactions</span>
-    </router-link>
+    <div :class="[myPath('admin/finance/'), 'main-route']" @click="noFinance = !noFinance">
+      <img src="@/assets/admin/icons/money.svg" alt="Transactions icon" class="icon" />
+      <span>Financial Report</span>
+    </div>
+    <div class="sub-nav" v-if="!noFinance">
+      <!-- <transition-group name="list"> -->
+      <router-link to="/admin/finance/transactions">Transactions</router-link>
+      <router-link to="/admin/finance/accounts">Accounts</router-link>
+      <!-- </transition-group> -->
+    </div>
     <div :class="[myPath('-insights'), 'main-route']" @click="noInsight = !noInsight">
-      <img src="@/assets/admin/icons/window.svg" alt="Insight Logo" class="logo" />
+      <img src="@/assets/admin/icons/window.svg" alt="Insight icon" class="icon" />
       <span>Insights</span>
     </div>
     <div class="sub-nav" v-if="!noInsight">
-      <!-- <transition name="expand-fly"> -->
-      <router-link to="/admin/view-insights"> <span></span>View Insights</router-link>
-      <router-link to="/admin/add-insights"> <span></span>Add Insights</router-link>
-      <!-- </transition> -->
+      <!-- <transition-group name="list"> -->
+      <router-link to="/admin/view-insights">View Insights</router-link>
+      <router-link to="/admin/add-insights">Add Insights</router-link>
+      <!-- </transition-group> -->
     </div>
     <div :class="[myPath('-notification'), 'main-route']" @click="noNotification = !noNotification">
-      <img src="@/assets/admin/icons/bell.svg" alt="Notifications Logo" class="logo" />
+      <img src="@/assets/admin/icons/bell.svg" alt="Notifications icon" class="icon" />
       <span>Notifications</span>
     </div>
     <div class="sub-nav" v-if="!noNotification">
-      <!-- <transition name="expand-fly"> -->
-      <router-link to="/admin/view-notifications"> <span></span>View Notifications</router-link>
-      <router-link to="/admin/add-notifications"> <span></span>Add Notifications</router-link>
-      <!-- </transition> -->
+      <!-- <transition-group name="list"> -->
+      <router-link to="/admin/view-notifications">View Notifications</router-link>
+      <router-link to="/admin/add-notifications">Add Notifications</router-link>
+      <!-- </transition-group> -->
     </div>
     <div :class="[myPath('-faqs'), 'main-route']" @click="noPost = !noPost">
-      <img src="@/assets/admin/icons/phone.svg" alt="Talk to us Logo" class="logo" />
+      <img src="@/assets/admin/icons/phone.svg" alt="Talk to us icon" class="icon" />
       <span>FAQ</span>
     </div>
     <div class="sub-nav" v-if="!noPost">
-      <!-- <transition name="expand-fly"> -->
-      <router-link to="/admin/view-faqs"> <span></span>View FAQs</router-link>
-      <router-link to="/admin/add-faqs"> <span></span>Add FAQs</router-link>
-      <!-- </transition> -->
+      <!-- <transition-group name="list"> -->
+      <router-link to="/admin/view-faqs">View FAQs</router-link>
+      <router-link to="/admin/add-faqs">Add FAQs</router-link>
+      <!-- </transition-group> -->
     </div>
     <router-link to="/admin/newsletters" class="main-route">
-      <img src="@/assets/admin/icons/envelope.svg" alt="Newsletter Logo" class="logo" />
+      <img src="@/assets/admin/icons/envelope.svg" alt="Newsletter icon" class="icon" />
       <span>Newsletter</span>
     </router-link>
   </div>
@@ -64,7 +70,8 @@ export default {
     return {
       noInsight: true,
       noPost: true,
-      noNotification: true
+      noNotification: true,
+      noFinance: true
       // noUser: true,
     };
   },
@@ -116,10 +123,10 @@ export default {
   cursor: pointer;
 }
 
-.menu div.main-route:hover .logo,
-.menu a.main-route:hover .logo,
-.menu .active-main-route .logo,
-a.main-route.exact-active.active .logo {
+.menu div.main-route:hover .icon,
+.menu a.main-route:hover .icon,
+.menu .active-main-route .icon,
+a.main-route.exact-active.active .icon {
   filter: invert(100%) sepia(8%) saturate(0%) hue-rotate(121deg) brightness(109%) contrast(105%);
 }
 
@@ -166,5 +173,30 @@ a.main-route.exact-active.active .logo {
   margin-bottom: 2px;
 }
 
-/* .expand-fly-in */
+.list-enter-active,
+.list-leave-active,
+.list-move {
+  transition: 500ms cubic-bezier(0.59, 0.12, 0.34, 0.95);
+  transition-property: opacity, transform;
+}
+
+.list-enter {
+  opacity: 0;
+  transform: translateX(50px) scaleY(0.5);
+}
+
+.list-enter-to {
+  opacity: 1;
+  transform: translateX(0) scaleY(1);
+}
+
+.list-leave-active {
+  position: absolute;
+}
+
+.list-leave-to {
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: center top;
+}
 </style>

@@ -1,7 +1,5 @@
 <template>
-  <the-admin-layout>
-    <p>Overview</p>
-  </the-admin-layout>
+  <p>Overview</p>
 </template>
 
 <script>

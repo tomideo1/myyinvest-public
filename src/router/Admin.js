@@ -1,50 +1,45 @@
-export default [
-  {
-    path: "/admin",
-    component: () => import("@/views/admin/index.vue")
-    // meta: {
-    //   layout: "TheAdminLayout"
-    // },
-    // children: [
-    //   {
-    //     path: "view-insights",
-    //     name: "view-insight",
-    //     component: () => import("@/views/admin/ViewInsights.vue")
-    //   }
-    // ]
-  },
+const routeOptions = [
   {
     path: "/admin/view-insights",
-    name: "ViewInsights",
-    component: () => import("@/views/admin/ViewInsights.vue")
-    // meta: {
-    //   layout: "TheAdminLayout"
-    // }
+    name: "ViewAdminInsights",
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    }
   },
   {
     path: "/admin/add-insights",
-    name: "AddInsights",
-    component: () => import("@/views/admin/AddInsights.vue")
+    name: "AddAdminInsights",
+    meta: {
+      layout: "AdminLayout"
+    }
   },
   {
     path: "/admin/view-faqs",
-    name: "ViewFaqs",
-    component: () => import("@/views/admin/ViewFaqs.vue")
+    name: "ViewAdminFaqs",
+    meta: {
+      layout: "AdminLayout"
+    }
   },
   {
     path: "/admin/add-faqs",
-    name: "AddFaqs",
-    component: () => import("@/views/admin/AddFaqs.vue")
+    name: "AddAdminFaqs",
+    meta: {
+      layout: "AdminLayout"
+    }
   },
   {
     path: "/admin/all-users",
     name: "AllUsers",
-    component: () => import("@/views/admin/AllUsers.vue")
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    }
   },
   {
     path: "/admin/users/:id",
-    name: "ViewUser",
-    component: () => import("@/views/admin/ViewUser.vue"),
+    name: "ViewUserDetails",
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    },
     props: true
     // props: {
     //   default: true,
@@ -53,23 +48,57 @@ export default [
     // }
   },
   {
-    path: "/admin/transactions",
+    path: "/admin/finance/transactions",
     name: "AdminTransactions",
-    component: () => import("@/views/admin/AdminTransactions.vue")
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    }
+  },
+  {
+    path: "/admin/finance/accounts",
+    name: "AdminAccounts",
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    }
   },
   {
     path: "/admin/view-notifications",
-    name: "ViewNotifications",
-    component: () => import("@/views/admin/ViewAdminNotifications.vue")
+    name: "ViewAdminNotifications",
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    }
   },
   {
     path: "/admin/add-notifications",
-    name: "AddNotifications",
-    component: () => import("@/views/admin/AddAdminNotifications.vue")
+    name: "AddAdminNotifications",
+    meta: {
+      layout: "AdminLayout"
+    }
   },
   {
     path: "/admin/newsletters",
     name: "AdminNewsletters",
-    component: () => import("@/views/admin/AdminNewsletters.vue")
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    }
   }
+];
+
+const routes = routeOptions.map(route => {
+  return {
+    ...route,
+    component: () => import(/* webpackChunkName: "[request]" */ `@/views/admin/${route.name}.vue`)
+  };
+});
+
+export default [
+  {
+    path: "/admin",
+    nmae: "Admin",
+    component: () => import(/* webpackChunkName: "Admin" */ "@/views/admin/index.vue"),
+    meta: {
+      layout: "AdminLayout"
+    }
+  },
+  ...routes
 ];

@@ -3,26 +3,18 @@
     <div class="main-content">
       <section class="table content-titles">
         <div class="sn">S/N</div>
+        <div class="fullname">Fullname</div>
+        <div class="phone">Phone Number</div>
         <div class="email">Email Address</div>
-        <div class="investment-cost">Investment Cost</div>
-        <div class="tokens">Tokens</div>
-        <div class="project">Project</div>
-        <div class="payment-channel">Payment Channel</div>
-        <div class="status">Wallet Account</div>
-        <div class="date">Post Date</div>
+        <div class="wallet">Wallet Account</div>
       </section>
 
       <section class="table contents" v-for="x in 10" :key="x">
         <div class="sn">{{ zeroPrefix(x) }}{{ x }}</div>
-        <div class="email">voffiah@gmail.com</div>
-        <div class="investment-cost">₦70000</div>
-        <div class="tokens">35</div>
-        <div class="project">Cambridge Apartment</div>
-        <div class="payment-channel">RIBY</div>
-        <div class="status">
-          <div class="status-content" :style="changeBackgroundColor(status[x])">{{ status[x] }}</div>
-        </div>
-        <div class="date">17th Feb. 2021</div>
+        <div class="fullname">Fullname</div>
+        <div class="phone">Phone Number</div>
+        <div class="email">Email Address</div>
+        <div class="wallet">Wallet Account</div>
       </section>
     </div>
 
@@ -45,38 +37,16 @@ export default {
 
   data() {
     return {
-      // status: "Success",
       currentPage: 1,
       totalpages: 5
     };
   },
 
   methods: {
-    randomizedStatus() {
-      let statuses = ["In progress", "In progress", "Success", "Success", "Success", "Success", "Success", "Failed", "Failed", "Failed", "Failed"];
-
-      let arr2 = [];
-      while (statuses.length !== 0) {
-        let ri = Math.floor(Math.random() * statuses.length);
-        arr2.push(statuses[ri]);
-        statuses.splice(ri, 1);
-      }
-
-      return (statuses = arr2);
-    },
-
     zeroPrefix(num) {
       if (num < 10) {
         return 0;
       } else return "";
-    },
-
-    changeBackgroundColor(val) {
-      if (val.toLowerCase().normalize() === "in progress") {
-        return "background-color: gray";
-      } else if (val.toLowerCase().normalize() === "success") {
-        return "background-color: var(--myyinvest-green)";
-      } else return "background-color: var(--myyinvest-danger)";
     },
 
     previousPage() {
@@ -93,10 +63,6 @@ export default {
   },
 
   computed: {
-    status() {
-      return this.randomizedStatus();
-    },
-
     isFirstPage() {
       return this.currentPage === 1;
     },
@@ -110,7 +76,6 @@ export default {
 
 <style scoped>
 .main-content {
-  /* height: 95%; */
   padding: 1px;
   overflow-y: auto;
   -ms-overflow-style: none;
@@ -141,21 +106,16 @@ section:not(:last-child) {
 section div {
   display: flex;
   justify-content: center;
-  width: 10%;
+  width: 17%;
   padding: 2px;
 }
 
 section div.sn {
-  width: 8%;
+  width: 9%;
 }
 
-section div.email,
-section div.payment-channel {
-  width: 16%;
-}
-
-section div.project {
-  width: 18%;
+section div.wallet {
+  width: 40%;
 }
 
 section:first-child {

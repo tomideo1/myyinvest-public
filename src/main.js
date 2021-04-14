@@ -8,7 +8,6 @@ import VueTelInput from "vue-tel-input";
 import "vue-tel-input/dist/vue-tel-input.css";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import "./scss/app.scss";
-import "./assets/admin/styles/base.css";
 import helpers from "./utils/helper";
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 // import "bootstrap/dist/css/bootstrap.css";
@@ -16,22 +15,11 @@ import helpers from "./utils/helper";
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue);
 
-import TheAdminLayout from "./layouts/TheAdminLayout.vue";
-Vue.component("TheAdminLayout", TheAdminLayout);
-
 import VueMeta from "vue-meta";
-
-// Vue.use(VueMeta, {
-//   // optional pluginOptions
-//   refreshOnceOnNavigation: true
-// });
-
-// Optionally install the BootstrapVue icon components plugin
-// Vue.use(IconsPlugin);
+import Vuelidate from "vuelidate";
+import Print from "vue-print-nb";
 
 Vue.prototype.$Bus = new Vue();
-
-// Vue.use(VueTelInput);
 
 const plugin = {
   install() {
@@ -40,8 +28,10 @@ const plugin = {
   }
 };
 
-// Vue.use(plugin);
-Vue.use(VueMeta, IconsPlugin, VueTelInput, plugin);
+Vue.use(VueMeta, IconsPlugin, VueTelInput, plugin, Vuelidate);
+
+Vue.use(Vuelidate);
+Vue.use(Print);
 
 Vue.config.productionTip = false;
 

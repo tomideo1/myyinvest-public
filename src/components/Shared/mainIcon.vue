@@ -29,6 +29,10 @@
     <attachment v-if="name === 'attachment'"></attachment>
     <bank-card v-if="name === 'bank-card'"></bank-card>
     <vector-dots v-if="name === 'vector-dots'"></vector-dots>
+    <green-naira v-if="name === 'green-naira'"></green-naira>
+    <close v-if="name === 'close'"></close>
+    <tooltip v-if="name === 'tooltip'"></tooltip>
+    <caret v-if="name === 'caret'"></caret>
   </span>
 </template>
 
@@ -82,7 +86,11 @@ export default {
     camera: () => import("@/components/__private__/media/camera"),
     attachment: () => import("@/components/__private__/media/attachment"),
     bankCard: () => import("@/components/__private__/media/bankCard"),
-    vectorDots: () => import("@/components/__private__/media/vectorDots")
+    vectorDots: () => import("@/components/__private__/media/vectorDots"),
+    greenNaira: () => import("@/components/__private__/media/greenNaira"),
+    close: () => import("@/components/__private__/media/close"),
+    tooltip: () => import("@/components/__private__/media/tooltip"),
+    caret: () => import("@/components/__private__/media/caret")
   }
 };
 </script>
@@ -102,6 +110,11 @@ export default {
     display: block;
     max-height: 100%;
     max-width: 100%;
+  }
+  &-xl {
+    height: 2.25em;
+    width: auto;
+    transform: scale(1.3);
   }
   &-lg {
     width: 2.5rem;

@@ -21,5 +21,9 @@
     @media screen and (min-width: 1024px) {
       @content;
     }
+  } @else if $size == tablet-landscape-down {
+    @media screen and (max-width: 1279px) {
+      @content;
+    }
   }
 }

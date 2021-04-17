@@ -73,6 +73,14 @@ export default [
         meta: {
           middleware: [auth]
         }
+      },
+      {
+        path: "browse-assets",
+        name: "assets",
+        component: () => import(/* webpackChunkName: "browse-assets" */ "../views/Shared/listings/listing.vue"),
+        meta: {
+          middleware: [auth]
+        }
       }
     ]
   }

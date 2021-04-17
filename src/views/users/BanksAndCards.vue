@@ -10,14 +10,14 @@
       </ul>
     </nav>
 
+    <!-- change to template v-if v-else -->
     <div class="bc-cards" v-if="isSelected('banks')">
       <BankItem />
       <AddCardItem text="Add Bank" @click.native="$router.push({ name: 'addbank' })" />
     </div>
     <div class="bc-cards" v-else>
-      <!-- <AddCardItem text="Add New Card" @click.native="$router.push({ name: 'addcard' })" /> -->
-      <AddCardItem text="Add New Card" @click.native="showModal = true" />
-      <div :class="['ac-modal', { 'ac-modal--hidden': !showModal }]">
+      <AddCardItem text="Add New Card" @click.native="isModalVisible = true" />
+      <div :class="['ac-modal', { 'ac-modal--hidden': !isModalVisible }]">
         <div class="ac-modal__dialog-box">
           <div class="ac-modal__info-container">
             <MainIcon name="bank-card" size="lg" class="ac-modal__bank-card" />
@@ -25,7 +25,7 @@
             <p class="ac-modal__message">To add and verify your card, <span>N100</span> will be charged and added to your wallet.</p>
           </div>
           <div class="ac-modal__btn-container">
-            <button type="button" @click="showModal = false" class="ac-modal__btn ac-modal__btn--grey">Cancel</button>
+            <button type="button" @click="isModalVisible = false" class="ac-modal__btn ac-modal__btn--grey">Cancel</button>
             <paystack class="ac-modal__btn ac-modal__btn--red" :amount="amount" :email="email" :paystackkey="paystackkey" :reference="reference" :callback="callback" :close="close" :embed="false">
               Proceed
             </paystack>
@@ -55,7 +55,7 @@ export default {
     return {
       selected: "banks",
       options: ["banks", "cards"],
-      showModal: false,
+      isModalVisible: false,
       paystackkey: "pk_test_3e2046f06f81fa68d9fb35799164e9845912f526",
       email: "",
       amount: 10000

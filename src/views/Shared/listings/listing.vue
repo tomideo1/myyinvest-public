@@ -4,7 +4,7 @@
     <div class="listing-item-container">
       <MainIcon name="vector-dots" id="dot-vector-1" />
 
-      <ListingItem>
+      <ListingItem slug="income-plan">
         <template #image="slotProps">
           <img :class="slotProps.className" src="https://res.cloudinary.com/myyinvest/image/upload/v1618091853/listings/income-plan_ssaptk.png" alt="income plan" />
         </template>
@@ -24,7 +24,7 @@
         </template>
       </ListingItem>
 
-      <ListingItem>
+      <ListingItem slug="rental-plan">
         <template #image="slotProps">
           <img :class="slotProps.className" src="https://res.cloudinary.com/myyinvest/image/upload/v1618091890/listings/rental-plan_g5uhh9.png" alt="rental plan" />
         </template>
@@ -33,7 +33,7 @@
         </template>
       </ListingItem>
 
-      <ListingItem>
+      <ListingItem slug="special-plan">
         <template #image="slotProps">
           <img :class="slotProps.className" src="https://res.cloudinary.com/myyinvest/image/upload/v1618092021/listings/special-plan_e53df1.png" alt="special plan" />
         </template>

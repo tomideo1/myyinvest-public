@@ -34,20 +34,25 @@ const baseRoutes = [
           name: "listings"
         },
         children: [
+          // {
+          //   path: "",
+          //   name: "listings",
+          //   component: () => import(/* webpackChunkName: "listings" */ "../views/Shared/listings/listings.vue")
+          // },
           {
             path: "",
-            name: "listings",
-            component: () => import(/* webpackChunkName: "listings" */ "../views/Shared/listings/listings.vue")
-          },
-          {
-            path: "listing",
             name: "listing",
             component: () => import(/* webpackChunkName: "listing" */ "../views/Shared/listings/listing.vue")
           },
+          // {
+          //   path: "single",
+          //   name: "single-listing",
+          //   component: () => import(/* webpackChunkName: "single" */ "../views/Shared/listings/single.vue")
+          // }
           {
-            path: "single",
+            path: ":slug",
             name: "single-listing",
-            component: () => import(/* webpackChunkName: "single" */ "../views/Shared/listings/single.vue")
+            component: () => import(/* webpackChunkName: "single" */ "../views/Shared/listings/singleListing.vue")
           }
         ]
       },

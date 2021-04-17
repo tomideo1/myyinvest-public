@@ -16,6 +16,15 @@ export default function() {
         name: "assets"
       }
     },
+
+    {
+      title: "Wallet",
+      routeIcon: "wallet",
+      identifier: "wallet",
+      to: {
+        name: "wallet"
+      }
+    },
     {
       title: "Myy Portfolio",
       routeIcon: "portfolio",

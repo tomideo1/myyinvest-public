@@ -34,6 +34,10 @@
     <money-blue v-if="name === 'money-blue'"></money-blue>
     <total v-if="name === 'total'"></total>
     <green-naira v-if="name === 'green-naira'"></green-naira>
+    <back v-if="name === 'back'"></back>
+    <clipboard v-if="name === 'clipboard'"></clipboard>
+    <activity v-if="name === 'activity'"></activity>
+    <gt v-if="name === 'gt'"></gt>
   </span>
 </template>
 
@@ -92,7 +96,11 @@ export default {
     reload: () => import("@/components/__private__/media/greenReload"),
     moneyBlue: () => import("@/components/__private__/media/blueMoney"),
     database: () => import("@/components/__private__/media/database"),
-    greenNaira: () => import("@/components/__private__/media/greenNaira")
+    greenNaira: () => import("@/components/__private__/media/greenNaira"),
+    back: () => import("@/components/__private__/media/back"),
+    clipboard: () => import("@/components/__private__/media/clipboard"),
+    activity: () => import("@/components/__private__/media/activity"),
+    gt: () => import("@/components/__private__/media/gt")
   }
 };
 </script>

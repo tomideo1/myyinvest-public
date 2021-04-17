@@ -1,10 +1,11 @@
 <template>
   <button @click="$emit('click', $event)" :class="[classes, icon ? iconClass : '']" :disabled="disable" :style="styles">
     <!-- Button Text -->
-    <span class="d-flex flex-row">
-      <main-icon class="mr-4" v-if="Icon" :name="Icon" />
-      <span v-if="text" v-html="textProp"> </span>
+    <main-icon lass="mr-4" :size="size" v-if="Icon && IconPosition === 'beginning'" :name="Icon" />
+    <span class="d-flex justify-content-around align-content-center mx-auto text-center">
+      <span class="" v-if="text" v-html="textProp"> </span>
     </span>
+    <main-icon class="ml-auto" :size="size" v-if="Icon && IconPosition === 'end'" :name="Icon" />
   </button>
 </template>
 <script>
@@ -36,6 +37,11 @@ export default {
 
     Icon: {
       type: String
+    },
+
+    IconPosition: {
+      type: String,
+      default: "beginning"
     },
     // The size of the button
     size: {

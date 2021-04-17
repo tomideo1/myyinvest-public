@@ -6,7 +6,6 @@
           <img width="324" height="52" src="@/assets/logos/Myylogo2.png" alt="Myyinvest Logo" />
         </div>
 
-        <!-- <div class="title-area">Details for User Sososo</div> -->
         <slot name="title" @callClosePreview="closePrintPreview" />
         <slot name="content" />
       </div>
@@ -43,21 +42,22 @@ export default {
   right: 0;
   bottom: 0;
   padding: 0 calc(4 * var(--base-size));
-  /* overflow-y: auto; */
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 99999;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .overlay-content {
   height: 100%;
-  padding: calc(2 * var(--base-size));
+  padding: calc(4 * var(--base-size));
   /* padding-bottom: calc(4 * var(--base-size)); */
   overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   background-color: white;
+}
+
+.overlay ::-webkit-scrollbar {
+  display: none;
 }
 
 .logo-area,

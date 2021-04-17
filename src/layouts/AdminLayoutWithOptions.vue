@@ -4,7 +4,9 @@
 
     <div class="body" v-if="supportedDevice">
       <nav class="top-nav">
-        <the-nav />
+        <the-nav>
+          <template #username v-if="requireName()">({{ selected_user.fullname }})</template>
+        </the-nav>
       </nav>
       <main>
         <nav class="side-nav">
@@ -13,7 +15,6 @@
 
         <div class="main-contents">
           <the-header-options @printCurrentUser="printPreview" />
-          <!-- @pagePreview="printPreview" -->
 
           <article>
             <div class="content-wrapper">
@@ -36,19 +37,13 @@ import TheSideNav from "@/components/layout/admin/TheSideNav.vue";
 import PrintUserDetails from "@/views/admin/PrintUserDetails.vue";
 import "@/assets/admin/styles/layout.css";
 import "@/assets/admin/styles/table.css";
+import { mapState } from "vuex";
+// import {}
 
 export default {
   name: "TheAdminLayout",
 
-  // components: { TheDeviceInfo, TheHeaderOptions, TheNav, TheSideNav },
   components: { TheDeviceInfo, TheHeaderOptions, TheNav, TheSideNav, PrintUserDetails },
-
-  // props: {
-  //   noUserDetails: {
-  //     type: Boolean,
-  //     default: true
-  //   }
-  // },
 
   data() {
     return {
@@ -67,6 +62,16 @@ export default {
       } else return "desktop";
     },
 
+    requireName() {
+      const user_t = /^\/admin\/users\/[1-9][0-9]*\/transactions$/gim;
+
+      const currentRoute = this.$route.fullPath;
+
+      if (currentRoute.match(user_t)) {
+        return true;
+      } else return false;
+    },
+
     printPreview() {
       this.noUserDetails = !this.noUserDetails;
     }
@@ -79,113 +84,18 @@ export default {
   computed: {
     supportedDevice() {
       return this.deviceType() === "desktop";
-    }
+    },
+
+    ...mapState({
+      selected_user: state => state.admin.selected_user
+    })
   }
 };
 </script>
 
 // src="@/assets/admin/styles/admin-layout.css"
 <style scoped>
-/* *:focus:not(:-moz-focusring) {
-  outline: none;
-}
-
-*:focus:not(:focus-visible) {
-  outline: none;
-}
-
-.main-wrap {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-div.body {
-  margin: 0;
-  border: 0;
-  font-size: var(--font-normal);
-}
-
-main {
-  display: grid;
-  grid-template-columns: 20% 80%;
-}
-
-nav.top-nav {
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
-  height: var(--topnav-height);
-  background-color: var(--myyinvest-white);
-  box-shadow: 0 1px 4px 0 rgba(158, 157, 157, 0.5);
-  z-index: 999;
-}
-
-main {
-  max-height: 50vh !important;
-  z-index: 1;
-}
-
-main nav.side-nav {
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
-  height: calc(100vh - (1.01 * var(--topnav-height)));
-  color: var(--myyinvest-red);
-  box-shadow: 1px 0 2px 0 rgba(158, 157, 157, 0.5);
-  font-weight: 600;
-  background-image: url("../assets/admin/images/nav-background.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-origin: border-box;
-  -webkit-background-origin: border-box;
-  -moz-background-origin: content-box;
-  background-position: 0 100%;
-  overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-main nav.side-nav::-webkit-scrollbar {
-  display: none;
-}
-
-main nav.side-nav::-webkit-scrollbar {
-  display: none;
-}
-
-.main-contents {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-  margin: 20px;
-}
-
 main article {
   height: 78vh;
-  padding: 10px;
-  box-shadow: 0 0 2px 0 gray;
-  border-radius: 10px;
-}
-
-main article .content-wrapper {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-  border: 1px solid var(--myyinvest-red);
-  border-radius: 10px;
-  overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-main article .content-wrapper::-webkit-scrollbar {
-  display: none;
-} */
-
-main article {
-  height: 78vh;
-  /* border: 2px solid purple; */
 }
 </style>

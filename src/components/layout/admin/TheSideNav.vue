@@ -12,18 +12,23 @@
       <img src="@/assets/admin/icons/user.svg" alt="User icon" class="icon" />
       <span>Users</span>
     </router-link>
-    <router-link to="/admin/projects" class="main-route">
-      <img src="@/assets/admin/icons/checklist.svg" alt="Projects icon" class="icon" />
-      <span>Projects</span>
+    <router-link to="/admin/plans" class="main-route">
+      <img src="@/assets/admin/icons/checklist.svg" alt="Plans icon" class="icon" />
+      <span>Plans</span>
     </router-link>
-    <div :class="[myPath('admin/finance/'), 'main-route']" @click="noFinance = !noFinance">
+    <router-link to="/admin/special-form" class="main-route">
+      <img src="@/assets/admin/icons/special.svg" alt="Special Form icon" class="icon" />
+      <span>Special Form</span>
+    </router-link>
+    <div :class="[myPath('/admin/finance/'), 'main-route']" @click="noFinance = !noFinance">
       <img src="@/assets/admin/icons/money.svg" alt="Transactions icon" class="icon" />
       <span>Financial Report</span>
     </div>
     <div class="sub-nav" v-if="!noFinance">
       <!-- <transition-group name="list"> -->
-      <router-link to="/admin/finance/transactions">Transactions</router-link>
-      <router-link to="/admin/finance/accounts">Accounts</router-link>
+      <router-link to="/admin/finance/transactions"><span></span> Transactions</router-link>
+      <router-link to="/admin/finance/wallet-accounts"><span></span> Wallet Accounts</router-link>
+      <router-link to="/admin/finance/bank-accounts"><span></span> Bank Accounts</router-link>
       <!-- </transition-group> -->
     </div>
     <div :class="[myPath('-insights'), 'main-route']" @click="noInsight = !noInsight">
@@ -32,8 +37,8 @@
     </div>
     <div class="sub-nav" v-if="!noInsight">
       <!-- <transition-group name="list"> -->
-      <router-link to="/admin/view-insights">View Insights</router-link>
-      <router-link to="/admin/add-insights">Add Insights</router-link>
+      <router-link to="/admin/view-insights"><span></span> View Insights</router-link>
+      <router-link to="/admin/add-insights"><span></span> Add Insights</router-link>
       <!-- </transition-group> -->
     </div>
     <div :class="[myPath('-notification'), 'main-route']" @click="noNotification = !noNotification">
@@ -42,18 +47,18 @@
     </div>
     <div class="sub-nav" v-if="!noNotification">
       <!-- <transition-group name="list"> -->
-      <router-link to="/admin/view-notifications">View Notifications</router-link>
-      <router-link to="/admin/add-notifications">Add Notifications</router-link>
+      <router-link to="/admin/view-notifications"><span></span> View Notifications</router-link>
+      <router-link to="/admin/add-notifications"><span></span> Add Notifications</router-link>
       <!-- </transition-group> -->
     </div>
-    <div :class="[myPath('-faqs'), 'main-route']" @click="noPost = !noPost">
+    <div :class="[myPath('-faqs'), 'main-route']" @click="noFaq = !noFaq">
       <img src="@/assets/admin/icons/phone.svg" alt="Talk to us icon" class="icon" />
       <span>FAQ</span>
     </div>
-    <div class="sub-nav" v-if="!noPost">
+    <div class="sub-nav" v-if="!noFaq">
       <!-- <transition-group name="list"> -->
-      <router-link to="/admin/view-faqs">View FAQs</router-link>
-      <router-link to="/admin/add-faqs">Add FAQs</router-link>
+      <router-link to="/admin/view-faqs"><span></span> View FAQ</router-link>
+      <router-link to="/admin/add-faqs"><span></span> Add FAQ</router-link>
       <!-- </transition-group> -->
     </div>
     <router-link to="/admin/newsletters" class="main-route">
@@ -69,7 +74,7 @@ export default {
   data() {
     return {
       noInsight: true,
-      noPost: true,
+      noFaq: true,
       noNotification: true,
       noFinance: true
       // noUser: true,
@@ -138,13 +143,14 @@ a.main-route.exact-active.active .icon {
 .menu .sub-nav {
   display: flex;
   flex-direction: column;
-  margin: 10px 0 10px 60px;
+  margin-left: 60px;
 }
 
 .menu .sub-nav a {
   display: flex;
   align-items: center;
   width: 80%;
+  margin-bottom: 2px;
   padding: 5px;
   border-radius: 5px;
 }
@@ -169,9 +175,9 @@ a.main-route.exact-active.active .icon {
   background-color: var(--myyinvest-white) !important;
 }
 
-.menu .sub-nav a:not(:last-child) {
+/* .menu .sub-nav a:not(:last-child) {
   margin-bottom: 2px;
-}
+} */
 
 .list-enter-active,
 .list-leave-active,

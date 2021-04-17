@@ -177,22 +177,13 @@ export default {
 
 .wrapper {
   display: grid;
-  grid-template-columns: 75% 25%;
+  grid-template-columns: 3fr 1fr;
+  gap: var(--base-size);
   padding: var(--base-size);
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.wrapper::-webkit-scrollbar {
-  display: none;
 }
 
 .left-area {
-  margin-right: var(--base-size);
-}
-
-.right-area {
-  margin-left: var(--base-size);
+  padding-bottom: var(--base-size);
 }
 
 .personal-details,
@@ -207,10 +198,6 @@ export default {
 .header {
   font-size: var(--font-normal);
 }
-
-/* .header.plan {
-  margin-top: var(--base-size);
-} */
 
 .detail-grp {
   display: flex;
@@ -251,11 +238,6 @@ export default {
 label {
   font-size: var(--font-sm);
 }
-
-/* .investment-plan label {
-  display: inline-block;
-  width: 100%;
-} */
 
 .detail-wrap div {
   width: 100%;

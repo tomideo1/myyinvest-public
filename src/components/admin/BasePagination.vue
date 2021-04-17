@@ -1,5 +1,5 @@
 <template>
-  <div class="pagination">
+  <div class="admin-pagination">
     <button>Previous</button>
     <button v-for="n in 5" :key="n" :class="[n === currentPage ? 'button-active' : '']">{{ n }}</button>
     <button>Next</button>
@@ -18,17 +18,18 @@ export default {
 </script>
 
 <style scoped>
-.pagination {
+.admin-pagination {
   display: flex;
   justify-content: right;
   align-items: center;
   /* margin: auto; */
-  height: 8vh;
-  /* margin-top: var(--base-size); */
+  /* height: fit-content; */
+  margin-bottom: var(--base-size);
   /* border: 2px solid purple; */
 }
 
-.pagination button {
+.admin-pagination button {
+  margin: 0 !important;
   padding: 5px 10px;
   border: 1px solid var(--myyinvest-red);
   border-radius: 5px;
@@ -36,21 +37,21 @@ export default {
   background-color: var(--myyinvest-white);
 }
 
-.pagination button:first-child {
-  margin-left: auto;
+.admin-pagination button:first-child {
+  margin-left: auto !important;
 }
 
-.pagination button:not(:first-child) {
-  margin-left: 10px;
+.admin-pagination button:not(:first-child) {
+  margin-left: 10px !important;
 }
 
-.pagination button:hover,
-.pagination .button-active {
+.admin-pagination button:hover,
+.admin-pagination .button-active {
   background-color: var(--myyinvest-red);
   color: var(--myyinvest-white);
 }
 
-.pagination button:focus {
+.admin-pagination button:focus {
   outline: none;
   box-shadow: 0 0 3px 3px var(--myyinvest-red-fade);
 }

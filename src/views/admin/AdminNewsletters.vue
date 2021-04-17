@@ -10,7 +10,7 @@
       </section>
 
       <section class="table contents" v-for="x in 10" :key="x">
-        <div class="sn">{{ zeroPrefix(x) }}{{ x }}</div>
+        <div class="sn">{{ formatNum(x) }}</div>
         <div class="date">17th Feb. 2021</div>
         <div class="email">voffiah@gmail.com</div>
         <div class="location">14, Shinra Tensei Street, Amaterasu Town, Gakido, land of Water.</div>
@@ -59,18 +59,6 @@ export default {
   },
 
   methods: {
-    zeroPrefix(num) {
-      if (num < 10) {
-        return 0;
-      } else return "";
-    },
-
-    changeColor(val) {
-      if (val.toLowerCase().normalize() === "published") {
-        return "color: var(--myyinvest-green)";
-      } else return "color: var(--myyinvest-danger)";
-    },
-
     deleteItem() {
       this.noDeleteModal = !this.noDeleteModal;
     },
@@ -78,32 +66,11 @@ export default {
     closeModal() {
       this.noDeleteModal = !this.noDeleteModal;
     }
-
-    // proceedDelete() {
-    //   alert("What next?");
-    // }
   }
 };
 </script>
 
 <style scoped>
-.main-content::-webkit-scrollbar {
-  display: none;
-}
-
-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 10px 5px;
-  box-shadow: 0 0 2px 0 gray;
-  border-radius: 5px;
-}
-
-section:not(:last-child) {
-  margin-bottom: var(--base-size);
-}
-
 section div {
   display: flex;
   justify-content: center;

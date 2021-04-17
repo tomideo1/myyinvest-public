@@ -14,7 +14,7 @@
       </section>
 
       <section class="table contents" v-for="x in 10" :key="x">
-        <div class="sn">{{ zeroPrefix(x) }}{{ x }}</div>
+        <div class="sn">{{ formatNum(x) }}</div>
         <div class="title-p">How to invest seamlessly in Real Estate</div>
         <div class="image">
           <img src="@/assets/admin/images/dummy-img.jpg" alt="Content Image" />
@@ -62,30 +62,13 @@
       </section>
     </div>
 
-    <!-- <div class="pagination">
-      <button>Previous</button>
-      <button v-for="n in 5" :key="n" :class="[n === currentPage ? 'button-active' : '']">{{ n }}</button>
-      <button>Next</button>
-    </div> -->
     <base-pagination :currentPage="currentPage" />
 
-    <!-- <div class="delete-overlay" v-if="!noDeleteModal">
-      <div class="delete-modal">
-        <p>Delete post</p>
-        <p>Are you sure you want to delete post?</p>
-        <div>
-          <button @click="cancelDelete">Cancel</button>
-          <button @click="proceedDelete">Proceed</button>
-        </div>
-      </div>
-    </div> -->
     <base-delete-modal :noDeleteModal="noDeleteModal" @closeModal="closeModal" v-if="!noDeleteModal" />
   </div>
 </template>
 
 <script>
-// import "@/assets/admin/styles/table.css";
-// import "@/assets/admin/styles/delete-modal.css";
 import BasePagination from "@/components/admin/BasePagination.vue";
 import BaseDeleteModal from "@/components/admin/BaseDeleteModal.vue";
 
@@ -108,12 +91,6 @@ export default {
   },
 
   methods: {
-    zeroPrefix(num) {
-      if (num < 10) {
-        return 0;
-      } else return "";
-    },
-
     changeColor(val) {
       if (val.toLowerCase().normalize() === "published") {
         return "color: var(--myyinvest-green)";
@@ -127,44 +104,13 @@ export default {
     closeModal() {
       this.noDeleteModal = !this.noDeleteModal;
     }
-
-    // proceedDelete() {
-    //   alert("What next?");
-    // }
   }
 };
 </script>
 
 <style scoped>
-/* .main-content {
-  padding: 1px;
-  overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.main-content::-webkit-scrollbar {
-  display: none;
-}
-
-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 10px 5px;
-  box-shadow: 0 0 2px 0 gray;
-  border-radius: 5px;
-}
-
-section:not(:last-child) {
-  margin-bottom: var(--base-size);
-} */
-
 section div {
-  /* display: flex;
-  justify-content: center; */
   width: 11%;
-  /* padding: 2px; */
 }
 
 section div.sn {
@@ -175,125 +121,4 @@ section div.title-p,
 section div.options {
   width: 14%;
 }
-
-/* section:first-child {
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
-  background-color: var(--myyinvest-white);
-} */
-
-/* section.contents {
-  margin-bottom: var(--base-size);
-} */
-
-/* section:first-child div {
-  color: gray;
-  font-weight: 600;
-} */
-
-/* section div img {
-  width: 100%;
-  height: 60px;
-}
-
-div.options {
-  justify-content: space-around !important;
-} */
-
-/* .pagination {
-  display: flex;
-  justify-content: right;
-  align-items: center;
-  margin-bottom: var(--base-size);
-}
-
-.pagination button {
-  padding: 5px 10px;
-  border: 1px solid var(--myyinvest-red);
-  border-radius: 5px;
-  color: var(--myyinvest-red);
-  background-color: var(--myyinvest-white);
-}
-
-.pagination button:first-child {
-  margin-left: auto;
-}
-
-.pagination button:not(:first-child) {
-  margin-left: 10px;
-}
-
-.pagination button:hover,
-.pagination button:focus,
-.pagination .button-active {
-  background-color: var(--myyinvest-red);
-  color: var(--myyinvest-white);
-}
-
-.pagination button:focus {
-  outline: none;
-  box-shadow: 0 0 3px 3px var(--myyinvest-red-fade);
-} */
-
-/* .delete-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1111;
-}
-
-.delete-modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 350px;
-  height: 250px;
-  padding: calc(2 * var(--base-size));
-  border-radius: 10px;
-  background-color: var(--myyinvest-white);
-  transform: translate(-50%, -50%);
-}
-
-.delete-modal p {
-  font-size: var(--font-md);
-  font-weight: 600;
-  text-align: center;
-}
-
-.delete-modal p:first-child {
-  margin-bottom: var(--base-size);
-  color: var(--myyinvest-red);
-}
-
-.delete-modal p:nth-child(2) {
-  margin: var(--base-size) 0;
-}
-
-.delete-modal div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: var(--base-size);
-}
-
-.delete-modal div button {
-  padding: 5px;
-  border: 2px solid var(--myyinvest-red);
-  color: var(--myyinvest-red);
-  font-weight: 600;
-  border-radius: 5px;
-  background-color: var(--myyinvest-white);
-}
-
-.delete-modal div button:hover,
-.delete-modal div button:focus {
-  border: 2px solid transparent;
-  color: var(--myyinvest-white);
-  background-color: var(--myyinvest-red);
-} */
 </style>

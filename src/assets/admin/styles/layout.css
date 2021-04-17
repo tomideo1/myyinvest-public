@@ -1,6 +1,4 @@
-/* @import url("../assets/admin/styles/base.css"); */
 @import url("./base.css");
-/* @import "src/assets/admin/styles/base.css" */
 
 *:focus:not(:-moz-focusring) {
   outline: none;
@@ -34,12 +32,12 @@ nav.top-nav {
   height: var(--topnav-height);
   background-color: var(--myyinvest-white);
   box-shadow: 0 1px 4px 0 rgba(158, 157, 157, 0.5);
-  z-index: 999;
+  /* z-index: 999; */
 }
 
 main {
   max-height: 50vh !important;
-  z-index: 1;
+  /* z-index: 1; */
 }
 
 main nav.side-nav {
@@ -93,11 +91,21 @@ main article .content-wrapper {
   border: 1px solid var(--myyinvest-red);
   border-radius: 10px;
   overflow-y: hidden;
-  /* overflow-y: auto;
+  overflow-y: auto;
   -ms-overflow-style: none;
-  scrollbar-width: none; */
+  scrollbar-width: none;
 }
 
 main article .content-wrapper::-webkit-scrollbar {
   display: none;
 }
+
+/* .wrapper {
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.wrapper::-webkit-scrollbar {
+  display: none;
+} */

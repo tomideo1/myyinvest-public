@@ -71,8 +71,10 @@
         ></textarea>
       </fieldset>
 
-      <p v-if="!validForm">Kindly fill the form correctly.</p>
-      <button type="submit" @click.prevent="submit" :disabled="submitStatus === 'PENDING'">{{ btn_msg }}</button>
+      <div class="submit-area">
+        <p v-if="!validForm">Kindly fill the form correctly.</p>
+        <button type="submit" @click.prevent="submit" :disabled="submitStatus === 'PENDING'">{{ btn_msg }}</button>
+      </div>
     </div>
   </form>
 </template>
@@ -260,6 +262,7 @@ export default {
   height: fit-content;
   height: -moz-fit-content;
   height: max-content;
+  padding-bottom: 10px;
 }
 
 .upload-window {
@@ -317,12 +320,25 @@ input:focus + label {
   color: #555;
 }
 
+.submit-area {
+  position: relative;
+  display: flex;
+}
+
 p {
-  font-size: 14px !important;
+  position: absolute;
   color: var(--myyinvest-danger);
 }
 
+.submit-area p {
+  text-align: center;
+  width: 100%;
+  font-size: 14px !important;
+}
+
 button {
-  padding: 10px calc(3 * var(--base-size));
+  width: 100%;
+  margin: 30px auto;
+  padding: 10px;
 }
 </style>

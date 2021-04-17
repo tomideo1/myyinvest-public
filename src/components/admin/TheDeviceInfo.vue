@@ -1,5 +1,5 @@
 <template>
-  <p class="warning-info" v-if="!supportedDevice">
+  <p class="warning-info">
     Hello friend, <br />
     This page is only available on bigger screens.
   </p>

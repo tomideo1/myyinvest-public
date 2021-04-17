@@ -1,11 +1,11 @@
 <template>
-  <div class="wrapper">
+  <div class="nav-wrapper">
     <div class="nav-icon">
-      <img style="cursor: pointer" width="162" height="26" src="@/assets/logos/Myylogo2.png" alt="Myyinvest Logo" @click="$router.push('/')" />
+      <img style="cursor: pointer" width="162" height="26" src="@/assets/logos/Myylogo2.png" alt="Myyinvest Logo" @click="$router.push('/admin')" />
     </div>
     <div class="nav-details">
       <div class="nav-title">
-        <span>{{ name }}</span>
+        <span>{{ name }} <slot name="username"></slot> </span>
       </div>
     </div>
   </div>
@@ -16,9 +16,16 @@ export default {
   computed: {
     name() {
       let val = "";
+      // const userD = /\/admin\/users\/[1-9]\d*$/gim;
+      const user_d = /^\/admin\/users\/[1-9][0-9]*$/gim;
+      const user_t = /^\/admin\/users\/[1-9][0-9]*\/transactions$/gim;
 
-      if (this.$route.path.includes("/admin/users/")) {
+      const currentRoute = this.$route.fullPath;
+
+      if (currentRoute.match(user_d)) {
         val = "User Details";
+      } else if (currentRoute.match(user_t)) {
+        val = "User Transactions";
       } else
         switch (this.$route.path) {
           case "/admin":
@@ -36,8 +43,11 @@ export default {
           case "/admin/finance/transactions":
             val = "Transactions";
             break;
-          case "/admin/finance/accounts":
-            val = "Accounts";
+          case "/admin/finance/wallet-accounts":
+            val = "Wallet Accounts";
+            break;
+          case "/admin/finance/bank-accounts":
+            val = "Bank Accounts";
             break;
           case "/admin/view-notifications":
             val = "View Notifications";
@@ -45,11 +55,11 @@ export default {
           case "/admin/add-notifications":
             val = "Add Notification";
             break;
-          case "/admin/view-faqs":
-            val = "View FAQs";
+          case "/admin/faq/questions":
+            val = "FAQ Questions";
             break;
-          case "/admin/add-faqs":
-            val = "Add FAQ";
+          case "/admin/faq/answers":
+            val = "FAQ Answers";
             break;
           case "/admin/newsletters":
             val = "Newsletters";
@@ -64,7 +74,7 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
+.nav-wrapper {
   display: grid;
   grid-template-columns: 20% 80%;
   height: 100%;

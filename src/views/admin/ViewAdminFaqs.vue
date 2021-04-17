@@ -12,7 +12,7 @@
       </section>
 
       <section class="table contents" v-for="x in 10" :key="x">
-        <div class="sn">{{ zeroPrefix(x) }}{{ x }}</div>
+        <div class="sn">{{ formatNum(x) }}</div>
         <div class="question">How to invest seamlessly in Real Estate</div>
         <div class="content">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus alias qui excepturi obcaecati, facere fugit asperiores perspiciatis ipsam earum, nihil iusto, numquam quo. Earum tempore a,
@@ -59,33 +59,16 @@
       </section>
     </div>
 
-    <!-- <div class="pagination">
-      <button>Previous</button>
-      <button v-for="n in 5" :key="n" :class="[n === currentPage ? 'button-active' : '']">{{ n }}</button>
-      <button>Next</button>
-    </div> -->
     <base-pagination :currentPage="currentPage" />
 
-    <!-- <div class="delete-overlay" v-if="!noDeleteModal">
-      <div class="delete-modal">
-        <p>Delete post</p>
-        <p>Are you sure you want to delete post?</p>
-        <div>
-          <button @click="cancelDelete">Cancel</button>
-          <button @click="proceedDelete">Proceed</button>
-        </div>
-      </div>
-    </div> -->
     <base-delete-modal :noDeleteModal="noDeleteModal" @closeModal="closeModal" v-if="!noDeleteModal" />
   </div>
 </template>
 
 <script>
-import "@/assets/admin/styles/table.css";
-// import "@/assets/admin/styles/pagination.css";
-// import "@/assets/admin/styles/delete-modal.css";
 import BasePagination from "@/components/admin/BasePagination.vue";
 import BaseDeleteModal from "@/components/admin/BaseDeleteModal.vue";
+import "@/assets/admin/styles/table.css";
 
 export default {
   name: "ViewAdminFaqs",
@@ -105,12 +88,6 @@ export default {
   },
 
   methods: {
-    zeroPrefix(num) {
-      if (num < 10) {
-        return 0;
-      } else return "";
-    },
-
     deleteItem() {
       this.noDeleteModal = !this.noDeleteModal;
     },
@@ -118,19 +95,11 @@ export default {
     closeModal() {
       this.noDeleteModal = !this.noDeleteModal;
     }
-
-    // proceedDelete() {
-    //   alert("What next?");
-    // }
   }
 };
 </script>
 
 <style scoped>
-.main-content {
-  height: 73vh;
-}
-
 section div {
   width: 13%;
 }

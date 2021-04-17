@@ -1,24 +1,24 @@
 <template>
   <div class="header-options">
-    <button class="download" @click="previewDownload">Download</button>
+    <button class="download" @click="previewDownload" v-if="requireDownload() === true">Download</button>
 
     <base-download-modal :noDownloadModal="noDownloadModal" @closeModal="closeModal" v-if="!noDownloadModal" />
 
-    <div class="input-grp">
-      <input type="text" name="search" id="search_query" placeholder="Search" />
+    <!-- <div class="input-grp"> -->
+    <input type="text" name="search" id="search_query" placeholder="Search" />
 
-      <div class="dropdown">
-        <button class="dropbtn">{{ selectedOption || "Sort by" }} <img src="@/assets/admin/icons/chevron-down.svg" alt="Dropdown" /></button>
-        <div class="dropdown-content" :style="[selected === true ? { display: 'none' } : '']">
-          <div class="option" v-for="(option, index) in selectOptions" :key="index" @click="filterBy(option.name)">{{ option.name }}</div>
-        </div>
+    <div class="dropdown">
+      <div class="current-option">{{ selectedOption || "Sort by" }} <img src="@/assets/admin/icons/chevron-down.svg" alt="Dropdown" /></div>
+      <div class="dropdown-content" :style="[selected === true ? { display: 'none' } : '']">
+        <div class="option" v-for="(option, index) in selectOptions" :key="index" @click="filterBy(option.name)">{{ option.name }}</div>
       </div>
     </div>
+    <!-- </div> -->
   </div>
 </template>
 
 <script>
-import BaseDownloadModal from "@/components/admin/BaseDownloadModal.vue";
+// import BaseDownloadModal from "@/components/admin/BaseDownloadModal.vue";
 // , isDate
 // import { required, minValue, maxValue, between } from "vuelidate/lib/validators";
 // import { required } from "vuelidate/lib/validators";
@@ -27,7 +27,7 @@ import BaseDownloadModal from "@/components/admin/BaseDownloadModal.vue";
 export default {
   name: "TheHeaderOptions",
 
-  components: { BaseDownloadModal },
+  // components: { BaseDownloadModal },
 
   data() {
     return {
@@ -76,6 +76,21 @@ export default {
   // },
 
   methods: {
+    requireDownload() {
+      // const user_d = /^\/admin\/users\/[1-9][0-9]*$/gim;
+      // const user_t = /^\/admin\/users\/[1-9][0-9]*\/transactions$/gim;
+
+      const currentRoute = this.$route.fullPath;
+      const routes = ["-insights", "-notifications", "-faqs"];
+
+      // if (currentRoute.match(user_d)) {
+      if (routes.some(i => currentRoute.includes(i))) {
+        //   return true;
+        // } else if (currentRoute.match(user_t)) {
+        return false;
+      } else return true;
+    },
+
     previewDownload() {
       if (!this.$route.path.includes("/admin/users/")) {
         this.noDownloadModal = !this.noDownloadModal;
@@ -120,23 +135,30 @@ export default {
       }, 500);
     }
   }
+
+  // created() {
+  //   alert(this.requireDownload());
+  //   console.log(this.requireDownload());
+  // }
 };
 </script>
 
 <style scoped>
 .header-options {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  /* display: grid;
+  grid-template-columns: 1fr 5fr; */
+  /* height: 40px; */
   /* height: fit-content !important;
   height: -moz-fit-content !important;
   height: max-content !important; */
+  /* margin-right: auto; */
   margin-bottom: var(--base-size);
   /* border: 2px solid red; */
 }
 
-.header-options button.download,
 .header-options button.download {
+  margin: 0 !important;
   padding: 5px 10px;
   color: var(--myyinvest-white);
   font-weight: 600;
@@ -152,29 +174,38 @@ export default {
   background-color: var(--myyinvest-white);
 }
 
-button:focus {
+.header-options button.download:focus {
   outline: none;
   box-shadow: 0 0 3px 3px var(--myyinvest-red-fade);
 }
 
-.header-options .input-grp {
-  /* display: flex; */
+/* input {
   margin-left: auto;
-  /* width: 70%; */
-  /* width: fit-content;
-  width: -moz-fit-content;
-  width: max-content; */
-  /* border: 2px solid purple; */
-}
+} */
 
-.dropbtn {
-  display: flex;
+.header-options .input-grp {
+  /* display: flex;
   justify-content: space-between;
   align-items: center;
   height: fit-content;
   height: -moz-fit-content;
-  height: max-content;
-  /* width: 120px; */
+  height: max-content; */
+  margin-left: auto;
+  border: 2px solid purple;
+}
+
+input {
+  margin-left: auto !important;
+}
+
+.current-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* height: fit-content;
+  height: -moz-fit-content;
+  height: max-content; */
+  width: 120px;
   padding: 5px 10px;
   border: 1px solid gray;
   border-radius: var(--base-size);
@@ -186,15 +217,12 @@ button:focus {
   position: relative;
   display: inline-block;
   max-width: 120px !important;
-  /* width: fit-content !important;
-  width: -moz-fit-content !important;
-  width: max-content !important; */
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  left: 10%;
+  right: 20%;
   width: 120px;
   background-color: var(--myyinvest-white);
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -218,16 +246,16 @@ button:focus {
   display: block;
 }
 
-.dropdown:hover .dropbtn {
+.dropdown:hover .current-option {
   border-color: var(--myyinvest-red);
   box-shadow: 0 0 3px 3px var(--myyinvest-red-fade);
 }
 
 .header-options input {
   width: 300px;
-  height: fit-content;
+  /* height: fit-content;
   height: -moz-fit-content;
-  height: max-content;
+  height: max-content; */
   padding: 5px 10px;
   border: 1px solid gray;
   border-radius: var(--base-size);

@@ -4,15 +4,13 @@
       <section class="table content-titles">
         <div class="sn">S/N</div>
         <div class="fullname">Fullname</div>
-        <div class="phone">Phone Number</div>
         <div class="email">Email Address</div>
         <div class="wallet">Wallet Account</div>
       </section>
 
       <section class="table contents" v-for="x in 10" :key="x">
-        <div class="sn">{{ zeroPrefix(x) }}{{ x }}</div>
+        <div class="sn">{{ formatNum(x) }}</div>
         <div class="fullname">Fullname</div>
-        <div class="phone">Phone Number</div>
         <div class="email">Email Address</div>
         <div class="wallet">Wallet Account</div>
       </section>
@@ -26,10 +24,10 @@
 import BasePagination from "@/components/admin/BasePagination.vue";
 
 export default {
-  name: "AdminTransactions",
+  name: "AdminWalletAccounts",
 
   metaInfo: {
-    title: "Myyinvest - Transactions (Admin)",
+    title: "Myyinvest - Wallet Accounts (Admin)",
     titleTemplate: null
   },
 
@@ -43,12 +41,6 @@ export default {
   },
 
   methods: {
-    zeroPrefix(num) {
-      if (num < 10) {
-        return 0;
-      } else return "";
-    },
-
     previousPage() {
       if (!this.isFirstPage) {
         this.currentPage--;
@@ -75,38 +67,14 @@ export default {
 </script>
 
 <style scoped>
-.main-content {
-  padding: 1px;
-  overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.main-content::-webkit-scrollbar {
-  display: none;
-}
-
-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 10px 5px;
-  box-shadow: 0 0 2px 0 gray;
-  border-radius: 5px;
-}
-
 section:not(:first-child) div.investment-cost {
   color: var(--myyinvest-green);
-}
-
-section:not(:last-child) {
-  margin-bottom: var(--base-size);
 }
 
 section div {
   display: flex;
   justify-content: center;
-  width: 17%;
+  width: 19%;
   padding: 2px;
 }
 
@@ -114,8 +82,12 @@ section div.sn {
   width: 9%;
 }
 
+section div.fullname {
+  width: 34%;
+}
+
 section div.wallet {
-  width: 40%;
+  width: 38%;
 }
 
 section:first-child {
@@ -132,15 +104,5 @@ section.contents {
 section:first-child div {
   color: gray;
   font-weight: 600;
-}
-
-section:not(:first-child) div.status {
-  color: var(--myyinvest-white);
-}
-
-section div.status .status-content {
-  width: 100%;
-  padding: 2px 1px;
-  border-radius: 5px;
 }
 </style>

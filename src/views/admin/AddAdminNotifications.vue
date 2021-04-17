@@ -1,53 +1,61 @@
 <template>
   <form :class="[!validForm ? 'invalid-form' : '', 'wrapper']" @submit.prevent="submit">
-    <fieldset class="input-grp">
-      <legend><label for="pname">Post Name</label></legend>
-      <input type="text" id="pname" placeholder="How to buy tokens in Myyinvest" minlength="3" required v-model.trim.lazy="post_name" />
-    </fieldset>
+    <div class="section-wrapper">
+      <section>
+        <fieldset class="input-grp">
+          <legend><label for="pname">Post Name</label></legend>
+          <input type="text" id="pname" placeholder="How to buy tokens in Myyinvest" minlength="3" required v-model.trim.lazy="post_name" />
+        </fieldset>
 
-    <fieldset class="input-grp">
-      <legend><label for="precepient">Recipient</label></legend>
-      <div class="dropdown-wrap">
-        <div class="dropdown">
-          <div class="dropbtn">{{ selectedProject || "Category" }} <img src="@/assets/admin/icons/caret-down.svg" /></div>
-          <div class="dropdown-content" :style="[selected === true ? { display: 'none' } : '']">
-            <div class="option" v-for="(option, index) in newProjectNames" :key="index" @click="newProjectName(option.name)">{{ option.name }}</div>
+        <fieldset class="input-grp pcontent">
+          <legend><label for="pcontent">Post Content</label></legend>
+          <textarea
+            name=""
+            id="pcontent"
+            placeholder="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore fugit quibusdam praesentium molestiae debitis autem fugiat iure ratione voluptas fuga, consequuntur dignissimos minima, veniam dolorum! Debitis quae officiis et sint."
+            cols="30"
+            rows="10"
+            required
+            v-model.trim.lazy="post_content"
+          ></textarea>
+        </fieldset>
+      </section>
+
+      <section>
+        <fieldset class="input-grp">
+          <legend><label for="precepient">Recipient</label></legend>
+          <div class="dropdown-wrap">
+            <div class="dropdown">
+              <div class="dropbtn">{{ selectedProject || "Category" }} <img src="@/assets/admin/icons/caret-down.svg" /></div>
+              <div class="dropdown-content" :style="[selected === true ? { display: 'none' } : '']">
+                <div class="option" v-for="(option, index) in newProjectNames" :key="index" @click="newProjectName(option.name)">{{ option.name }}</div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="upload">
+          <div class="upload-window">
+            <img :src="post_imgURL || require('@/assets/admin/icons/camera.svg')" alt="User Image Preview" class="img-fluid" />
+          </div>
+
+          <div class="file-input">
+            <input type="file" accept="image/*" id="file" class="file" required @change="updateFilename" />
+            <label for="file">
+              <img src="@/assets/admin/icons/clip.svg" />
+              Select file
+            </label>
+
+            <p class="file-name">{{ selectedFilename || "No file selected" }}</p>
           </div>
         </div>
-      </div>
-    </fieldset>
-
-    <div class="upload">
-      <div class="upload-window">
-        <img :src="post_imgURL || require('@/assets/admin/icons/camera.svg')" alt="User Image Preview" class="img-fluid" />
-      </div>
-
-      <div class="file-input">
-        <input type="file" accept="image/*" id="file" class="file" required @change="updateFilename" />
-        <label for="file">
-          <img src="@/assets/admin/icons/clip.svg" />
-          Select file
-        </label>
-
-        <p class="file-name">{{ selectedFilename || "No file selected" }}</p>
-      </div>
+      </section>
     </div>
 
-    <fieldset class="input-grp pcontent">
-      <legend><label for="pcontent">Post Content</label></legend>
-      <textarea
-        name=""
-        id="pcontent"
-        placeholder="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore fugit quibusdam praesentium molestiae debitis autem fugiat iure ratione voluptas fuga, consequuntur dignissimos minima, veniam dolorum! Debitis quae officiis et sint."
-        cols="30"
-        rows="10"
-        required
-        v-model.trim.lazy="post_content"
-      ></textarea>
-    </fieldset>
-
-    <p v-if="!validForm">Kindly fill the form correctly.</p>
-    <button type="submit" @click.prevent="submit" :disabled="submitStatus === 'PENDING'">{{ btn_msg }}</button>
+    <div class="submit-area">
+      <p v-if="!validForm">Kindly fill the form correctly.</p>
+      <button type="submit" @click.prevent="submit" :disabled="submitStatus === 'PENDING'">{{ btn_msg }}</button>
+    </div>
   </form>
 </template>
 
@@ -166,22 +174,22 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 60%;
-  margin: var(--base-size) auto 0;
+.section-wrapper {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 5%;
+  width: 200px;
 }
 
 .image-upload-wrapper,
 fieldset:not(:last-child) {
   margin-bottom: var(--base-size);
-}
-
-.dropdown-content {
-  width: 200px;
 }
 
 .upload {
@@ -246,12 +254,26 @@ input:focus + label {
   color: #555;
 }
 
+.submit-area {
+  position: relative;
+  display: flex;
+}
+
 p {
+  position: absolute;
+}
+
+.submit-area p {
+  width: 100%;
+  margin-top: 10px;
   font-size: 14px !important;
   color: var(--myyinvest-danger);
+  text-align: center;
 }
 
 button {
-  padding: 10px calc(3 * var(--base-size));
+  width: 50%;
+  margin: 40px auto;
+  padding: 10px;
 }
 </style>

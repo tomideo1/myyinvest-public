@@ -26,7 +26,7 @@
         <button @click="proceedDownload">Proceed</button>
       </div>
 
-      <p v-if="!validForm">Kindly fill the form correctly.</p>
+      <!-- <p v-if="!validForm">Kindly fill the form correctly.</p> -->
     </div>
   </div>
 </template>
@@ -170,8 +170,8 @@ export default {
   background-color: var(--myyinvest-red);
 }
 
-p {
+/* p {
   font-size: 14px !important;
   color: var(--myyinvest-danger);
-}
+} */
 </style>

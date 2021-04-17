@@ -1,5 +1,26 @@
 const routeOptions = [
   {
+    path: "/admin/statistics",
+    name: "AdminStatistics",
+    meta: {
+      layout: "AdminLayout"
+    }
+  },
+  {
+    path: "/admin/plans",
+    name: "AdminPlans",
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    }
+  },
+  {
+    path: "/admin/special-form",
+    name: "AdminSpecial",
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    }
+  },
+  {
     path: "/admin/view-insights",
     name: "ViewAdminInsights",
     meta: {
@@ -17,7 +38,7 @@ const routeOptions = [
     path: "/admin/view-faqs",
     name: "ViewAdminFaqs",
     meta: {
-      layout: "AdminLayout"
+      layout: "AdminLayoutWithOptions"
     }
   },
   {
@@ -48,6 +69,19 @@ const routeOptions = [
     // }
   },
   {
+    path: "/admin/users/:id/transactions",
+    name: "ViewUserTransactions",
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    },
+    props: true
+    // props: {
+    //   default: true,
+    //   // function mode, more about it below
+    //   sidebar: route => ({ search: route.query.q })
+    // }
+  },
+  {
     path: "/admin/finance/transactions",
     name: "AdminTransactions",
     meta: {
@@ -55,8 +89,15 @@ const routeOptions = [
     }
   },
   {
-    path: "/admin/finance/accounts",
-    name: "AdminAccounts",
+    path: "/admin/finance/wallet-accounts",
+    name: "AdminWalletAccounts",
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    }
+  },
+  {
+    path: "/admin/finance/bank-accounts",
+    name: "AdminBankAccounts",
     meta: {
       layout: "AdminLayoutWithOptions"
     }

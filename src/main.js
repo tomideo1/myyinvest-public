@@ -9,6 +9,7 @@ import "vue-tel-input/dist/vue-tel-input.css";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import "./scss/app.scss";
 import helpers from "./utils/helper";
+import formatNum from "./mixins/formatNum";
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 // import "bootstrap/dist/css/bootstrap.css";
 // import "bootstrap-vue/dist/bootstrap-vue.css";
@@ -18,6 +19,8 @@ Vue.use(BootstrapVue);
 import VueMeta from "vue-meta";
 import Vuelidate from "vuelidate";
 import Print from "vue-print-nb";
+
+Vue.mixin(formatNum);
 
 Vue.prototype.$Bus = new Vue();
 

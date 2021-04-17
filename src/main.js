@@ -25,6 +25,10 @@ Vue.component("TheAdminLayout", TheAdminLayout);
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin);
 
+import VueGoogleCharts from "vue-google-charts";
+
+Vue.use(VueGoogleCharts);
+
 Vue.prototype.$Bus = new Vue();
 
 Vue.use(VueTelInput);

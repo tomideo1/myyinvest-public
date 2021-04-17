@@ -11,7 +11,11 @@
 
     <main class="col-md-12">
       <div class="row">
-        <div class="col-md-4 mb-4">Chart Data</div>
+        <div class="col-md-4 mb-4">
+          <main-card>
+            <GChart type="PieChart" :data="chartData" :options="chartOptions" />
+          </main-card>
+        </div>
         <div class="col-md-4 mb-4">
           <main-card>
             <p>Latest Investment Option</p>
@@ -59,6 +63,7 @@
                 </div>
               </div>
             </div>
+            <p class="text-center ft-12 text-grey-500">View More</p>
           </main-card>
         </div>
         <div class="col-md-4 mb-4">
@@ -66,6 +71,7 @@
             <p>Recent Transactions</p>
             <recent-transactions status="success" />
             <recent-transactions status="primary" />
+            <p class="text-center ft-12 text-grey-500">View More</p>
           </main-card>
         </div>
       </div>
@@ -80,6 +86,28 @@ import RecentTransactions from "../../components/dashboard/recentTransactions";
 import MainIcon from "../../components/Shared/mainIcon";
 export default {
   name: "dashboard",
+  data() {
+    return {
+      chartData: [
+        ["Task", "value"],
+        ["Smart-Invest", 450],
+        ["Co-invest", 300],
+        ["Co-own", 660]
+      ],
+      chartOptions: {
+        chartArea: {
+          // leave room for y-axis labels
+          width: "100%",
+          height: "100%"
+        },
+        title: "",
+        pieHole: 0.7,
+        legend: "none",
+        pieSliceText: "none",
+        colors: ["#EFD3D3", "#E55E5E", "#C10000"]
+      }
+    };
+  },
   components: { MainIcon, RecentTransactions, MainCard, StatusCard }
 };
 </script>

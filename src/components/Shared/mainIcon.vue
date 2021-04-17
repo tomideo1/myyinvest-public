@@ -29,10 +29,14 @@
     <attachment v-if="name === 'attachment'"></attachment>
     <bank-card v-if="name === 'bank-card'"></bank-card>
     <vector-dots v-if="name === 'vector-dots'"></vector-dots>
-    <green-naira v-if="name === 'green-naira'"></green-naira>
     <close v-if="name === 'close'"></close>
     <tooltip v-if="name === 'tooltip'"></tooltip>
     <caret v-if="name === 'caret'"></caret>
+    <database v-if="name === 'database'"></database>
+    <reload v-if="name === 'reload'"></reload>
+    <money-blue v-if="name === 'money-blue'"></money-blue>
+    <total v-if="name === 'total'"></total>
+    <green-naira v-if="name === 'green-naira'"></green-naira>
   </span>
 </template>
 
@@ -87,10 +91,14 @@ export default {
     attachment: () => import("@/components/__private__/media/attachment"),
     bankCard: () => import("@/components/__private__/media/bankCard"),
     vectorDots: () => import("@/components/__private__/media/vectorDots"),
-    greenNaira: () => import("@/components/__private__/media/greenNaira"),
     close: () => import("@/components/__private__/media/close"),
     tooltip: () => import("@/components/__private__/media/tooltip"),
-    caret: () => import("@/components/__private__/media/caret")
+    caret: () => import("@/components/__private__/media/caret"),
+    total: () => import("@/components/__private__/media/total"),
+    reload: () => import("@/components/__private__/media/greenReload"),
+    moneyBlue: () => import("@/components/__private__/media/blueMoney"),
+    database: () => import("@/components/__private__/media/database"),
+    greenNaira: () => import("@/components/__private__/media/greenNaira")
   }
 };
 </script>

@@ -10,38 +10,34 @@
 import MainLayout from "../../components/layout/main-layout";
 import * as PusherPushNotifications from "@pusher/push-notifications-web";
 import { mapActions, mapGetters } from "vuex";
-const beamsClient = new PusherPushNotifications.Client({
-  instanceId: "152ee166-ce1b-4279-a308-a88e57d847cb"
-});
+import { store } from "@/store/store";
 
 export default {
   name: "index",
   components: { MainLayout },
   methods: {
-    ...mapActions(["saveToken"]),
-    notificationsPermisionRequest() {
-      Notification.requestPermission().then(function(permission) {
-        if (permission !== "granted") {
-          Notification.requestPermission();
-        }
-      });
-    }
+    ...mapActions(["saveToken"])
   },
   computed: {
     ...mapGetters(["getUser"])
   },
-  created() {
-    this.notificationsPermisionRequest();
-    const deviceInterest = "get Device Id Here";
+  async created() {
+    const api_url = process.env.VUE_APP_API;
+    const tokenProvider = new PusherPushNotifications.TokenProvider({
+      url: `${api_url}/admin/pusher/beams-auth`,
+      queryParams: { userIDInQueryParam: `${store.state.auth.user._id}` }, // URL query params your auth endpoint needs
+      headers: { "x-auth-token": `${store.state.auth.token}` } // Headers your auth endpoint needs
+    });
+
+    const beamsClient = new PusherPushNotifications.Client({
+      instanceId: "152ee166-ce1b-4279-a308-a88e57d847cb"
+    });
+
     beamsClient
       .start()
-      .then(() => beamsClient.addDeviceInterest(deviceInterest))
-      .then(async () => {
-        await this.saveToken({
-          interest: deviceInterest
-        });
-      })
-      .catch(console.error);
+      .then(() => beamsClient.setUserId(store.state.auth.user._id, tokenProvider))
+      .then(() => console.log("User ID has been set"))
+      .catch(store.state.auth.user._id);
   }
 };
 </script>

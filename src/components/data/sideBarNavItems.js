@@ -1,7 +1,7 @@
 export default function() {
   let customerRoutes = [
     {
-      title: "Dashboard",
+      title: "Overview",
       routeIcon: "home",
       identifier: "overview",
       to: {

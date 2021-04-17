@@ -139,7 +139,9 @@ const actions = {
     }
   },
 
+  // eslint-disable-next-line no-unused-vars
   async addBankAccount({ commit }, payload) {
+    // eslint-disable-next-line no-unused-vars
     const res = null;
   },
 

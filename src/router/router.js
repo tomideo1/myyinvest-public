@@ -1,12 +1,14 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import userRoutes from "./users";
+
 import middlewarePipeline from "./kernel/middlewarePipeline";
 import { store } from "../store/store";
 // import NProgress from "nprogress";
 // import "nprogress/nprogress.css";
 import progressFns from "@/utils/helper.js";
 
+import AdminRoutes from "./Admin";
 Vue.use(VueRouter);
 
 const baseRoutes = [
@@ -124,7 +126,9 @@ const baseRoutes = [
     path: "/change-password",
     name: "confirmPassword",
     component: () => import(/* webpackChunkName: "confirmPassword" */ "../views/Auth/confirmPassword.vue")
-  }
+  },
+
+  ...AdminRoutes
   // {
   //   path: "/about",
   //   name: "About",

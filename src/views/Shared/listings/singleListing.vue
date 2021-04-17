@@ -10,10 +10,13 @@
           <MainInput type="number" label="Tokens" v-model="tokens" :required="true" />
           <MainInput type="number" label="Amount (N)" :disable="true" :value="tokens * 10000" />
         </div>
-        <button type="button" class="lst-modal__btn" :disabled="tokens <= 0">
+        <button type="button" class="lst-modal__btn" :disabled="tokens <= 0" @click="transactionStep++">
           <span>Continue</span>
           <MainIcon name="caret" />
         </button>
+      </template>
+      <template v-if="transactionStep === 2">
+        <p class="lst-modal__title"></p>
       </template>
     </template>
   </ListingDetail>

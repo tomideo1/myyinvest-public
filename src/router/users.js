@@ -78,6 +78,49 @@ export default [
                 }
               }
             ]
+          },
+          {
+            path: "transfer",
+            name: "wallet-transfer",
+            redirect: { name: "wallet-transfer-home" },
+            component: () => import(/* webpackChunkName: "user-profile" */ "../views/users/wallet/transfer/index.vue"),
+            meta: {
+              middleware: [auth]
+            },
+            children: [
+              {
+                path: "home",
+                name: "wallet-transfer-home",
+                component: () => import(/* webpackChunkName: "user-profile" */ "../views/users/wallet/transfer/transfer.vue"),
+                meta: {
+                  middleware: [auth]
+                }
+              },
+              {
+                path: "investment",
+                name: "wallet-transfer-investment",
+                component: () => import(/* webpackChunkName: "user-profile" */ "../views/users/wallet/transfer/investment.vue"),
+                meta: {
+                  middleware: [auth]
+                }
+              },
+              {
+                path: "account",
+                name: "wallet-transfer-account",
+                component: () => import(/* webpackChunkName: "user-profile" */ "../views/users/wallet/transfer/account.vue"),
+                meta: {
+                  middleware: [auth]
+                }
+              },
+              {
+                path: "user",
+                name: "wallet-transfer-user",
+                component: () => import(/* webpackChunkName: "user-profile" */ "../views/users/wallet/transfer/user.vue"),
+                meta: {
+                  middleware: [auth]
+                }
+              }
+            ]
           }
         ]
       },

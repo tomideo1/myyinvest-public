@@ -15,7 +15,7 @@
               <main-button class="col-md-12 mb-4" @click="$router.push({ name: 'wallet-fund' })" type="filled" text="ADD FUNDS" />
             </div>
             <div class="col-md-6">
-              <main-button class="col-md-12 mb-4" type="outline" text="TRANSFER" />
+              <main-button class="col-md-12 mb-4" @click="$router.push({ name: 'wallet-transfer' })" type="outline" text="TRANSFER" />
             </div>
           </div>
         </div>

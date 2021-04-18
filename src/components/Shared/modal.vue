@@ -23,16 +23,16 @@ export default {
         md: 350,
         md_noty: 350,
         lg: 450,
-        xl: 400
+        xl: 700
       },
 
       heights: {
-        xs: 70,
+        xs: 40,
         sm: 250,
         md: 60,
         md_noty: 45,
-        lg: 60,
-        xl: 500
+        lg: 50,
+        xl: 70
       },
       modalTimeout: null
     };

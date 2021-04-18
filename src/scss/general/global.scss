@@ -1605,3 +1605,29 @@ hr {
 .custom-shadow {
   box-shadow: inset 2px 2px 5px #acacac;
 }
+
+.text-bold-black {
+  font-size: 16px;
+  line-height: 22px;
+  /* identical to box height */
+
+  color: #000000 !important;
+}
+
+.text-bold-main-red {
+  font-size: 16px;
+  line-height: 22px;
+  /* identical to box height */
+
+  color: #f00304 !important;
+}
+
+.header {
+  font-style: normal;
+  font-weight: bolder !important;
+  font-size: 32px;
+  line-height: 44px;
+  letter-spacing: 0.02em;
+
+  color: #2f2f2f;
+}

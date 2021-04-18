@@ -33,7 +33,6 @@ export default function() {
         name: "portfolio"
       }
     },
-
     {
       title: "Transactions",
       routeIcon: "wallet",
@@ -50,7 +49,6 @@ export default function() {
         name: "banks"
       }
     },
-
     {
       title: "Refer and Earn",
       routeIcon: "money",

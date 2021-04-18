@@ -1,5 +1,5 @@
 <template>
-  <div class="trans__row plan-trans__item">
+  <div class="trans__row inv-trans__item">
     <MainIcon name="trans-icon" class="trans__icon" />
     <div class="trans__data">{{ date }}</div>
     <div class="trans__data">{{ project }}</div>
@@ -9,7 +9,7 @@
     <div class="trans__data">{{ startDate }}</div>
     <div class="trans__data">{{ endDate }}</div>
     <div class="trans__data trans__data--md trans__data--green">
-      <a href="#">VIEW</a>
+      <a class="inv-trans__link" href="#">VIEW</a>
     </div>
   </div>
 </template>

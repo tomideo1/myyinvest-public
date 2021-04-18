@@ -29,6 +29,9 @@
     <attachment v-if="name === 'attachment'"></attachment>
     <bank-card v-if="name === 'bank-card'"></bank-card>
     <vector-dots v-if="name === 'vector-dots'"></vector-dots>
+    <close v-if="name === 'close'"></close>
+    <tooltip v-if="name === 'tooltip'"></tooltip>
+    <caret v-if="name === 'caret'"></caret>
     <database v-if="name === 'database'"></database>
     <reload v-if="name === 'reload'"></reload>
     <money-blue v-if="name === 'money-blue'"></money-blue>
@@ -92,6 +95,9 @@ export default {
     attachment: () => import("@/components/__private__/media/attachment"),
     bankCard: () => import("@/components/__private__/media/bankCard"),
     vectorDots: () => import("@/components/__private__/media/vectorDots"),
+    close: () => import("@/components/__private__/media/close"),
+    tooltip: () => import("@/components/__private__/media/tooltip"),
+    caret: () => import("@/components/__private__/media/caret"),
     total: () => import("@/components/__private__/media/total"),
     reload: () => import("@/components/__private__/media/greenReload"),
     moneyBlue: () => import("@/components/__private__/media/blueMoney"),
@@ -120,6 +126,11 @@ export default {
     display: block;
     max-height: 100%;
     max-width: 100%;
+  }
+  &-xl {
+    height: 2.25em;
+    width: auto;
+    transform: scale(1.3);
   }
   &-lg {
     width: 2.5rem;

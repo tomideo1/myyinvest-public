@@ -3,7 +3,7 @@ export default function() {
     {
       title: "Overview",
       routeIcon: "home",
-      identifier: "overview",
+      identifier: "dashboard",
       to: {
         name: "overview"
       }
@@ -11,7 +11,7 @@ export default function() {
     {
       title: "Browse Assets",
       routeIcon: "assets",
-      identifier: "assets",
+      identifier: "browse-assets",
       to: {
         name: "assets"
       }
@@ -28,7 +28,7 @@ export default function() {
     {
       title: "Myy Portfolio",
       routeIcon: "portfolio",
-      identifier: "portfolio",
+      identifier: "myy-portfolio",
       to: {
         name: "portfolio"
       }
@@ -44,7 +44,7 @@ export default function() {
     {
       title: "Bank and Cards",
       routeIcon: "atm-card",
-      identifier: "banks",
+      identifier: "banks-and-cards",
       to: {
         name: "banks"
       }
@@ -52,7 +52,7 @@ export default function() {
     {
       title: "Refer and Earn",
       routeIcon: "money",
-      identifier: "refer",
+      identifier: "refer-and-earn",
       to: {
         name: "refer"
       }

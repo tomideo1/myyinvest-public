@@ -4,44 +4,87 @@
       <h2 class="header "><b>Transfer Option Review</b></h2>
     </div>
 
-    <section>
-      <div class="col-md-6 col-12 col-lg-6  listings-col " id="all" v-for="i in 3" :key="i">
-        <div class="p-5">
-          <div class="single-list" style="border-radius:20px!important;">
-            <div class="list-image">
-              <img src="https://res.cloudinary.com/dwpu7jpku/image/upload/v1612297295/listings_mfl4io.png" class="img-fluid" alt="" />
-            </div>
-            <div class="list-details">
-              <p class="ft-18 w-100">Cambridge Apartments Construction</p>
-              <div class="row">
-                <div class="col-lg-6 col-md-6 col-10 " style="border-right:1px solid red;">
-                  <span class="d-flex flex-lg-row  ">
-                    <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/map_ktif6c.png/naira.svg" width="15" height="15" class="ml-3 mt-2" />
-                    <p class="ml-1 18 text-main-red font-weight-bolder">10,000</p>
-                  </span>
-                  <p class="ml-4 ft-16">Minimum</p>
-                  <hr class="mt-n2 ml-auto " style="border-color:red!important; position: relative; left: 5%" />
-                </div>
-                <div class="col-md-6 col-lg-6 col-10">
-                  <p class="font-weight-light ft-12">Description</p>
-                  <p class="font-weight-light ft-12">
-                    Lorem ipsum dolor sit amet consect etur adipisicing elit. Eligendi tempori bus libero at ipsum, eveniet maiores.
-                  </p>
-                  <hr class="mt-n2 ml-auto " style="border-color:red!important; position: relative; left: -5%" />
-                  <main-button @click="$router.push({ name: 'single-listing' })" style="font-size: 10px!important;" text="Read More" size="xs" class="float-right" />
-                </div>
-              </div>
-            </div>
-          </div>
+    <section class="mt-5 mx-auto">
+      <div class="row ">
+        <div class="col-md-4" v-for="i in 3" :key="i">
+          <listing-item slug="Cambridge Apartment" button-behaviour="custom" @button-clicked="handleClick">
+            <template #image="slotProps">
+              <img :class="slotProps.className" src="https://res.cloudinary.com/myyinvest/image/upload/v1618091853/listings/income-plan_ssaptk.png" alt="income plan" />
+            </template>
+            <template #title>
+              Income Plan
+            </template>
+            <template #returns>
+              25% - 30%
+            </template>
+            <template #min-invest>
+              5000
+            </template>
+            <template #benefits>
+              <p>Fixed Returns</p>
+              <p>Short duration</p>
+              <p>Financing Exclusive projects</p>
+            </template>
+          </listing-item>
         </div>
       </div>
     </section>
+
+    <div class="d-block d-lg-none d-md-none">
+      <modal class="" v-show="isModalVisible" size="md" show-cancel>
+        <h3 class="text-main-red mt-4 ft-20 mx-auto text-center ">Investment Slots (CAMBRIDGE APARTMENT)</h3>
+        <section>
+          <form @submit="onSubmit">
+            <main-input label="Token Slot(s)" />
+          </form>
+        </section>
+      </modal>
+    </div>
+    <div class="d-none d-lg-block d-md-block">
+      <modal v-show="isModalVisible" size="xl" show-cancel>
+        <h3 class="text-main-red mt-4 ft-20 mx-auto text-center ">Investment Slots (CAMBRIDGE APARTMENT)</h3>
+        <section class="mt-5">
+          <form @submit="onSubmit">
+            <main-input class="col-md-10 mx-auto text-center  col-lg-10 col-12" label="Token Slot(s)" />
+            <span></span>
+            <div class="border-bottom mt-4 mb-4"></div>
+          </form>
+        </section>
+      </modal>
+    </div>
   </div>
 </template>
 
 <script>
+import ListingItem from "../../../../components/ListingItem";
+import Modal from "../../../../components/Shared/modal";
+import MainInput from "../../../../components/form/mainInput";
 export default {
-  name: "investment"
+  name: "investment",
+  components: { MainInput, ListingItem, Modal },
+  data() {
+    return {
+      isModalVisible: false
+    };
+  },
+  methods: {
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    },
+    handleClick() {
+      this.showModal();
+    },
+    onSubmit() {}
+  },
+
+  async created() {
+    this.$Bus.$on("close-modal", () => {
+      this.isModalVisible = false;
+    });
+  }
 };
 </script>
 

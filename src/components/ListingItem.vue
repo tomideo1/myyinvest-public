@@ -44,7 +44,10 @@
         <button v-if="buttonBehaviour !== 'route'" type="button" @click="$emit('button-clicked')" class="listing-item__btn">
           Get Started
         </button>
-        <a href="#" class="listing-item__link">Learn more</a>
+        <router-link :to="{ name: 'single-listing', params: { slug } }" class="listing-item__link">
+          Learn more
+        </router-link>
+        <!-- <a href="#" class="listing-item__link">Learn more</a> -->
       </section>
     </div>
   </div>

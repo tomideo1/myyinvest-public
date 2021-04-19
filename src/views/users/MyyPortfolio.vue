@@ -38,10 +38,5 @@ export default {
   components: {
     PlanTransaction
   }
-  // data() {
-  //   return {
-  //     transHeaders: ["date", "project", "amount", "tokens", "ROI", "start date", "end date"]
-  //   };
-  // }
 };
 </script>

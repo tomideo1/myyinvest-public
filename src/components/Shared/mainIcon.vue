@@ -41,6 +41,7 @@
     <clipboard v-if="name === 'clipboard'"></clipboard>
     <activity v-if="name === 'activity'"></activity>
     <gt v-if="name === 'gt'"></gt>
+    <back-caret v-if="name === 'back-caret'"></back-caret>
   </span>
 </template>
 
@@ -102,6 +103,7 @@ export default {
     reload: () => import("@/components/__private__/media/greenReload"),
     moneyBlue: () => import("@/components/__private__/media/blueMoney"),
     database: () => import("@/components/__private__/media/database"),
+    backCaret: () => import("@/components/__private__/media/backCaret"),
     greenNaira: () => import("@/components/__private__/media/greenNaira"),
     back: () => import("@/components/__private__/media/back"),
     clipboard: () => import("@/components/__private__/media/clipboard"),

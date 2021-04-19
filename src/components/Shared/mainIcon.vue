@@ -30,13 +30,14 @@
     <bank-card v-if="name === 'bank-card'"></bank-card>
     <vector-dots v-if="name === 'vector-dots'"></vector-dots>
     <close v-if="name === 'close'"></close>
-    <tooltip v-if="name === 'tooltip'"></tooltip>
-    <caret v-if="name === 'caret'"></caret>
+    <tooltip v-if="name === 'tooltip'" :ttpColor="ttpColor"></tooltip>
+    <caret-right v-if="name === 'caret-right'"></caret-right>
     <database v-if="name === 'database'"></database>
     <reload v-if="name === 'reload'"></reload>
     <money-blue v-if="name === 'money-blue'"></money-blue>
     <total v-if="name === 'total'"></total>
     <green-naira v-if="name === 'green-naira'"></green-naira>
+    <back-caret v-if="name === 'back-caret'"></back-caret>
   </span>
 </template>
 
@@ -57,6 +58,10 @@ export default {
       required: false
     },
     refLink: {
+      type: String,
+      required: false
+    },
+    ttpColor: {
       type: String,
       required: false
     }
@@ -93,12 +98,13 @@ export default {
     vectorDots: () => import("@/components/__private__/media/vectorDots"),
     close: () => import("@/components/__private__/media/close"),
     tooltip: () => import("@/components/__private__/media/tooltip"),
-    caret: () => import("@/components/__private__/media/caret"),
+    caretRight: () => import("@/components/__private__/media/caretRight"),
     total: () => import("@/components/__private__/media/total"),
     reload: () => import("@/components/__private__/media/greenReload"),
     moneyBlue: () => import("@/components/__private__/media/blueMoney"),
     database: () => import("@/components/__private__/media/database"),
-    greenNaira: () => import("@/components/__private__/media/greenNaira")
+    greenNaira: () => import("@/components/__private__/media/greenNaira"),
+    backCaret: () => import("@/components/__private__/media/backCaret")
   }
 };
 </script>
@@ -121,7 +127,7 @@ export default {
   }
   &-xl {
     height: 2.25em;
-    width: auto;
+    width: 2.25em;
     transform: scale(1.3);
   }
   &-lg {

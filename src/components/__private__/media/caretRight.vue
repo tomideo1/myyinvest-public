@@ -16,6 +16,6 @@
 
 <script>
 export default {
-  name: "caret"
+  name: "caretRight"
 };
 </script>

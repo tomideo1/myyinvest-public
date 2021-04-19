@@ -53,9 +53,10 @@
               <div class="block-2"></div>
               <div class="block-3"></div>
             </div>
+            <a class="nav-link  ft-20  ml-5 ml-lg-0 ml-md-0   text-uppercase" @click="$router.go(-1)"><main-icon name="back" size="md"/></a>
 
             <ul class="navbar-nav mx-auto d-none d-lg-block d-md-none ">
-              <li class="nav-item ">
+              <li class="nav-item d-flex flex-row ">
                 <a class="nav-link  ft-20 ml-5 pl-5  text-uppercase">{{ getCurrentRoute }}</a>
               </li>
             </ul>
@@ -133,7 +134,9 @@ export default {
   computed: {
     ...mapGetters(["getUser", "getUserName", "getProfile"]),
     getCurrentRoute() {
-      return this.$route.name;
+      const activeRoute = this.$route.path.split("/");
+      return activeRoute[2];
+      // return this.$route.name;
     },
     class1() {
       // responsive-sidebar style is in _sidebar.scss

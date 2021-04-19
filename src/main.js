@@ -10,20 +10,26 @@ import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import "./scss/app.scss";
 import "./assets/admin/styles/base.css";
 import helpers from "./utils/helper";
+import VueClipboard from "vue-clipboard2";
+import moment from "moment";
+import TheAdminLayout from "./layouts/TheAdminLayout.vue";
+import VueGoogleCharts from "vue-google-charts";
+
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 // import "bootstrap/dist/css/bootstrap.css";
 // import "bootstrap-vue/dist/bootstrap-vue.css";
 // Make BootstrapVue available throughout your project
-import moment from "moment";
 
 Vue.prototype.moment = moment;
 Vue.use(BootstrapVue);
-
-import TheAdminLayout from "./layouts/TheAdminLayout.vue";
 Vue.component("TheAdminLayout", TheAdminLayout);
 
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin);
+
+Vue.use(VueGoogleCharts);
+
+Vue.use(VueClipboard);
 
 Vue.prototype.$Bus = new Vue();
 

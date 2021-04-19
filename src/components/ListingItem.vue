@@ -37,7 +37,11 @@
             </slot>
           </div>
         </div>
-        <button type="button" @click="$router.push({ name: 'single-listing', params: { slug } })" class="listing-item__btn">
+        <button v-if="buttonBehaviour === 'route'" type="button" @click="$router.push({ name: 'single-listing', params: { slug } })" class="listing-item__btn">
+          Get Started
+        </button>
+
+        <button v-if="buttonBehaviour !== 'route'" type="button" @click="$emit('button-clicked')" class="listing-item__btn">
           Get Started
         </button>
         <router-link :to="{ name: 'single-listing', params: { slug } }" class="listing-item__link">
@@ -59,6 +63,10 @@ export default {
     slug: {
       type: String,
       required: true
+    },
+    buttonBehaviour: {
+      type: String,
+      default: "route"
     }
   }
 };

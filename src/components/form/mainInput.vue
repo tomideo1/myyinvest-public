@@ -49,6 +49,7 @@
 </template>
 <script>
 export default {
+  name: "MainInput",
   data() {
     return {
       showLabel: false,

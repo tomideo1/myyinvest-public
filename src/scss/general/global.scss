@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap");
 //@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&display=swap");
 // Then import Bootstrap an BootstrapVue SCSS files (order is important)
 * {
   box-sizing: border-box;
@@ -67,6 +67,10 @@ h6 {
 
 .font-poppins {
   font-family: fonts(main-poppins), serif;
+}
+
+.font-Nunito {
+  font-family: fonts(nunito), serif;
 }
 /**
 * Shadows
@@ -143,7 +147,7 @@ h6 {
 }
 
 .text-grey-500 {
-  color: color(sla-grey) !important;
+  color: #7a7777 !important;
 }
 
 .text-grey-800 {
@@ -1600,4 +1604,30 @@ hr {
 
 .custom-shadow {
   box-shadow: inset 2px 2px 5px #acacac;
+}
+
+.text-bold-black {
+  font-size: 16px;
+  line-height: 22px;
+  /* identical to box height */
+
+  color: #000000 !important;
+}
+
+.text-bold-main-red {
+  font-size: 16px;
+  line-height: 22px;
+  /* identical to box height */
+
+  color: #f00304 !important;
+}
+
+.header {
+  font-style: normal;
+  font-weight: bolder !important;
+  font-size: 32px;
+  line-height: 44px;
+  letter-spacing: 0.02em;
+
+  color: #2f2f2f;
 }

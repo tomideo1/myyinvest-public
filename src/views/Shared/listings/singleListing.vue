@@ -104,7 +104,7 @@ export default {
     ListingDetail,
     MainInput,
     MainIcon
-    // ListingInfoCard,
+    // ListingInfoCard
   },
   data() {
     return {

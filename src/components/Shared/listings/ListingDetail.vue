@@ -7,7 +7,7 @@
       <!-- <div class="listing-dtl__carousel"> -->
       <Carousel class="listing-dtl__carousel" :autoplay="false" :nav="false" :items="1">
         <div v-for="i in 4" :key="i">
-          <img class="listing-dtl__img" src="https://res.cloudinary.com/dwpu7jpku/image/upload/v1612297295/listings_mfl4io.png" alt="image" />
+          <img class="listing-dtl__img" src="https://res.cloudinary.com/dwpu7jpku/image/upload/v1612297295/listings_mfl4io.png" alt="listing image" />
         </div>
       </Carousel>
       <!-- </div> -->

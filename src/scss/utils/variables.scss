@@ -46,3 +46,6 @@ $border-color: #e1e5eb;
 $body-background: #f5f6f8 !default;
 $reagent-gray: #818ea3 !default;
 $text-light-color: $reagent-gray !default;
+
+// Listing Variables
+$lst-info-max-width: 16em; // (used in ListingInfoCard.vue, _listings.scss)

@@ -39,13 +39,15 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .lst-info {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1.5em 2em;
-  max-width: 16em;
+  // $lst-info-max-width is defined in utils/variables.scss;
+  max-width: $lst-info-max-width;
+  // max-width: 16em;
   max-height: 11em;
   box-shadow: 0 0 1.25rem 0 rgba(0, 0, 0, 0.2);
 

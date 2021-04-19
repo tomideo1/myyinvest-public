@@ -3,6 +3,106 @@
   min-height: 80vh;
 }
 
+.portfolio-item-container {
+  padding: 1.25em 2em;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.pofl-item {
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.35rem 0 rgba(0, 0, 0, 0.35);
+  max-width: 19.25em;
+  margin-bottom: 2em;
+
+  &__img-container {
+    max-height: 16em;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+
+  &__img {
+    width: 100%;
+    border-radius: inherit;
+  }
+
+  &__info {
+    padding: 0.75em;
+  }
+
+  &__title {
+    font-size: 1.1em !important;
+    font-weight: 600;
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  &__link-container {
+    // border: 1px solid black;
+    display: flex;
+    justify-content: flex-end;
+    border-bottom-right-radius: inherit;
+  }
+
+  &__link {
+    display: inline-block;
+    color: color(bv-white);
+    background: color(main-red);
+    border-bottom-right-radius: inherit;
+    padding: 0.35em 0.85em;
+    font-size: 0.825em;
+
+    &:hover {
+      color: color(bv-white);
+      font-weight: 600;
+    }
+  }
+
+  &__data {
+    border-top: 1.5px solid color(main-red);
+    display: flex;
+
+    &:last-child {
+      border-bottom: 1.5px solid color(main-red);
+    }
+  }
+}
+
+.pofl-data {
+  flex: 1;
+  padding: 0.25em 0;
+
+  &:last-child {
+    border-left: 1.5px solid color(main-red);
+    text-align: right;
+  }
+
+  &__title {
+    font-size: 0.8em !important;
+    font-weight: 500;
+  }
+
+  &__icon {
+    width: 1.15rem;
+    height: 1.15rem;
+    padding-bottom: 0.15em;
+  }
+
+  &__value {
+    font-size: 0.85em !important;
+    font-weight: 500;
+    margin-bottom: 0;
+    color: #4a4a4a;
+
+    &--alt {
+      font-size: 1.05em !important;
+      font-weight: 600;
+      color: color(main-red);
+    }
+  }
+}
+
 .inv-plan {
   &__title {
     font-size: 1.25em !important;
@@ -30,6 +130,10 @@
   // border: 1px solid color(main-red);
   flex: 1.25;
   color: #000;
+
+  &__heading {
+    padding-left: 1.3em;
+  }
 
   &__link {
     color: inherit;

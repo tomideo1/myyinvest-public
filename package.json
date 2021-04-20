@@ -20,6 +20,7 @@
     "pretty-quick": "^2.0.1",
     "vue": "^2.6.11",
     "vue-js-modal": "^2.0.0-rc.6",
+    "vue-meta": "^2.4.0",
     "vue-owl-carousel2": "^2.0.7",
     "vue-router": "^3.2.0",
     "vue-tel-input": "^5.0.3",

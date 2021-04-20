@@ -1,118 +1,78 @@
 <template>
   <the-admin-layout>
     <form class="wrapper">
-      <div class="left-area">
-        <fieldset class="input-grp">
-          <legend><label for="ptitle">Post Title</label></legend>
-          <input type="text" id="ptitle" placeholder="How to invest in Real Estates Seamlessly" />
-        </fieldset>
+      <fieldset class="input-grp">
+        <legend><label for="pname">Post Name</label></legend>
+        <input type="text" id="pname" placeholder="How to buy tokens in Myyinvest" />
+      </fieldset>
 
-        <fieldset class="input-grp">
-          <legend><label for="pauthor">Post Author</label></legend>
-          <input type="text" id="pauthor" placeholder="Valentine Offiah" />
-        </fieldset>
-
-        <fieldset class="input-grp">
-          <legend><label for="ptags">Post Tags</label></legend>
-          <input type="text" id="ptags" placeholder="Investments, Finance, Money, Real Estates" />
-        </fieldset>
-
-        <fieldset class="input-grp">
-          <legend><label for="pstatus">Post Status</label></legend>
-          <!-- <select name="" id="pstatus">
-            <option key="category.value" value="category.value">Option</option>
-          </select> -->
-          <div class="dropdown-wrap">
-            <div class="dropdown">
-              <button class="dropbtn">{{ selectedPostStatus || "Category" }} <img src="@/assets/admin/icons/caret-down.svg" alt="Dropdown" /></button>
-              <div class="dropdown-content">
-                <div class="option" v-for="(option, index) in postStatuses" :key="index" @click="newPostStatus(option.name)">{{ option.name }}</div>
-              </div>
+      <fieldset class="input-grp">
+        <legend><label for="precepient">Recipient</label></legend>
+        <input type="text" id="precepient" placeholder="Project One" />
+        <div class="dropdown-wrap">
+          <div class="dropdown">
+            <button class="dropbtn">{{ selectedProject || "Category" }} <img src="@/assets/admin/icons/caret-down.svg" alt="Dropdown" /></button>
+            <div class="dropdown-content">
+              <div class="option" v-for="(option, index) in newProjectNames" :key="index" @click="newProjectName(option.name)">{{ option.name }}</div>
             </div>
-          </div>
-        </fieldset>
-
-        <fieldset class="input-grp">
-          <legend><label for="pcategory">Post Category</label></legend>
-          <!-- <select name="" id="pcategory">
-            <option key="category.value" value="category.value">Option</option>
-          </select> -->
-          <div class="dropdown-wrap">
-            <div class="dropdown">
-              <button class="dropbtn">{{ selectedCategory || "Category" }} <img src="@/assets/admin/icons/caret-down.svg" alt="Dropdown" /></button>
-              <div class="dropdown-content">
-                <div class="option" v-for="(option, index) in categories" :key="index" @click="newCategory(option.name)">{{ option.name }}</div>
-              </div>
-            </div>
-          </div>
-        </fieldset>
-      </div>
-      <div class="right-area">
-        <div class="upload">
-          <div class="upload-window">
-            <img :src="imgURL" alt="User Image Preview" class="img-fluid" />
-          </div>
-
-          <div class="file-input">
-            <input type="file" accept="image/*" id="file" class="file" @change="updateFilename" />
-            <label for="file">
-              Select file
-            </label>
-
-            <p class="file-name">{{ selectedFilename }}</p>
           </div>
         </div>
+      </fieldset>
 
-        <fieldset class="input-grp pcontent">
-          <legend><label for="pcontent">Post Content</label></legend>
-          <textarea
-            name=""
-            id="pcontent"
-            placeholder="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore fugit quibusdam praesentium molestiae debitis autem fugiat iure ratione voluptas fuga, consequuntur dignissimos minima, veniam dolorum! Debitis quae officiis et sint."
-            cols="30"
-            rows="10"
-          ></textarea>
-        </fieldset>
-        <button>SUBMIT</button>
+      <div class="upload">
+        <div class="upload-window">
+          <img :src="imgURL" alt="User Image Preview" class="img-fluid" />
+        </div>
+
+        <div class="file-input">
+          <input type="file" accept="image/*" id="file" class="file" @change="updateFilename" />
+          <label for="file">
+            Select file
+          </label>
+
+          <p class="file-name">{{ selectedFilename }}</p>
+        </div>
       </div>
+
+      <fieldset class="input-grp pcontent">
+        <legend><label for="pcontent">Post Content</label></legend>
+        <textarea
+          name=""
+          id="pcontent"
+          placeholder="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore fugit quibusdam praesentium molestiae debitis autem fugiat iure ratione voluptas fuga, consequuntur dignissimos minima, veniam dolorum! Debitis quae officiis et sint."
+          cols="30"
+          rows="10"
+        ></textarea>
+      </fieldset>
+      <button>SUBMIT</button>
     </form>
   </the-admin-layout>
 </template>
 
 <script>
 export default {
-  name: "AddInsights",
+  name: "AddAdminNotification",
 
   metaInfo: {
-    title: "Myyinvest - Add Insights (Admin)",
+    title: "Myyinvest - Add Notifications (Admin)",
     titleTemplate: null
   },
 
   data() {
     return {
-      selectedPostStatus: "",
-      postStatuses: [
+      selectedProject: "",
+      newProjectNames: [
         {
-          name: "Published"
+          name: "Project One"
         },
         {
-          name: "Unpublished"
+          name: "Project Two"
         },
         {
-          name: "Scheduled/Delayed"
-        }
-      ],
-
-      selectedCategory: "",
-      categories: [
-        {
-          name: "News"
+          name: "Project Three"
         },
         {
-          name: "Blog"
-        },
-        {
-          name: "Research"
+          name: "Project Four"
         }
       ],
 
@@ -122,13 +82,8 @@ export default {
   },
 
   methods: {
-    newPostStatus(val) {
-      this.selectedPostStatus = val;
-      alert(val);
-    },
-
-    newCategory(val) {
-      this.selectedCategory = val;
+    newProjectName(val) {
+      this.selectedProject = val;
       alert(val);
     },
 
@@ -163,28 +118,35 @@ export default {
 }
 
 .wrapper {
-  display: grid;
-  grid-template-columns: 60% 40%;
-  padding: var(--base-size);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin: var(--base-size) auto 0;
+  padding: 1px;
+  scrollbar-width: none;
 }
 
-.left-area {
-  margin-right: var(--base-size);
-}
-
-.right-area {
-  margin-left: var(--base-size);
+.wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 fieldset {
+  width: 100%;
   padding: 10px;
   border: 1px solid var(--myyinvest-red-fade);
   border-radius: 5px;
   stroke-opacity: 0.5;
 }
 
+.image-upload-wrapper,
 fieldset:not(:last-child) {
   margin-bottom: var(--base-size);
+}
+
+fieldset:not(:first-child) {
+  margin-top: var(--base-size);
 }
 
 legend {
@@ -218,6 +180,10 @@ textarea {
   text-overflow: "";
 }
 
+textarea {
+  height: 200px;
+}
+
 input:hover:not(.upload input),
 input:focus:not(.upload input),
 /* select:hover,
@@ -234,24 +200,10 @@ input {
 }
 
 button {
-  margin-top: 10px;
+  margin: 10px 0 var(--base-size);
+  padding: 5px 10px;
   color: var(--myyinvest-white);
   background-color: var(--myyinvest-red);
-}
-
-.pcontent {
-  width: 100%;
-  height: 300px;
-  margin-top: var(--base-size);
-}
-
-.pcontent input {
-  height: 100%;
-}
-
-button {
-  float: right;
-  padding: 5px 10px;
   border: 1px solid transparent;
   border-radius: 5px;
 }

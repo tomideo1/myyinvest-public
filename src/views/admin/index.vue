@@ -5,7 +5,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "AdminOverview",
+
+  metaInfo: {
+    title: "Myyinvest",
+    titleTemplate: "%s - Overview (Admin)",
+    htmlAttrs: {
+      lang: "en",
+      amp: true
+    }
+  }
+};
 </script>
 
 <style scoped>

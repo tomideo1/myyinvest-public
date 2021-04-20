@@ -2,77 +2,30 @@
   <the-admin-layout>
     <div class="main-content">
       <section class="content-titles">
-        <div class="drag"></div>
-        <div class="fname">First Name</div>
-        <div class="lname">Last Name</div>
+        <div class="sn">S/N</div>
+        <div class="date">Date</div>
         <div class="email">Email Address</div>
-        <div class="phone">Phone Number</div>
-        <div class="dob">Date of Birth</div>
-        <div class="dor">Date of registration</div>
+        <div class="location">Location</div>
         <div class="options"></div>
       </section>
 
       <section class="contents" v-for="x in 10" :key="x">
-        <div class="drag">
-          <svg width="17" height="22" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="394 756 17 22">
-            <svg width="5" height="5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000" x="394" y="756">
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="5" height="5">
+        <div class="sn">{{ zeroPrefix(x) }}{{ x }}</div>
+        <div class="date">17th Feb. 2021</div>
+        <div class="email">voffiah@gmail.com</div>
+        <div class="location">14, Shinra Tensei Street, Amaterasu Town, Gakido, land of Water.</div>
+        <div class="options">
+          <span>
+            <svg width="15" height="13" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#0a47a0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13">
                 <path
                   paint-order="stroke fill markers"
                   fill-rule="evenodd"
-                  d="M2.425 4.8A2.023 2.023 0 0 1 .4 2.775C.4 1.655 1.305.75 2.425.75c1.12 0 2.025.905 2.025 2.025 0 1.12-.906 2.025-2.025 2.025z"
-                />
-              </svg></svg
-            ><svg width="5" height="5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000" x="406" y="756">
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="5" height="5">
-                <path
-                  paint-order="stroke fill markers"
-                  fill-rule="evenodd"
-                  d="M2.575 4.8A2.023 2.023 0 0 1 .55 2.775C.55 1.655 1.455.75 2.575.75c1.12 0 2.025.905 2.025 2.025 0 1.12-.905 2.025-2.025 2.025z"
-                />
-              </svg></svg
-            ><svg width="5" height="5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000" x="406" y="764">
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="5" height="5">
-                <path
-                  paint-order="stroke fill markers"
-                  fill-rule="evenodd"
-                  d="M2.575 4.9A2.023 2.023 0 0 1 .55 2.875C.55 1.755 1.455.85 2.575.85c1.12 0 2.025.905 2.025 2.025 0 1.12-.905 2.025-2.025 2.025z"
-                />
-              </svg></svg
-            ><svg width="5" height="5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000" x="394" y="764">
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="5" height="5">
-                <path
-                  paint-order="stroke fill markers"
-                  fill-rule="evenodd"
-                  d="M2.425 4.9A2.023 2.023 0 0 1 .4 2.875C.4 1.755 1.305.85 2.425.85c1.12 0 2.025.905 2.025 2.025 0 1.12-.906 2.025-2.025 2.025z"
-                />
-              </svg></svg
-            ><svg width="5" height="6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000" x="394" y="772">
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="5" height="6">
-                <path
-                  paint-order="stroke fill markers"
-                  fill-rule="evenodd"
-                  d="M2.425 5A2.023 2.023 0 0 1 .4 2.975C.4 1.855 1.305.95 2.425.95c1.12 0 2.025.905 2.025 2.025C4.45 4.095 3.544 5 2.425 5z"
-                />
-              </svg></svg
-            ><svg width="5" height="6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000" x="406" y="772">
-              <svg xmlns="http://www.w3.org/2000/svg" width="5" height="6">
-                <path
-                  paint-order="stroke fill markers"
-                  fill-rule="evenodd"
-                  d="M2.575 5A2.023 2.023 0 0 1 .55 2.975C.55 1.855 1.455.95 2.575.95c1.12 0 2.025.905 2.025 2.025C4.6 4.095 3.695 5 2.575 5z"
+                  d="M9.837 8.962l.773-.773a.195.195 0 0 1 .332.137v3.514c0 .64-.52 1.16-1.16 1.16H1.275c-.64 0-1.16-.52-1.16-1.16V3.334c0-.641.52-1.16 1.16-1.16h6.61c.171 0 .258.208.137.33l-.773.774a.194.194 0 0 1-.138.056H1.275v8.506h8.507V9.097c0-.05.019-.1.055-.135zm3.784-4.877L7.276 10.43l-2.185.242A.998.998 0 0 1 3.989 9.57l.242-2.185 6.346-6.346a1.41 1.41 0 0 1 1.998 0l1.044 1.044c.553.554.553 1.45.002 2zm-2.387.747L9.83 3.428 5.34 7.92l-.176 1.578 1.578-.176 4.492-4.49zM12.8 2.906l-1.044-1.044a.253.253 0 0 0-.358 0l-.746.747 1.404 1.404.746-.747a.257.257 0 0 0-.002-.36z"
                 />
               </svg>
             </svg>
-          </svg>
-        </div>
-        <div class="fname">Valentine</div>
-        <div class="lname">Offiah</div>
-        <div class="email">voffiah@gmail.com</div>
-        <div class="phone">09051843790</div>
-        <div class="dob">17th Feb. 2021</div>
-        <div class="dor">17th Feb. 2021</div>
-        <div class="options">
+          </span>
           <span>
             <svg width="17" height="11" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#0baa12">
               <svg xmlns="http://www.w3.org/2000/svg" width="17" height="11">
@@ -120,14 +73,34 @@
 
 <script>
 export default {
+  name: "AdminNewsletters",
+
+  metaInfo: {
+    title: "Myyinvest - Newsletters (Admin)",
+    titleTemplate: null
+  },
+
   data() {
     return {
+      status: "Published",
       currentPage: 1,
       noDeleteModal: true
     };
   },
 
   methods: {
+    zeroPrefix(num) {
+      if (num < 10) {
+        return 0;
+      } else return "";
+    },
+
+    changeColor(val) {
+      if (val.toLowerCase().normalize() === "published") {
+        return "color: var(--myyinvest-green)";
+      } else return "color: var(--myyinvest-danger)";
+    },
+
     deleteItem() {
       this.noDeleteModal = !this.noDeleteModal;
     },
@@ -145,8 +118,6 @@ export default {
 
 <style scoped>
 .main-content {
-  /* width: 100%; */
-  height: 95%;
   padding: 1px;
   overflow-y: auto;
   -ms-overflow-style: none;
@@ -173,22 +144,20 @@ section:not(:last-child) {
 section div {
   display: flex;
   justify-content: center;
-  width: 14%;
+  width: 20%;
   padding: 2px;
 }
 
-section div.drag {
-  width: 6%;
+section div.sn {
+  width: 10%;
 }
 
-/* section div.fname,
-section div.lname,
-section div.email {
-    width: 16%;
-} */
-
 section div.options {
-  width: 10%;
+  width: 16%;
+}
+
+section div.location {
+  width: 34%;
 }
 
 section:first-child {
@@ -206,10 +175,6 @@ section:first-child div {
   color: gray;
   font-weight: 600;
 }
-
-/* section:not(:first-child) div.dob {
-  color: var(--myyinvest-green);
-} */
 
 section div img {
   width: 100%;
@@ -235,6 +200,10 @@ div.options {
   background-color: var(--myinvest-white);
 }
 
+.pagination button:first-child {
+  margin-left: auto;
+}
+
 .pagination button:not(:first-child) {
   margin-left: 10px;
 }
@@ -253,7 +222,6 @@ div.options {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
-  /* opacity: 0.5; */
   z-index: 1111;
 }
 

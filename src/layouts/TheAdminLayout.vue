@@ -14,15 +14,36 @@
         </nav>
 
         <div class="main-contents">
-          <div class="sort-by" v-if="hasOptions">
-            <button>Download</button>
+          <div class="header-options" v-if="hasOptions">
+            <button class="download" @click="previewDownload">Download</button>
+
+            <div class="download-overlay" v-if="noDownloadModal === false">
+              <div class="download-modal">
+                <p>Kindly select range</p>
+
+                <div class="date-range">
+                  <span>From</span>
+                  <input type="date" name="start-date" id="start-date" />
+                  <span class="to-date">To</span>
+                  <input type="date" name="end-date" id="end-date" />
+                </div>
+
+                <div>
+                  <button @click="cancelDownload">Cancel</button>
+                  <button @click="proceedDownload">Proceed</button>
+                </div>
+              </div>
+            </div>
 
             <div class="input-grp">
               <input type="text" name="search" id="search_query" placeholder="Search" />
 
-              <select name="" id="">
-                <option value="">Sort by date</option>
-              </select>
+              <div class="dropdown">
+                <button class="dropbtn">{{ selectedOption || "Sort by" }} <img src="@/assets/admin/icons/chevron-down.svg" alt="Dropdown" /></button>
+                <div class="dropdown-content">
+                  <div class="option" v-for="(option, index) in selectOptions" :key="index" @click="filterBy(option.name)">{{ option.name }}</div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -47,7 +68,26 @@ import TheSideNav from "@/components/layout/admin/TheSideNav.vue";
 
 export default {
   name: "TheAdminLayout",
+
   components: { TheNav, TheSideNav },
+
+  data() {
+    return {
+      noDownloadModal: true,
+      selectedOption: "",
+      selectOptions: [
+        {
+          name: "Sort by Date"
+        },
+        {
+          name: "Sort A-Z"
+        },
+        {
+          name: "Sort Z-A"
+        }
+      ]
+    };
+  },
 
   methods: {
     deviceType() {
@@ -62,10 +102,28 @@ export default {
 
     smallHeight() {
       const currentRoute = this.$route.path;
-      const routes = ["/admin/view-", "/admin/transactions"];
+      const routes = ["/admin/view-users", "/admin/transactions", "/admin/view-insights", "/admin/view-notifications", "/admin/view-faqs"];
+      // const routes = ["/admin/view-", "/admin/transactions"];
       if (routes.includes(currentRoute)) {
         return "height: 78vh;";
       } else return "";
+    },
+
+    previewDownload() {
+      this.noDownloadModal = !this.noDownloadModal;
+    },
+
+    cancelDownload() {
+      this.noDownloadModal = !this.noDownloadModal;
+    },
+
+    proceedDownload() {
+      alert("What next?");
+    },
+
+    filterBy(val) {
+      this.selectedOption = val;
+      alert(val);
     }
   },
 
@@ -91,6 +149,14 @@ export default {
 </script>
 
 <style scoped>
+*:focus:not(:-moz-focusring) {
+  outline: none;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .main-wrap {
   width: 100vw;
   height: 100vh;
@@ -107,7 +173,6 @@ div.body {
   margin: 0;
   border: 0;
   font-size: var(--font-normal);
-  background-color: var(--myyinvest-white);
 }
 
 main {
@@ -121,13 +186,11 @@ nav.top-nav {
   top: 0;
   height: var(--topnav-height);
   background-color: var(--myyinvest-white);
-  box-shadow: 2px 0 2px 0 gray;
+  box-shadow: 0 1px 4px 0 rgba(158, 157, 157, 0.5);
   z-index: 999;
 }
 
 main {
-  /* min-height: calc(100vh - var(--topnav-height)); */
-  /* max-height: 100vh; */
   max-height: 50vh !important;
   z-index: 1;
 }
@@ -136,15 +199,16 @@ main nav.side-nav {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
   height: calc(100vh - (1.01 * var(--topnav-height)));
-  /* padding-bottom: 100px; */
   color: var(--myyinvest-red);
-  box-shadow: 0 2px 2px 0 gray;
+  box-shadow: 1px 0 2px 0 rgba(158, 157, 157, 0.5);
   font-weight: 600;
-  background-image: url("/assets/admin/images/nav-background.svg");
+  background-image: url("../assets/admin/images/nav-background.svg");
   background-repeat: no-repeat;
-  background-position: 100% 120%;
+  background-size: contain;
   background-origin: border-box;
-  background-size: auto;
+  -webkit-background-origin: border-box;
+  -moz-background-origin: content-box;
+  background-position: 0 100%;
   overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -168,7 +232,6 @@ main article {
 }
 
 main article .content-wrapper {
-  /* position: relative; */
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -182,15 +245,14 @@ main article .content-wrapper {
   scrollbar-width: none;
 }
 
-.sort-by {
+.header-options {
   display: flex;
-  /* justify-content: right; */
   align-items: center;
   margin-bottom: var(--base-size);
 }
 
-.sort-by button,
-.sort-by button {
+.header-options button.download,
+.header-options button.download {
   padding: 5px 10px;
   color: var(--myyinvest-white);
   font-weight: 600;
@@ -199,20 +261,66 @@ main article .content-wrapper {
   background-color: var(--myyinvest-red);
 }
 
-.sort-by button:hover,
-.sort-by button:focus {
+.header-options button.download:hover,
+.header-options button.download:focus {
   color: var(--myyinvest-red);
   border: 2px solid var(--myyinvest-red);
   background-color: var(--myyinvest-white);
 }
 
-.sort-by .input-grp {
+.header-options .input-grp {
   margin-left: auto;
 }
 
-.sort-by input,
-.sort-by select {
-  /* width: 100%; */
+.dropbtn {
+  height: fit-content;
+  height: -moz-fit-content;
+  height: max-content;
+  padding: 5px 10px;
+  border: 1px solid gray;
+  border-radius: var(--base-size);
+  background-color: var(--myyinvest-white);
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  width: 120px;
+  background-color: var(--myyinvest-white);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content .option {
+  display: block;
+  padding: 12px 16px;
+  color: black;
+  text-decoration: none;
+}
+
+.dropdown-content .option:hover {
+  color: var(--myyinvest-white);
+  background-color: var(--myyinvest-red-fade);
+  cursor: pointer;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  border-color: var(--myyinvest-red);
+  box-shadow: 0 0 3px 3px var(--myyinvest-red-fade);
+}
+
+.header-options input {
+  width: 300px;
   height: fit-content;
   height: -moz-fit-content;
   height: max-content;
@@ -226,8 +334,81 @@ main article .content-wrapper {
   text-overflow: "";
 }
 
-.sort-by input:not(:first-child),
-.sort-by select:not(:first-child) {
+.header-options input:not(:first-child),
+.header-options .dropdown {
   margin-left: var(--base-size);
+}
+
+.header-options input:focus {
+  outline: none;
+  border-color: var(--myyinvest-red);
+  box-shadow: 0 0 3px 3px var(--myyinvest-red-fade);
+}
+
+.download-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1111;
+}
+
+.download-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 300px;
+  padding: calc(2 * var(--base-size));
+  border-radius: 10px;
+  background-color: var(--myyinvest-white);
+  transform: translate(-50%, -50%);
+}
+
+.download-modal p {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  text-align: center;
+}
+
+.download-modal span {
+  font-weight: 600;
+}
+
+.download-modal div span.to-date {
+  margin-top: 10px;
+}
+
+.download-modal div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--base-size);
+}
+
+.download-modal div.date-range {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.download-modal div button {
+  padding: 5px;
+  border: 2px solid var(--myyinvest-red);
+  color: var(--myyinvest-red);
+  font-weight: 600;
+  border-radius: 5px;
+  background-color: var(--myyinvest-white);
+}
+
+.download-modal div button:hover,
+.download-modal div button:focus {
+  border: 2px solid transparent;
+  color: var(--myyinvest-white);
+  background-color: var(--myyinvest-red);
 }
 </style>

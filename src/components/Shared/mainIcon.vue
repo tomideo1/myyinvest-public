@@ -31,7 +31,7 @@
     <vector-dots v-if="name === 'vector-dots'"></vector-dots>
     <close v-if="name === 'close'"></close>
     <tooltip v-if="name === 'tooltip'"></tooltip>
-    <caret v-if="name === 'caret'"></caret>
+    <!--    <caret v-if="name === 'caret'"></caret>-->
     <database v-if="name === 'database'"></database>
     <reload v-if="name === 'reload'"></reload>
     <money-blue v-if="name === 'money-blue'"></money-blue>
@@ -98,7 +98,7 @@ export default {
     vectorDots: () => import("@/components/__private__/media/vectorDots"),
     close: () => import("@/components/__private__/media/close"),
     tooltip: () => import("@/components/__private__/media/tooltip"),
-    caret: () => import("@/components/__private__/media/caret"),
+    // caret: () => import("@/components/__private__/media/caret"),
     total: () => import("@/components/__private__/media/total"),
     reload: () => import("@/components/__private__/media/greenReload"),
     moneyBlue: () => import("@/components/__private__/media/blueMoney"),

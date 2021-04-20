@@ -12,30 +12,17 @@
         <main-button type="filled" class="col-md-12 mt-5" text="Continue" :disable="form.amount === '' || form.bank === ''" />
       </form>
     </section>
-    <div class="d-block d-lg-none d-md-none">
-      <modal class="" v-show="isModalVisible" size="md" show-cancel>
-        <h3 class="text-main-red mt-4 ft-20 mx-auto text-center ">Investment Slots (CAMBRIDGE APARTMENT)</h3>
 
-        <p class="mt-5 pt-5 ft-20 text-bold-black mx-auto text-center"><b>Dial the code below to complete this transaction </b></p>
-        <p class="mt-5 pt-5 ft-20 text-bold-main-red mx-auto text-center">
-          <b>{{ form.code }}</b>
-        </p>
+    <modal v-show="isModalVisible" size="xl" show-cancel>
+      <h3 class="text-main-red mt-4 ft-20 mx-auto text-center ">Investment Slots (CAMBRIDGE APARTMENT)</h3>
 
-        <p @click="doCopy" class="mt-5 cursor-pointer ft-20 text-bold-black mx-auto text-center"><b>Tap to copy </b></p>
-      </modal>
-    </div>
-    <div class="d-none d-lg-block d-md-block">
-      <modal v-show="isModalVisible" size="xl" show-cancel>
-        <h3 class="text-main-red mt-4 ft-20 mx-auto text-center ">Investment Slots (CAMBRIDGE APARTMENT)</h3>
+      <p class="mt-5 pt-5 ft-20 text-bold-black mx-auto text-center"><b>Dial the code below to complete this transaction </b></p>
+      <p class="mt-5 pt-5 ft-20 text-bold-main-red mx-auto text-center">
+        <b>{{ form.code }}</b>
+      </p>
 
-        <p class="mt-5 pt-5 ft-20 text-bold-black mx-auto text-center"><b>Dial the code below to complete this transaction </b></p>
-        <p class="mt-5 pt-5 ft-20 text-bold-main-red mx-auto text-center">
-          <b>{{ form.code }}</b>
-        </p>
-
-        <p @click="doCopy" class="mt-5 cursor-pointer ft-20 text-bold-black mx-auto text-center"><b>Tap to copy </b></p>
-      </modal>
-    </div>
+      <p @click="doCopy" class="mt-5 cursor-pointer ft-20 text-bold-black mx-auto text-center"><b>Tap to copy </b></p>
+    </modal>
   </div>
 </template>
 

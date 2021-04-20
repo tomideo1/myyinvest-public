@@ -29,22 +29,10 @@
         </select>
         <label v-if="labelType !== 'full'" class="label">{{ label }}</label>
       </div>
-
-      <!--      <div class="" v-if="inputType === 'date'">-->
-      <!--        <label class="mt-n3" >{{ label }}</label>-->
-      <!--        <date-picker-->
-      <!--          @keyup="keyup($event)"-->
-      <!--          :value="value"-->
-      <!--          :placeholder="placeholder"-->
-      <!--          :disabled="disable"-->
-      <!--          @input="trigger($event)"-->
-      <!--          @focus="focus"-->
-      <!--          prefix-class="xmx"-->
-      <!--          class=" width-100"-->
-      <!--          type="date"-->
-      <!--        ></date-picker>-->
-      <!--      </div>-->
     </div>
+    <p class="text-grey-500 ft-12 mt-n4 d-flex ml-auto">
+      <slot name="inputdesc"> </slot>
+    </p>
   </div>
 </template>
 <script>

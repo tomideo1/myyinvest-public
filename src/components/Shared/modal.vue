@@ -1,20 +1,27 @@
 <template>
   <transition name="modal-fade">
-    <div class="modal-backdrop">
-      <div :class="[classes]" :style="styles" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
-        <span v-if="showCancel" class="close-button topright" @click="handleClose">&times;</span>
-        <section class="modal-body" id="modalDescription">
-          <slot />
-        </section>
+    <div class="lst-modal">
+      <div class="lst-modal__dialog-box">
+        <div :class="[classes]" :style="styles" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+          <div class="lst-modal__close-icon">
+            <main-icon v-if="showCancel" name="close" size="xl" @click.native="handleClose" />
+          </div>
+          <!--          <span v-if="showCancel" class="close-button topright" @click="handleClose">&times;</span>-->
+          <div class="lst-modal__content" id="modalDescription">
+            <slot />
+          </div>
+        </div>
       </div>
     </div>
   </transition>
 </template>
 
 <script>
+import MainIcon from "./mainIcon";
 const sizes = ["xs", "sm", "md", "lg"];
 export default {
   name: "modal",
+  components: { MainIcon },
   data() {
     return {
       widths: {
@@ -50,12 +57,15 @@ export default {
     }
   },
   computed: {
+    // eslint-disable-next-line vue/return-in-computed-property
     styles() {
-      return `width: ${this.widths[this.size]}px!important; max-height: ${this.heights[this.size]}%!important;`;
+      return;
+      // return `width: ${this.widths[this.size]}px!important; max-height: ${this.heights[this.size]}%!important;`;
     },
+    // eslint-disable-next-line vue/return-in-computed-property
     classes() {
-      let classes = "modal";
-      return classes.trim();
+      // let classes = "modal";
+      // return classes.trim();
     }
   },
   methods: {

@@ -1,18 +1,29 @@
 <template>
   <div class="b-item">
     <div class="b-item__info">
-      <p>Valentine Chinedu Offah</p>
-      <p>Access Bank</p>
+      <p>{{ accountName }}</p>
+      <p>{{ bankName }}</p>
     </div>
     <div class="b-item__number">
-      <p>0690588682</p>
+      <p>{{ accountNumber }}</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "BankItem"
+  name: "BankItem",
+  props: {
+    accountName: {
+      type: String
+    },
+    bankName: {
+      type: String
+    },
+    accountNumber: {
+      type: String
+    }
+  }
 };
 </script>
 
@@ -26,17 +37,17 @@ export default {
   color: color(bv-white);
   height: 15.25em;
   padding: 0.75em;
-  display: flex;
-  // flex-direction: column;
-  justify-content: space-evenly;
+  // display: flex;
+  // justify-content: space-evenly;
   font-size: 1.0325rem;
+  position: relative;
   transition: box-shadow 0.3s ease;
 
   // @media screen and (max-width: 599px) {
   //   font-size: 0.9275rem;
   // }
   @include breakpoint(mobile-only) {
-    font-size: 0.9275rem;
+    font-size: 0.935rem;
   }
 
   p {
@@ -45,7 +56,11 @@ export default {
   }
 
   &__info {
-    align-self: center;
+    // align-self: center;
+    position: absolute;
+    top: 50%;
+    left: 8.75%;
+    transform: translateY(-50%);
 
     > p:first-child {
       font-size: 110% !important;
@@ -53,7 +68,11 @@ export default {
   }
 
   &__number {
-    align-self: flex-end;
+    // border: 1px solid green;
+    // align-self: flex-end;
+    position: absolute;
+    bottom: 7.5%;
+    right: 8.75%;
   }
 
   &:hover,

@@ -34,6 +34,12 @@
     &--lg {
       flex: 1.5;
     }
+
+    &--mbl-hide {
+      @include breakpoint(mobile-only) {
+        display: none;
+      }
+    }
   }
 
   &__head {

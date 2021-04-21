@@ -52,6 +52,10 @@ const mutations = {
     return (state.userReferralDetails = data);
   },
 
+  setUserBanks(state, data) {
+    return (state.userBanks = data);
+  },
+
   setBankList(state, data) {
     return (state.bankList = data);
   }
@@ -77,6 +81,7 @@ const actions = {
       return res;
     }
   },
+
   async createNextOfKin({ commit }, payload) {
     let res = await Api.post(`profile/nextOfKin`, payload, true);
     if (res.status === 200 || res.status === 201) {
@@ -115,14 +120,10 @@ const actions = {
     }
   },
 
-  async fetchReferralDetails({ commit }) {
-    const res = await Api.get("referrals/get", true);
+  async fetchUserBanks({ commit }) {
+    const res = await Api.get("banks/userBank", true);
     if (res.status === 200 || res.status === 201) {
-      const { referredUsers } = res.data;
-      const refData = { ...res.data.referralDetails, referredUsers };
-      commit("setReferralDetails", refData);
-      // commit("setReferralDetails", res.data.referralDetails);
-      // commit("setReferredUsers", res.data.referredUsers);
+      commit("setUserBanks", res.data.details);
       return res;
     } else {
       return res;
@@ -141,8 +142,27 @@ const actions = {
 
   // eslint-disable-next-line no-unused-vars
   async addBankAccount({ commit }, payload) {
-    // eslint-disable-next-line no-unused-vars
-    const res = null;
+    const res = await Api.post("banks", payload, true);
+    if (res.status === 200 || res.status === 201) {
+      commit("updateUserBanks", res.data.details);
+      return res;
+    } else {
+      return res;
+    }
+  },
+
+  async fetchReferralDetails({ commit }) {
+    const res = await Api.get("referrals/get", true);
+    if (res.status === 200 || res.status === 201) {
+      const { referredUsers } = res.data;
+      const refData = { ...res.data.referralDetails, referredUsers };
+      commit("setReferralDetails", refData);
+      // commit("setReferralDetails", res.data.referralDetails);
+      // commit("setReferredUsers", res.data.referredUsers);
+      return res;
+    } else {
+      return res;
+    }
   },
 
   // eslint-disable-next-line no-unused-vars

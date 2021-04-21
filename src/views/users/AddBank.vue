@@ -17,7 +17,7 @@
         <button class="ab-card__btn" type="button" v-if="!isAccountVerified" @click="verifyUserDetails" :disabled="isLoading || !isEachFieldFilled">
           {{ verifyBtnText }}
         </button>
-        <button class="ab-card__btn" type="submit" v-if="isAccountVerified" :disabled="isLoading">
+        <button class="ab-card__btn" type="submit" v-if="isAccountVerified" :disabled="isLoading" @click="addBank">
           Add Bank
         </button>
       </form>
@@ -28,9 +28,11 @@
 <script>
 import MainInput from "@/components/form/mainInput.vue";
 import { mapActions, mapGetters } from "vuex";
+import notify from "@/mixins/notify";
 
 export default {
   name: "AddBank",
+  mixins: [notify],
   components: {
     MainInput
   },
@@ -47,7 +49,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["fetchBankList", "verifyBankAccount"]),
+    ...mapActions(["fetchBankList", "verifyBankAccount", "addBankAccount"]),
     async verifyUserDetails() {
       this.verifyBtnText = "Verifying...";
       this.isLoading = true;
@@ -60,6 +62,10 @@ export default {
           console.log("Invalid");
         }
       } else {
+        this.handleNotify({
+          message: res.data.message,
+          status: "Error"
+        });
         // this.verifyBtnText = "Continue";
       }
       this.isLoading = false;
@@ -70,6 +76,32 @@ export default {
       const firstName = this.getUser.firstName.toLowerCase();
       const lastName = this.getUser.lastName.toLowerCase();
       return accName.indexOf(firstName) !== -1 && accName.indexOf(lastName) !== -1;
+    },
+    async addBank() {
+      const bankObj = this.getBankObject;
+      const payload = {
+        bankSlug: bankObj.slug,
+        bankCode: this.bank.code,
+        bankLongCode: bankObj.longCode,
+        bankName: bankObj.key,
+        nameOnBank: this.accountName,
+        accountNumber: this.bank.account_number
+      };
+      this.isLoading = true;
+      const res = await this.addBankAccount(payload);
+      if (res.status === 200 || res.status === 201) {
+        this.handleNotify({
+          message: res.data.message,
+          status: "success"
+        });
+        await this.$router.push({ name: "banks" });
+      } else {
+        this.handleNotify({
+          message: res.data.message,
+          status: "Error"
+        });
+      }
+      this.isLoading = false;
     }
   },
   computed: {
@@ -79,6 +111,9 @@ export default {
     },
     isEachFieldFilled() {
       return this.bank.account_number.length >= 8 && this.bank.code;
+    },
+    getBankObject() {
+      return this.getBankList.find(bank => bank.value === this.bank.code);
     }
   },
   created() {

@@ -132,7 +132,7 @@ export default {
       return this.paymentFreq === freq;
     },
     getFreqBtnClasses(freq) {
-      return ["lst-modal__btn", "lst-modal__btn--max", this.isSelected(freq) ? "lst-modal__btn--active" : ""];
+      return ["lst-modal__btn", "lst-modal__btn--max", { "lst-modal__btn--active": this.isSelected(freq) }];
     }
   },
   computed: {

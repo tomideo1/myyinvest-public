@@ -133,7 +133,7 @@
 
 <script>
 import Carousel from "vue-owl-carousel2";
-import ListingInfoCard from "@/components/ListingInfoCard.vue";
+import ListingInfoCard from "./ListingInfoCard.vue";
 import MainIcon from "@/components/Shared/mainIcon.vue";
 
 export default {

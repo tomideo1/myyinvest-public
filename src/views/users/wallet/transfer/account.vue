@@ -43,6 +43,9 @@ export default {
   },
   computed: {
     ...mapGetters(["getBankList"])
+  },
+  created() {
+    this.fetchBankList();
   }
 };
 </script>

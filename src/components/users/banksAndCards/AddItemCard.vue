@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: "AddCardItem",
+  name: "AddItemCard",
   props: {
     text: {
       type: String,
@@ -50,7 +50,7 @@ export default {
   transition: box-shadow 0.3s ease;
 
   @media screen and (max-width: 599px) {
-    font-size: 0.9275rem;
+    font-size: 0.935rem;
   }
 
   &__text {

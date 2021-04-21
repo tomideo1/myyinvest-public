@@ -5,10 +5,10 @@
     <div class="trans__data">{{ project }}</div>
     <div class="trans__data trans__data--red">N{{ amount }}</div>
     <div class="trans__data trans__data--md trans__data--red">{{ tokens }}</div>
-    <div class="trans__data trans__data--md trans__data--green">{{ roi }}%</div>
-    <div class="trans__data">{{ startDate }}</div>
-    <div class="trans__data">{{ endDate }}</div>
-    <div class="trans__data trans__data--sm trans__data--green">
+    <div class="trans__data  trans__data--md  trans__data--green  trans__head--mbl-hide">{{ roi }}%</div>
+    <div class="trans__data trans__head--mbl-hide">{{ startDate }}</div>
+    <div class="trans__data trans__head--mbl-hide">{{ endDate }}</div>
+    <div class="trans__data trans__data--sm trans__data--green trans__head--mbl-hide">
       <a class="inv-trans__link" href="#">VIEW</a>
     </div>
   </div>

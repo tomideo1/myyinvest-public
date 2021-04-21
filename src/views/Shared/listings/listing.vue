@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import ListingItem from "@/components/ListingItem.vue";
+import ListingItem from "@/components/Shared/listings/ListingItem.vue";
 import MainIcon from "@/components/Shared/mainIcon.vue";
 
 export default {

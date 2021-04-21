@@ -103,7 +103,7 @@
 </template>
 
 <script>
-import ListingItem from "../../../../components/ListingItem";
+import ListingItem from "@/components/Shared/listings/ListingItem";
 import Modal from "../../../../components/Shared/modal";
 import MainInput from "../../../../components/form/mainInput";
 import MainButton from "../../../../components/form/MainButton";

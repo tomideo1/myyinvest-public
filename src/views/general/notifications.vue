@@ -1,7 +1,7 @@
 <template>
   <EmptyNotification v-if="false" />
   <div class="notification-container" v-else>
-    <NotificationItem @deleteNoty="deleteNotification(notification._id)" v-for="(notification, index) in getUserNotifications.notificationsData" :key="index" :notification-data="notification" />
+    <NotificationItem @deleteNoty="deleteNotification(notification._id)" v-for="(notification, index) in notifications" :key="index" :notification-data="notification" />
   </div>
 </template>
 
@@ -39,7 +39,11 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["getUserNotifications"])
+    ...mapGetters(["getUserNotifications"]),
+    notifications() {
+      const notifications = this.getUserNotifications;
+      return notifications.notificationsData.reverse();
+    }
   },
 
   async mounted() {

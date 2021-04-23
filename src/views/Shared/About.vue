@@ -7,7 +7,7 @@
             <div class="col-lg-6 col-md-12">
               <div class="border-left-red d-flex flex-column  ">
                 <span class="font-weight-bolder ">WHO WE ARE</span>
-                <span class="w-100  text-main-red ft-36">Your investment success is built on a powerful customer experience platform.</span>
+                <span class="w-100 font-weight-bold  text-main-red ft-36">Your investment success is built on a powerful customer experience platform.</span>
               </div>
               <p class="w-100 mt-3  font-weight-light font-poppins" style="line-height:30px; margin-top: 80px!important;">
                 We are a Property Technology Company that helps you to Invest in Real Estate Properties Seamlessly. We believe that everybody can be an investor irrespective of their financial class
@@ -41,7 +41,7 @@
             <div id="co_own" class="col-lg-6  col-md-10  ml-md-5 mt-md-4 mt-lg-0">
               <div id="co_own_text">
                 <div class="border-left-red d-flex flex-column  ">
-                  <span class="text-main-red ">WHAT WE DO</span>
+                  <span class="text-main-red font-weight-bold ">WHAT WE DO</span>
                   <span class="w-50 font-weight-bold ft-14">You invest we handle the rest.</span>
                 </div>
                 <p class="w-100 mt-3 text-align-left co-own font-weight-normal font-poppins" style="line-height:40px">
@@ -63,7 +63,7 @@
           <div class="row ">
             <div class="col-lg-11  col-md-11  ml-md-5 mt-md-4 mt-lg-0 ml-lg-5">
               <div class="border-left-red d-flex flex-column  ">
-                <span class="text-main-black ">OUR APPROACH</span>
+                <span class="text-main-black font-weight-bold ">OUR APPROACH</span>
                 <span class="w-50 text-main-red font-weight-bold ft-14">We are very rigorous in our investment vetting process.</span>
               </div>
               <p class="w-100 mt-3 text-align-left co-own font-weight-light font-poppins" style="line-height:40px;overflow-wrap: break-word">

@@ -22,10 +22,7 @@ export default {
   display: flex;
   justify-content: right;
   align-items: center;
-  /* margin: auto; */
-  /* height: fit-content; */
   margin-bottom: var(--base-size);
-  /* border: 2px solid purple; */
 }
 
 .admin-pagination button {

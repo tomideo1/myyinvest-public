@@ -169,9 +169,4 @@ export default {
   color: var(--myyinvest-white);
   background-color: var(--myyinvest-red);
 }
-
-/* p {
-  font-size: 14px !important;
-  color: var(--myyinvest-danger);
-} */
 </style>

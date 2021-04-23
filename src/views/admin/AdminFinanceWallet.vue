@@ -24,7 +24,7 @@
 import BasePagination from "@/components/admin/BasePagination.vue";
 
 export default {
-  name: "AdminWalletAccounts",
+  name: "AdminFinanceWallet",
 
   metaInfo: {
     title: "Myyinvest - Wallet Accounts (Admin)",

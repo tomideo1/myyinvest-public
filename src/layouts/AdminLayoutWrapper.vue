@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "AdminWrapperLayout",
+  name: "AdminLayoutWrapper",
 
   computed: {
     layout() {
@@ -20,5 +20,3 @@ export default {
   }
 };
 </script>
-
-<style scoped></style>

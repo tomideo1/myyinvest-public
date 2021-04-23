@@ -7,10 +7,24 @@ const routeOptions = [
     }
   },
   {
-    path: "/admin/plans",
-    name: "AdminPlans",
+    path: "/admin/plan/income",
+    name: "AdminPlanIncome",
     meta: {
-      layout: "AdminLayoutWithOptions"
+      layout: "AdminLayout"
+    }
+  },
+  {
+    path: "/admin/plan/rental",
+    name: "AdminPlanRental",
+    meta: {
+      layout: "AdminLayout"
+    }
+  },
+  {
+    path: "/admin/plan/special",
+    name: "AdminPlanSpecial",
+    meta: {
+      layout: "AdminLayout"
     }
   },
   {
@@ -22,42 +36,42 @@ const routeOptions = [
   },
   {
     path: "/admin/view-insights",
-    name: "ViewAdminInsights",
+    name: "AdminInsightView",
     meta: {
       layout: "AdminLayoutWithOptions"
     }
   },
   {
     path: "/admin/add-insights",
-    name: "AddAdminInsights",
+    name: "AdminInsightAdd",
     meta: {
       layout: "AdminLayout"
     }
   },
   {
     path: "/admin/view-faqs",
-    name: "ViewAdminFaqs",
+    name: "AdminFaqView",
     meta: {
       layout: "AdminLayoutWithOptions"
     }
   },
   {
     path: "/admin/add-faqs",
-    name: "AddAdminFaqs",
+    name: "AdminFaqAdd",
     meta: {
       layout: "AdminLayout"
     }
   },
   {
     path: "/admin/all-users",
-    name: "AllUsers",
+    name: "AdminUsersView",
     meta: {
       layout: "AdminLayoutWithOptions"
     }
   },
   {
     path: "/admin/users/:id",
-    name: "ViewUserDetails",
+    name: "AdminUsersDetail",
     meta: {
       layout: "AdminLayoutWithOptions"
     },
@@ -70,7 +84,7 @@ const routeOptions = [
   },
   {
     path: "/admin/users/:id/transactions",
-    name: "ViewUserTransactions",
+    name: "AdminUsersTransactions",
     meta: {
       layout: "AdminLayoutWithOptions"
     },
@@ -83,35 +97,35 @@ const routeOptions = [
   },
   {
     path: "/admin/finance/transactions",
-    name: "AdminTransactions",
+    name: "AdminFinanceTransactions",
     meta: {
       layout: "AdminLayoutWithOptions"
     }
   },
   {
     path: "/admin/finance/wallet-accounts",
-    name: "AdminWalletAccounts",
+    name: "AdminFinanceWallet",
     meta: {
       layout: "AdminLayoutWithOptions"
     }
   },
   {
     path: "/admin/finance/bank-accounts",
-    name: "AdminBankAccounts",
+    name: "AdminFinanceBank",
     meta: {
       layout: "AdminLayoutWithOptions"
     }
   },
   {
     path: "/admin/view-notifications",
-    name: "ViewAdminNotifications",
+    name: "AdminNotificationView",
     meta: {
       layout: "AdminLayoutWithOptions"
     }
   },
   {
     path: "/admin/add-notifications",
-    name: "AddAdminNotifications",
+    name: "AdminNotificationAdd",
     meta: {
       layout: "AdminLayout"
     }

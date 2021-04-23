@@ -32,7 +32,7 @@ import "@/assets/admin/styles/table.css";
 import "@/assets/admin/styles/form.css";
 
 export default {
-  name: "TheAdminLayout",
+  name: "AdminLayout",
 
   components: { TheDeviceInfo, TheNav, TheSideNav },
 

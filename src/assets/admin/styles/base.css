@@ -3,6 +3,9 @@
   --font-normal: 12px;
   --font-md: 14px;
   --font-lg: 16px;
+  --font-xl: 20px;
+  --font-xxl: 24px;
+  --font-xxx: 28px;
   --myyinvest-red: #c10000;
   --myyinvest-danger: red;
   --myyinvest-green: green;
@@ -34,5 +37,8 @@ html {
     --font-normal: 20px;
     --font-md: 22px;
     --font-lg: 24px;
+    --font-xl: 28px;
+    --font-xxl: 32px;
+    --font-xxx: 36px;
   }
 }

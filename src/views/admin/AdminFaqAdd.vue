@@ -43,8 +43,8 @@
     </div>
 
     <div class="submit-area">
-      <p v-if="!validForm">Kindly fill the form correctly.</p>
-      <button type="submit" @click.prevent="submit" :disabled="submitStatus === 'PENDING'">{{ btn_msg }}</button>
+      <p class="warning" v-if="!validForm">Kindly fill the form correctly.</p>
+      <button class="submit" type="submit" @click.prevent="submit" :disabled="submitStatus === 'PENDING'">{{ btn_msg }}</button>
     </div>
   </form>
 </template>
@@ -53,7 +53,7 @@
 import { required } from "vuelidate/lib/validators";
 
 export default {
-  name: "AddAdminFaqs",
+  name: "AdminFaqAdd",
 
   metaInfo: {
     title: "Myyinvest - Add FAQs (Admin)",
@@ -140,35 +140,12 @@ export default {
 </script>
 
 <style scoped>
-.section-wrapper {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 20px;
-}
-
 .dropdown-content {
-  position: absolute;
   top: 100%;
-  left: 50%;
-  width: 120px;
+  left: -10%;
 }
 
 .submit-area {
-  position: relative;
-  display: flex;
-}
-
-p {
-  position: absolute;
-  width: 100%;
-  font-size: 14px !important;
-  color: var(--myyinvest-danger);
-  text-align: center;
-}
-
-button {
-  width: 50%;
-  margin: 50px auto;
-  padding: 10px;
+  margin-top: var(--base-size);
 }
 </style>

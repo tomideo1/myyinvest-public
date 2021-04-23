@@ -53,8 +53,8 @@
     </div>
 
     <div class="submit-area">
-      <p v-if="!validForm">Kindly fill the form correctly.</p>
-      <button type="submit" @click.prevent="submit" :disabled="submitStatus === 'PENDING'">{{ btn_msg }}</button>
+      <p class="warning" v-if="!validForm">Kindly fill the form correctly.</p>
+      <button class="submit" type="submit" @click.prevent="submit" :disabled="submitStatus === 'PENDING'">{{ btn_msg }}</button>
     </div>
   </form>
 </template>
@@ -63,7 +63,7 @@
 import { required } from "vuelidate/lib/validators";
 
 export default {
-  name: "AddAdminNotification",
+  name: "AdminNotificationAdd",
 
   metaInfo: {
     title: "Myyinvest - Add Notifications (Admin)",
@@ -174,17 +174,9 @@ export default {
 </script>
 
 <style scoped>
-.section-wrapper {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 20px;
-}
-
 .dropdown-content {
-  position: absolute;
   top: 100%;
-  left: 5%;
-  width: 200px;
+  left: -10%;
 }
 
 .image-upload-wrapper,
@@ -197,6 +189,7 @@ fieldset:not(:last-child) {
   height: fit-content;
   height: -moz-fit-content;
   height: max-content;
+  margin-top: calc(3 * var(--base-size)) !important;
 }
 
 .upload-window {
@@ -255,25 +248,6 @@ input:focus + label {
 }
 
 .submit-area {
-  position: relative;
-  display: flex;
-}
-
-p {
-  position: absolute;
-}
-
-.submit-area p {
-  width: 100%;
-  margin-top: 10px;
-  font-size: 14px !important;
-  color: var(--myyinvest-danger);
-  text-align: center;
-}
-
-button {
-  width: 50%;
-  margin: 40px auto;
-  padding: 10px;
+  margin-top: var(--base-size);
 }
 </style>

@@ -28,7 +28,7 @@ section.table {
 section.table:first-child {
   position: sticky;
   position: -webkit-sticky;
-  top: -8px !important;
+  top: -10px !important;
   background-color: var(--myyinvest-white);
 }
 

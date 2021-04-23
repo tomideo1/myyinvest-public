@@ -32,7 +32,7 @@
 import BasePagination from "@/components/admin/BasePagination.vue";
 
 export default {
-  name: "AdminTransactions",
+  name: "AdminUserTransactions",
 
   metaInfo: {
     title: "Myyinvest - Transactions (Admin)",

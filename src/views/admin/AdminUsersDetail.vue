@@ -1,5 +1,5 @@
 <template>
-  <form class="wrapper">
+  <form class="section-wrapper">
     <div class="left-area">
       <section class="user-details">
         <div class="header">Personal Details</div>
@@ -157,7 +157,7 @@
 
 <script>
 export default {
-  name: "ViewUserDetails",
+  name: "AdminUserDetail",
 
   metaInfo: {
     title: "Myyinvest - User Details (Admin)",
@@ -167,22 +167,13 @@ export default {
 </script>
 
 <style scoped>
-/* *:focus:not(:-moz-focusring) {
-  outline: none;
-}
-
-*:focus:not(:focus-visible) {
-  outline: none;
-} */
-
-.wrapper {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: var(--base-size);
+.section-wrapper {
   padding: var(--base-size);
 }
 
 .left-area {
+  display: grid;
+  gap: var(--base-size);
   padding-bottom: var(--base-size);
 }
 

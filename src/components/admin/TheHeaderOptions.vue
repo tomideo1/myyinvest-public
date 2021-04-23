@@ -135,26 +135,13 @@ export default {
       }, 500);
     }
   }
-
-  // created() {
-  //   alert(this.requireDownload());
-  //   console.log(this.requireDownload());
-  // }
 };
 </script>
 
 <style scoped>
 .header-options {
   display: flex;
-  /* display: grid;
-  grid-template-columns: 1fr 5fr; */
-  /* height: 40px; */
-  /* height: fit-content !important;
-  height: -moz-fit-content !important;
-  height: max-content !important; */
-  /* margin-right: auto; */
   margin-bottom: var(--base-size);
-  /* border: 2px solid red; */
 }
 
 .header-options button.download {
@@ -179,17 +166,7 @@ export default {
   box-shadow: 0 0 3px 3px var(--myyinvest-red-fade);
 }
 
-/* input {
-  margin-left: auto;
-} */
-
 .header-options .input-grp {
-  /* display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: fit-content;
-  height: -moz-fit-content;
-  height: max-content; */
   margin-left: auto;
   border: 2px solid purple;
 }
@@ -202,9 +179,6 @@ input {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* height: fit-content;
-  height: -moz-fit-content;
-  height: max-content; */
   width: 120px;
   padding: 5px 10px;
   border: 1px solid gray;
@@ -253,9 +227,6 @@ input {
 
 .header-options input {
   width: 300px;
-  /* height: fit-content;
-  height: -moz-fit-content;
-  height: max-content; */
   padding: 5px 10px;
   border: 1px solid gray;
   border-radius: var(--base-size);
@@ -276,76 +247,4 @@ input {
   border-color: var(--myyinvest-red);
   box-shadow: 0 0 3px 3px var(--myyinvest-red-fade);
 }
-
-/* .download-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1111;
-}
-
-.download-modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 500px;
-  height: 350px;
-  padding: calc(2 * var(--base-size));
-  border-radius: 10px;
-  background-color: var(--myyinvest-white);
-  transform: translate(-50%, -50%);
-}
-
-.download-modal p {
-  font-size: var(--font-sm);
-  font-weight: 600;
-  text-align: center;
-}
-
-.download-modal label {
-  font-weight: 600;
-}
-
-.download-modal div label.to-date {
-  margin-top: 10px;
-}
-
-.download-modal div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: var(--base-size);
-}
-
-.download-modal div.date-range {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.download-modal div button {
-  padding: 5px;
-  border: 2px solid var(--myyinvest-red);
-  color: var(--myyinvest-red);
-  font-weight: 600;
-  border-radius: 5px;
-  background-color: var(--myyinvest-white);
-}
-
-.download-modal div button:hover,
-.download-modal div button:focus {
-  border: 2px solid transparent;
-  color: var(--myyinvest-white);
-  background-color: var(--myyinvest-red);
-}
-
-p {
-  font-size: 14px !important;
-  color: var(--myyinvest-danger);
-} */
 </style>

@@ -12,10 +12,21 @@
       <img src="@/assets/admin/icons/user.svg" alt="User icon" class="icon" />
       <span>Users</span>
     </router-link>
-    <router-link to="/admin/plans" class="main-route">
+    <!-- <router-link to="/admin/plans" class="main-route">
       <img src="@/assets/admin/icons/checklist.svg" alt="Plans icon" class="icon" />
       <span>Plans</span>
-    </router-link>
+    </router-link> -->
+    <div :class="[myPath('/admin/plan/'), 'main-route']" @click="noPlan = !noPlan">
+      <img src="@/assets/admin/icons/checklist.svg" alt="Plans icon" class="icon" />
+      <span>Plans</span>
+    </div>
+    <div class="sub-nav" v-if="!noPlan">
+      <transition-group name="slide">
+        <router-link to="/admin/plan/income" key="pIncome"><span></span> Income Plan</router-link>
+        <router-link to="/admin/plan/rental" key="pRental"><span></span> Rental Plan</router-link>
+        <router-link to="/admin/plan/special" key="pSpecial"><span></span> Special Plan</router-link>
+      </transition-group>
+    </div>
     <router-link to="/admin/special-form" class="main-route">
       <img src="@/assets/admin/icons/special.svg" alt="Special Form icon" class="icon" />
       <span>Special Form</span>
@@ -25,41 +36,41 @@
       <span>Financial Report</span>
     </div>
     <div class="sub-nav" v-if="!noFinance">
-      <!-- <transition-group name="list"> -->
-      <router-link to="/admin/finance/transactions"><span></span> Transactions</router-link>
-      <router-link to="/admin/finance/wallet-accounts"><span></span> Wallet Accounts</router-link>
-      <router-link to="/admin/finance/bank-accounts"><span></span> Bank Accounts</router-link>
-      <!-- </transition-group> -->
+      <transition-group name="slide">
+        <router-link to="/admin/finance/transactions" key="aTransact"><span></span> Transactions</router-link>
+        <router-link to="/admin/finance/wallet-accounts" key="aWallet"><span></span> Wallet Accounts</router-link>
+        <router-link to="/admin/finance/bank-accounts" key="aBank"><span></span> Bank Accounts</router-link>
+      </transition-group>
     </div>
     <div :class="[myPath('-insights'), 'main-route']" @click="noInsight = !noInsight">
       <img src="@/assets/admin/icons/window.svg" alt="Insight icon" class="icon" />
       <span>Insights</span>
     </div>
     <div class="sub-nav" v-if="!noInsight">
-      <!-- <transition-group name="list"> -->
-      <router-link to="/admin/view-insights"><span></span> View Insights</router-link>
-      <router-link to="/admin/add-insights"><span></span> Add Insights</router-link>
-      <!-- </transition-group> -->
+      <transition-group name="slide">
+        <router-link to="/admin/view-insights" key="vInsight"><span></span> View Insights</router-link>
+        <router-link to="/admin/add-insights" key="aInsight"><span></span> Add Insights</router-link>
+      </transition-group>
     </div>
     <div :class="[myPath('-notification'), 'main-route']" @click="noNotification = !noNotification">
       <img src="@/assets/admin/icons/bell.svg" alt="Notifications icon" class="icon" />
       <span>Notifications</span>
     </div>
     <div class="sub-nav" v-if="!noNotification">
-      <!-- <transition-group name="list"> -->
-      <router-link to="/admin/view-notifications"><span></span> View Notifications</router-link>
-      <router-link to="/admin/add-notifications"><span></span> Add Notifications</router-link>
-      <!-- </transition-group> -->
+      <transition-group name="slide">
+        <router-link to="/admin/view-notifications" key="vNotif"><span></span> View Notifications</router-link>
+        <router-link to="/admin/add-notifications" key="aNotif"><span></span> Add Notifications</router-link>
+      </transition-group>
     </div>
     <div :class="[myPath('-faqs'), 'main-route']" @click="noFaq = !noFaq">
       <img src="@/assets/admin/icons/phone.svg" alt="Talk to us icon" class="icon" />
       <span>FAQ</span>
     </div>
     <div class="sub-nav" v-if="!noFaq">
-      <!-- <transition-group name="list"> -->
-      <router-link to="/admin/view-faqs"><span></span> View FAQ</router-link>
-      <router-link to="/admin/add-faqs"><span></span> Add FAQ</router-link>
-      <!-- </transition-group> -->
+      <transition-group name="slide">
+        <router-link to="/admin/view-faqs" key="vFaq"><span></span> View FAQ</router-link>
+        <router-link to="/admin/add-faqs" key="aFaq"><span></span> Add FAQ</router-link>
+      </transition-group>
     </div>
     <router-link to="/admin/newsletters" class="main-route">
       <img src="@/assets/admin/icons/envelope.svg" alt="Newsletter icon" class="icon" />
@@ -76,7 +87,8 @@ export default {
       noInsight: true,
       noFaq: true,
       noNotification: true,
-      noFinance: true
+      noFinance: true,
+      noPlan: true
       // noUser: true,
     };
   },
@@ -175,11 +187,7 @@ a.main-route.exact-active.active .icon {
   background-color: var(--myyinvest-white) !important;
 }
 
-/* .menu .sub-nav a:not(:last-child) {
-  margin-bottom: 2px;
-} */
-
-.list-enter-active,
+/* .list-enter-active,
 .list-leave-active,
 .list-move {
   transition: 500ms cubic-bezier(0.59, 0.12, 0.34, 0.95);
@@ -204,5 +212,27 @@ a.main-route.exact-active.active .icon {
   opacity: 0;
   transform: scaleY(0);
   transform-origin: center top;
+} */
+
+.slide-enter-active {
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in;
+}
+
+.slide-leave-active {
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.slide-enter-to,
+.slide-leave-from {
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  overflow: hidden;
+  max-height: 0;
 }
 </style>

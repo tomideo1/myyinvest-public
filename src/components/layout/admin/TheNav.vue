@@ -31,6 +31,15 @@ export default {
           case "/admin":
             val = "Overview";
             break;
+          case "/admin/statistics":
+            val = "Statistics";
+            break;
+          case "/admin/plans":
+            val = "Plans";
+            break;
+          case "/admin/special-form":
+            val = "Special Form";
+            break;
           case "/admin/view-insights":
             val = "View Insights";
             break;
@@ -76,7 +85,7 @@ export default {
 <style scoped>
 .nav-wrapper {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 1fr 4fr;
   height: 100%;
 }
 

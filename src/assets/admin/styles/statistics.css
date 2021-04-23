@@ -1,0 +1,43 @@
+/* * { */
+/* body,
+html {
+  font-size: var(--font-normal) !important;
+} */
+
+.section-wrap {
+  margin-top: var(--base-size);
+  padding: 10px;
+  box-shadow: 0 0 2px 0 gray;
+  border-radius: 5px;
+}
+
+.section-title {
+  font-size: var(--font-md) !important;
+  font-weight: 600;
+}
+
+.chart-group div {
+  display: grid;
+  grid-template-columns: 3fr 6fr 1fr;
+  /* width: 60%; */
+}
+
+.chart-group div div {
+  display: inline-block;
+}
+
+.chart-group div div:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.chart-group .chart {
+  background-color: var(--myyinvest-red-fade);
+}
+
+.chart-group div:nth-child(2n) div.chart {
+  width: 20%;
+}
+
+.chart-group div:nth-child(2n + 1) div.chart {
+  width: 80%;
+}

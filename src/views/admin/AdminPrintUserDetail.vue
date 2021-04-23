@@ -1,18 +1,18 @@
 <template>
   <the-print-wrap>
     <div class="title-area" slot="title">Details for User Sososo</div>
-    <view-user-details slot="content" />
+    <admin-users-view slot="content" />
   </the-print-wrap>
 </template>
 
 <script>
-import ViewUserDetails from "@/views/admin/ViewUserDetails.vue";
+import AdminUsersView from "@/views/admin/AdminUsersView.vue";
 import ThePrintWrap from "@/components/layout/admin/ThePrintWrap.vue";
 
 export default {
-  name: "PrintUserDetails",
+  name: "AdminPrintUserDetail",
 
-  components: { ViewUserDetails, ThePrintWrap },
+  components: { AdminUsersView, ThePrintWrap },
 
   mounted() {
     this.$emit("callCloseModal");

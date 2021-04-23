@@ -51,7 +51,6 @@ export default {
 .overlay-content {
   height: 100%;
   padding: calc(4 * var(--base-size));
-  /* padding-bottom: calc(4 * var(--base-size)); */
   overflow-y: auto;
   background-color: white;
 }

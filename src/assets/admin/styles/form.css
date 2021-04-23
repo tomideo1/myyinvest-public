@@ -100,10 +100,11 @@ button {
   position: absolute;
   top: 50%;
   left: 100%;
-  width: 120px;
+  width: 200px;
+  border: 1px solid var(--myyinvest-red-fade);
+  border-radius: 5px;
   background-color: var(--myyinvest-white);
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  /* z-index: 1; */
 }
 
 .dropdown-content .option {
@@ -126,4 +127,32 @@ button {
 .dropdown:hover .dropbtn {
   border-color: var(--myyinvest-red);
   box-shadow: 0 0 3px 3px var(--myyinvest-red-fade);
+}
+
+.submit-area {
+  position: relative;
+  display: flex;
+}
+
+.submit-area p.warning {
+  position: absolute;
+  width: 100%;
+  font-size: 14px !important;
+  color: var(--myyinvest-danger);
+  text-align: center;
+}
+
+.submit-area button.submit {
+  width: 50%;
+  margin: 50px auto;
+  padding: 10px;
+  font-weight: bold;
+  transition: all ease 0.5s;
+}
+
+.submit-area button.submit:hover {
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  cursor: pointer;
+  transform: scale(1.02);
 }

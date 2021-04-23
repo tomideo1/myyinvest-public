@@ -20,7 +20,7 @@
             <div class="content-wrapper">
               <slot />
 
-              <print-user-details @closePrintPreview="printPreview" v-if="!noUserDetails" />
+              <admin-print-user-detail @closePrintPreview="printPreview" v-if="!noUserDetails" />
             </div>
           </article>
         </div>
@@ -34,16 +34,15 @@ import TheDeviceInfo from "@/components/admin/TheDeviceInfo.vue";
 import TheHeaderOptions from "@/components/admin/TheHeaderOptions";
 import TheNav from "@/components/layout/admin/TheNav.vue";
 import TheSideNav from "@/components/layout/admin/TheSideNav.vue";
-import PrintUserDetails from "@/views/admin/PrintUserDetails.vue";
+import AdminPrintUserDetail from "@/views/admin/AdminPrintUserDetail.vue";
 import "@/assets/admin/styles/layout.css";
 import "@/assets/admin/styles/table.css";
 import { mapState } from "vuex";
-// import {}
 
 export default {
-  name: "TheAdminLayout",
+  name: "AdminLayoutWithOptions",
 
-  components: { TheDeviceInfo, TheHeaderOptions, TheNav, TheSideNav, PrintUserDetails },
+  components: { TheDeviceInfo, TheHeaderOptions, TheNav, TheSideNav, AdminPrintUserDetail },
 
   data() {
     return {

@@ -73,7 +73,7 @@ import BasePagination from "@/components/admin/BasePagination.vue";
 import BaseDeleteModal from "@/components/admin/BaseDeleteModal.vue";
 
 export default {
-  name: "ViewAdminInsights",
+  name: "AdminInsightView",
 
   metaInfo: {
     title: "Myyinvest - View Insights (Admin)",

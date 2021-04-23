@@ -3,25 +3,37 @@
     <div class="main-content">
       <section class="table content-titles">
         <div class="sn">S/N</div>
-        <div class="fname">First Name</div>
-        <div class="lname">Last Name</div>
-        <div class="email">Email Address</div>
-        <div class="phone">Phone Number</div>
-        <div class="dob">Date of Birth</div>
-        <div class="dor">Date of registration</div>
+        <div class="title-p">Post Name</div>
+        <div class="image">Post Image</div>
+        <div class="content">Post Content</div>
+        <div class="date">Post Date</div>
         <div class="options"></div>
       </section>
 
       <section class="table contents" v-for="x in 10" :key="x">
         <div class="sn">{{ formatNum(x) }}</div>
-        <div class="fname">Valentine</div>
-        <div class="lname">Offiah</div>
-        <div class="email">voffiah@gmail.com</div>
-        <div class="phone">09051843790</div>
-        <div class="dob">17th Feb. 2021</div>
-        <div class="dor">17th Feb. 2021</div>
+        <div class="title-p">How to invest seamlessly in Real Estate</div>
+        <div class="image">
+          <img src="@/assets/admin/images/dummy-img.jpg" alt="Content Image" />
+        </div>
+        <div class="content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, accusamus. Reiciendis assumenda quae quod labore sit ut earum quos, voluptatem, cupiditate culpa magnam? Consectetur provident
+          odio optio omnis, accusamus dolor.
+        </div>
+        <div class="date">17th Feb. 2021</div>
         <div class="options">
-          <span class="view more-options-btn">
+          <span>
+            <svg width="15" height="13" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#0a47a0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13">
+                <path
+                  paint-order="stroke fill markers"
+                  fill-rule="evenodd"
+                  d="M9.837 8.962l.773-.773a.195.195 0 0 1 .332.137v3.514c0 .64-.52 1.16-1.16 1.16H1.275c-.64 0-1.16-.52-1.16-1.16V3.334c0-.641.52-1.16 1.16-1.16h6.61c.171 0 .258.208.137.33l-.773.774a.194.194 0 0 1-.138.056H1.275v8.506h8.507V9.097c0-.05.019-.1.055-.135zm3.784-4.877L7.276 10.43l-2.185.242A.998.998 0 0 1 3.989 9.57l.242-2.185 6.346-6.346a1.41 1.41 0 0 1 1.998 0l1.044 1.044c.553.554.553 1.45.002 2zm-2.387.747L9.83 3.428 5.34 7.92l-.176 1.578 1.578-.176 4.492-4.49zM12.8 2.906l-1.044-1.044a.253.253 0 0 0-.358 0l-.746.747 1.404 1.404.746-.747a.257.257 0 0 0-.002-.36z"
+                />
+              </svg>
+            </svg>
+          </span>
+          <span>
             <svg width="17" height="11" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#0baa12">
               <svg xmlns="http://www.w3.org/2000/svg" width="17" height="11">
                 <path
@@ -31,15 +43,9 @@
                 />
               </svg>
             </svg>
-            <div class="more-options-wrap">
-              <ul>
-                <li @click="viewUserDetails(x)">User Details</li>
-                <li @click="viewUserTransaction(x)">User Transactions</li>
-              </ul>
-            </div>
           </span>
-          <span @click="deleteItem">
-            <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000">
+          <span>
+            <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000" @click="deleteItem">
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="14">
                 <path
                   paint-order="stroke fill markers"
@@ -62,13 +68,12 @@
 <script>
 import BasePagination from "@/components/admin/BasePagination.vue";
 import BaseDeleteModal from "@/components/admin/BaseDeleteModal.vue";
-import "@/assets/admin/styles/more-options.css";
 
 export default {
-  name: "AllUsers",
+  name: "AdminNotificationView",
 
   metaInfo: {
-    title: "Myyinvest - All Users (Admin)",
+    title: "Myyinvest - View Notifications (Admin)",
     titleTemplate: null
   },
 
@@ -76,20 +81,13 @@ export default {
 
   data() {
     return {
+      status: "Published",
       currentPage: 1,
       noDeleteModal: true
     };
   },
 
   methods: {
-    viewUserDetails(id) {
-      this.$router.push("/admin/users/" + id);
-    },
-
-    viewUserTransaction(id) {
-      this.$router.push("/admin/users/" + id + "/transactions");
-    },
-
     deleteItem() {
       this.noDeleteModal = !this.noDeleteModal;
     },
@@ -103,14 +101,47 @@ export default {
 
 <style scoped>
 section div {
-  width: 14%;
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  padding: 2px;
 }
 
 section div.sn {
-  width: 6%;
+  width: 8%;
 }
 
+section div.content {
+  width: 36%;
+}
+
+section div.image,
 section div.options {
-  width: 10%;
+  width: 18%;
+}
+
+section:first-child {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  background-color: var(--myyinvest-white);
+}
+
+section.contents {
+  margin-bottom: var(--base-size);
+}
+
+section:first-child div {
+  color: gray;
+  font-weight: 600;
+}
+
+section div img {
+  width: 100%;
+  height: 60px;
+}
+
+div.options {
+  justify-content: space-around !important;
 }
 </style>

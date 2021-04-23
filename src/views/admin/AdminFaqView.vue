@@ -3,23 +3,23 @@
     <div class="main-content">
       <section class="table content-titles">
         <div class="sn">S/N</div>
-        <div class="title-p">Post Name</div>
-        <div class="image">Post Image</div>
-        <div class="content">Post Content</div>
+        <div class="question">Question</div>
+        <div class="content">Answer</div>
+        <div class="category">Category</div>
+        <div class="author">Written by</div>
         <div class="date">Post Date</div>
         <div class="options"></div>
       </section>
 
       <section class="table contents" v-for="x in 10" :key="x">
         <div class="sn">{{ formatNum(x) }}</div>
-        <div class="title-p">How to invest seamlessly in Real Estate</div>
-        <div class="image">
-          <img src="@/assets/admin/images/dummy-img.jpg" alt="Content Image" />
-        </div>
+        <div class="question">How to invest seamlessly in Real Estate</div>
         <div class="content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, accusamus. Reiciendis assumenda quae quod labore sit ut earum quos, voluptatem, cupiditate culpa magnam? Consectetur provident
-          odio optio omnis, accusamus dolor.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus alias qui excepturi obcaecati, facere fugit asperiores perspiciatis ipsam earum, nihil iusto, numquam quo. Earum tempore a,
+          ut odio debitis repellendus.
         </div>
+        <div class="category">Category</div>
+        <div class="author">Valentine Offiah</div>
         <div class="date">17th Feb. 2021</div>
         <div class="options">
           <span>
@@ -44,8 +44,8 @@
               </svg>
             </svg>
           </span>
-          <span>
-            <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000" @click="deleteItem">
+          <span @click="deleteItem">
+            <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000">
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="14">
                 <path
                   paint-order="stroke fill markers"
@@ -68,12 +68,13 @@
 <script>
 import BasePagination from "@/components/admin/BasePagination.vue";
 import BaseDeleteModal from "@/components/admin/BaseDeleteModal.vue";
+import "@/assets/admin/styles/table.css";
 
 export default {
-  name: "ViewAdminNotifications",
+  name: "AdminFaqView",
 
   metaInfo: {
-    title: "Myyinvest - View Notifications (Admin)",
+    title: "Myyinvest - View FAQs (Admin)",
     titleTemplate: null
   },
 
@@ -81,7 +82,6 @@ export default {
 
   data() {
     return {
-      status: "Published",
       currentPage: 1,
       noDeleteModal: true
     };
@@ -101,47 +101,22 @@ export default {
 
 <style scoped>
 section div {
-  display: flex;
-  justify-content: center;
-  width: 20%;
-  padding: 2px;
+  width: 13%;
 }
 
 section div.sn {
-  width: 8%;
+  width: 4%;
 }
 
-section div.content {
-  width: 36%;
-}
-
-section div.image,
-section div.options {
+section div.question {
   width: 18%;
 }
 
-section:first-child {
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
-  background-color: var(--myyinvest-white);
+section div.content {
+  width: 26%;
 }
 
-section.contents {
-  margin-bottom: var(--base-size);
-}
-
-section:first-child div {
-  color: gray;
-  font-weight: 600;
-}
-
-section div img {
-  width: 100%;
-  height: 60px;
-}
-
-div.options {
-  justify-content: space-around !important;
+section:not(:first-child) div.status {
+  color: var(--myyinvest-red);
 }
 </style>

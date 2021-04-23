@@ -64,7 +64,7 @@ import BasePagination from "@/components/admin/BasePagination.vue";
 import "@/assets/admin/styles/more-options.css";
 
 export default {
-  name: "AdminBankAccounts",
+  name: "AdminFinanceBank",
 
   metaInfo: {
     title: "Myyinvest - Bank Accounts (Admin)",

@@ -3,37 +3,25 @@
     <div class="main-content">
       <section class="table content-titles">
         <div class="sn">S/N</div>
-        <div class="question">Question</div>
-        <div class="content">Answer</div>
-        <div class="category">Category</div>
-        <div class="author">Written by</div>
-        <div class="date">Post Date</div>
+        <div class="fname">First Name</div>
+        <div class="lname">Last Name</div>
+        <div class="email">Email Address</div>
+        <div class="phone">Phone Number</div>
+        <div class="dob">Date of Birth</div>
+        <div class="dor">Date of registration</div>
         <div class="options"></div>
       </section>
 
       <section class="table contents" v-for="x in 10" :key="x">
         <div class="sn">{{ formatNum(x) }}</div>
-        <div class="question">How to invest seamlessly in Real Estate</div>
-        <div class="content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus alias qui excepturi obcaecati, facere fugit asperiores perspiciatis ipsam earum, nihil iusto, numquam quo. Earum tempore a,
-          ut odio debitis repellendus.
-        </div>
-        <div class="category">Category</div>
-        <div class="author">Valentine Offiah</div>
-        <div class="date">17th Feb. 2021</div>
+        <div class="fname">Valentine</div>
+        <div class="lname">Offiah</div>
+        <div class="email">voffiah@gmail.com</div>
+        <div class="phone">09051843790</div>
+        <div class="dob">17th Feb. 2021</div>
+        <div class="dor">17th Feb. 2021</div>
         <div class="options">
-          <span>
-            <svg width="15" height="13" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#0a47a0">
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13">
-                <path
-                  paint-order="stroke fill markers"
-                  fill-rule="evenodd"
-                  d="M9.837 8.962l.773-.773a.195.195 0 0 1 .332.137v3.514c0 .64-.52 1.16-1.16 1.16H1.275c-.64 0-1.16-.52-1.16-1.16V3.334c0-.641.52-1.16 1.16-1.16h6.61c.171 0 .258.208.137.33l-.773.774a.194.194 0 0 1-.138.056H1.275v8.506h8.507V9.097c0-.05.019-.1.055-.135zm3.784-4.877L7.276 10.43l-2.185.242A.998.998 0 0 1 3.989 9.57l.242-2.185 6.346-6.346a1.41 1.41 0 0 1 1.998 0l1.044 1.044c.553.554.553 1.45.002 2zm-2.387.747L9.83 3.428 5.34 7.92l-.176 1.578 1.578-.176 4.492-4.49zM12.8 2.906l-1.044-1.044a.253.253 0 0 0-.358 0l-.746.747 1.404 1.404.746-.747a.257.257 0 0 0-.002-.36z"
-                />
-              </svg>
-            </svg>
-          </span>
-          <span>
+          <span class="view more-options-btn">
             <svg width="17" height="11" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#0baa12">
               <svg xmlns="http://www.w3.org/2000/svg" width="17" height="11">
                 <path
@@ -43,6 +31,12 @@
                 />
               </svg>
             </svg>
+            <div class="more-options-wrap">
+              <ul>
+                <li @click="viewUserDetails(x)">User Details</li>
+                <li @click="viewUserTransaction(x)">User Transactions</li>
+              </ul>
+            </div>
           </span>
           <span @click="deleteItem">
             <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000">
@@ -68,13 +62,13 @@
 <script>
 import BasePagination from "@/components/admin/BasePagination.vue";
 import BaseDeleteModal from "@/components/admin/BaseDeleteModal.vue";
-import "@/assets/admin/styles/table.css";
+import "@/assets/admin/styles/more-options.css";
 
 export default {
-  name: "ViewAdminFaqs",
+  name: "AdminUsersView",
 
   metaInfo: {
-    title: "Myyinvest - View FAQs (Admin)",
+    title: "Myyinvest - All Users (Admin)",
     titleTemplate: null
   },
 
@@ -88,6 +82,14 @@ export default {
   },
 
   methods: {
+    viewUserDetails(id) {
+      this.$router.push("/admin/users/" + id);
+    },
+
+    viewUserTransaction(id) {
+      this.$router.push("/admin/users/" + id + "/transactions");
+    },
+
     deleteItem() {
       this.noDeleteModal = !this.noDeleteModal;
     },
@@ -101,22 +103,14 @@ export default {
 
 <style scoped>
 section div {
-  width: 13%;
+  width: 14%;
 }
 
 section div.sn {
-  width: 4%;
+  width: 6%;
 }
 
-section div.question {
-  width: 18%;
-}
-
-section div.content {
-  width: 26%;
-}
-
-section:not(:first-child) div.status {
-  color: var(--myyinvest-red);
+section div.options {
+  width: 10%;
 }
 </style>

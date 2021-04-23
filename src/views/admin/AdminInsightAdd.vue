@@ -1,80 +1,82 @@
 <template>
-  <form :class="[!validForm ? 'invalid-form' : '', 'wrapper']" @submit.prevent="submit">
-    <div class="left-area">
-      <fieldset class="input-grp">
-        <legend><label for="ptitle">Post Title</label></legend>
-        <input type="text" id="ptitle" placeholder="How to invest in Real Estates Seamlessly" minlength="3" required v-model.trim.lazy="post_title" />
-      </fieldset>
+  <form :class="[!validForm ? 'invalid-form' : '', '']" @submit.prevent="submit">
+    <div class="section-wrapper">
+      <div class="left-area">
+        <fieldset class="input-grp">
+          <legend><label for="ptitle">Post Title</label></legend>
+          <input type="text" id="ptitle" placeholder="How to invest in Real Estates Seamlessly" minlength="3" required v-model.trim.lazy="post_title" />
+        </fieldset>
 
-      <fieldset class="input-grp">
-        <legend><label for="pauthor">Post Author</label></legend>
-        <input type="text" id="pauthor" placeholder="Valentine Offiah" minlength="3" required v-model.trim.lazy="post_author" />
-      </fieldset>
+        <fieldset class="input-grp">
+          <legend><label for="pauthor">Post Author</label></legend>
+          <input type="text" id="pauthor" placeholder="Valentine Offiah" minlength="3" required v-model.trim.lazy="post_author" />
+        </fieldset>
 
-      <fieldset class="input-grp">
-        <legend><label for="ptags">Post Tags</label></legend>
-        <input type="text" id="ptags" placeholder="Investments, Finance, Money, Real Estates" minlength="3" required v-model.trim.lazy="post_tags" />
-      </fieldset>
+        <fieldset class="input-grp">
+          <legend><label for="ptags">Post Tags</label></legend>
+          <input type="text" id="ptags" placeholder="Investments, Finance, Money, Real Estates" minlength="3" required v-model.trim.lazy="post_tags" />
+        </fieldset>
 
-      <fieldset class="input-grp">
-        <legend><label for="pstatus">Post Status</label></legend>
-        <div class="dropdown-wrap">
-          <div class="dropdown">
-            <div class="dropbtn">{{ selectedPostStatus || "Category" }} <img src="@/assets/admin/icons/caret-down.svg" /></div>
-            <div class="dropdown-content" :style="[selectedPS === true ? { display: 'none' } : '']">
-              <div class="option" v-for="(option, index) in postStatuses" :key="index" @click="newPostStatus(option.name)">{{ option.name }}</div>
+        <fieldset class="input-grp">
+          <legend><label for="pstatus">Post Status</label></legend>
+          <div class="dropdown-wrap">
+            <div class="dropdown">
+              <div class="dropbtn">{{ selectedPostStatus || "Category" }} <img src="@/assets/admin/icons/caret-down.svg" /></div>
+              <div class="dropdown-content" :style="[selectedPS === true ? { display: 'none' } : '']">
+                <div class="option" v-for="(option, index) in postStatuses" :key="index" @click="newPostStatus(option.name)">{{ option.name }}</div>
+              </div>
             </div>
           </div>
-        </div>
-      </fieldset>
+        </fieldset>
 
-      <fieldset class="input-grp">
-        <legend><label for="pcategory">Post Category</label></legend>
-        <div class="dropdown-wrap">
-          <div class="dropdown">
-            <div class="dropbtn">{{ selectedCategory || "Category" }} <img src="@/assets/admin/icons/caret-down.svg" /></div>
-            <div class="dropdown-content" :style="[selectedC === true ? { display: 'none' } : '']">
-              <div class="option" v-for="(option, index) in categories" :key="index" @click="newCategory(option.name)">{{ option.name }}</div>
+        <fieldset class="input-grp">
+          <legend><label for="pcategory">Post Category</label></legend>
+          <div class="dropdown-wrap">
+            <div class="dropdown">
+              <div class="dropbtn">{{ selectedCategory || "Category" }} <img src="@/assets/admin/icons/caret-down.svg" /></div>
+              <div class="dropdown-content" :style="[selectedC === true ? { display: 'none' } : '']">
+                <div class="option" v-for="(option, index) in categories" :key="index" @click="newCategory(option.name)">{{ option.name }}</div>
+              </div>
             </div>
           </div>
+        </fieldset>
+      </div>
+      <div class="right-area">
+        <div class="upload">
+          <div class="upload-window">
+            <img :src="post_imgURL || require('@/assets/admin/icons/camera.svg')" alt="User Image Preview" class="img-fluid" />
+          </div>
+
+          <div class="file-input">
+            <input type="file" accept="image/*" id="file" class="file" required @change="updateFilename" />
+            <label for="file">
+              <img src="@/assets/admin/icons/clip.svg" />
+              Select file
+            </label>
+
+            <p class="file-name">{{ selectedFilename }}</p>
+          </div>
         </div>
-      </fieldset>
+
+        <fieldset class="input-grp pcontent">
+          <legend><label for="pcontent">Post Content</label></legend>
+          <textarea
+            name=""
+            id="pcontent"
+            placeholder="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore fugit quibusdam praesentium molestiae debitis autem fugiat iure ratione voluptas fuga, consequuntur dignissimos minima, veniam dolorum! Debitis quae officiis et sint."
+            cols="30"
+            rows="10"
+            minlength="3"
+            required
+            v-model.trim.lazy="post_content"
+          ></textarea>
+        </fieldset>
+      </div>
     </div>
-    <div class="right-area">
-      <div class="upload">
-        <div class="upload-window">
-          <img :src="post_imgURL || require('@/assets/admin/icons/camera.svg')" alt="User Image Preview" class="img-fluid" />
-        </div>
 
-        <div class="file-input">
-          <input type="file" accept="image/*" id="file" class="file" required @change="updateFilename" />
-          <label for="file">
-            <img src="@/assets/admin/icons/clip.svg" />
-            Select file
-          </label>
-
-          <p class="file-name">{{ selectedFilename }}</p>
-        </div>
-      </div>
-
-      <fieldset class="input-grp pcontent">
-        <legend><label for="pcontent">Post Content</label></legend>
-        <textarea
-          name=""
-          id="pcontent"
-          placeholder="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore fugit quibusdam praesentium molestiae debitis autem fugiat iure ratione voluptas fuga, consequuntur dignissimos minima, veniam dolorum! Debitis quae officiis et sint."
-          cols="30"
-          rows="10"
-          minlength="3"
-          required
-          v-model.trim.lazy="post_content"
-        ></textarea>
-      </fieldset>
-
-      <div class="submit-area">
-        <p v-if="!validForm">Kindly fill the form correctly.</p>
-        <button type="submit" @click.prevent="submit" :disabled="submitStatus === 'PENDING'">{{ btn_msg }}</button>
-      </div>
+    <div class="submit-area">
+      <p class="warning" v-if="!validForm">Kindly fill the form correctly.</p>
+      <button class="submit" type="submit" @click.prevent="submit" :disabled="submitStatus === 'PENDING'">{{ btn_msg }}</button>
     </div>
   </form>
 </template>
@@ -83,7 +85,7 @@
 import { required } from "vuelidate/lib/validators";
 
 export default {
-  name: "AddAdminInsights",
+  name: "AdminInsightAdd",
 
   metaInfo: {
     title: "Myyinvest - Add Insights (Admin)",
@@ -107,7 +109,7 @@ export default {
           name: "Unpublished"
         },
         {
-          name: "Scheduled/Delayed"
+          name: "Scheduled / Delayed"
         }
       ],
 
@@ -225,18 +227,8 @@ export default {
 </script>
 
 <style scoped>
-*:focus:not(:-moz-focusring) {
-  outline: none;
-}
-
-*:focus:not(:focus-visible) {
-  outline: none;
-}
-
-.wrapper {
-  display: grid;
-  grid-template-columns: 60% 40%;
-  padding: var(--base-size);
+.section-wrapper {
+  grid-template-columns: 2fr 3fr;
 }
 
 .left-area {
@@ -325,7 +317,7 @@ input:focus + label {
   display: flex;
 }
 
-p {
+/* p {
   position: absolute;
   color: var(--myyinvest-danger);
 }
@@ -337,8 +329,17 @@ p {
 }
 
 button {
-  width: 100%;
+  width: 50%;
   margin: 30px auto;
   padding: 10px;
+  transition: transform 0.2s ease-out;
 }
+
+.submit-area button:hover {
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transform: scale(1.02);
+} */
 </style>

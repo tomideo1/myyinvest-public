@@ -1,24 +1,51 @@
 <template>
   <EmptyNotification v-if="false" />
   <div class="notification-container" v-else>
-    <NotificationItem v-for="(color, index) in colors" :key="index" :color="color" />
+    <NotificationItem @deleteNoty="deleteNotification(notification._id)" v-for="(notification, index) in getUserNotifications.notificationsData" :key="index" :notification-data="notification" />
   </div>
 </template>
 
 <script>
 import EmptyNotification from "../../components/EmptyNotification";
 import NotificationItem from "../../components/NotificationItem";
-
+import { mapGetters, mapActions } from "vuex";
+import notify from "@/mixins/notify";
 export default {
+  mixins: [notify],
   name: "Notifications",
   data() {
-    return {
-      colors: ["#0087db", "#497949", "#a94949", "#c4a949", "#0087db", "#497949"]
-    };
+    return {};
   },
   components: {
     EmptyNotification,
     NotificationItem
+  },
+  methods: {
+    ...mapActions(["getAllUserNotifications", "deleteUserNotification"]),
+    async deleteNotification(id) {
+      const res = await this.deleteUserNotification({ id: id });
+      if (res) {
+        this.handleNotify({
+          message: "removed successfully",
+          status: "Success"
+        });
+      } else {
+        this.handleNotify({
+          message: "unable to delete notification",
+          status: "Error"
+        });
+      }
+    }
+  },
+
+  computed: {
+    ...mapGetters(["getUserNotifications"])
+  },
+
+  async mounted() {
+    await this.getAllUserNotifications({
+      page: 10
+    });
   }
 };
 </script>

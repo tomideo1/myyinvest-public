@@ -8,7 +8,7 @@ export default [
     component: () => import(/* webpackChunkName: "user-index" */ "../views/users/index.vue"),
     children: [
       {
-        path: "dashboard",
+        path: "overview",
         name: "overview",
         component: () => import(/* webpackChunkName: "user-dashboard" */ "../views/users/dashboard.vue"),
         meta: {

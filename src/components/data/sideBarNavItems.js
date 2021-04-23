@@ -3,7 +3,7 @@ export default function() {
     {
       title: "Overview",
       routeIcon: "home",
-      identifier: "dashboard",
+      identifier: "overview",
       to: {
         name: "overview"
       }

@@ -12,7 +12,7 @@
           </filter>
         </defs>
         <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Rectangle_14)">
-          <rect id="Rectangle_14-2" data-name="Rectangle 14" width="10" height="93" rx="5" transform="translate(6 6)" :fill="color" />
+          <rect id="Rectangle_14-2" data-name="Rectangle 14" width="10" height="93" rx="5" transform="translate(6 6)" :fill="notificationBackground" />
         </g>
       </svg>
     </div>
@@ -31,7 +31,7 @@
           />
           <g id="Group_38" data-name="Group 38">
             <g id="Group_37" data-name="Group 37">
-              <circle id="Ellipse_9" data-name="Ellipse 9" cx="15.349" cy="15.349" r="15.349" transform="translate(430.151 197.891)" :fill="color" />
+              <circle id="Ellipse_9" data-name="Ellipse 9" cx="15.349" cy="15.349" r="15.349" transform="translate(430.151 197.891)" :fill="notificationBackground" />
               <text id="i" transform="translate(442.49 221.012)" fill="#fff" font-size="20.216" font-family="Poppins-SemiBold, Poppins" font-weight="600"><tspan x="0" y="0">i</tspan></text>
             </g>
           </g>
@@ -39,10 +39,10 @@
       </svg>
     </div>
     <div class="notification__text">
-      <p>Your investment process is complete</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae ex quibusdam saepe dolores fugit odit</p>
+      <p>{{ notificationData.title }}</p>
+      <p>{{ notificationData.content }}</p>
     </div>
-    <button class="notification__btn-delete">
+    <button class="notification__btn-delete" @click="$emit('deleteNoty')">
       <svg xmlns="http://www.w3.org/2000/svg" width="13.375" height="15.286" viewBox="0 0 13.375 15.286">
         <path
           id="Path_33"
@@ -60,9 +60,16 @@
 export default {
   name: "NotificationItem",
   props: {
-    color: {
-      type: String,
+    notificationData: {
+      type: Object,
       required: true
+    }
+  },
+  computed: {
+    notificationBackground() {
+      const colors = ["#0087db", "#497949", "#a94949", "#c4a949", "#0087db", "#497949"];
+      const num = Math.floor(Math.random() * colors.length);
+      return colors[num];
     }
   }
 };

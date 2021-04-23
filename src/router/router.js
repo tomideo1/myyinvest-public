@@ -77,7 +77,7 @@ const baseRoutes = [
             component: () => import(/* webpackChunkName: "blogs" */ "../views/Shared/insight/blogs.vue")
           },
           {
-            path: "blogs/single",
+            path: "blogs/single/:id",
             name: "single-blog",
             component: () => import(/* webpackChunkName: "single-blog" */ "../views/Shared/insight/single.vue")
           }

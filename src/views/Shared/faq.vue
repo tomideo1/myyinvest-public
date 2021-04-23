@@ -76,7 +76,7 @@ export default {
 
   async mounted() {
     await this.fetchAllFaqs({
-      page: 100,
+      page: 1,
       per_page: 100
     });
   }

@@ -9,7 +9,7 @@ const getters = {
   fetchFaqs(state) {
     return state.faqs;
   },
-  fetchoInsights(state) {
+  fetchInsights(state) {
     return state.insights;
   }
 };
@@ -34,6 +34,16 @@ const actions = {
     const res = await Api.get(`insights/get?page=${payload.page}&perpage=${payload.per_page}`);
     commit("setAllInsights", res.data.insights);
     return res.status === 200 || res.status === 201;
+  },
+
+  // eslint-disable-next-line no-unused-vars
+  async fetchSingleInsight({ commit }, payload) {
+    const res = await Api.get(`insights/get/${payload.id}`);
+    if (res.status === 200 || res.status === 201) {
+      return res.data.insightDetails;
+    } else {
+      return res;
+    }
   }
 };
 

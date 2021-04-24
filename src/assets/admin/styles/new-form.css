@@ -1,0 +1,108 @@
+article.form {
+  margin-top: var(--base-size);
+  /* width: 100%; */
+}
+
+.plan_form-area,
+.plan_inputs-group,
+.add-form-wrapper,
+.plan_add-project {
+  display: grid;
+  gap: var(--base-size);
+}
+
+.plan_form-area.view-form {
+  grid-template-columns: 1fr 3fr !important;
+}
+
+.plan_form-area.add-form .add-form-wrapper,
+.plan_add-project {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+
+.plan_image {
+  width: 200px;
+  height: 250px;
+  border-radius: var(--base-size);
+  /* background-image: url("../images/rental-plan.jpg"); */
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-origin: border-box;
+  -webkit-background-origin: border-box;
+  -moz-background-origin: border-box;
+  /* background-position: 0 100%; */
+  box-shadow: 0px 16px 16px rgba(0, 0, 0, 0.1);
+}
+
+.plan_image .income-image {
+  background-image: url("../images/income-plan.jpg");
+}
+
+.plan_image .rental-image {
+  background-image: url("../images/rental-plan.jpg");
+}
+
+.plan_image .special-image {
+  background-image: url("../images/special-plan.jpg");
+}
+
+.plan_inputs-group {
+  grid-template-columns: repeat(2, 1fr) !important;
+  /* border: 1px solid black; */
+}
+
+.plan_form-area fieldset {
+  border-color: transparent;
+}
+
+.plan_form-area fieldset.input-grp {
+  margin-bottom: 0;
+}
+
+.add-project {
+  font-size: var(--font-xxl);
+}
+
+.add-project,
+.plan_form-area label {
+  color: var(--myyinvest-red);
+  font-weight: 600;
+}
+
+.plan_form-area input,
+.plan_form-area textarea {
+  border: 2px solid gray;
+}
+
+.plan_form-area input:hover,
+textarea:hover {
+  border-color: var(--myyinvest-red);
+}
+
+.plan_form-area .upload-wrapper {
+  position: relative;
+  margin-top: 10px;
+  z-index: -1;
+}
+
+/* .plan_form-area .upload {
+  width: 80%;
+  height: 80%;
+  margin: auto auto 0;
+  border: 2px dashed red;
+  border-radius: 10px;
+} */
+.plan_form-area .upload-wrapper input {
+  position: absolute;
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+}
+
+.plan_form-area .upload-wrapper .styled-label {
+  width: 300px;
+  height: 200px;
+  border: 2px dashed red;
+  border-radius: 10px;
+  /* background-color: black; */
+}

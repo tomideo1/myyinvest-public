@@ -50,7 +50,7 @@ main nav.side-nav {
   background-size: contain;
   background-origin: border-box;
   -webkit-background-origin: border-box;
-  -moz-background-origin: content-box;
+  -moz-background-origin: border-box;
   background-position: 0 100%;
   overflow-y: auto;
   -ms-overflow-style: none;

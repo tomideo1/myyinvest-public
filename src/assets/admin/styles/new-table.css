@@ -1,0 +1,45 @@
+.new-table {
+  margin-top: var(--base-size);
+}
+
+.new-table p.new-title {
+  font-size: var(--font-xxl) !important;
+  color: var(--myyinvest-red);
+  font-weight: 600;
+}
+
+.new-table .table-title {
+  position: sticky;
+  position: -webkit-sticky;
+  top: -10px !important;
+  font-size: var(--font-md) !important;
+  font-weight: 600;
+  color: var(--myyinvest-red);
+  border: 2px solid var(--myyinvest-red);
+  background-color: var(--myyinvest-white);
+}
+
+.new-table .table-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.new-table .table-row:hover {
+  box-shadow: 2px 2px 6px #bebebe, -2px -2px 6px #ffffff;
+}
+
+.submit-area {
+  z-index: -1 !important;
+}
+
+.table-row .options {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* .table-row .options img {
+  border: 1px solid red;
+} */

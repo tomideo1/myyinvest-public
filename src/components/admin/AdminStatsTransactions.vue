@@ -38,6 +38,13 @@
 import transactionView from "@/utils/viewUtils/adminStatistics/transactionHelper.js";
 
 export default {
+  name: "AdminStatsTransaction",
+
+  metaInfo: {
+    title: "Myyinvest - Statistics > Transactions (Admin)",
+    titleTemplate: null
+  },
+
   data() {
     return {
       transactionView

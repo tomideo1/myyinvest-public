@@ -1,8 +1,8 @@
 <template>
   <section class="main-wrapper">
-    <p class="main-title">Statistics</p>
+    <p class="main-title">Rental Plan</p>
     <section>
-      <nav>
+      <nav class="tab-nav">
         <div :class="[{ 'is-active': index === currentIndex }]" @click="changeTab(tab.id, index)" v-for="(tab, index) in tabs" :key="tab.id">{{ tab.name }}</div>
       </nav>
 
@@ -14,32 +14,33 @@
 </template>
 
 <script>
-import "@/assets/admin/styles/statistics.css";
+// import "@/assets/admin/styles/statistics.css";
+import "@/assets/admin/styles/nav-tab.css";
 
 export default {
-  name: "AdminStatistics",
+  name: "AdminPlanRental",
 
   metaInfo: {
-    title: "Myyinvest - Statistics (Admin)",
+    title: "Myyinvest - Rental Plan (Admin)",
     titleTemplate: null
   },
 
   data() {
     return {
       selectedIndex: 0,
-      currentTab: "AdminStatsPersonalInfo",
+      currentTab: "AdminPlanRentalView",
       tabs: [
         {
-          name: "Personal Information",
-          id: "AdminStatsPersonalInfo"
+          name: "View",
+          id: "AdminPlanRentalView"
         },
         {
-          name: "Investment Bio",
-          id: "AdminStatsInvestmentBio"
+          name: "Add",
+          id: "AdminPlanRentalAdd"
         },
         {
           name: "Transactions",
-          id: "AdminStatsTransactions"
+          id: "AdminPlanRentalTransactions"
         }
       ]
     };
@@ -68,7 +69,7 @@ export default {
 </script>
 
 <style scoped>
-nav {
+/* nav {
   display: flex;
   flex-direction: row;
   justify-content: left;
@@ -101,7 +102,7 @@ nav div:hover {
 .main-content {
   width: calc(100% - 4px) !important;
   margin: auto auto var(--base-size);
-}
+} */
 
 .is-active {
   color: var(--myyinvest-red);

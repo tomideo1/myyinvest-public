@@ -18,6 +18,13 @@
 import investmentBioView from "@/utils/viewUtils/adminStatistics/investmentBioHelper.js";
 
 export default {
+  name: "AdminStatsInvestmentBio",
+
+  metaInfo: {
+    title: "Myyinvest - Statistics > Investment Bio (Admin)",
+    titleTemplate: null
+  },
+
   data() {
     return {
       investmentBioView

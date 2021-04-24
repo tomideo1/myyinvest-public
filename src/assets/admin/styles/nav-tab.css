@@ -1,0 +1,65 @@
+.plan_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plan_header button {
+  padding: 7.5px 75px;
+  font-weight: 600 !important;
+  border: 2px solid transparent;
+  transition: all 0.5 ease;
+}
+
+.plan_header button:hover {
+  /* color: var(--myyinvest-red);
+  border-color: var(--myyinvest-red);
+  background-color: #ffffff; */
+  /* box-shadow: 0px 8.67606px 8.67606px rgba(0, 0, 0, 0.05); */
+  box-shadow: 2px 2px 6px 0 #bebebe, -2px -2px 6px 0 #ffffff;
+  transform: scale(1.02);
+}
+
+nav.tab-nav {
+  position: sticky;
+  position: -webkit-sticky;
+  top: -10px !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--myyinvest-white);
+}
+
+/* nav.tab-nav {
+  position: sticky;
+  position: -webkit-sticky;
+  top: -10px !important;
+} */
+
+nav.tab-nav div {
+  width: calc(100% / 3);
+  margin: 10px 0;
+  padding: 5px;
+  color: gray;
+  font-size: var(--font-lg);
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  transition: all 0.25s ease;
+}
+
+nav.tab-nav div:hover {
+  border-color: gray;
+  cursor: pointer;
+}
+
+.main-content {
+  width: calc(100% - 4px) !important;
+  margin: auto auto var(--base-size);
+}
+
+.is-active {
+  color: var(--myyinvest-red);
+  border-color: var(--myyinvest-red);
+}

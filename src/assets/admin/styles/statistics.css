@@ -1,9 +1,3 @@
-/* * { */
-/* body,
-html {
-  font-size: var(--font-normal) !important;
-} */
-
 .section-wrap {
   margin-top: var(--base-size);
   padding: 10px;

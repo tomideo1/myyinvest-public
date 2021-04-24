@@ -14,7 +14,7 @@
       </div>
     </article>
 
-    <article class="latest-users">
+    <article class="new-table">
       <p class="title">Latest Users</p>
       <div class="table">
         <div class="table-title table-row">
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import "@/assets/admin/styles/new-table.css";
+
 export default {
   name: "AdminOverview",
 
@@ -125,17 +127,17 @@ export default {
   font-size: var(--font-xxx) !important;
 }
 
-.latest-users {
+/* .new-table {
   margin-top: var(--base-size);
 }
 
-.latest-users p.title {
+.new-table p.title {
   font-size: var(--font-lg) !important;
   color: var(--myyinvest-black);
   font-weight: 600;
 }
 
-.table-title {
+.new-table .table-title {
   position: sticky;
   position: -webkit-sticky;
   top: -10px !important;
@@ -146,20 +148,20 @@ export default {
   background-color: var(--myyinvest-white);
 }
 
-.table-row {
+.new-table .table-row {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 5px 0;
 }
 
-.table-row div {
+.new-table .table-row:hover {
+  box-shadow: 2px 2px 6px #bebebe, -2px -2px 6px #ffffff;
+} */
+
+.new-table .table-row div {
   width: 20%;
   text-align: center;
-}
-
-.table-row:hover {
-  box-shadow: 2px 2px 6px #bebebe, -2px -2px 6px #ffffff;
 }
 
 .table-row div.sn {

@@ -18,6 +18,13 @@
 import personalInfoView from "@/utils/viewUtils/adminStatistics/personalInfoHelper.js";
 
 export default {
+  name: "AdminStatsPersonalInfo",
+
+  metaInfo: {
+    title: "Myyinvest - Statistics > Personal Infomation (Admin)",
+    titleTemplate: null
+  },
+
   data() {
     return {
       personalInfoView

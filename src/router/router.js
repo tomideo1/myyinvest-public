@@ -36,16 +36,16 @@ const baseRoutes = [
           name: "listings"
         },
         children: [
-          // {
-          //   path: "",
-          //   name: "listings",
-          //   component: () => import(/* webpackChunkName: "listings" */ "../views/Shared/listings/listings.vue")
-          // },
           {
             path: "",
-            name: "listing",
-            component: () => import(/* webpackChunkName: "listing" */ "../views/Shared/listings/listing.vue")
+            name: "listings",
+            component: () => import(/* webpackChunkName: "listings" */ "../views/Shared/listings/listings.vue")
           },
+          // {
+          //   path: "",
+          //   name: "listing",
+          //   component: () => import(/* webpackChunkName: "listing" */ "../views/Shared/listings/listing.vue")
+          // },
           // {
           //   path: "single",
           //   name: "single-listing",
@@ -77,7 +77,7 @@ const baseRoutes = [
             component: () => import(/* webpackChunkName: "blogs" */ "../views/Shared/insight/blogs.vue")
           },
           {
-            path: "blogs/single",
+            path: "blogs/single/:id",
             name: "single-blog",
             component: () => import(/* webpackChunkName: "single-blog" */ "../views/Shared/insight/single.vue")
           }

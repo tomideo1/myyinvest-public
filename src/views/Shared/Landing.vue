@@ -6,7 +6,7 @@
           <div class="row p-5">
             <div class="col-lg-6 col-md-6">
               <div class="d-flex flex-column position-absolute top-10">
-                <h1 class="text-main-red m-1  w-50 font-weight-bold text-bold">Build your Net worth</h1>
+                <h1 class="text-main-red m-1  w-100 font-weight-bold text-bold">Build your Net worth</h1>
                 <transition-group tag="div" class="text-slider" name="slide">
                   <div v-for="number in [currentList]" v-bind:key="number">
                     <p class="text-main-red">{{ landingList[Math.abs(currentList) % landingList.length] }}</p>
@@ -864,6 +864,10 @@ ul {
 .custom-card {
   border-color: white !important;
   border-radius: 20px !important;
+  &:hover {
+    transition: all 500ms ease;
+    border: none !important;
+  }
 }
 
 /*#slider ul:hover {*/
@@ -890,11 +894,14 @@ ul {
   overflow: hidden;
   position: relative;
   height: 100px;
-  // width: 350px;
-  width: 100%;
-  max-width: 350px;
+  width: 500px;
 }
 
+@media only screen and (min-width: 320px) and (max-width: 540px) {
+  .text-slider {
+    width: 350px !important;
+  }
+}
 .text-slider p {
   position: absolute;
   top: 0;

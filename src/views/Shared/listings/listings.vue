@@ -2,7 +2,7 @@
   <div>
     <img
       class="d-md-block d-lg-block d-none"
-      style="width: 90%!important;position:absolute;z-index: -1; top:50%!important;left:2%!important;"
+      style="width: 90%!important;position:absolute;z-index: -1; top:50%!important;left:2%!important; display: none !important;"
       src="https://res.cloudinary.com/myyinvest/image/upload/v1614000915/mmyyinvest-2.0/svgs/listings-path_fcplwt.svg"
     />
     <section class="search-banner"></section>
@@ -26,7 +26,7 @@
         </div>
       </main-card>
     </section>
-    <section class="container ">
+    <!-- <section class="container ">
       <div class="d-flex flex-row ml-5 mt-5 flex-row justify-content-center ">
         <div class="card cursor-pointer p-2   " style="width: 50px; height: 30px; background-color: #EAD0D0;box-shadow: -2px 2px 8px #646464;">
           <p class="mx-auto ft-14 mt-n1 text-main-red">All</p>
@@ -38,17 +38,19 @@
           <p class="mx-auto ft-14 mt-n1 text-main-red">Co Invest</p>
         </div>
       </div>
-    </section>
+    </section> -->
     <section class="container-fluid">
       <div class="row  ">
-        <div class="col-md-6 col-12 col-lg-4  listings-col " id="all" v-for="i in 6" :key="i">
+        <!-- <div class="col-md-6 col-12 col-lg-4  listings-col " id="all" v-for="i in 6" :key="i"> -->
+        <div class="col-md-6 col-12 col-lg-4  listings-col " id="all" v-for="i in 3" :key="i">
           <div class="p-5">
             <div class="single-list" style="border-radius:20px!important;">
               <div class="list-image">
                 <img src="https://res.cloudinary.com/dwpu7jpku/image/upload/v1612297295/listings_mfl4io.png" class="img-fluid" alt="" />
               </div>
               <div class="list-details">
-                <p class="ft-18 w-100">Cambridge Apartments Construction</p>
+                <!-- <p class="ft-18 w-100">Cambridge Apartments Construction</p> -->
+                <p class="ft-18 w-100">{{ titles[i - 1] }}</p>
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-10 " style="border-right:1px solid red;">
                     <span class="d-flex flex-lg-row  ">
@@ -64,7 +66,8 @@
                       Lorem ipsum dolor sit amet consect etur adipisicing elit. Eligendi tempori bus libero at ipsum, eveniet maiores.
                     </p>
                     <hr class="mt-n2 ml-auto " style="border-color:red!important; position: relative; left: -5%" />
-                    <main-button @click="$router.push({ name: 'single-listing' })" style="font-size: 10px!important;" text="Read More" size="xs" class="float-right" />
+                    <!-- <main-button @click="$router.push({ name: 'single-listing' })" style="font-size: 10px!important;" text="Read More" size="xs" class="float-right" /> -->
+                    <main-button @click="$router.push({ name: 'single-listing', params: { slug: slugs[i - 1] } })" style="font-size: 10px!important;" text="Read More" size="xs" class="float-right" />
                   </div>
                 </div>
               </div>
@@ -86,7 +89,9 @@ export default {
     return {
       currentPage: 1,
       rows: 10,
-      perPage: 1
+      perPage: 1,
+      titles: ["Income Plan", "Rental Plan", "Special Plan"],
+      slugs: ["income-plan", "rental-plan", "special-plan"]
     };
   },
   methods: {}

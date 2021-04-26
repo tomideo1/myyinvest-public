@@ -6,7 +6,8 @@ const state = {
   userNextOfKinDetails: {},
   userReferralDetails: {},
   bankList: [],
-  userBanks: []
+  userBanks: [],
+  userNotifications: []
 };
 
 const getters = {
@@ -32,6 +33,10 @@ const getters = {
 
   getUserBanks(state) {
     return state.userBanks;
+  },
+
+  getUserNotifications(state) {
+    return state.userNotifications;
   }
 };
 
@@ -58,6 +63,10 @@ const mutations = {
 
   setBankList(state, data) {
     return (state.bankList = data);
+  },
+
+  setUserNotifications(state, data) {
+    return (state.userNotifications = data);
   }
 };
 
@@ -184,6 +193,25 @@ const actions = {
     } else {
       return res;
     }
+  },
+
+  // eslint-disable-next-line no-unused-vars
+  async getAllUserNotifications({ commit }, payload) {
+    const res = await Api.get(`notifications/get?page=${payload.page ? payload.page : 10}`, true);
+    if (res.status === 200 || res.status === 201) {
+      const notificationsData = res.data.notifications;
+      const userNotification = { notificationsData, ...res.data.pagination };
+      commit("setUserNotifications", userNotification);
+      return res;
+    } else {
+      return res;
+    }
+  },
+
+  async deleteUserNotification({ dispatch }, payload) {
+    const res = await Api.post(`notifications/${payload.id}/delete`, {}, true);
+    dispatch("getAllUserNotifications", { page: 10 });
+    return res.status === 200 || res.status === 201;
   }
 };
 

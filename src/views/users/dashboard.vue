@@ -2,22 +2,22 @@
   <div class="container-fluid p-1">
     <main class="col-md-12">
       <div class="row">
-        <status-card status-title="Net Worth" icon-color="#F4DCDC" status-number="1250000" icon-name="database" class="col-md-4 mb-3" />
-        <status-card status-title="Capital Invested" icon-color="#ABC9E0" status-number="1000000" icon-name="money-blue" class="col-md-4 mb-3" />
-        <status-card status-title="Total Return" icon-color="#9FD99F" status-number="250000" icon-name="reload" class="col-md-4 mb-3" />
-        <status-card status-title="Total Token" icon-color="#BA7BD8" :has-naira="false" status-number="005" icon-name="total" class="col-md-4 mb-3" />
+        <status-card status-title="Net Worth" icon-color="#F4DCDC" status-number="1250000" icon-name="database" class="col-md-3 mb-3" />
+        <status-card status-title="Capital Invested" icon-color="#ABC9E0" status-number="1000000" icon-name="money-blue" class="col-md-3 mb-3" />
+        <status-card status-title="Total Return" icon-color="#9FD99F" status-number="250000" icon-name="reload" class="col-md-3 mb-3" />
+        <status-card status-title="Total Token" icon-color="#BA7BD8" :has-naira="false" status-number="005" icon-name="total" class="col-md-3 mb-3" />
       </div>
     </main>
 
     <main class="col-md-12">
       <div class="row">
         <div class="col-md-4 mb-4">
-          <main-card>
-            <GChart type="PieChart" :data="chartData" :options="chartOptions" />
+          <main-card style="min-height: 400px!important;">
+            <GChart class="mt-5" type="PieChart" :data="chartData" :options="chartOptions" />
           </main-card>
         </div>
         <div class="col-md-4 mb-4">
-          <main-card>
+          <main-card style="min-height: 400px!important;">
             <p>Latest Investment Option</p>
             <div class="d-flex mb-3 " style="background: #F7F0F0">
               <span><img src="https://res.cloudinary.com/myyinvest/image/upload/v1618259704/mmyyinvest-2.0/images/cambridge_ihphiu.png"/></span>
@@ -67,7 +67,7 @@
           </main-card>
         </div>
         <div class="col-md-4 mb-4">
-          <main-card>
+          <main-card style="min-height: 400px!important;">
             <p>Recent Transactions</p>
             <recent-transactions status="success" />
             <recent-transactions status="primary" />

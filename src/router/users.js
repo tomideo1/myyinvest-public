@@ -8,7 +8,7 @@ export default [
     component: () => import(/* webpackChunkName: "user-index" */ "../views/users/index.vue"),
     children: [
       {
-        path: "dashboard",
+        path: "overview",
         name: "overview",
         component: () => import(/* webpackChunkName: "user-dashboard" */ "../views/users/dashboard.vue"),
         meta: {
@@ -180,10 +180,26 @@ export default [
           middleware: [auth]
         }
       },
+      // {
+      //   path: "browse-assets",
+      //   name: "assets",
+      //   component: () => import(/* webpackChunkName: "browse-assets" */ "../views/Shared/listings/listing.vue"),
+      //   meta: {
+      //     middleware: [auth]
+      //   }
+      // }
       {
         path: "browse-assets",
         name: "assets",
-        component: () => import(/* webpackChunkName: "browse-assets" */ "../views/Shared/listings/listing.vue"),
+        component: () => import(/* webpackChunkName: "browse-assets" */ "../views/Shared/listings/listings.vue"),
+        meta: {
+          middleware: [auth]
+        }
+      },
+      {
+        path: "browse-assets/:slug",
+        name: "single-asset",
+        component: () => import(/* webpackChunkName: "single-asset" */ "../views/Shared/listings/singleListing.vue"),
         meta: {
           middleware: [auth]
         }

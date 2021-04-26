@@ -3,76 +3,24 @@
     <!-- Catagory Area -->
     <div class="world-catagory-area">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link ins active text-cs-mred nav-bold-insights cursor-pointer" id="tab1" data-toggle="tab" @click="toggleTab('all')" role="tab" aria-controls="world-tab-1" aria-selected="true"
-            >ALL</a
-          >
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link ins text-cs-mred  nav-bold-insights cursor-pointer" id="tab2" data-toggle="tab" @click="toggleTab('news')" role="tab" aria-controls="world-tab-2" aria-selected="true"
-            >NEWS</a
-          >
-        </li>
-
-        <li class="nav-item">
+        <li class="nav-item" v-for="(category, index) in categories" :key="index">
           <a
-            class="nav-link ins text-cs-mred nav-bold-insights cursor-pointer"
+            :class="['nav-link  ins text-cs-mred nav-bold-insights cursor-pointer', category.toLowerCase() === activeTab ? 'active' : '']"
             id="tab3"
-            @click="toggleTab('blog')"
+            @click="toggleTab(category.toLowerCase())"
             data-toggle="tab"
-            href="#world-tab-3"
             role="tab"
             aria-controls="world-tab-3"
-            aria-selected="false"
-            >BLOG</a
-          >
-        </li>
-
-        <li class="nav-item">
-          <a
-            class="nav-link ins text-cs-mred nav-bold-insights cursor-pointer"
-            @click="toggleTab('research')"
-            id="tab4"
-            data-toggle="tab"
-            href="#world-tab-4"
-            role="tab"
-            aria-controls="world-tab-4"
-            aria-selected="false"
-            >RESEARCH</a
+            aria-selected="true"
+            >{{ category.toUpperCase() }}</a
           >
         </li>
       </ul>
 
-      <transition name="fade">
-        <div class="tab-content" v-if="activeTab === 'all'">
-          <div>
-            <div class="row">
-              <div class="col-12 col-md-6 insight-col" v-for="i in 4" :key="i">
-                <router-link :to="{ name: 'single-blog' }" class="headline">
-                  <div>
-                    <!-- Single Blog Post -->
-                    <div class="single-blog-post">
-                      <!-- Post Thumbnail -->
-                      <div class="post-thumbnail">
-                        <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614039939/mmyyinvest-2.0/images/g_yswqjr.jpg" alt="" />
-                        <!-- Catagory -->
-                        <!-- <div class="post-cta"><a href="#">travel</a></div> -->
-                      </div>
-                      <!-- Post Content -->
-                      <div class="post-content">
-                        <p class="ft-18 font-weight-bold">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</p>
-                        <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
-                        <!-- Post Meta -->
-                        <div class="post-meta">
-                          <p><a href="single2.html" class="post-author text-dark">Katy Liu</a> on <a href="single.html" class="post-date text-cs-mred">Sep 29, 2017 at 9:48 am</a></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </router-link>
-              </div>
-            </div>
+      <transition name="fade" v-for="(category, index) in categories" :key="index">
+        <div class="tab-content container-fluid" v-if="activeTab.toLowerCase() === category.toLowerCase()">
+          <div class="row">
+            <insight-card :category="activeTab" class="cursor-pointer col-12 col-md-6 col-lg-6 insight-col" v-for="(insight, index) in fetchInsights" :insight="insight" :key="index" />
           </div>
         </div>
       </transition>
@@ -81,14 +29,33 @@
 </template>
 
 <script>
+import InsightCard from "../../../components/Shared/insight/insightCard";
+import { mapActions, mapGetters } from "vuex";
+
 export default {
+  components: { InsightCard },
   data() {
-    return { activeTab: "all" };
+    return {
+      activeTab: "all"
+    };
+  },
+  computed: {
+    ...mapGetters(["fetchInsights"]),
+    categories() {
+      return ["ALL", "NEWS", "BLOG", "RESEARCH"];
+    }
   },
   methods: {
+    ...mapActions(["fetchAllInsights"]),
     toggleTab(tab) {
       this.activeTab = tab;
     }
+  },
+  async mounted() {
+    await this.fetchAllInsights({
+      page: 1,
+      per_page: 10
+    });
   }
 };
 </script>

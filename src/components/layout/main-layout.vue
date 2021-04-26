@@ -85,7 +85,7 @@
                     <span class="mr-3  d-lg-inline text-black ft-10 ml-auto">{{ getUser.user_role }}</span>
                   </span>
 
-                  <avatar :user="getProfile" size="md" />
+                  <!--                  <avatar :user="getProfile" size="md" />-->
                   <!--                  <img class="img-profile rounded-circle mr-4" src="@/assets/images/avatar.png" style="max-width: 60px" />-->
                 </a>
                 <div class="dropdown-menu w-25 dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

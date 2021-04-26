@@ -91,7 +91,7 @@
 </template>
 
 <script>
-import ReferTransaction from "@/components/ReferTransaction.vue";
+import ReferTransaction from "@/components/users/ReferTransaction.vue";
 import MainIcon from "@/components/Shared/mainIcon.vue";
 import { mapActions, mapGetters } from "vuex";
 

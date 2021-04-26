@@ -1,19 +1,30 @@
 <template>
-  <transition name="modal-fade">
+  <!-- <transition name="modal-fade">
     <div class="lst-modal">
       <div class="lst-modal__dialog-box">
-        <div :class="[classes]" :style="styles" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
-          <div class="lst-modal__close-icon">
-            <main-icon v-if="showCancel" name="close" size="xl" @click.native="handleClose" />
-          </div>
-          <!--          <span v-if="showCancel" class="close-button topright" @click="handleClose">&times;</span>-->
-          <div class="lst-modal__content" id="modalDescription">
-            <slot />
-          </div>
+        <!- <div :class="[classes]" :style="styles" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription"> ->
+        <div class="lst-modal__close-icon">
+          <main-icon v-if="showCancel" name="close" size="xl" @click.native="handleClose" />
         </div>
+        <!-   <span v-if="showCancel" class="close-button topright" @click="handleClose">&times;</span> ->
+        <div class="lst-modal__content" id="modalDescription">
+          <slot />
+        </div>
+        <!- </div> ->
       </div>
     </div>
-  </transition>
+  </transition> -->
+
+  <div :class="['c-modal', { 'c-modal--hidden': !config.isVisible }]">
+    <div :class="['c-modal__dialog-box', { [`c-modal__dialog-box--${config.size}`]: config.size !== null }]">
+      <div class="c-modal__close-icon">
+        <main-icon v-if="showCancel" name="close" size="xl" @click.native="handleClose" />
+      </div>
+      <div class="c-modal__content" id="modalDescription">
+        <slot />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -40,8 +51,7 @@ export default {
         md_noty: 45,
         lg: 50,
         xl: 70
-      },
-      modalTimeout: null
+      }
     };
   },
   props: {
@@ -54,6 +64,15 @@ export default {
     showCancel: {
       type: Boolean,
       default: false
+    },
+    config: {
+      type: Object,
+      default: () => {
+        return {
+          isVisible: false,
+          size: null
+        };
+      }
     }
   },
   computed: {
@@ -70,6 +89,7 @@ export default {
   },
   methods: {
     handleClose() {
+      this.$emit("close-modal");
       this.$Bus.$emit("close-modal");
     }
   }

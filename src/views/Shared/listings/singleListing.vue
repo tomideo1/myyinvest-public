@@ -1,42 +1,79 @@
 <template>
+  <!-- Income plan -->
   <ListingDetail v-if="getRouteSlug === 'income-plan'" @reset-params="resetIncomeParams">
     <template #title>
       Income Plan
     </template>
     <template #modal-content>
+      <template v-if="transactionStep > 1">
+        <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack" />
+      </template>
       <template v-if="transactionStep === 1">
         <MainIcon name="tooltip" size="sm" class="lst-modal__top-icon" />
         <p class="lst-modal__title">Income Plan</p>
         <div class="lst-modal__input-container">
-          <MainInput type="number" label="Tokens" v-model="tokens" :required="true" />
-          <MainInput type="number" label="Amount (N)" :disable="true" :value="tokens * 10000" />
+          <MainInput type="number" label="Tokens" v-model="tokens" class="lst-modal__input" />
+          <MainInput type="number" label="Amount (N)" :disable="true" :value="tokens * 10000" class="lst-modal__input" />
         </div>
         <button type="button" class="lst-modal__btn" :disabled="tokens <= 0" @click="transactionStep++">
           <span>Continue</span>
-          <MainIcon name="caret-right" size="sm" />
+          <MainIcon name="caret-right" size="xs" />
         </button>
       </template>
       <template v-if="transactionStep === 2">
-        <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack" />
         <p class="lst-modal__title">Payment Frequency</p>
         <div class="lst-modal__input-container">
-          <button type="button" :class="getFreqBtnClasses('oneOff')" @click="selectFrequency('oneOff')">
-            <span>One Off</span>
-            <MainIcon name="tooltip" size="sm" ttpColor="currentColor" />
+          <button type="button" :class="getBtnClasses(isFreqSelected('oneOff'))" @click="selectFrequency('oneOff')">
+            <span>one off</span>
+            <MainIcon name="tooltip" size="sm" color="currentColor" />
           </button>
-          <button type="button" :class="getFreqBtnClasses('recur')" @click="selectFrequency('recur')">
+          <button type="button" :class="getBtnClasses(isFreqSelected('recur'))" @click="selectFrequency('recur')">
             <span>Recurring</span>
-            <MainIcon name="tooltip" size="sm" ttpColor="currentColor" />
+            <MainIcon name="tooltip" size="sm" color="currentColor" />
           </button>
         </div>
-        <div class="lst-modal__freq-container">
-          <p class="lst-modal__freq-text">
+        <div class="lst-modal__text-container">
+          <p class="lst-modal__text">
             {{ getFreqText }}
+          </p>
+          <MainInput v-show="isFreqSelected('recur')" inputType="select" label="Frequency" v-model="freqValue" class="lst-modal__select" :options="freqOptions" />
+        </div>
+        <button type="button" class="lst-modal__btn" @click="transactionStep++">
+          <span>continue</span>
+          <MainIcon name="caret-right" size="xs" />
+        </button>
+      </template>
+      <template v-if="transactionStep === 3">
+        <p class="lst-modal__title">Investment Period</p>
+        <div class="lst-modal__input-container">
+          <button type="button" :class="getBtnClasses(isInvPeriodSelected(6))" @click="selectInvPeriod(6)">
+            6 months
+          </button>
+          <button type="button" :class="getBtnClasses(isInvPeriodSelected(12))" @click="selectInvPeriod(12)">
+            12 months
+          </button>
+        </div>
+        <div class="lst-modal__text-container">
+          <p class="lst-modal__text">
+            {{ getInvPeriodText }}
           </p>
         </div>
         <button type="button" class="lst-modal__btn" @click="transactionStep++">
-          <span>Continue</span>
-          <MainIcon name="caret-right" size="sm" />
+          <span>continue</span>
+          <MainIcon name="caret-right" size="xs" />
+        </button>
+      </template>
+      <template v-if="transactionStep === 4">
+        <p class="lst-modal__title">Review Plan</p>
+        <div class="lst-modal__summary">
+          <div>
+            <p>Income Plan</p>
+          </div>
+          <div></div>
+        </div>
+        <button type="button" class="lst-modal__btn lst-modal__btn--red">
+          <span>pay now</span>
+          <MainIcon name="caret-right" size="xs" />
         </button>
       </template>
     </template>
@@ -56,7 +93,7 @@
         </div>
         <button type="button" class="lst-modal__btn" :disabled="tokens <= 0" @click="transactionStep++">
           <span>Continue</span>
-          <MainIcon name="caret-right" size="sm" />
+          <MainIcon name="caret-right" size="xs" />
         </button>
       </template>
       <template v-if="transactionStep === 2">
@@ -65,11 +102,11 @@
         <div class="lst-modal__input-container">
           <button type="button" :class="getFreqBtnClasses('oneOff')" @click="selectFrequency('oneOff')">
             <span>One Off</span>
-            <MainIcon name="tooltip" size="sm" ttpColor="currentColor" />
+            <MainIcon name="tooltip" size="sm" color="currentColor" />
           </button>
           <button type="button" :class="getFreqBtnClasses('recur')" @click="selectFrequency('recur')">
             <span>Recurring</span>
-            <MainIcon name="tooltip" size="sm" ttpColor="currentColor" />
+            <MainIcon name="tooltip" size="sm" color="currentColor" />
           </button>
         </div>
         <div class="lst-modal__freq-container">
@@ -79,7 +116,7 @@
         </div>
         <button type="button" class="lst-modal__btn" @click="transactionStep++">
           <span>Continue</span>
-          <MainIcon name="caret-right" size="sm" />
+          <MainIcon name="caret-right" size="xs" />
         </button>
       </template>
     </template>
@@ -108,14 +145,19 @@ export default {
   },
   data() {
     return {
-      // isModalVisible: false,
       tokens: 0,
       transactionStep: 1,
-      paymentFreq: "oneOff",
+      freqValue: null,
+      paymentFrequency: "oneOff",
+      invPeriod: 6,
       freqText: {
         oneOff: "This is the smallest amount you can start this plan for and you can always Invest More.",
         recur: "This means that you’re Investing more than Once usually for 6 months to 12 months."
-      }
+      },
+      freqOptions: [
+        { key: "6 months", value: 6 },
+        { key: "12 months", value: 12 }
+      ]
     };
   },
   methods: {
@@ -126,13 +168,19 @@ export default {
       this.transactionStep--;
     },
     selectFrequency(freq) {
-      this.paymentFreq = freq;
+      this.paymentFrequency = freq;
     },
-    isSelected(freq) {
-      return this.paymentFreq === freq;
+    selectInvPeriod(period) {
+      this.invPeriod = period;
     },
-    getFreqBtnClasses(freq) {
-      return ["lst-modal__btn", "lst-modal__btn--max", { "lst-modal__btn--active": this.isSelected(freq) }];
+    isFreqSelected(freq) {
+      return this.paymentFrequency === freq;
+    },
+    isInvPeriodSelected(period) {
+      return this.invPeriod === period;
+    },
+    getBtnClasses(isActive) {
+      return ["lst-modal__btn", "lst-modal__btn--max", { "lst-modal__btn--active": isActive }];
     }
   },
   computed: {
@@ -140,7 +188,10 @@ export default {
       return this.$route.params.slug;
     },
     getFreqText() {
-      return this.freqText[this.paymentFreq];
+      return this.freqText[this.paymentFrequency];
+    },
+    getInvPeriodText() {
+      return this.invPeriod === 6 ? "Returns: 14% - 28%" : "Returns: 25% - 45%";
     }
   }
 };

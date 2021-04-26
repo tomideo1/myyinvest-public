@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="pofl-data">
-          <p class="pofl-data__title">Returns</p>
+          <p class="pofl-data__title">Accumulated Returns</p>
           <div class="pofl-data__value pofl-data__value--alt">
             <MainIcon name="naira" class="pofl-data__icon" />
             <span>125,000</span>
@@ -25,8 +25,8 @@
       </div>
       <div class="pofl-item__data">
         <div class="pofl-data">
-          <p class="pofl-data__title">Start Date</p>
-          <p class="pofl-data__value">20th Jan, 2021</p>
+          <p class="pofl-data__title">Number of Projects</p>
+          <p class="pofl-data__value">3</p>
         </div>
         <div class="pofl-data">
           <p class="pofl-data__title">Maturity Date</p>

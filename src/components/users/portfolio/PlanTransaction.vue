@@ -9,13 +9,13 @@
     <div class="trans__data trans__head--mbl-hide">{{ startDate }}</div>
     <div class="trans__data trans__head--mbl-hide">{{ endDate }}</div>
     <div class="trans__data trans__data--sm trans__data--green trans__head--mbl-hide">
-      <a class="inv-trans__link" href="#">VIEW</a>
+      <a class="inv-trans__link" href="javascript:void(0)" @click="$emit('display-popup')">VIEW</a>
     </div>
   </div>
 </template>
 
 <script>
-import MainIcon from "./Shared/mainIcon.vue";
+import MainIcon from "@/components/Shared/mainIcon.vue";
 
 export default {
   name: "PlanTransaction",

@@ -47,7 +47,7 @@ export default {
       this.notify.show = true;
     },
     closeModal() {
-      console.log("clicked");
+      // console.log("clicked");
       // this.notify.show = false;
       if (this.notify) {
         this.notify.show = false;
@@ -73,11 +73,11 @@ export default {
 @import "scss/main";
 html,
 body {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   margin: 0;
-
   padding: 0;
+  overflow-x: hidden;
 }
 /*#app {*/
 /*  font-family: Avenir, Helvetica, Arial, sans-serif;*/

@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import PortfolioItem from "@/components/users/PortfolioItem.vue";
+import PortfolioItem from "@/components/users/portfolio/PortfolioItem.vue";
 
 export default {
   name: "MyyPortfolio",

@@ -24,14 +24,14 @@
     <empty-noty v-if="name === 'empty-noty'"></empty-noty>
     <trans-icon v-if="name === 'trans-icon'"></trans-icon>
     <gift-card v-if="name === 'gift-card'"></gift-card>
-    <socials v-if="name === 'socials'" :refText="refText" :refLink="refLink"></socials>
+    <socials v-if="name === 'socials'" :ref-text="refText" :ref-link="refLink"></socials>
     <camera v-if="name === 'camera'"></camera>
     <attachment v-if="name === 'attachment'"></attachment>
     <bank-card v-if="name === 'bank-card'"></bank-card>
     <vector-dots v-if="name === 'vector-dots'"></vector-dots>
     <close v-if="name === 'close'"></close>
-    <tooltip v-if="name === 'tooltip'"></tooltip>
-    <!--    <caret v-if="name === 'caret'"></caret>-->
+    <tooltip v-if="name === 'tooltip'" :color="color"></tooltip>
+    <caret-right v-if="name === 'caret-right'"></caret-right>
     <database v-if="name === 'database'"></database>
     <reload v-if="name === 'reload'"></reload>
     <money-blue v-if="name === 'money-blue'"></money-blue>
@@ -62,6 +62,10 @@ export default {
       required: false
     },
     refLink: {
+      type: String,
+      required: false
+    },
+    color: {
       type: String,
       required: false
     }
@@ -98,7 +102,7 @@ export default {
     vectorDots: () => import("@/components/__private__/media/vectorDots"),
     close: () => import("@/components/__private__/media/close"),
     tooltip: () => import("@/components/__private__/media/tooltip"),
-    // caret: () => import("@/components/__private__/media/caret"),
+    caretRight: () => import("@/components/__private__/media/caretRight"),
     total: () => import("@/components/__private__/media/total"),
     reload: () => import("@/components/__private__/media/greenReload"),
     moneyBlue: () => import("@/components/__private__/media/blueMoney"),

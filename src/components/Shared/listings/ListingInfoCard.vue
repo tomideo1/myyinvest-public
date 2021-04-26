@@ -108,9 +108,9 @@ export default {
       right: 0;
       background: color(main-red);
       color: color(bv-white);
-      font-size: 0.925em;
-      padding: 1.25em;
-      width: 12.5em;
+      font-size: 0.9em;
+      padding: 1em;
+      width: 12.75em;
       z-index: 5;
       box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.25);
       opacity: 0;

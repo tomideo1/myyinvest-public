@@ -349,7 +349,13 @@
   }
 }
 
-@media screen and (max-width: 599px) {
+// @media screen and (max-width: 599px) {
+//   #accordionSidebar {
+//     max-width: 16em;
+//   }
+// }
+
+@include breakpoint(mobile-only) {
   #accordionSidebar {
     max-width: 16em;
   }

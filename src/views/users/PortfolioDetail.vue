@@ -3,7 +3,8 @@
     <div class="inv-plan" v-if="getRouteSlug === 'income-plan'">
       <p class="inv-plan__title">Income Plan</p>
       <div class="inv-plan__content">
-        <div class="inv-plan__graph">
+        <div class="inv-plan__graph-container">
+          <PlanSummary :earnings="10416" :capital="0.26" />
           <BarChart :chartdata="chartData" :options="options" :styles="myStyles" />
         </div>
         <div class="trans inv-trans">
@@ -17,7 +18,7 @@
             <div class="trans__head trans__head--mbl-hide">end date</div>
             <div class="trans__head trans__head--sm trans__head--mbl-hide"></div>
           </div>
-          <PlanTransaction v-for="i in 7" :key="i" />
+          <PlanTransaction v-for="i in 7" :key="i" @display-popup="isModalVisible = true" />
           <div class="trans__pagination">
             <button type="button" class="trans__btn trans__btn--lg">Previous</button>
             <button type="button" class="trans__btn" :class="{ 'trans__btn--active': num === 1 }" v-for="num in 4" :key="num">
@@ -30,19 +31,7 @@
     </div>
 
     <div class="inv-plan" v-else-if="getRouteSlug === 'rental-plan'">
-      <div class="inv-plan__header">
-        <p class="inv-plan__title">Rental Plan</p>
-        <div class="inv-plan__summary inv-plan__summary--mbl-column">
-          <div class="inv-smry">
-            <span class="inv-smry__title">Accumulated Savings</span>
-            <p class="inv-smry__value inv-smry__value--green">N10,416</p>
-          </div>
-          <div class="inv-smry">
-            <span class="inv-smry__title">Capital Invested</span>
-            <p class="inv-smry__value">0.20</p>
-          </div>
-        </div>
-      </div>
+      <PlanHeader title="rental plan" :earnings="10416" :capital="0.26" />
       <div class="inv-plan__content">
         <div class="trans inv-trans">
           <div class="trans__row inv-trans__heading">
@@ -55,7 +44,7 @@
             <div class="trans__head trans__head--mbl-hide">end date</div>
             <div class="trans__head trans__head--sm trans__head--mbl-hide"></div>
           </div>
-          <PlanTransaction v-for="i in 7" :key="i" />
+          <PlanTransaction v-for="i in 7" :key="i" @display-popup="isModalVisible = true" />
           <div class="trans__pagination">
             <button type="button" class="trans__btn trans__btn--lg">Previous</button>
             <button type="button" class="trans__btn" :class="{ 'trans__btn--active': num === 1 }" v-for="num in 4" :key="num">
@@ -68,19 +57,7 @@
     </div>
 
     <div class="inv-plan" v-else-if="getRouteSlug === 'special-plan'">
-      <div class="inv-plan__header">
-        <p class="inv-plan__title">Special Plan</p>
-        <div class="inv-plan__summary inv-plan__summary--mbl-column">
-          <div class="inv-smry">
-            <span class="inv-smry__title">Accumulated Savings</span>
-            <p class="inv-smry__value inv-smry__value--green">N10,416</p>
-          </div>
-          <div class="inv-smry">
-            <span class="inv-smry__title">Capital Invested</span>
-            <p class="inv-smry__value">0.20</p>
-          </div>
-        </div>
-      </div>
+      <PlanHeader title="special plan" :earnings="10416" :capital="0.26" />
       <div class="inv-plan__content">
         <div class="trans inv-trans">
           <div class="trans__row inv-trans__heading">
@@ -93,7 +70,7 @@
             <div class="trans__head trans__head--mbl-hide">end date</div>
             <div class="trans__head trans__head--sm trans__head--mbl-hide"></div>
           </div>
-          <PlanTransaction v-for="i in 7" :key="i" />
+          <PlanTransaction v-for="i in 7" :key="i" @display-popup="isModalVisible = true" />
           <div class="trans__pagination">
             <button type="button" class="trans__btn trans__btn--lg">Previous</button>
             <button type="button" class="trans__btn" :class="{ 'trans__btn--active': num === 1 }" v-for="num in 4" :key="num">
@@ -104,27 +81,37 @@
         </div>
       </div>
     </div>
+
+    <Modal :config="{ isVisible: isModalVisible, size: 'md' }" show-cancel @close-modal="isModalVisible = false">
+      <div></div>
+    </Modal>
   </div>
 </template>
 
 <script>
 import BarChart from "@/components/Shared/charts/BarChart.vue";
-import PlanTransaction from "@/components/PlanTransaction.vue";
+import PlanHeader from "@/components/users/portfolio/PlanHeader.vue";
+import PlanSummary from "@/components/users/portfolio/PlanSummary.vue";
+import PlanTransaction from "@/components/users/portfolio/PlanTransaction.vue";
+import Modal from "@/components/Shared/modal.vue";
 
 export default {
   name: "PortfolioDetail",
   components: {
     BarChart,
-    PlanTransaction
+    PlanHeader,
+    PlanSummary,
+    PlanTransaction,
+    Modal
   },
   data() {
     return {
       chartData: {
-        labels: ["N10,246", "N10,246", "N10,246", "N10,246", "N10,246"],
+        labels: ["N10,246", "N10,246", "N10,246", "N10,246", "N10,246", "N10,246"],
         datasets: [
           {
             label: "Investment Amount",
-            data: [5, 15, 25, 35, 40],
+            data: [5, 12, 19, 25, 32, 40],
             backgroundColor: "#C10000"
           }
         ]
@@ -137,7 +124,7 @@ export default {
             {
               ticks: {
                 beginAtZero: true,
-                padding: 10
+                padding: 5
               }
             }
           ]
@@ -146,8 +133,9 @@ export default {
       myStyles: {
         // position: "relative",
         width: "100%",
-        height: "100%"
-      }
+        maxHeight: "24em"
+      },
+      isModalVisible: false
     };
   },
   computed: {

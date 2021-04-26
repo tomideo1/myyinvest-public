@@ -53,7 +53,7 @@
               <div class="block-2"></div>
               <div class="block-3"></div>
             </div>
-            <a class="nav-link  ft-20 ml-5 ml-lg-0 text-uppercase" @click="$router.go(-1)">
+            <a class="nav-link  ft-20 ml-lg-0 text-uppercase" @click="$router.go(-1)" style="margin-left: 10%">
               <main-icon name="back" size="sm" />
             </a>
 

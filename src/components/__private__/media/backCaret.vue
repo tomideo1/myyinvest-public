@@ -3,7 +3,7 @@
     <g filter="url(#filter0_d)">
       <circle cx="30.5" cy="30.5" r="19.5" fill="white" />
     </g>
-    <path d="M30.6052 36.228L26.0272 31.524L30.6052 26.82H34.3012L29.7232 31.524L34.3012 36.228H30.6052Z" fill="#C10000" />
+    <path d="M30.6052 36.228L26.0272 31.524L30.6052 26.82H34.3012L29.7232 31.524L34.3012 36.228H30.6052Z" fill="#c10000" />
     <defs>
       <filter id="filter0_d" x="0" y="0" width="61" height="61" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
         <feFlood flood-opacity="0" result="BackgroundImageFix" />

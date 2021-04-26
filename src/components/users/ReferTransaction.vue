@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import MainIcon from "./Shared/mainIcon.vue";
+import MainIcon from "../Shared/mainIcon.vue";
 
 export default {
   name: "ReferTrasanction",

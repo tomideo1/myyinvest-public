@@ -118,16 +118,11 @@
       <button type="button" class="listing-dtl__btn">Download Legal Agreement</button>
     </div>
 
-    <div :class="['lst-modal', { 'lst-modal--hidden': !isModalVisible }]">
-      <div class="lst-modal__dialog-box">
-        <div class="lst-modal__close-icon">
-          <MainIcon name="close" size="xl" @click.native="closeModal" />
-        </div>
-        <div class="lst-modal__content">
-          <slot name="modal-content"></slot>
-        </div>
+    <Modal :config="{ isVisible: isModalVisible }" show-cancel @close-modal="closeModal">
+      <div class="lst-modal">
+        <slot name="modal-content"></slot>
       </div>
-    </div>
+    </Modal>
   </div>
 </template>
 
@@ -135,13 +130,15 @@
 import Carousel from "vue-owl-carousel2";
 import ListingInfoCard from "./ListingInfoCard.vue";
 import MainIcon from "@/components/Shared/mainIcon.vue";
+import Modal from "@/components/Shared/modal.vue";
 
 export default {
   name: "ListingDetail",
   components: {
     ListingInfoCard,
     Carousel,
-    MainIcon
+    MainIcon,
+    Modal
   },
   data() {
     return {

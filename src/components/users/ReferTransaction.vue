@@ -1,11 +1,11 @@
 <template>
   <div class="trans__row ref-trans__item">
     <MainIcon name="trans-icon" class="trans__icon" />
-    <div class="trans__data">{{ date }}</div>
-    <div class="trans__data">{{ name }}</div>
-    <div class="trans__data">{{ project }}</div>
-    <div class="trans__data">N{{ commission }}</div>
-    <div class="trans__data">{{ status }}</div>
+    <div :class="['trans__data', { 'trans__data--mbl-hide': isToggled }]">{{ date }}</div>
+    <div :class="['trans__data', 'trans__data--lg', { 'trans__data--mbl-hide': isToggled }]">{{ name }}</div>
+    <div :class="['trans__data', 'trans__data--lg', { 'trans__data--mbl-hide': isToggled }]">{{ project }}</div>
+    <div :class="['trans__data', 'trans__data--green', { 'trans__data--mbl-hide': !isToggled }]">N{{ commission }}</div>
+    <div :class="['trans__data', { 'trans__data--mbl-hide': !isToggled }]">{{ status }}</div>
   </div>
 </template>
 
@@ -25,16 +25,20 @@ export default {
       default: "saviour amara"
     },
     project: {
-      name: String,
+      type: String,
       default: "cambridge appointments"
     },
     commission: {
-      name: Number,
+      type: Number,
       default: 5000
     },
     status: {
-      name: String,
+      type: String,
       default: "Not Invested"
+    },
+    isToggled: {
+      type: Boolean,
+      default: false
     }
   }
 };

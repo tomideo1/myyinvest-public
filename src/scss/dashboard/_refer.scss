@@ -18,7 +18,7 @@
   }
 }
 
-.rf-user {
+.ref-user {
   display: flex;
   border-bottom: 1px solid $black;
   margin-bottom: 2em;
@@ -110,7 +110,7 @@
     justify-content: space-between;
     text-align: center;
 
-    .rf-user__text {
+    .ref-user__text {
       margin-top: 0.125em;
     }
   }
@@ -180,7 +180,7 @@
   }
 }
 
-.rf-tooltip {
+.ref-tooltip {
   position: relative;
   display: inline-block;
 
@@ -240,59 +240,16 @@
   //   margin-bottom: 1.75em;
   //   display: flex;
   //   align-items: center;
-
-  //   > div {
-  //     // border: 1px solid red;
-  //     // flex: 1;
-  //     // text-align: center;
-  //     padding: 0 0.25em;
-
-  //     &:nth-of-type(2),
-  //     &:nth-of-type(3) {
-  //       flex: 1.5;
-  //     }
-
-  //     @include breakpoint(mobile-only) {
-  //       &:nth-of-type(4),
-  //       &:nth-of-type(5) {
-  //         display: none;
-  //       }
-  //     }
-  //   }
   // }
 
-  // }
   &__heading,
   &__item {
     border-radius: 0.52rem;
-
-    > div {
-      // padding: 0 0.25em;
-
-      &:nth-of-type(2),
-      &:nth-of-type(3) {
-        flex: 1.5;
-      }
-
-      @include breakpoint(mobile-only) {
-        &:nth-of-type(4),
-        &:nth-of-type(5) {
-          display: none;
-        }
-      }
-    }
   }
 
   &__heading {
-    padding-left: 1.275em;
-    // padding: 0.75em 0.25em 0.75em 1.35em;
-  }
-
-  &__item {
-    // padding: 0.75em 0.25em;
-
-    > div:nth-of-type(4) {
-      color: #089b12;
+    @include breakpoint(tablet-potrait-up) {
+      padding-left: 1.275em;
     }
   }
 

@@ -19,7 +19,7 @@
   &__dialog-box {
     position: relative;
     background: color(bv-white);
-    min-height: 15em;
+    min-height: 14em;
     width: 90%;
     max-width: 38em;
     padding: 1.35em 2.25em;
@@ -27,6 +27,7 @@
 
     &--md {
       max-width: 28.75em;
+      min-height: 10em;
       padding: 2em 1.5em;
       border-radius: 0.9rem;
       // display: flex;

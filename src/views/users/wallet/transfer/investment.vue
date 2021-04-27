@@ -4,9 +4,9 @@
       <h2 class="header "><b>Transfer Option Review</b></h2>
     </div>
 
-    <section class="mt-5 container-fluid mx-auto">
-      <div class="row ">
-        <div class="col-md-4" v-for="i in 3" :key="i">
+    <section class="mt-5  mx-auto">
+      <div class="row ml-2 ml-lg-0 ml-md-0">
+        <div class="col-md-4 col-12  col-lg-4" v-for="i in 3" :key="i">
           <listing-item slug="Cambridge Apartment" button-behaviour="custom" @button-clicked="handleClick">
             <template #image="slotProps">
               <img :class="slotProps.className" src="https://res.cloudinary.com/myyinvest/image/upload/v1618091853/listings/income-plan_ssaptk.png" alt="income plan" />
@@ -29,7 +29,8 @@
         </div>
       </div>
     </section>
-    <modal v-show="isModalVisible && !isContinue" size="xl" show-cancel>
+
+    <modal v-show="isModalVisible && !isContinue" show-cancel>
       <h3 class="text-main-red mt-4 ft-20 mx-auto text-center ">Investment Slots (CAMBRIDGE APARTMENT)</h3>
       <section class="mt-5">
         <h5 class="header mx-5 mb-5">Token Slot(s)</h5>

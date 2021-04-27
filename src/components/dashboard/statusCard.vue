@@ -59,7 +59,7 @@ ul {
 
   li {
     display: inline-block;
-    margin: 15px;
+    /*margin: 15px;*/
     border-radius: 50%;
 
     a {

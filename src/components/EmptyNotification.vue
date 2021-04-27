@@ -1,6 +1,6 @@
 <template>
   <div class="empty-notification">
-    <main-icon name="empty-noty" size="retain" class="empty-notification__icon" />\
+    <main-icon name="empty-noty" size="retain" class="empty-notification__icon" />
     <p class="empty-notification__text">No notifications yet</p>
   </div>
 </template>

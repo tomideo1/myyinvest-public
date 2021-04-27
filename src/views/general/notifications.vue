@@ -1,5 +1,5 @@
 <template>
-  <EmptyNotification v-if="false" />
+  <EmptyNotification v-if="notifications.length === 0" />
   <div class="notification-container" v-else>
     <NotificationItem @deleteNoty="deleteNotification(notification._id)" v-for="(notification, index) in notifications" :key="index" :notification-data="notification" />
   </div>

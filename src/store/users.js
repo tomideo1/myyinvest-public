@@ -7,6 +7,7 @@ const state = {
   userReferralDetails: {},
   bankList: [],
   userBanks: [],
+  userWallet: {},
   userNotifications: []
 };
 
@@ -37,6 +38,10 @@ const getters = {
 
   getUserNotifications(state) {
     return state.userNotifications;
+  },
+
+  getUserWallet(state) {
+    return state.userWallet;
   }
 };
 
@@ -67,6 +72,10 @@ const mutations = {
 
   setUserNotifications(state, data) {
     return (state.userNotifications = data);
+  },
+
+  setUserWallet(state, data) {
+    return (state.userWallet = data);
   }
 };
 
@@ -212,6 +221,11 @@ const actions = {
     const res = await Api.post(`notifications/${payload.id}/delete`, {}, true);
     dispatch("getAllUserNotifications", { page: 10 });
     return res.status === 200 || res.status === 201;
+  },
+
+  async getWalletBalance({ commit }) {
+    const res = await Api.get(`wallet/balance`, true);
+    commit("setUserWallet", res.data);
   }
 };
 

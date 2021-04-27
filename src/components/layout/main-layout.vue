@@ -16,7 +16,9 @@
         </a> -->
         <div class="sidebar-brand d-flex align-items-center justify-content-center" style="background: white!important;">
           <router-link class="sidebar__logo" to="/">
-            <main-icon size="lg" name="logo-min" />
+            <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614001064/mmyyinvest-2.0/logos/Myylogo2_uwpfw9.png" class="img-fluid" alt="dashboard_logo" />
+
+            <!--            <main-icon size="lg" name="logo-min" />-->
           </router-link>
         </div>
         <!-- eslint-disable -->

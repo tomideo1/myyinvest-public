@@ -1,29 +1,30 @@
 <template>
-  <div class="container-fluid">
-    <section class="container-fluid">
-      <div class="row m-4">
-        <div class="col-md-4 border-right">
-          <p class=" ft-14 font-weight-light">Wallet Balance</p>
+  <div class="container-fluid ">
+    <section>
+      <div class="row">
+        <div class="col-md-4 col-12 ">
+          <span class="border-right d-lg-block d-md-block d-none"></span>
+          <p class=" ft-14 font-weight-bold">Wallet Balance</p>
           <span class="d-flex flex-row">
             <p class="ft-20 font-weight-bold mr-2">&#8358;</p>
-            <p class="ft-20 mt-2 font-weight-bold ">567.00</p>
+            <p class="ft-36 mt-2 font-weight-bold ">567.00</p>
           </span>
         </div>
-        <div class="col-md-8  mt-5">
+        <div class="col-md-8 col-12  mt-5">
           <div class="row ml-auto">
-            <div class="col-md-6">
+            <div class="col-md-6 col-6">
               <main-button class="col-md-12 mb-4" @click="$router.push({ name: 'wallet-fund' })" type="filled" text="ADD FUNDS" />
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-6">
               <main-button class="col-md-12 mb-4" @click="$router.push({ name: 'wallet-transfer' })" type="outline" text="TRANSFER" />
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="container-fluid  mt-5">
+    <section class="  mt-5">
       <main-card class="card-border ">
-        <div class="row    ml-5  ">
+        <div class="row ml-lg-5 ml-md-5  ">
           <div class="col-md-3">
             <span class="d-flex flex-column">
               <p class="ft-14 text-grey-500 ">Bank</p>
@@ -49,13 +50,13 @@
         </div>
       </main-card>
     </section>
-    <section class="container-fluid mt-5">
+    <section class=" mt-5">
       <main-card class="card-border">
-        <div class="container-fluid p-3">
+        <div class=" p-lg-3 p-md-3 ">
           <div class="col-md-12 mb-4 border-bottom">
             <span class="d-flex flex-row">
               <p class="ft-14 line-height-default font-weight-normal text-black">Activity</p>
-              <p class="ml-auto ft-14 text-main-red">VIEW ALL</p>
+              <router-link to="/user/transactions" class="ml-auto ft-14 text-main-red cursor-pointer">VIEW ALL</router-link>
             </span>
           </div>
 
@@ -95,7 +96,7 @@ export default {
   font-family: fonts(nunito), serif;
 }
 .card-border {
-  border: 1px solid #e5e5e5 !important;
+  border: 1px solid color(main-red) !important;
   box-sizing: border-box !important;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.05) !important;
   border-radius: 10px !important;

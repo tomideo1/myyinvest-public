@@ -69,7 +69,7 @@ export default {
       type: Object,
       default: () => {
         return {
-          isVisible: false,
+          isVisible: true,
           size: null
         };
       }

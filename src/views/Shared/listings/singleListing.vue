@@ -13,7 +13,7 @@
         <p class="lst-modal__title">Income Plan</p>
         <div class="lst-modal__input-container">
           <MainInput type="number" label="Tokens" v-model="tokens" class="lst-modal__input" />
-          <MainInput type="number" label="Amount (N)" :disable="true" :value="tokens * 10000" class="lst-modal__input" />
+          <MainInput type="number" label="Amount (N)" :disable="true" :value="tokens * 5000" class="lst-modal__input" />
         </div>
         <button type="button" class="lst-modal__btn" :disabled="tokens <= 0" @click="transactionStep++">
           <span>Continue</span>
@@ -65,11 +65,43 @@
       </template>
       <template v-if="transactionStep === 4">
         <p class="lst-modal__title">Review Plan</p>
-        <div class="lst-modal__summary">
-          <div>
-            <p>Income Plan</p>
+        <div class="lst-review">
+          <div class="lst-review__header">
+            <span class="lst-review__title">Income Plan</span>
+            <div class="lst-review__amount">
+              <MainIcon name="naira" size="xs" />
+              <span>{{ tokens * 5000 }}</span>
+            </div>
+            <span class="lst-review__date">by 23rd October, 2021</span>
           </div>
-          <div></div>
+          <div class="lst-review__content">
+            <div class="lst-review__data">
+              <div class="lst-review__sub-title">Value of Tokens</div>
+              <div class="lst-review__value"></div>
+            </div>
+            <div class="lst-review__data">
+              <div class="lst-review__sub-title">Number of Tokens</div>
+              <div class="lst-review__value"></div>
+            </div>
+            <div class="lst-review__data">
+              <div class="lst-review__sub-title">Payment Frequency</div>
+              <div class="lst-review__value"></div>
+            </div>
+            <div class="lst-review__data">
+              <div class="lst-review__sub-title">
+                <span>Holding Period</span>
+                <MainIcon name="tooltip" size="xs" />
+              </div>
+              <div class="lst-review__value"></div>
+            </div>
+            <div class="lst-review__data">
+              <div class="lst-review__sub-title">
+                <span>Return on Investment</span>
+                <MainIcon name="tooltip" size="xs" />
+              </div>
+              <div class="lst-review__value"></div>
+            </div>
+          </div>
         </div>
         <button type="button" class="lst-modal__btn lst-modal__btn--red">
           <span>pay now</span>

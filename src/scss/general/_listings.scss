@@ -388,6 +388,41 @@
   }
 }
 
+.lst-review {
+  margin-bottom: 1.5em;
+
+  &__header {
+    margin: 1em 0;
+  }
+
+  &__title {
+    font-size: 0.95em;
+  }
+
+  &__amount {
+    // border: 1px solid green;
+    @include flex-center;
+    color: color(main-red);
+    font-size: 1.4em;
+    font-weight: 700;
+  }
+
+  &__date {
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+
+  &__content {
+    padding: 0 1em;
+    border: 1px solid blue;
+  }
+
+  &__data {
+    padding-bottom: 0.55em;
+    border-bottom: 1px solid #bfbfbf;
+  }
+}
+
 // .lst-modal {
 //   position: fixed;
 //   top: 0;

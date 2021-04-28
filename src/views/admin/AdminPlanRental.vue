@@ -3,7 +3,7 @@
     <p class="main-title">Rental Plan</p>
     <section>
       <nav class="tab-nav">
-        <div :class="[{ 'is-active': index === currentIndex }]" @click="changeTab(tab.id, index)" v-for="(tab, index) in tabs" :key="tab.id">{{ tab.name }}</div>
+        <div :class="[{ 'is-active': index === currentIndex }]" tabindex="0" @click="changeTab(tab.id, index)" v-for="(tab, index) in tabs" :key="tab.id">{{ tab.name }}</div>
       </nav>
 
       <section class="main-content">

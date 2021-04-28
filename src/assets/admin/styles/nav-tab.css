@@ -1,3 +1,8 @@
+*:focus {
+  outline: none !important;
+  border-color: var(--myyinvest-red) !important;
+}
+
 .plan_header {
   display: flex;
   justify-content: space-between;
@@ -12,10 +17,6 @@
 }
 
 .plan_header button:hover {
-  /* color: var(--myyinvest-red);
-  border-color: var(--myyinvest-red);
-  background-color: #ffffff; */
-  /* box-shadow: 0px 8.67606px 8.67606px rgba(0, 0, 0, 0.05); */
   box-shadow: 2px 2px 6px 0 #bebebe, -2px -2px 6px 0 #ffffff;
   transform: scale(1.02);
 }
@@ -30,6 +31,7 @@ nav.tab-nav {
   align-items: center;
   text-align: center;
   background-color: var(--myyinvest-white);
+  z-index: 1 !important;
 }
 
 /* nav.tab-nav {
@@ -50,7 +52,7 @@ nav.tab-nav div {
 }
 
 nav.tab-nav div:hover {
-  border-color: gray;
+  border-color: rgba(0, 0, 0, 0.25);
   cursor: pointer;
 }
 

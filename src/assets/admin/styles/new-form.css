@@ -21,29 +21,30 @@ article.form {
 }
 
 .plan_image {
-  width: 200px;
-  height: 250px;
+  position: relative;
+  width: 240px;
+  height: 200px;
   border-radius: var(--base-size);
-  /* background-image: url("../images/rental-plan.jpg"); */
   background-repeat: no-repeat;
   background-size: contain;
   background-origin: border-box;
   -webkit-background-origin: border-box;
   -moz-background-origin: border-box;
-  /* background-position: 0 100%; */
+  background-position: 0 0;
+  /* z-index: -1; */
   box-shadow: 0px 16px 16px rgba(0, 0, 0, 0.1);
 }
 
-.plan_image .income-image {
-  background-image: url("../images/income-plan.jpg");
-}
-
-.plan_image .rental-image {
-  background-image: url("../images/rental-plan.jpg");
-}
-
-.plan_image .special-image {
-  background-image: url("../images/special-plan.jpg");
+.plan-title {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: fit-content;
+  width: -moz-fit-content;
+  width: max-content;
+  font-size: var(--font-xxl);
+  font-weight: 600;
+  transform: translate(-50%, -50%);
 }
 
 .plan_inputs-group {
@@ -71,18 +72,21 @@ article.form {
 
 .plan_form-area input,
 .plan_form-area textarea {
-  border: 2px solid gray;
+  border: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 .plan_form-area input:hover,
-textarea:hover {
-  border-color: var(--myyinvest-red);
+.plan_form-area input:focus,
+.plan_form-area textarea:hover,
+.plan_form-area textarea:focus {
+  /* outline: none; */
+  border-color: var(--myyinvest-red) !important;
 }
 
 .plan_form-area .upload-wrapper {
   position: relative;
   margin-top: 10px;
-  z-index: -1;
+  /* z-index: -1; */
 }
 
 /* .plan_form-area .upload {

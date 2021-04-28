@@ -30,6 +30,7 @@ import TheSideNav from "@/components/layout/admin/TheSideNav.vue";
 import "@/assets/admin/styles/layout.css";
 import "@/assets/admin/styles/table.css";
 import "@/assets/admin/styles/form.css";
+import "@/assets/admin/styles/invalid-form.css";
 
 export default {
   name: "AdminLayout",
@@ -60,112 +61,8 @@ export default {
 };
 </script>
 
-// src="@/assets/admin/styles/admin-layout.css"
 <style scoped>
 main article {
   height: 85vh;
-}
-
-.invalid-form {
-  animation: kf_shake 0.4s 1 linear;
-  -webkit-animation: kf_shake 0.4s 1 linear;
-  -moz-animation: kf_shake 0.4s 1 linear;
-  -o-animation: kf_shake 0.4s 1 linear;
-}
-
-input {
-  border: 2px solid currentcolor;
-}
-
-input:invalid {
-  border: 2px dashed red;
-}
-
-input:invalid:focus {
-  background-image: linear-gradient(pink, lightgreen);
-}
-
-@keyframes kf_shake {
-  0% {
-    transform: translate(30px);
-  }
-  20% {
-    transform: translate(-30px);
-  }
-  40% {
-    transform: translate(15px);
-  }
-  60% {
-    transform: translate(-15px);
-  }
-  80% {
-    transform: translate(8px);
-  }
-  100% {
-    transform: translate(0px);
-  }
-}
-
-@-webkit-keyframes kf_shake {
-  0% {
-    -webkit-transform: translate(30px);
-  }
-  20% {
-    -webkit-transform: translate(-30px);
-  }
-  40% {
-    -webkit-transform: translate(15px);
-  }
-  60% {
-    -webkit-transform: translate(-15px);
-  }
-  80% {
-    -webkit-transform: translate(8px);
-  }
-  100% {
-    -webkit-transform: translate(0px);
-  }
-}
-
-@-moz-keyframes kf_shake {
-  0% {
-    -moz-transform: translate(30px);
-  }
-  20% {
-    -moz-transform: translate(-30px);
-  }
-  40% {
-    -moz-transform: translate(15px);
-  }
-  60% {
-    -moz-transform: translate(-15px);
-  }
-  80% {
-    -moz-transform: translate(8px);
-  }
-  100% {
-    -moz-transform: translate(0px);
-  }
-}
-
-@-o-keyframes kf_shake {
-  0% {
-    -o-transform: translate(30px);
-  }
-  20% {
-    -o-transform: translate(-30px);
-  }
-  40% {
-    -o-transform: translate(15px);
-  }
-  60% {
-    -o-transform: translate(-15px);
-  }
-  80% {
-    -o-transform: translate(8px);
-  }
-  100% {
-    -o-origin-transform: translate(0px);
-  }
 }
 </style>

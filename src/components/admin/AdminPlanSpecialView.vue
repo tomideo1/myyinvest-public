@@ -1,56 +1,77 @@
 <template>
   <section class="main-wrapper">
     <article class="form">
-      <form :class="[!validForm ? 'invalid-form' : '', 'plan_form-area view-form']" @submit.prevent="submit">
-        <section class="plan_image special-image">
-          <!-- <img src="@/assets/admin/images/special-plan.jpg" alt="Plan Image" /> -->
-        </section>
-
-        <section class="plan_inputs-group">
-          <div>
-            <fieldset class="input-grp">
-              <label for="min_investment">Minimum Investment</label>
-              <input type="text" id="min_investment" placeholder="Minimum Investment" minlength="3" required v-model.trim.lazy="min_investment" />
-            </fieldset>
-
-            <fieldset class="input-grp">
-              <label for="holding_period">Holding/Ownership Period</label>
-              <input type="text" id="holding_period" placeholder="Holding/Ownership Period" minlength="3" required v-model.trim.lazy="holding_period" />
-            </fieldset>
-
-            <fieldset class="input-grp">
-              <label for="gov_body">Governance Body</label>
-              <input type="text" id="gov_body" placeholder="Governance Body" minlength="3" required v-model.trim.lazy="gov_body" />
-            </fieldset>
-
-            <fieldset class="input-grp">
-              <label for="document1">Document 1</label>
-              <input type="file" id="document1" placeholder="Document 1" minlength="3" required />
-            </fieldset>
-
-            <fieldset class="input-grp">
-              <label for="document2">Document 2</label>
-              <input type="file" id="document2" placeholder="Document 2" minlength="3" required />
-            </fieldset>
+      <form :class="[!validForm ? 'invalid-form' : '', '']" @submit.prevent="submit">
+        <section class="plan_form-area view-form">
+          <div class="plan_image special-image">
+            <div class="plan-title">Special Plan</div>
           </div>
 
+          <div class="plan_inputs-group">
+            <div>
+              <fieldset class="input-grp">
+                <label for="min_investment">Minimum Investment</label>
+                <input type="text" id="min_investment" placeholder="Minimum Investment" minlength="3" required v-model.trim.lazy="minInvestment" />
+              </fieldset>
+
+              <fieldset class="input-grp">
+                <label for="holding_period">Holding/Ownership Period</label>
+                <input type="text" id="holding_period" placeholder="Holding/Ownership Period" minlength="3" required v-model.trim.lazy="holdingPeriod" />
+              </fieldset>
+
+              <fieldset class="input-grp">
+                <label for="gov_body">Governance Body</label>
+                <input type="text" id="gov_body" placeholder="Governance Body" minlength="3" required v-model.trim.lazy="govBody" />
+              </fieldset>
+            </div>
+
+            <div>
+              <fieldset class="input-grp">
+                <label for="document1">Document 1</label>
+                <input
+                  type="file"
+                  accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                  id="document1"
+                  placeholder="Document 1"
+                  minlength="3"
+                  required
+                />
+              </fieldset>
+
+              <fieldset class="input-grp">
+                <label for="document2">Document 2</label>
+                <input
+                  type="file"
+                  accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                  id="document2"
+                  placeholder="Document 2"
+                  minlength="3"
+                  required
+                />
+              </fieldset>
+
+              <fieldset class="input-grp">
+                <label for="p_returns">Fixed ROI/Rental Income</label>
+                <input type="text" id="p_returns" placeholder="Fixed ROI/Rental Income" minlength="3" required v-model.trim.lazy="pReturns" />
+              </fieldset>
+
+              <fieldset class="input-grp">
+                <label for="investment_purpose">Investment Purpose</label>
+                <input type="text" id="investment_purpose" placeholder="Investment Purpose" minlength="3" required v-model.trim.lazy="investmentPurpose" />
+              </fieldset>
+            </div>
+          </div>
+        </section>
+
+        <section class="plan_form-area view-form">
+          <div></div>
+
           <div>
-            <fieldset class="input-grp">
-              <label for="p_returns">Fixed ROI/Rental Income</label>
-              <input type="text" id="p_returns" placeholder="Fixed ROI/Rental Income" minlength="3" required v-model.trim.lazy="p_returns" />
-            </fieldset>
-
-            <fieldset class="input-grp">
-              <label for="investment_purpose">Investment Purpose</label>
-              <input type="text" id="investment_purpose" placeholder="Investment Purpose" minlength="3" required v-model.trim.lazy="investment_purpose" />
-            </fieldset>
-
             <fieldset class="input-grp">
               <label for="about">About</label>
               <textarea name="" id="about" placeholder="About" cols="30" rows="10" minlength="3" required v-model.trim.lazy="about"></textarea>
             </fieldset>
 
-            <!-- <button class="button-edit">Edit</button> -->
             <div class="submit-area">
               <p class="warning" v-if="!validForm">Kindly fill the form correctly.</p>
               <button class="submit" type="submit" @click.prevent="submit" :disabled="submitStatus === 'PENDING'">Edit</button>
@@ -95,26 +116,98 @@
 import "@/assets/admin/styles/new-form.css";
 import "@/assets/admin/styles/new-table.css";
 
+import { required } from "vuelidate/lib/validators";
+
 export default {
   name: "AdminPlanSpecialView",
 
   metaInfo: {
     title: "Myyinvest - Plan > View Special (Admin)",
     titleTemplate: null
+  },
+
+  data() {
+    return {
+      minInvestment: "",
+      holdingPeriod: "",
+      govBody: "",
+      // updateFilename1: "",
+      // updateFilename2: "",
+      pReturns: "",
+      investmentPurpose: "",
+      about: "",
+
+      selectedFilename: "No file selected",
+      selectedFilename1: "No file selected",
+      selectedFilename2: "No file selected",
+
+      submitStatus: null,
+      validForm: true,
+      btnMsg: "ADD"
+    };
+  },
+
+  validations: {
+    minInvestment: {
+      required
+    },
+
+    holdingPeriod: {
+      required
+    },
+
+    govBody: {
+      required
+    },
+
+    updateFilename1: {
+      required
+    },
+
+    updateFilename2: {
+      required
+    },
+
+    pReturns: {
+      required
+    },
+
+    investmentPurpose: {
+      required
+    },
+
+    about: {
+      required
+    }
+  },
+
+  methods: {
+    submit() {
+      console.log("submitting...");
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        this.submitStatus = "ERROR";
+        this.validForm = false;
+
+        setTimeout(() => {
+          this.validForm = true;
+        }, 2000);
+      } else {
+        // do your submit logic here
+        this.submitStatus = "PENDING";
+        this.btn_msg = "SUBMITTING";
+        setTimeout(() => {
+          this.submitStatus = "OK";
+        }, 500);
+      }
+    }
   }
 };
 </script>
 
 <style scoped>
-.plan_image {
-  /* background-image: url("../assets/admin/images/special-plan.jpg"); */
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-origin: border-box;
-  -webkit-background-origin: border-box;
-  -moz-background-origin: content-box;
-  background-position: 0 100%;
-  /* src/assets/admin/images/nav-background.svg */
+.plan_image.special-image {
+  background-image: url("../../assets/admin/images/special-plan.jpg");
 }
 
 .new-table .table-row div {

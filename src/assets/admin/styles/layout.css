@@ -1,11 +1,13 @@
 @import url("./base.css");
 
 *:focus:not(:-moz-focusring) {
-  outline: none;
+  /* outline: none !important; */
+  border-color: var(--myyinvest-red) !important;
 }
 
 *:focus:not(:focus-visible) {
-  outline: none;
+  /* outline: none !important; */
+  border-color: var(--myyinvest-red) !important;
 }
 
 .main-wrap {

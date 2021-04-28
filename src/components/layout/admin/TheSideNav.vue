@@ -12,64 +12,53 @@
       <img src="@/assets/admin/icons/user.svg" alt="User icon" class="icon" />
       <span>Users</span>
     </router-link>
-    <!-- <router-link to="/admin/plans" class="main-route">
-      <img src="@/assets/admin/icons/checklist.svg" alt="Plans icon" class="icon" />
-      <span>Plans</span>
-    </router-link> -->
-    <div :class="[myPath('/admin/plan/'), 'main-route']" @click="noPlan = !noPlan">
+    <div :class="[myPath('/admin/plan/'), 'main-route']" tabindex="0" @click="noPlan = !noPlan">
       <img src="@/assets/admin/icons/checklist.svg" alt="Plans icon" class="icon" />
       <span>Plans</span>
     </div>
     <div class="sub-nav" v-if="!noPlan">
       <transition-group name="slide">
-        <router-link to="/admin/plan/income" key="pIncome"><span></span> Income Plan</router-link>
-        <router-link to="/admin/plan/rental" key="pRental"><span></span> Rental Plan</router-link>
-        <router-link to="/admin/plan/special" key="pSpecial"><span></span> Special Plan</router-link>
+        <router-link v-for="plan in plans" :to="plan.route" :key="plan.key"><span></span> {{ plan.title }} Plan</router-link>
       </transition-group>
     </div>
     <router-link to="/admin/special-form" class="main-route">
       <img src="@/assets/admin/icons/special.svg" alt="Special Form icon" class="icon" />
       <span>Special Form</span>
     </router-link>
-    <div :class="[myPath('/admin/finance/'), 'main-route']" @click="noFinance = !noFinance">
+    <div :class="[myPath('/admin/finance/'), 'main-route']" tabindex="0" @click="noFinance = !noFinance">
       <img src="@/assets/admin/icons/money.svg" alt="Transactions icon" class="icon" />
       <span>Financial Report</span>
     </div>
     <div class="sub-nav" v-if="!noFinance">
       <transition-group name="slide">
-        <router-link to="/admin/finance/transactions" key="aTransact"><span></span> Transactions</router-link>
-        <router-link to="/admin/finance/wallet-accounts" key="aWallet"><span></span> Wallet Accounts</router-link>
-        <router-link to="/admin/finance/bank-accounts" key="aBank"><span></span> Bank Accounts</router-link>
+        <router-link v-for="transaction in transactions" :to="transaction.route" :key="transaction.key"><span></span> {{ transaction.title }}</router-link>
       </transition-group>
     </div>
-    <div :class="[myPath('-insights'), 'main-route']" @click="noInsight = !noInsight">
+    <div :class="[myPath('-insights'), 'main-route']" tabindex="0" @click="noInsight = !noInsight">
       <img src="@/assets/admin/icons/window.svg" alt="Insight icon" class="icon" />
       <span>Insights</span>
     </div>
     <div class="sub-nav" v-if="!noInsight">
       <transition-group name="slide">
-        <router-link to="/admin/view-insights" key="vInsight"><span></span> View Insights</router-link>
-        <router-link to="/admin/add-insights" key="aInsight"><span></span> Add Insights</router-link>
+        <router-link v-for="insight in insights" :to="insight.route" :key="insight.key"><span></span> {{ insight.title }} Insights</router-link>
       </transition-group>
     </div>
-    <div :class="[myPath('-notification'), 'main-route']" @click="noNotification = !noNotification">
+    <div :class="[myPath('-notification'), 'main-route']" tabindex="0" @click="noNotification = !noNotification">
       <img src="@/assets/admin/icons/bell.svg" alt="Notifications icon" class="icon" />
       <span>Notifications</span>
     </div>
     <div class="sub-nav" v-if="!noNotification">
       <transition-group name="slide">
-        <router-link to="/admin/view-notifications" key="vNotif"><span></span> View Notifications</router-link>
-        <router-link to="/admin/add-notifications" key="aNotif"><span></span> Add Notifications</router-link>
+        <router-link v-for="notif in notifications" :to="notif.route" :key="notif.key"><span></span> {{ notif.title }} Notifications</router-link>
       </transition-group>
     </div>
-    <div :class="[myPath('-faqs'), 'main-route']" @click="noFaq = !noFaq">
+    <div :class="[myPath('-faqs'), 'main-route']" tabindex="0" @click="noFaq = !noFaq">
       <img src="@/assets/admin/icons/phone.svg" alt="Talk to us icon" class="icon" />
       <span>FAQ</span>
     </div>
     <div class="sub-nav" v-if="!noFaq">
       <transition-group name="slide">
-        <router-link to="/admin/view-faqs" key="vFaq"><span></span> View FAQ</router-link>
-        <router-link to="/admin/add-faqs" key="aFaq"><span></span> Add FAQ</router-link>
+        <router-link v-for="faq in faqs" :to="faq.route" :key="faq.key"><span></span> {{ faq.title }} FAQ</router-link>
       </transition-group>
     </div>
     <router-link to="/admin/newsletters" class="main-route">
@@ -88,8 +77,100 @@ export default {
       noFaq: true,
       noNotification: true,
       noFinance: true,
-      noPlan: true
-      // noUser: true,
+      noPlan: true,
+      plans: [
+        {
+          route: "/admin/plan/add",
+          key: "pAdd",
+          title: "Add"
+        },
+
+        {
+          route: "/admin/plan/income",
+          key: "pIncome",
+          title: "Income"
+        },
+
+        {
+          route: "/admin/plan/rental",
+          key: "pRental",
+          title: "Rental"
+        },
+
+        {
+          route: "/admin/plan/special",
+          key: "pSpecial",
+          title: "Special"
+        }
+      ],
+
+      transactions: [
+        {
+          route: "/admin/finance/transactions",
+          key: "aTransact",
+          title: "Transactions"
+        },
+
+        {
+          route: "/admin/finance/wallet-accounts",
+          key: "aWallet",
+          title: "Wallet Accounts"
+        },
+
+        {
+          route: "/admin/finance/bank-accounts",
+          key: "aBank",
+          title: "Bank Accounts"
+        },
+
+        {
+          route: "/admin/finance/refer-and-earn",
+          key: "aRefer",
+          title: "Refer and Earn"
+        }
+      ],
+
+      insights: [
+        {
+          route: "/admin/view-insights",
+          key: "vInsight",
+          title: "View"
+        },
+
+        {
+          route: "/admin/add-insights",
+          key: "aInsight",
+          title: "Add"
+        }
+      ],
+
+      notifications: [
+        {
+          route: "/admin/view-notifications",
+          key: "vNotification",
+          title: "View"
+        },
+
+        {
+          route: "/admin/add-notifications",
+          key: "aNotification",
+          title: "Add"
+        }
+      ],
+
+      faqs: [
+        {
+          route: "/admin/view-faqs",
+          key: "vFaq",
+          title: "View"
+        },
+
+        {
+          route: "/admin/add-faqs",
+          key: "aFaq",
+          title: "Add"
+        }
+      ]
     };
   },
 
@@ -110,6 +191,11 @@ export default {
 </script>
 
 <style scoped>
+*:focus {
+  outline: none;
+  border-color: var(--myyinvest-red) !important;
+}
+
 .menu {
   display: flex;
   flex-direction: column;

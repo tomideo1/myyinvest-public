@@ -7,6 +7,13 @@ const routeOptions = [
     }
   },
   {
+    path: "/admin/plan/add",
+    name: "AdminPlanAdd",
+    meta: {
+      layout: "AdminLayout"
+    }
+  },
+  {
     path: "/admin/plan/income",
     name: "AdminPlanIncome",
     meta: {

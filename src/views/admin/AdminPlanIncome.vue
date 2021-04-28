@@ -2,12 +2,12 @@
   <section class="main-wrapper">
     <div class="plan_header">
       <p class="main-title">Income Plan</p>
-      <button>Delete</button>
+      <button @click="deleteItem">Delete</button>
     </div>
 
     <section>
       <nav class="tab-nav">
-        <div :class="[{ 'is-active': index === currentIndex }]" @click="changeTab(tab.id, index)" v-for="(tab, index) in tabs" :key="tab.id">{{ tab.name }}</div>
+        <div :class="[{ 'is-active': index === currentIndex }]" tabindex="0" @click="changeTab(tab.id, index)" v-for="(tab, index) in tabs" :key="tab.id">{{ tab.name }}</div>
       </nav>
 
       <section class="main-content">
@@ -51,6 +51,10 @@ export default {
   },
 
   methods: {
+    deleteItem() {
+      alert("DELETE");
+    },
+
     changeTab(id, index) {
       this.selectedIndex = index;
       this.currentTab = id;

@@ -1,22 +1,24 @@
 <template>
-  <the-admin-layout>
+  <div>
     <div class="main-content">
-      <section class="content-titles">
+      <section class="table content-titles">
         <div class="sn">S/N</div>
-        <div class="name">Post Name</div>
-        <div class="author">Written by</div>
+        <div class="title-p">Post Name</div>
+        <div class="image">Post Image</div>
         <div class="content">Post Content</div>
         <div class="date">Post Date</div>
         <div class="options"></div>
       </section>
 
-      <section class="contents" v-for="x in 10" :key="x">
-        <div class="sn">{{ zeroPrefix(x) }}{{ x }}</div>
-        <div class="name">How to invest seamlessly in Real Estate</div>
-        <div class="author">Valentine Offiah</div>
+      <section class="table contents" v-for="x in 10" :key="x">
+        <div class="sn">{{ formatNum(x) }}</div>
+        <div class="title-p">How to invest seamlessly in Real Estate</div>
+        <div class="image">
+          <img src="@/assets/admin/images/dummy-img.jpg" alt="Content Image" />
+        </div>
         <div class="content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus alias qui excepturi obcaecati, facere fugit asperiores perspiciatis ipsam earum, nihil iusto, numquam quo. Earum tempore a,
-          ut odio debitis repellendus.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, accusamus. Reiciendis assumenda quae quod labore sit ut earum quos, voluptatem, cupiditate culpa magnam? Consectetur provident
+          odio optio omnis, accusamus dolor.
         </div>
         <div class="date">17th Feb. 2021</div>
         <div class="options">
@@ -42,8 +44,8 @@
               </svg>
             </svg>
           </span>
-          <span @click="deleteItem">
-            <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000">
+          <span>
+            <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000" @click="deleteItem">
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="14">
                 <path
                   paint-order="stroke fill markers"
@@ -57,101 +59,65 @@
       </section>
     </div>
 
-    <div class="pagination">
-      <button>Previous</button>
-      <button v-for="n in 5" :key="n" :class="[n === currentPage ? 'button-active' : '']">{{ n }}</button>
-      <button>Next</button>
-    </div>
+    <base-pagination :currentPage="currentPage" />
 
-    <div class="delete-overlay" v-if="!noDeleteModal">
-      <div class="delete-modal">
-        <p>Delete post</p>
-        <p>Are you sure you want to delete post?</p>
-        <div>
-          <button @click="cancelDelete">Cancel</button>
-          <button @click="proceedDelete">Proceed</button>
-        </div>
-      </div>
-    </div>
-  </the-admin-layout>
+    <base-delete-modal :noDeleteModal="noDeleteModal" @closeModal="closeModal" v-if="!noDeleteModal" />
+  </div>
 </template>
 
 <script>
+import BasePagination from "@/components/admin/BasePagination.vue";
+import BaseDeleteModal from "@/components/admin/BaseDeleteModal.vue";
+
 export default {
-  name: "ViewFaqs",
+  name: "AdminNotificationView",
 
   metaInfo: {
-    title: "Myyinvest - View FAQs (Admin)",
+    title: "Myyinvest - View Notifications (Admin)",
     titleTemplate: null
   },
 
+  components: { BasePagination, BaseDeleteModal },
+
   data() {
     return {
+      status: "Published",
       currentPage: 1,
       noDeleteModal: true
     };
   },
 
   methods: {
-    zeroPrefix(num) {
-      if (num < 10) {
-        return 0;
-      } else return "";
-    },
-
     deleteItem() {
       this.noDeleteModal = !this.noDeleteModal;
     },
 
-    cancelDelete() {
+    closeModal() {
       this.noDeleteModal = !this.noDeleteModal;
-    },
-
-    proceedDelete() {
-      alert("What next?");
     }
   }
 };
 </script>
 
 <style scoped>
-.main-content {
-  padding: 1px;
-  overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.main-content::-webkit-scrollbar {
-  display: none;
-}
-
-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 10px 5px;
-  box-shadow: 0 0 2px 0 gray;
-  border-radius: 5px;
-}
-
-section:not(:last-child) {
-  margin-bottom: var(--base-size);
-}
-
 section div {
   display: flex;
   justify-content: center;
-  width: 16%;
+  width: 20%;
   padding: 2px;
 }
 
 section div.sn {
-  width: 6%;
+  width: 8%;
 }
 
 section div.content {
-  width: 30%;
+  width: 36%;
+}
+
+section div.image,
+section div.options {
+  width: 18%;
 }
 
 section:first-child {
@@ -170,10 +136,6 @@ section:first-child div {
   font-weight: 600;
 }
 
-section:not(:first-child) div.status {
-  color: var(--myyinvest-red);
-}
-
 section div img {
   width: 100%;
   height: 60px;
@@ -181,97 +143,5 @@ section div img {
 
 div.options {
   justify-content: space-around !important;
-}
-
-.pagination {
-  display: flex;
-  justify-content: right;
-  align-items: center;
-  margin-top: var(--base-size);
-}
-
-.pagination button {
-  padding: 5px 10px;
-  border: 1px solid var(--myyinvest-red);
-  border-radius: 5px;
-  color: var(--myyinvest-red);
-  background-color: var(--myinvest-white);
-}
-
-.pagination button:first-child {
-  margin-left: auto;
-}
-
-.pagination button:not(:first-child) {
-  margin-left: 10px;
-}
-
-.pagination button:hover,
-.pagination button:focus,
-.pagination .button-active {
-  background-color: var(--myyinvest-red);
-  color: var(--myyinvest-white);
-}
-
-.delete-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  /* opacity: 0.5; */
-  z-index: 1111;
-}
-
-.delete-modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 350px;
-  height: 250px;
-  padding: calc(2 * var(--base-size));
-  border-radius: 10px;
-  background-color: var(--myyinvest-white);
-  transform: translate(-50%, -50%);
-}
-
-.delete-modal p {
-  font-size: var(--font-md);
-  font-weight: 600;
-  text-align: center;
-}
-
-.delete-modal p:first-child {
-  margin-bottom: var(--base-size);
-  color: var(--myyinvest-red);
-}
-
-.delete-modal p:nth-child(2) {
-  margin: var(--base-size) 0;
-}
-
-.delete-modal div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: var(--base-size);
-}
-
-.delete-modal div button {
-  padding: 5px;
-  border: 2px solid var(--myyinvest-red);
-  color: var(--myyinvest-red);
-  font-weight: 600;
-  border-radius: 5px;
-  background-color: var(--myyinvest-white);
-}
-
-.delete-modal div button:hover,
-.delete-modal div button:focus {
-  border: 2px solid transparent;
-  color: var(--myyinvest-white);
-  background-color: var(--myyinvest-red);
 }
 </style>

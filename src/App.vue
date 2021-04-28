@@ -9,12 +9,15 @@
       </div>
     </modal>
 
-    <router-view />
+    <admin-layout-wrapper>
+      <router-view />
+    </admin-layout-wrapper>
   </div>
 </template>
 
 <script>
 import Modal from "./components/Shared/modal";
+import AdminLayoutWrapper from "@/layouts/AdminLayoutWrapper.vue";
 export default {
   data() {
     return {
@@ -27,7 +30,7 @@ export default {
       }
     };
   },
-  components: { Modal },
+  components: { Modal, AdminLayoutWrapper },
 
   methods: {
     showModal() {

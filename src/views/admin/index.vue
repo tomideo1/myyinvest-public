@@ -1,10 +1,46 @@
 <template>
-  <the-admin-layout>
-    <p>Overview</p>
-  </the-admin-layout>
+  <section class="main-wrapper">
+    <article>
+      <p class="main-title">Overview</p>
+      <div class="card-wrapper">
+        <div class="card" v-for="item in cards" :key="item.title">
+          <div class="card-title">
+            <span class="name">{{ item.title }}</span>
+            <span class="icon">Icon</span>
+            <!-- <img src="" alt=""> -->
+          </div>
+          <div class="card-value">{{ item.value }}</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="new-table">
+      <p class="title">Latest Users</p>
+      <div class="table">
+        <div class="table-title table-row">
+          <div class="sn">SN</div>
+          <div class="fullname">Full Name</div>
+          <div class="tokens">Tokens</div>
+          <div class="project">Project</div>
+          <div class="project-duration">Project Duration</div>
+          <div class="frequency-duration">Frequency Duration</div>
+        </div>
+        <div class="table-content table-row" v-for="x in 50" :key="x">
+          <div class="sn">{{ formatNum(x) }}</div>
+          <div class="fullname">John Doe</div>
+          <div class="tokens">5</div>
+          <div class="project">Project {{ x }}</div>
+          <div class="project-duration">1 year</div>
+          <div class="frequency-duration">Frequency</div>
+        </div>
+      </div>
+    </article>
+  </section>
 </template>
 
 <script>
+import "@/assets/admin/styles/new-table.css";
+
 export default {
   name: "AdminOverview",
 
@@ -15,73 +51,124 @@ export default {
       lang: "en",
       amp: true
     }
+  },
+
+  data() {
+    return {
+      cards: [
+        {
+          title: "No of Users",
+          icon: "",
+          value: 5000
+        },
+        {
+          title: "No of Newsletters",
+          icon: "",
+          value: 10000
+        },
+        {
+          title: "Total Transactions",
+          icon: "",
+          value: 100000
+        },
+        {
+          title: "No of Sent Notifications",
+          icon: "",
+          value: 10000
+        },
+        {
+          title: "No of Uploaded",
+          icon: "",
+          value: 10000
+        }
+      ]
+    };
   }
 };
 </script>
 
 <style scoped>
-div.body {
-  margin: 0;
-  border: 0;
-  font-size: var(--font-normal);
+.overview-wrapper {
+  position: relative;
+}
+
+/* .main-title {
+  font-size: var(--font-xxl) !important;
+  color: var(--myyinvest-red);
+} */
+
+.card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--base-size);
+}
+
+.card {
+  padding: var(--base-size);
+  border-radius: 10px;
+  /* box-shadow: 1px 1px 3px 0 #bebebe, -1px -1px 3px 0 #ffffff; */
+  box-shadow: 0px 8.67606px 8.67606px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+  transform: scale(1.02);
+  z-index: auto;
+  /* box-shadow: 2px 2px 6px 0 #bebebe, -2px -2px 6px 0 #ffffff; */
+}
+
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: gray;
+}
+
+.card-value {
+  font-size: var(--font-xxx) !important;
+}
+
+/* .new-table {
+  margin-top: var(--base-size);
+}
+
+.new-table p.title {
+  font-size: var(--font-lg) !important;
+  color: var(--myyinvest-black);
+  font-weight: 600;
+}
+
+.new-table .table-title {
+  position: sticky;
+  position: -webkit-sticky;
+  top: -10px !important;
+  font-size: var(--font-md) !important;
+  font-weight: 600;
+  color: var(--myyinvest-red);
+  border: 2px solid var(--myyinvest-red);
   background-color: var(--myyinvest-white);
 }
 
-main {
-  display: grid;
-  grid-template-columns: 20% 80%;
-}
-
-nav.top-nav {
-  height: var(--topnav-height);
-  box-shadow: 2px 0 2px 0 gray;
-}
-
-main {
-  min-height: calc(100vh - var(--topnav-height));
-}
-
-main nav.side-nav {
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
-  padding-bottom: 100px;
-  color: var(--myyinvest-red);
-  box-shadow: 0 2px 2px 0 gray;
-  font-weight: bold;
-  background-image: url("/assets/admin/images/nav-background.svg");
-  background-repeat: no-repeat;
-  background-position: 100% 120%;
-  background-origin: border-box;
-  background-size: auto;
-}
-
-main article {
-  padding: 10px;
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-  margin: 60px 20px;
-  box-shadow: 0 0 2px 0 gray;
-  border-radius: 10px;
-}
-
-main article .content-wrapper {
+.new-table .table-row {
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-  border: 1px solid var(--myyinvest-red);
-  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0;
 }
 
-@media only screen and (max-width: 425px) {
-  main {
-    grid-template-columns: 0 100%;
-  }
+.new-table .table-row:hover {
+  box-shadow: 2px 2px 6px #bebebe, -2px -2px 6px #ffffff;
+} */
 
-  nav.side-nav {
-    display: none;
-  }
+.new-table .table-row div {
+  width: 20%;
+  text-align: center;
+}
+
+.table-row div.sn {
+  width: 8%;
+}
+
+.table-row div.tokens {
+  width: 12%;
 }
 </style>

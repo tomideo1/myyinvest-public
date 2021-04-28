@@ -1,0 +1,66 @@
+.main-content::-webkit-scrollbar {
+  display: none;
+}
+
+section.table {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 5px;
+  box-shadow: 0 0 2px 0 gray;
+  border-radius: 5px;
+}
+
+section.table:not(:last-child) {
+  margin-bottom: var(--base-size);
+}
+
+section.table {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 5px;
+  box-shadow: 0 0 2px 0 gray;
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+
+section.table:first-child {
+  position: sticky;
+  position: -webkit-sticky;
+  top: -10px !important;
+  background-color: var(--myyinvest-white);
+}
+
+section.table.contents {
+  margin-bottom: var(--base-size);
+}
+
+section.table:first-child div {
+  color: gray;
+  font-weight: 600;
+}
+
+section.table:not(:last-child) {
+  margin-bottom: var(--base-size);
+}
+
+section.table:hover {
+  box-shadow: 2px 2px 6px #bebebe, -2px -2px 6px #ffffff;
+  cursor: pointer;
+}
+
+section.table div {
+  display: flex;
+  justify-content: center;
+  padding: 2px;
+}
+
+section.table div img {
+  width: 100%;
+  height: 60px;
+}
+
+div.options {
+  justify-content: space-around !important;
+}

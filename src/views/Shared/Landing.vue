@@ -7,11 +7,11 @@
             <div class="col-lg-6 col-md-6">
               <div class="d-flex flex-column position-absolute top-10">
                 <h1 class="text-main-red m-1  w-100 font-weight-bold text-bold">Build your Net worth</h1>
-                <transition-group tag="div" class="text-slider" name="slide">
-                  <div v-for="number in [currentList]" v-bind:key="number">
-                    <p class="text-main-red">{{ landingList[Math.abs(currentList) % landingList.length] }}</p>
-                  </div>
-                </transition-group>
+                <p class="text-main-red ">
+                  <span class="text_1">Through Fractional Real Estate Investment</span>
+                  <span class="text_2">Through Non Real Estate Investment and Stuff</span>
+                </p>
+                <!-- <p class="text-main-red">{{ landingList[Math.abs(currentList) % landingList.length] }}</p> -->
                 <div class="d-flex flex-row  ">
                   <main-button text="GET STARTED" size="md" class="mr-4 shadow-3" @click="goToLogin" />
                   <main-button type="outline" text="WATCH NOW &#160; &#160; &#x25B6;" size="md" class="" />
@@ -370,11 +370,11 @@
             <div class="">
               <div class="d-flex flex-column position-relative w-100 " style="top:40%!important">
                 <h3 class="text-main-red m-1 w-100  font-weight-bold text-bold">Build your Net worth</h3>
-                <transition-group tag="div" class="text-slider" name="slide">
-                  <div v-for="number in [currentList]" v-bind:key="number">
-                    <p class="text-main-red">{{ landingList[Math.abs(currentList) % landingList.length] }}</p>
-                  </div>
-                </transition-group>
+                <p class="text-main-red ">
+                  <span class="text_1">Through Fractional Real Estate Investment</span>
+                  <span class="text_2">Through Non Real Estate Investment and Stuff</span>
+                </p>
+
                 <div class="d-flex flex-row">
                   <main-button @click="goToLogin" style="border-radius:30px!important; font-size:10px!important" text="GET STARTED" size="sm" class="mr-3  shadow-3" />
                   <main-button style="border-radius:30px!important; font-size:10px!important" type="outline" text="WATCH NOW &#160; &#160; &#x25B6;" size="sm" class="shadow-3" />
@@ -767,99 +767,7 @@ p {
   font-size: 17px !important;
 }
 
-#slider,
-ul {
-  height: 50px;
-}
-
-#slider {
-  margin: auto;
-  overflow: hidden;
-  padding: 20px;
-  margin-top: 10px;
-  position: relative;
-  width: 100%;
-}
-
-#slider li {
-  float: left;
-  position: relative;
-  display: inline-block;
-  height: 200px;
-}
-
-#slider ul {
-  list-style: none;
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 9000px;
-  transition: left 0.2s linear;
-  -moz-transition: left 0.2s linear;
-  -o-transition: left 0.2s linear;
-  -webkit-transition: left 0.2s linear;
-  margin-left: -25px;
-  font-family: open sans;
-  color: #666;
-}
-
 /*** Content ***/
-
-@-webkit-keyframes slide-animation {
-  0% {
-    opacity: 0;
-  }
-  2% {
-    opacity: 1;
-  }
-  20% {
-    left: 0px;
-    opacity: 1;
-  }
-  22.5% {
-    opacity: 0.6;
-  }
-  25% {
-    left: -600px;
-    opacity: 1;
-  }
-  45% {
-    left: -600px;
-    opacity: 1;
-  }
-  47.5% {
-    opacity: 0.6;
-  }
-  50% {
-    left: -1200px;
-    opacity: 1;
-  }
-  70% {
-    left: -1200px;
-    opacity: 1;
-  }
-  72.5% {
-    opacity: 0.6;
-  }
-  75% {
-    left: -1800px;
-    opacity: 1;
-  }
-  95% {
-    opacity: 1;
-  }
-  98% {
-    left: -1800px;
-    opacity: 0;
-  }
-  100% {
-    left: 0px;
-    opacity: 0;
-  }
-}
-#slider ul {
-  -webkit-animation: slide-animation 5s infinite;
-}
 
 .custom-card {
   border-color: white !important;
@@ -879,34 +787,60 @@ ul {
   overflow: hidden;
 }
 
-.slide-leave-active,
-.slide-enter-active {
-  transition: 1s;
+.text_1 {
+  animation: text1;
 }
-.slide-enter {
-  transform: translate(100%, 0);
+.text_2 {
+  animation: text2;
 }
-.slide-leave-to {
-  transform: translate(-100%, 0);
-}
-
-.text-slider {
+.text_1,
+.text_2 {
   overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
   position: relative;
-  height: 100px;
-  width: 500px;
+  animation-duration: 20s;
+  animation-timing-function: steps(25, end);
+  animation-iteration-count: infinite;
 }
-
-@media only screen and (min-width: 320px) and (max-width: 540px) {
-  .text-slider {
-    width: 350px !important;
+.text_1::after,
+.text_2::after {
+  content: "|";
+  position: absolute;
+  right: 0;
+  animation: caret infinite;
+  animation-duration: 1s;
+  animation-timing-function: steps(1, end);
+}
+@keyframes text2 {
+  0%,
+  50%,
+  100% {
+    width: 0;
+  }
+  60%,
+  90% {
+    width: 23.4em;
   }
 }
-.text-slider p {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+@keyframes text1 {
+  0%,
+  50%,
+  100% {
+    width: 0;
+  }
+  10%,
+  40% {
+    width: 22em;
+  }
+}
+@keyframes caret {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 </style>

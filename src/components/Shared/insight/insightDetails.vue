@@ -116,6 +116,7 @@
 
 <script>
 import MainButton from "@/components/form/MainButton";
+import { Carousel, Slide } from "vue-carousel";
 import { mapActions, mapGetters } from "vuex";
 import moment from "moment";
 export default {
@@ -131,7 +132,7 @@ export default {
       type: Object
     }
   },
-  components: { MainButton },
+  components: { MainButton, Slide, Carousel },
   methods: {
     ...mapActions(["postComment", "fetchSingleInsight"]),
     async onSubmit() {

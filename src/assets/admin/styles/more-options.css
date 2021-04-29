@@ -1,0 +1,54 @@
+.more-options-btn {
+  position: relative;
+}
+
+.more-options-btn:hover .more-options-wrap {
+  display: block;
+}
+
+.more-options-btn .more-options-wrap {
+  position: absolute;
+  top: -50%;
+  right: 50%;
+  display: none;
+  width: 150px;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-color: transparent;
+  border-radius: 5px 10px;
+  box-shadow: 0 0 5px 0 var(--myyinvest-red);
+  transition: all 2s ease-in-out;
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .more-options-btn .more-options-wrap {
+    background-color: transparent;
+    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(5px);
+  }
+}
+
+.more-options-btn .more-options-wrap ul {
+  margin: 0;
+  padding: 0;
+  line-break: auto;
+  list-style: none;
+  list-style-type: none;
+  transition: all 5s ease;
+}
+
+.more-options-btn .more-options-wrap ul li:not(:first-child) {
+  margin-top: 5px;
+}
+
+.more-options-btn .more-options-wrap ul li {
+  padding: 2px 5px;
+  border-radius: 2px 5px;
+  cursor: pointer;
+}
+
+.more-options-btn .more-options-wrap ul li:hover {
+  color: var(--myyinvest-white);
+  font-weight: 600;
+  background-color: var(--myyinvest-red);
+}

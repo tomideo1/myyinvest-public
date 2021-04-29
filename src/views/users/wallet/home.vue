@@ -87,6 +87,9 @@ import MainCard from "../../../components/Shared/mainCard";
 import MainIcon from "../../../components/Shared/mainIcon";
 export default {
   name: "wallet",
+  data() {
+    return {};
+  },
   components: { MainIcon, MainCard, MainButton }
 };
 </script>

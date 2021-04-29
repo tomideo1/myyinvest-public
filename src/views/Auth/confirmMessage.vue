@@ -39,9 +39,7 @@
 
 <script>
 import { mapActions } from "vuex";
-import notify from "@/mixins/notify";
 export default {
-  mixins: [notify],
   // name: "forgotPassword",
   name: "confirmMessage",
   components: {},

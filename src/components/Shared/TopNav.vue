@@ -94,6 +94,15 @@ import MainIcon from "./mainIcon";
 export default {
   name: "TopNav",
 
+  metaInfo: {
+    title: "Myyinvest",
+    titleTemplate: "%s - Home",
+    htmlAttrs: {
+      lang: "en",
+      amp: true
+    }
+  },
+
   components: {
     MainIcon,
     MainButton

@@ -1,6 +1,12 @@
 // import Api from "@/utils/api";
 
-const state = {};
+const state = {
+  selected_user: {
+    fullname: "Adebisi Borokini",
+    fname: "First Name",
+    lname: "Last Name"
+  }
+};
 
 const getters = {};
 

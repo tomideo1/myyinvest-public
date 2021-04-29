@@ -37,7 +37,7 @@
           <main-input class="mb-1" name="email" label="Email Address" v-model="signUpForm.email" type="email" />
           <div class="form__div mb-5">
             <!-- added custom styles with vue-tel-input class in external.scss -->
-            <vue-tel-input v-model="signUpForm.phone_number" :class="['width-100 text-bold form__input mb-3']"></vue-tel-input>
+            <vue-tel-input v-model="signUpForm.phone_number" :class="['width-100 text-bold form__input mb-3']"> </vue-tel-input>
             <label class="label" style="z-index: 11;">Phone Number</label>
             <!-- <p class="font-poppins text-bold text-error ml-12" v-if="isInvalid">
               {{ errorMessage }}
@@ -103,11 +103,8 @@
 import MainButton from "../../components/form/MainButton";
 import MainInput from "../../components/form/mainInput";
 import { mapActions } from "vuex";
-import validations from "@/mixins/validations";
-import notify from "@/mixins/notify";
 
 export default {
-  mixins: [validations, notify],
   name: "register",
   components: { MainButton, MainInput },
   data() {

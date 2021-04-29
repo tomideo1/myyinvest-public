@@ -136,6 +136,11 @@ const baseRoutes = [
   //   // this generates a separate chunk (about.[hash].js) for this route
   //   // which is lazy-loaded when the route is visited.
   // }
+  // {
+  //   path: "/:pathMatch(.*)*",
+  //   name: "PageNotFound",
+  //   component: () => import("../views/Shared/PageNotFound.vue")
+  // }
 ];
 
 const { start: progressStart, stop: progressStop } = progressFns();
@@ -182,5 +187,10 @@ router.beforeEach((to, from, next) => {
     next: middlewarePipeline(context, middleware, 1)
   });
 });
+
+router.resolve({
+  name: "PageNotFound"
+  // params: { pathMatch: [""]}
+}).href;
 
 export default router;

@@ -10,6 +10,7 @@ import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import "./scss/app.scss";
 import helpers from "./utils/helper";
 import VueClipboard from "vue-clipboard2";
+import VueCarousel from "vue-carousel";
 import moment from "moment";
 // import TheAdminLayout from "./layouts/TheAdminLayout.vue";
 import VueGoogleCharts from "vue-google-charts";
@@ -47,8 +48,7 @@ const plugin = {
   }
 };
 
-Vue.component("vue-tel-input", VueTelInput);
-Vue.use(VueMeta, IconsPlugin, plugin, Vuelidate);
+Vue.use(VueMeta, IconsPlugin, VueCarousel, VueTelInput, plugin, Vuelidate);
 
 Vue.use(Vuelidate);
 Vue.use(Print);

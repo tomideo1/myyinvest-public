@@ -35,10 +35,7 @@
 import MainButton from "../../components/form/MainButton";
 import MainInput from "../../components/form/mainInput";
 import { mapActions } from "vuex";
-import validations from "@/mixins/validations";
-import notify from "@/mixins/notify";
 export default {
-  mixins: [validations, notify],
   name: "forgotPassword",
   components: { MainButton, MainInput },
   data() {

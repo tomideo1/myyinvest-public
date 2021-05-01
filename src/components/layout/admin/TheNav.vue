@@ -1,18 +1,18 @@
 <template>
-  <div class="wrapper">
+  <div class="nav-wrapper">
     <div class="nav-icon">
-      <img src="@/assets/admin/images/myyinvest-logo.jpg" alt="Myyinvest Logo" />
+      <img
+        style="cursor: pointer"
+        width="162"
+        height="26"
+        src="https://res.cloudinary.com/myyinvest/image/upload/v1614001064/mmyyinvest-2.0/logos/Myylogo2_uwpfw9.png"
+        alt="Myyinvest Logo"
+        @click="$router.push('/admin')"
+      />
     </div>
     <div class="nav-details">
       <div class="nav-title">
-        <span>{{ name }}</span>
-      </div>
-      <div class="nav-profile">
-        <div>
-          <p class="greetings">Hi, Valentine Offiah</p>
-          <p class="ranking">Author</p>
-        </div>
-        <img src="@/assets/admin/images/profile-pic.svg" alt="User Profile Picture" />
+        <span>{{ name }} <slot name="username"></slot> </span>
       </div>
     </div>
   </div>
@@ -23,27 +23,66 @@ export default {
   computed: {
     name() {
       let val = "";
-      switch (this.$route.path) {
-        case "/admin":
-          val = "Overview";
-          break;
-        case "/admin/view-insights":
-          val = "View Insights";
-          break;
-        case "/admin/add-insights":
-          val = "Add Insights";
-          break;
-        case "/admin/view-users":
-          val = "View Users";
-          break;
-        case "/admin/add-users":
-          val = "Add Users";
-          break;
-        case "/admin/transactions":
-          val = "Transactions";
-          break;
-        default:
-      }
+      // const userD = /\/admin\/users\/[1-9]\d*$/gim;
+      const user_d = /^\/admin\/users\/[1-9][0-9]*$/gim;
+      const user_t = /^\/admin\/users\/[1-9][0-9]*\/transactions$/gim;
+
+      const currentRoute = this.$route.fullPath;
+
+      if (currentRoute.match(user_d)) {
+        val = "User Details";
+      } else if (currentRoute.match(user_t)) {
+        val = "User Transactions";
+      } else
+        switch (this.$route.path) {
+          case "/admin":
+            val = "Overview";
+            break;
+          case "/admin/statistics":
+            val = "Statistics";
+            break;
+          case "/admin/plans":
+            val = "Plans";
+            break;
+          case "/admin/special-form":
+            val = "Special Form";
+            break;
+          case "/admin/view-insights":
+            val = "View Insights";
+            break;
+          case "/admin/add-insights":
+            val = "Add Insight";
+            break;
+          case "/admin/all-users":
+            val = "All Users";
+            break;
+          case "/admin/finance/transactions":
+            val = "Transactions";
+            break;
+          case "/admin/finance/wallet-accounts":
+            val = "Wallet Accounts";
+            break;
+          case "/admin/finance/bank-accounts":
+            val = "Bank Accounts";
+            break;
+          case "/admin/view-notifications":
+            val = "View Notifications";
+            break;
+          case "/admin/add-notifications":
+            val = "Add Notification";
+            break;
+          case "/admin/faq/questions":
+            val = "FAQ Questions";
+            break;
+          case "/admin/faq/answers":
+            val = "FAQ Answers";
+            break;
+          case "/admin/newsletters":
+            val = "Newsletters";
+            break;
+          default:
+            val = "";
+        }
       return val;
     }
   }
@@ -51,9 +90,9 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
+.nav-wrapper {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 1fr 4fr;
   height: 100%;
 }
 
@@ -65,12 +104,6 @@ div.nav-icon {
   grid-row: 1 / 2;
 }
 
-.nav-icon img {
-  width: 40px;
-  height: 30px;
-  object-fit: contain;
-}
-
 div.nav-details {
   display: flex;
   justify-content: center;
@@ -79,42 +112,5 @@ div.nav-details {
   grid-row: 1 / 2;
   font-size: var(--font-md);
   font-weight: 600;
-}
-
-div.nav-details div.nav-title {
-  width: 60%;
-  padding-right: calc(2 * var(--base-size));
-  text-align: right;
-}
-
-div.nav-details div.nav-profile {
-  display: flex;
-  flex-direction: row;
-  justify-content: right;
-  align-items: center;
-  width: 40%;
-  margin-right: var(--base-size);
-  color: gray;
-}
-
-/* div.nav-details div.nav-profile div {
-  margin-left: auto !important;
-} */
-
-div.nav-details div.nav-profile .greetings {
-  margin: 0;
-  font-size: var(--font-normal) !important;
-}
-
-div.nav-details div.nav-profile .ranking {
-  margin: 0;
-  font-size: var(--font-sm) !important;
-  text-align: right;
-}
-
-div.nav-details div.nav-profile img {
-  width: 40px;
-  height: 40px;
-  margin-left: var(--base-size);
 }
 </style>

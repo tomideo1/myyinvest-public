@@ -6,7 +6,8 @@
 
 <script>
 export default {
-  name: "index"
+  name: "index",
+  metaInfo: { title: "Myyinvest - Wallet", titleTemplate: null }
 };
 </script>
 

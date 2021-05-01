@@ -11,13 +11,16 @@
       </div>
     </modal>
 
-    <router-view />
+    <admin-layout-wrapper>
+      <router-view />
+    </admin-layout-wrapper>
   </div>
 </template>
 
 <script>
 import Modal from "./components/Shared/modal";
 import MainIcon from "./components/Shared/mainIcon";
+import AdminLayoutWrapper from "@/layouts/AdminLayoutWrapper.vue";
 export default {
   data() {
     return {
@@ -31,7 +34,6 @@ export default {
       modalTimeout: null
     };
   },
-  components: { MainIcon, Modal },
   watch: {
     // automatically close the modal after 4 seconds
     notify(newNotify) {
@@ -41,6 +43,7 @@ export default {
       }
     }
   },
+  components: { Modal, AdminLayoutWrapper, MainIcon },
 
   methods: {
     showModal() {

@@ -56,10 +56,7 @@ import mainInput from "../../components/form/mainInput";
 import MainButton from "../../components/form/MainButton";
 import MainIcon from "../../components/Shared/mainIcon";
 import { mapActions } from "vuex";
-import validations from "@/mixins/validations";
-import notify from "@/mixins/notify";
 export default {
-  mixins: [validations, notify],
   name: "settings.vue",
   data() {
     return {

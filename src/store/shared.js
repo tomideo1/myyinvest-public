@@ -2,7 +2,8 @@ import Api from "@/utils/api";
 
 const state = {
   faqs: [],
-  insights: []
+  insights: [],
+  singleInsight: {}
 };
 
 const getters = {
@@ -11,6 +12,9 @@ const getters = {
   },
   fetchInsights(state) {
     return state.insights;
+  },
+  getSingleInsight(state) {
+    return state.singleInsight;
   }
 };
 
@@ -20,6 +24,9 @@ const mutations = {
   },
   setAllInsights(state, data) {
     return (state.insights = data);
+  },
+  setSingleInsight(state, data) {
+    return (state.singleInsight = data);
   }
 };
 
@@ -40,10 +47,19 @@ const actions = {
   async fetchSingleInsight({ commit }, payload) {
     const res = await Api.get(`insights/get/${payload.id}`);
     if (res.status === 200 || res.status === 201) {
-      return res.data.insightDetails;
+      commit("setSingleInsight", res.data.insightDetails);
     } else {
       return res;
     }
+  },
+
+  async postComment({ dispatch }, payload) {
+    const res = await Api.post(`insights/insight/${payload.id}/comment`, payload);
+    if (res.status === 200 || res.status === 201) {
+      dispatch("fetchSingleInsight", { id: payload.id });
+      return true;
+    }
+    return false;
   }
 };
 

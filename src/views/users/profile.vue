@@ -217,13 +217,10 @@ import MainInput from "../../components/form/mainInput";
 import MainButton from "../../components/form/MainButton";
 import DatePicker from "vue2-datepicker";
 import "vue2-datepicker/index.css";
-import validations from "@/mixins/validations";
-import notify from "@/mixins/notify";
 import moment from "moment";
 import profileItemOptions from "@/components/data/profileItemOptions.js";
 
 export default {
-  mixins: [validations, notify],
   name: "profile",
   data() {
     return {

@@ -1,54 +1,166 @@
-export default [
+const routeOptions = [
   {
-    path: "/admin",
-    component: () => import("@/views/admin/index.vue")
-    // meta: {
-    //   layout: "TheAdminLayout"
-    // },
-    // children: [
-    //   {
-    //     path: "view-insights",
-    //     name: "view-insight",
-    //     component: () => import("@/views/admin/ViewInsights.vue")
-    //   }
-    // ]
+    path: "/admin/statistics",
+    name: "AdminStatistics",
+    meta: {
+      layout: "AdminLayout"
+    }
+  },
+  {
+    path: "/admin/plan/add",
+    name: "AdminPlanAdd",
+    meta: {
+      layout: "AdminLayout"
+    }
+  },
+  {
+    path: "/admin/plan/income",
+    name: "AdminPlanIncome",
+    meta: {
+      layout: "AdminLayout"
+    }
+  },
+  {
+    path: "/admin/plan/rental",
+    name: "AdminPlanRental",
+    meta: {
+      layout: "AdminLayout"
+    }
+  },
+  {
+    path: "/admin/plan/special",
+    name: "AdminPlanSpecial",
+    meta: {
+      layout: "AdminLayout"
+    }
+  },
+  {
+    path: "/admin/special-form",
+    name: "AdminSpecial",
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    }
   },
   {
     path: "/admin/view-insights",
-    name: "ViewAdminInsights",
-    component: () => import("@/views/admin/ViewInsights.vue")
-    // meta: {
-    //   layout: "TheAdminLayout"
-    // }
+    name: "AdminInsightView",
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    }
   },
   {
     path: "/admin/add-insights",
-    name: "AddAdminInsights",
-    component: () => import("@/views/admin/AddInsights.vue")
+    name: "AdminInsightAdd",
+    meta: {
+      layout: "AdminLayout"
+    }
   },
   {
-    path: "/admin/view-posts",
-    name: "ViewAdminPosts",
-    component: () => import("@/views/admin/ViewPosts.vue")
+    path: "/admin/view-faqs",
+    name: "AdminFaqView",
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    }
   },
   {
-    path: "/admin/add-posts",
-    name: "AddAdminPosts",
-    component: () => import("@/views/admin/AddPosts.vue")
+    path: "/admin/add-faqs",
+    name: "AdminFaqAdd",
+    meta: {
+      layout: "AdminLayout"
+    }
   },
   {
-    path: "/admin/view-users",
-    name: "ViewAdminUsers",
-    component: () => import("@/views/admin/ViewUsers.vue")
+    path: "/admin/all-users",
+    name: "AdminUsersView",
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    }
   },
   {
-    path: "/admin/add-users",
-    name: "AddAdminUsers",
-    component: () => import("@/views/admin/AddUsers.vue")
+    path: "/admin/users/:id",
+    name: "AdminUsersDetail",
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    },
+    props: true
+    // props: {
+    //   default: true,
+    //   // function mode, more about it below
+    //   sidebar: route => ({ search: route.query.q })
+    // }
   },
   {
-    path: "/admin/transactions",
-    name: "AdminTransactions",
-    component: () => import("@/views/admin/AdminTransactions.vue")
+    path: "/admin/users/:id/transactions",
+    name: "AdminUsersTransactions",
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    },
+    props: true
+    // props: {
+    //   default: true,
+    //   // function mode, more about it below
+    //   sidebar: route => ({ search: route.query.q })
+    // }
+  },
+  {
+    path: "/admin/finance/transactions",
+    name: "AdminFinanceTransactions",
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    }
+  },
+  {
+    path: "/admin/finance/wallet-accounts",
+    name: "AdminFinanceWallet",
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    }
+  },
+  {
+    path: "/admin/finance/bank-accounts",
+    name: "AdminFinanceBank",
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    }
+  },
+  {
+    path: "/admin/view-notifications",
+    name: "AdminNotificationView",
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    }
+  },
+  {
+    path: "/admin/add-notifications",
+    name: "AdminNotificationAdd",
+    meta: {
+      layout: "AdminLayout"
+    }
+  },
+  {
+    path: "/admin/newsletters",
+    name: "AdminNewsletters",
+    meta: {
+      layout: "AdminLayoutWithOptions"
+    }
   }
+];
+
+const routes = routeOptions.map(route => {
+  return {
+    ...route,
+    component: () => import(/* webpackChunkName: "[request]" */ `@/views/admin/${route.name}.vue`)
+  };
+});
+
+export default [
+  {
+    path: "/admin",
+    nmae: "Admin",
+    component: () => import(/* webpackChunkName: "Admin" */ "@/views/admin/index.vue"),
+    meta: {
+      layout: "AdminLayout"
+    }
+  },
+  ...routes
 ];

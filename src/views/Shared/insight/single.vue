@@ -1,11 +1,11 @@
 <template>
   <div>
-    <insight-details :insight="insight" />
+    <insight-details :insight="getSingleInsight" />
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 import InsightDetails from "@/components/Shared/insight/insightDetails";
 export default {
@@ -15,11 +15,14 @@ export default {
       insight: null
     };
   },
+  computed: {
+    ...mapGetters(["getSingleInsight"])
+  },
   methods: {
     ...mapActions(["fetchSingleInsight"])
   },
   async mounted() {
-    this.insight = await this.fetchSingleInsight({
+    await this.fetchSingleInsight({
       id: this.$route.params.id
     });
   }

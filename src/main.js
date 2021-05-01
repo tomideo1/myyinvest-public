@@ -8,13 +8,16 @@ import VueTelInput from "vue-tel-input";
 import "vue-tel-input/dist/vue-tel-input.css";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import "./scss/app.scss";
-import "./assets/admin/styles/base.css";
 import helpers from "./utils/helper";
 import VueClipboard from "vue-clipboard2";
+import VueCarousel from "vue-carousel";
 import moment from "moment";
-import TheAdminLayout from "./layouts/TheAdminLayout.vue";
+// import TheAdminLayout from "./layouts/TheAdminLayout.vue";
 import VueGoogleCharts from "vue-google-charts";
 
+import formatNum from "./mixins/formatNum";
+import notify from "./mixins/notify";
+import validations from "./mixins/validations";
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 // import "bootstrap/dist/css/bootstrap.css";
 // import "bootstrap-vue/dist/bootstrap-vue.css";
@@ -22,18 +25,21 @@ import VueGoogleCharts from "vue-google-charts";
 
 Vue.prototype.moment = moment;
 Vue.use(BootstrapVue);
-Vue.component("TheAdminLayout", TheAdminLayout);
+// Vue.component("TheAdminLayout", TheAdminLayout);
 
-// Optionally install the BootstrapVue icon components plugin
-Vue.use(IconsPlugin);
+import VueMeta from "vue-meta";
+import Vuelidate from "vuelidate";
+import Print from "vue-print-nb";
+
+Vue.mixin(formatNum);
+Vue.mixin(notify);
+Vue.mixin(validations);
 
 Vue.use(VueGoogleCharts);
 
 Vue.use(VueClipboard);
 
 Vue.prototype.$Bus = new Vue();
-
-Vue.use(VueTelInput);
 
 const plugin = {
   install() {
@@ -42,7 +48,10 @@ const plugin = {
   }
 };
 
-Vue.use(plugin);
+Vue.use(VueMeta, IconsPlugin, VueCarousel, VueTelInput, plugin, Vuelidate);
+
+Vue.use(Vuelidate);
+Vue.use(Print);
 
 Vue.config.productionTip = false;
 

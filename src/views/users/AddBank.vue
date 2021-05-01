@@ -28,11 +28,9 @@
 <script>
 import MainInput from "@/components/form/mainInput.vue";
 import { mapActions, mapGetters } from "vuex";
-import notify from "@/mixins/notify";
 
 export default {
   name: "AddBank",
-  mixins: [notify],
   components: {
     MainInput
   },

@@ -9,9 +9,7 @@
 import EmptyNotification from "../../components/EmptyNotification";
 import NotificationItem from "../../components/NotificationItem";
 import { mapGetters, mapActions } from "vuex";
-import notify from "@/mixins/notify";
 export default {
-  mixins: [notify],
   name: "Notifications",
   data() {
     return {};

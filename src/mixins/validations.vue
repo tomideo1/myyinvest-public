@@ -1,7 +1,5 @@
 <script>
-import notify from "@/mixins/notify";
 export default {
-  mixins: [notify],
   data() {},
   methods: {
     handleValidation(payload) {

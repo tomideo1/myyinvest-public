@@ -18,7 +18,8 @@
 
       <template v-else>
         <AddItemCard text="Add New Card" @click.native="isModalVisible = true" />
-        <div :class="['ac-modal', { 'ac-modal--hidden': !isModalVisible }]">
+        <!-- <div :class="['ac-modal', { 'ac-modal--hidden': !isModalVisible }]"> -->
+        <div :class="['ac-modal', { 'ac-modal--hidden': true }]">
           <div class="ac-modal__dialog-box">
             <div class="ac-modal__info-container">
               <MainIcon name="bank-card" size="lg" class="ac-modal__bank-card" />
@@ -33,6 +34,9 @@
             </div>
           </div>
         </div>
+        <Modal :config="{ isVisible: isModalVisible, size: 'md' }">
+          <p>Hello</p>
+        </Modal>
       </template>
     </div>
   </div>
@@ -42,6 +46,7 @@
 import BankItem from "@/components/users/banksAndCards/BankItem.vue";
 import AddItemCard from "@/components/users/banksAndCards/AddItemCard.vue";
 import MainIcon from "@/components/Shared/mainIcon.vue";
+import Modal from "@/components/Shared/modal.vue";
 import { mapActions, mapGetters } from "vuex";
 import paystack from "vue-paystack";
 
@@ -51,6 +56,7 @@ export default {
     AddItemCard,
     BankItem,
     MainIcon,
+    Modal,
     paystack
   },
   data() {

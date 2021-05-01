@@ -7,7 +7,7 @@
       <span>
         <slot name="title"></slot>
       </span>
-      <div class="lst-info__tooltip" :data-content="tooltipText" tabindex="-1">
+      <div class="lst-tooltip lst-info__tooltip" :data-content="tooltipText" tabindex="-1">
         <MainIcon name="tooltip" size="retain" />
         <!-- <div class="lst-tooltip__text">
           <slot name="tooltip-text"></slot>
@@ -98,33 +98,12 @@ export default {
     top: 0;
     // right: 5%;
     right: 7%;
-    // position: relative;
 
+    // there are already ::after styles in lst-tooltip in _listings.scss, that's why I don't need to add content
     &::after {
-      content: attr(data-content);
-      position: absolute;
       top: 110%;
-      // left: 50%;
       right: 0;
-      background: color(main-red);
-      color: color(bv-white);
-      font-size: 0.9em;
-      padding: 1em;
-      width: 12.75em;
-      z-index: 5;
-      box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.25);
-      opacity: 0;
-      // transform: translateX(-50%) scaleX(0);
-      transform: scale(0);
       transform-origin: 100% 0%;
-      transition: all 0.3s ease;
-    }
-
-    &:hover::after,
-    &:focus::after {
-      opacity: 1;
-      transform: scale(1);
-      // transform: translateX(-50%) scaleX(1);
     }
   }
 }

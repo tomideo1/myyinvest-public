@@ -36,12 +36,13 @@
     <reload v-if="name === 'reload'"></reload>
     <money-blue v-if="name === 'money-blue'"></money-blue>
     <total v-if="name === 'total'"></total>
-    <green-naira v-if="name === 'green-naira'"></green-naira>
+    <green-naira v-if="name === 'green-naira'" :color="color"></green-naira>
     <back v-if="name === 'back'"></back>
     <clipboard v-if="name === 'clipboard'"></clipboard>
     <activity v-if="name === 'activity'"></activity>
     <gt v-if="name === 'gt'"></gt>
     <back-caret v-if="name === 'back-caret'"></back-caret>
+    <money-alt v-if="name === 'money-alt'"></money-alt>
   </span>
 </template>
 
@@ -112,7 +113,8 @@ export default {
     back: () => import("@/components/__private__/media/back"),
     clipboard: () => import("@/components/__private__/media/clipboard"),
     activity: () => import("@/components/__private__/media/activity"),
-    gt: () => import("@/components/__private__/media/gt")
+    gt: () => import("@/components/__private__/media/gt"),
+    moneyAlt: () => import("@/components/__private__/media/moneyAlt")
   }
 };
 </script>

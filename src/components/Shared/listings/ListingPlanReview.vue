@@ -3,7 +3,7 @@
     <div class="lst-review__header">
       <span class="lst-review__title">{{ title }}</span>
       <div class="lst-review__amount">
-        <MainIcon name="naira" size="xs" />
+        <MainIcon name="green-naira" size="md" color="currentColor" style="width: auto;" />
         <span>{{ amount }}</span>
       </div>
       <span class="lst-review__date">by {{ date }}</span>
@@ -11,7 +11,10 @@
     <div class="lst-review__content">
       <div class="lst-review__data">
         <div class="lst-review__field">Value of Tokens</div>
-        <div class="lst-review__value">{{ amount }}</div>
+        <div class="lst-review__value">
+          <MainIcon name="green-naira" size="sm" color="currentColor" style="width: auto;" />
+          <span>{{ amount }}</span>
+        </div>
       </div>
       <div class="lst-review__data">
         <div class="lst-review__field">Number of Tokens</div>
@@ -24,15 +27,19 @@
       <div class="lst-review__data">
         <div class="lst-review__field">
           <span>Holding Period</span>
-          <MainIcon name="tooltip" size="xs" />
+          <div class="lst-tooltip lst-review__tooltip" :data-content="holPeriodText">
+            <MainIcon name="tooltip" size="xs" />
+          </div>
         </div>
-        <div class="lst-review__value">{{ holPeriod }}</div>
+        <div class="lst-review__value">{{ holPeriod }} months</div>
       </div>
       <div class="lst-review__data">
         <div class="lst-review__field">
           <slot name="returns-field">
             <span>Return on Investment</span>
-            <MainIcon name="tooltip" size="xs" />
+            <div class="lst-tooltip lst-review__tooltip" :data-content="returnsText">
+              <MainIcon name="tooltip" size="xs" />
+            </div>
           </slot>
         </div>
         <div class="lst-review__value">{{ invReturns }}</div>
@@ -69,13 +76,19 @@ export default {
       required: true
     },
     holPeriod: {
-      type: String,
+      type: Number,
       required: true
     },
     invReturns: {
       type: String,
       required: true
     }
+  },
+  data() {
+    return {
+      holPeriodText: "This means the Duration of the project.",
+      returnsText: "This is the Profit on your Investment, it usually has a range for each Plan."
+    };
   }
 };
 </script>

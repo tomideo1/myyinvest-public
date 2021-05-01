@@ -230,13 +230,14 @@
 
   &__box {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     padding: 1.75em;
     box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
     border-radius: $border-radius;
 
     @include breakpoint(mobile-only) {
-      flex-direction: column;
+      // flex-direction: column;
 
       > .listing-dtl__btn:first-child {
         margin-bottom: 1.5em;
@@ -254,6 +255,35 @@
     @include breakpoint(tablet-potrait-down) {
       grid-template-columns: 1fr;
     }
+  }
+}
+
+// LISTING TOOLTIP
+.lst-tooltip {
+  display: inline-flex;
+  // transform-origin: 100% 50%;
+
+  &::after {
+    content: attr(data-content);
+    position: absolute;
+    background: color(main-red);
+    color: color(bv-white);
+    font-size: 0.9em;
+    padding: 1em;
+    width: 12.75em;
+    z-index: 5;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    // transform: translateX(-50%) scaleX(0);
+    transform: scale(0);
+    transition: all 0.3s ease;
+  }
+
+  &:hover::after,
+  &:focus::after {
+    opacity: 1;
+    transform: scale(1);
+    // transform: translateX(-50%) scaleX(1);
   }
 }
 
@@ -313,7 +343,7 @@
     flex-wrap: wrap;
     // only adding padding to the top because input and select have a bottom margin that I can't overwrite
     // due to the styles in MainInput... so only adding padding to the top helps to offset it
-    padding-top: 1.25em;
+    padding-top: 1.4em;
     // border: 1px solid green;
   }
 
@@ -336,11 +366,15 @@
     color: #4a4a4a;
     font-size: 1em !important;
     font-weight: 500;
+
+    &--wgt-600 {
+      font-weight: 600;
+    }
   }
 
   &__select {
     width: 100%;
-    max-width: 13.5em;
+    max-width: 14em;
     margin-top: 0.75em;
   }
 
@@ -387,6 +421,7 @@
   }
 }
 
+// LISTING REVIEW
 .lst-review {
   // border: 1px solid blue;
   margin-bottom: 1.25em;
@@ -402,7 +437,6 @@
   }
 
   &__amount {
-    // border: 1px solid green;
     @include flex-center;
     color: color(main-red);
     font-size: 1.4em;
@@ -432,17 +466,34 @@
     border-bottom: 1px solid #bfbfbf;
   }
 
+  &__field,
+  &__value {
+    display: flex;
+    align-items: center;
+  }
+
   &__field {
     font-weight: 500;
     color: #4a4a4a;
+    text-align: left;
+    position: relative;
 
-    > .icon {
-      margin-left: 0.3em;
+    > span {
+      margin-right: 0.3em;
     }
   }
 
   &__value {
     font-weight: 600;
+  }
+
+  &__tooltip {
+    // there are already ::after styles in lst-tooltip, that's why I don't need to add content
+    &::after {
+      top: 100%;
+      right: -25%;
+      transform-origin: 75% 0%;
+    }
   }
 }
 

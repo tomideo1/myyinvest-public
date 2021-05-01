@@ -127,7 +127,7 @@
 
     > span {
       color: color(main-red);
-      font-weight: 500;
+      font-weight: 600;
     }
   }
 
@@ -145,11 +145,19 @@
     &--red {
       color: color(bv-white);
       background: color(main-red);
+
+      &:hover {
+        background: #b10202;
+      }
     }
 
     &--grey {
       background: #f2f2f2;
       color: color(main-red);
+
+      &:hover {
+        background: #eaeaea;
+      }
     }
   }
 }

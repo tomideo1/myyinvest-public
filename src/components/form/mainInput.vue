@@ -29,6 +29,12 @@
         </select>
         <label v-if="labelType !== 'full'" class="label">{{ label }}</label>
       </div>
+
+      <template v-else-if="inputType === 'textarea'">
+        <!-- eslint-disable-next-line -->
+        <textarea :name="name" class="form__input" :placeholder="placeholder" @input="$trigger($event)" :value="value" :disabled="disable" :required="required"></textarea>
+        <label v-if="labelType !== 'full'" class="label">{{ label }}</label>
+      </template>
     </div>
     <p class="text-grey-500 ft-12 mt-n4 d-flex ml-auto">
       <slot name="inputdesc"> </slot>
@@ -136,8 +142,8 @@ export default {
   appearance: none;
   background-image: url("data:image/svg+xml,<svg width='24' height='24' xmlns='http://www.w3.org/2000/svg'><path fill='%23c10000' d='m0,6l12,12l12,-12l-24,0z'/><path fill='none' d='m0,0l24,0l0,24l-24,0l0,-24z'/></svg>");
   background-repeat: no-repeat;
-  background-size: 0.825rem;
-  background-position: 97.25% 50%;
+  background-size: 0.725rem;
+  background-position: 98% 50%;
   // color: #e42c2c;
 
   &::-ms-expand {

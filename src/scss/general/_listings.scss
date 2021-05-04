@@ -353,7 +353,11 @@
     width: 100%;
 
     @include breakpoint(tablet-potrait-up) {
-      max-width: 14em;
+      max-width: 14.5em;
+
+      &--mw-lg {
+        max-width: 18.5em;
+      }
     }
   }
 
@@ -376,12 +380,6 @@
     &--lg {
       font-size: 1.2em !important;
     }
-  }
-
-  &__select {
-    width: 100%;
-    max-width: 14em;
-    margin-top: 0.75em;
   }
 
   &__btn {

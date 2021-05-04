@@ -41,7 +41,7 @@
             {{ getfreqText }}
           </p>
           <!-- eslint-disable-next-line -->
-          <MainInput v-show="isFreqSelected('RECURRING')" inputType="select" label="" v-model.number="freqValue" class="lst-modal__select" :options="freqOptions" />
+          <MainInput v-show="isFreqSelected('RECURRING')" inputType="select" label="" v-model.number="freqValue" class="lst-modal__input" :options="freqOptions" />
         </div>
         <button type="button" class="lst-modal__btn" @click="next(stepVal)">
           <span>continue</span>
@@ -53,7 +53,7 @@
         <p class="lst-modal__title">Payment Frequency</p>
         <div class="lst-modal__text-container">
           <p class="lst-modal__text lst-modal__text--wgt-600">Choose monthly payment date</p>
-          <MainInput inputType="select" label="" class="lst-modal__select" :options="monthlyOptions" />
+          <MainInput v-model="monthlyValue" inputType="select" label="" class="lst-modal__input" :options="monthlyOptions" />
         </div>
         <button type="button" class="lst-modal__btn" @click="next(0.5)">
           <span>continue</span>
@@ -84,7 +84,7 @@
         <p class="lst-modal__title">Investment Purpose</p>
         <div class="lst-modal__text-container">
           <p class="lst-modal__text lst-modal__text--wgt-600">Why do you want to invest?</p>
-          <MainInput label="" class="lst-modal__input" v-model="invPurpose" />
+          <MainInput label="" class="lst-modal__input lst-modal__input--mw-lg" v-model="invPurpose" />
         </div>
         <button type="button" class="lst-modal__btn" @click="next()">
           <span>continue</span>
@@ -96,10 +96,19 @@
         <p class="lst-modal__title">Review Plan</p>
         <!-- eslint-disable-next-line -->
         <ListingPlanReview title="income plan" :amount="amount" :date="currentDate" :tokens="tokens" :frequency="paymentFrequency" :holPeriod="invPeriod" :invReturns="invReturns" />
-        <button type="button" class="lst-modal__btn lst-modal__btn--red" @click="perfTransaction">
+        <paystack
+          class="lst-modal__btn lst-modal__btn--red"
+          :amount="getKoboAmount"
+          :email="email"
+          :paystackkey="paystackkey"
+          :reference="reference"
+          :callback="callback"
+          :close="close"
+          :embed="false"
+        >
           <span>pay now</span>
           <MainIcon name="caret-right" size="xs" />
-        </button>
+        </paystack>
       </template>
     </template>
 
@@ -135,7 +144,7 @@
             {{ getfreqText }}
           </p>
           <!-- eslint-disable-next-line -->
-          <MainInput v-show="isFreqSelected('RECURRING')" inputType="select" label="" v-model.number="freqValue" class="lst-modal__select" :options="freqOptions" />
+          <MainInput v-show="isFreqSelected('RECURRING')" inputType="select" label="" v-model.number="freqValue" class="lst-modal__input" :options="freqOptions" />
           <p class="lst-modal__title">Investment Period</p>
           <p class="lst-modal__text lst-modal__text--lg">10 - 15 years</p>
           <p class="lst-modal__text">Returns: {{ invReturns }}</p>
@@ -150,7 +159,7 @@
         <p class="lst-modal__title">Payment Frequency</p>
         <div class="lst-modal__text-container">
           <p class="lst-modal__text lst-modal__text--wgt-600">Choose monthly payment date</p>
-          <MainInput inputType="select" label="" class="lst-modal__select" :options="monthlyOptions" />
+          <MainInput v-model="monthlyValue" inputType="select" label="" class="lst-modal__input" :options="monthlyOptions" />
         </div>
         <button type="button" class="lst-modal__btn" @click="next(0.5)">
           <span>continue</span>
@@ -162,7 +171,7 @@
         <p class="lst-modal__title">Investment Purpose</p>
         <div class="lst-modal__text-container">
           <p class="lst-modal__text lst-modal__text--wgt-600">Why do you want to invest?</p>
-          <MainInput label="" class="lst-modal__input" v-model="invPurpose" />
+          <MainInput label="" class="lst-modal__input lst-modal__input--mw-lg" v-model="invPurpose" />
         </div>
         <button type="button" class="lst-modal__btn" @click="next()">
           <span>continue</span>
@@ -199,12 +208,12 @@
       <MainIcon name="tooltip" size="sm" class="lst-modal__top-icon" />
       <p class="lst-modal__title">Special Plan</p>
       <div class="lst-modal__input-container">
-        <MainInput label="Full Name" class="lst-modal__input" />
-        <MainInput label="Email Address" class="lst-modal__input" />
-      </div>
-      <div class="lst-modal__input-container">
-        <MainInput label="Phone Number" class="lst-modal__input" />
-        <MainInput inputType="select" label="Interest" class="lst-modal__select" />
+        <MainInput v-model="special.fullName" label="Full Name" class="lst-modal__input" />
+        <MainInput v-model="special.email" label="Email Address" class="lst-modal__input" />
+        <MainInput v-model="special.phoneNumber" label="Phone Number" class="lst-modal__input" />
+        <MainInput v-model="special.interest" inputType="select" label="Interest" class="lst-modal__input" :options="interestType" />
+        <MainInput v-model="special.address" inputType="textarea" label="Address" class="lst-modal__input" />
+        <MainInput v-model="special.amount" type="number" label="Amount" class="lst-modal__input" />
       </div>
       <button type="button" class="lst-modal__btn" @click="next()">
         <span>Continue</span>
@@ -238,6 +247,7 @@ export default {
       freqValue: null,
       paymentFrequency: "ONE-OFF",
       invPeriod: 6,
+      monthlyValue: "",
       freqTexts: {
         "ONE-OFF": "This is the smallest amount you can start this plan for and you can always Invest More.",
         RECURRING: "This means that you’re Investing more than Once usually for 6 months to 12 months."
@@ -266,6 +276,19 @@ export default {
         "special-plan": {
           title: "Special Plan"
         }
+      },
+      interestType: [
+        { key: "Income", value: "income" },
+        { key: "Rental", value: "rental" },
+        { key: "Both", value: "both" }
+      ],
+      special: {
+        fullName: "",
+        email: "",
+        phoneNumber: "",
+        interest: "",
+        address: "",
+        amount: 0
       },
       paystackkey: process.env.PAYSTACK_KEY,
       email: "",

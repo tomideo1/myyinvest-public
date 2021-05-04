@@ -9,6 +9,7 @@ const state = {
   bankList: [],
   userBanks: [],
   userCards: [],
+  userOverview: {},
   userWallet: {},
   userNotifications: []
 };
@@ -52,6 +53,10 @@ const getters = {
 
   getUserWallet(state) {
     return state.userWallet;
+  },
+
+  getUserOverview(state) {
+    return state.userOverview;
   }
 };
 
@@ -98,6 +103,10 @@ const mutations = {
 
   setUserWallet(state, data) {
     return (state.userWallet = data);
+  },
+
+  setUserOverview(state, data) {
+    return (state.userOverview = data);
   }
 };
 
@@ -247,6 +256,17 @@ const actions = {
       const notificationsData = res.data.notifications;
       const userNotification = { notificationsData, ...res.data.pagination };
       commit("setUserNotifications", userNotification);
+      return res;
+    } else {
+      return res;
+    }
+  },
+
+  async fetchUserOverview({ commit }) {
+    const res = await Api.get(`overview/user_get`, true);
+    if (res.status === 200 || res.status === 201) {
+      const overViewData = res.data;
+      commit("setUserOverview", overViewData);
       return res;
     } else {
       return res;

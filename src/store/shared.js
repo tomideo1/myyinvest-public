@@ -5,7 +5,8 @@ const state = {
   insights: [],
   singleInsight: {},
   listings: [],
-  singleListing: {}
+  singleListing: {},
+  top_stories: []
 };
 
 const getters = {
@@ -23,6 +24,9 @@ const getters = {
   },
   getSingleListing(state) {
     return state.singleListing;
+  },
+  getTopStories(state) {
+    return state.top_stories;
   }
 };
 
@@ -41,6 +45,9 @@ const mutations = {
   },
   setSingleListing(state, data) {
     state.singleListing = data;
+  },
+  setTopStories(state, data) {
+    return (state.top_stories = data);
   }
 };
 
@@ -49,6 +56,15 @@ const actions = {
     const res = await Api.get(`faq/get?page=${payload.page}&perpage=${payload.per_page}`);
     commit("setAllFaqs", res.data.faq);
     return res.status === 200 || res.status === 201;
+  },
+
+  async fetchTopStories({ commit }) {
+    const res = await Api.get(`insights/get/top`);
+    if (res.status === 200 || res.status === 201) {
+      commit("setTopStories", res.data.insights);
+    } else {
+      return res;
+    }
   },
 
   async fetchAllInsights({ commit }, payload) {

@@ -18,24 +18,18 @@
 
       <template v-else>
         <AddItemCard text="Add New Card" @click.native="isModalVisible = true" />
-        <!-- <div :class="['ac-modal', { 'ac-modal--hidden': !isModalVisible }]"> -->
-        <div :class="['ac-modal', { 'ac-modal--hidden': true }]">
-          <div class="ac-modal__dialog-box">
-            <div class="ac-modal__info-container">
-              <MainIcon name="bank-card" size="lg" class="ac-modal__bank-card" />
-              <p class="ac-modal__title">Add Card</p>
-              <p class="ac-modal__message">To add and verify your card, <span>N100</span> will be charged and added to your wallet.</p>
-            </div>
-            <div class="ac-modal__btn-container">
-              <button type="button" @click="isModalVisible = false" class="ac-modal__btn ac-modal__btn--grey">Cancel</button>
-              <paystack class="ac-modal__btn ac-modal__btn--red" :amount="amount" :email="email" :paystackkey="paystackkey" :reference="reference" :callback="callback" :close="close" :embed="false">
-                Proceed
-              </paystack>
-            </div>
+        <Modal class="ac-modal" :config="{ isVisible: isModalVisible, size: 'md' }">
+          <div class="ac-modal__info-container">
+            <MainIcon name="bank-card" size="lg" class="ac-modal__card-icon" />
+            <p class="ac-modal__title">Add Card</p>
+            <p class="ac-modal__text">To add and verify your card, <span>N100</span> will be charged and added to your wallet.</p>
           </div>
-        </div>
-        <Modal :config="{ isVisible: isModalVisible, size: 'md' }">
-          <p>Hello</p>
+          <div class="ac-modal__btn-container">
+            <button type="button" @click="closeModal" class="ac-modal__btn ac-modal__btn--grey">Cancel</button>
+            <paystack class="ac-modal__btn ac-modal__btn--red" :amount="amount" :email="email" :paystackkey="paystackkey" :reference="reference" :callback="callback" :close="close" :embed="false">
+              Proceed
+            </paystack>
+          </div>
         </Modal>
       </template>
     </div>
@@ -70,15 +64,22 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["fetchUserBanks"]),
+    ...mapActions(["fetchUserBanks", "fetchUserCards", "verifyCardTransaction"]),
     isSelected(item) {
       return this.selected === item;
     },
-    callback(response) {
-      console.log(response);
+    async callback(response) {
+      this.closeModal();
+      const payload = { referenceId: response.reference, email: this.email };
+      const res = await this.verifyCardTransaction(payload);
+      console.log(res.data);
     },
     close() {
-      console.log("Payment closed");
+      this.closeModal();
+      console.log("Payment Closed");
+    },
+    closeModal() {
+      this.isModalVisible = false;
     }
   },
   computed: {
@@ -95,6 +96,7 @@ export default {
   },
   created() {
     this.fetchUserBanks();
+    this.fetchUserCards();
   },
   mounted() {
     this.email = this.getUser.email;

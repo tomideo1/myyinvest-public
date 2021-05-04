@@ -196,12 +196,15 @@
   &__summary {
     display: grid;
     // $lst-info-max-width is defined in utils/variables.scss;
-    grid-template-columns: repeat(auto-fit, $lst-info-max-width + 0.75em);
-    // grid-template-columns: repeat(auto-fit, 16.75em);
+    grid-template-columns: repeat(2, $lst-info-max-width + 0.75em);
     gap: 2em;
     justify-content: center;
     justify-items: center;
-    padding-bottom: 1em;
+    padding-bottom: 1.1em;
+
+    @include breakpoint(mobile-only) {
+      grid-template-columns: $lst-info-max-width + 0.75em;
+    }
   }
 
   &__btn {
@@ -232,16 +235,15 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding: 1.75em;
+    // padding: 1.75em;
+    padding: 1em 1.75em;
     box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
     border-radius: $border-radius;
 
-    @include breakpoint(mobile-only) {
-      // flex-direction: column;
-
-      > .listing-dtl__btn:first-child {
-        margin-bottom: 1.5em;
-      }
+    // adding normal top and bottom margins for items inside the container and more importantly, using the
+    // concept of collapsing margins to create spacing when the flex items wrap
+    > * {
+      margin: 0.75em 0;
     }
   }
 
@@ -369,6 +371,10 @@
 
     &--wgt-600 {
       font-weight: 600;
+    }
+
+    &--lg {
+      font-size: 1.2em !important;
     }
   }
 

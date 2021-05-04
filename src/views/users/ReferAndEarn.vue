@@ -31,10 +31,6 @@
           <MainIcon name="gift-card" size="retain" />
         </div>
         <div class="ref-user__summary">
-          <!-- <div>
-            Total Clicks
-            <p class="ref-user__text">4000</p>
-          </div> -->
           <div>
             Total Sign Ups
             <p class="ref-user__text">{{ getReferralDetails.totalSignUps }}</p>
@@ -137,11 +133,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["getReferralDetails"])
+    ...mapGetters(["getReferralDetails", "getReferredUsers"])
   },
   created() {
     this.fetchReferralDetails();
   }
-  // `.replace(/\s+/g, " ");
 };
 </script>

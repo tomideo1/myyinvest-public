@@ -57,9 +57,13 @@ export default {
         if (this.isValidAccountName(this.accountName)) {
           this.isAccountVerified = true;
         } else {
-          console.log("Invalid");
+          this.handleNotify({
+            message: "Name doesn't match Myyinvest Account",
+            status: "Error"
+          });
         }
       } else {
+        console.log(res.data.message);
         this.handleNotify({
           message: res.data.message,
           status: "Error"

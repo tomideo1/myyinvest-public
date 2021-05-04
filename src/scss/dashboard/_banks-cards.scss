@@ -74,44 +74,13 @@
 }
 
 .ac-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  min-height: 100vh;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 15;
-  transform: translateY(0);
-  opacity: 1;
-  transition: transform 0.35s ease-in, opacity 0.35s ease-in;
-
-  &--hidden {
-    // display: none;
-    opacity: 0;
-    transform: translateY(-100%);
-  }
-
-  &__dialog-box {
-    background: color(bv-white);
-    min-height: 15em;
-    width: 92%;
-    max-width: 28.75em;
-    padding: 2em 1.5em;
-    border-radius: 0.9rem;
-    display: flex;
-    flex-direction: column;
-    // justify-content: space-between;
-  }
-
+  // border: 1px solid green;
   &__info-container {
     text-align: center;
     margin-bottom: 0.5em;
   }
 
-  &__bank-card {
+  &__card-icon {
     width: 2em;
     height: 2em;
   }
@@ -119,10 +88,10 @@
   &__title {
     color: color(main-red);
     font-size: 110% !important;
-    font-weight: 500;
+    font-weight: 600;
   }
 
-  &__message {
+  &__text {
     font-size: 0.975rem !important;
 
     > span {
@@ -158,6 +127,11 @@
       &:hover {
         background: #eaeaea;
       }
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0.1rem 0.2rem rgba(62, 156, 233, 0.7);
     }
   }
 }

@@ -1,10 +1,16 @@
 <template>
-  <!-- Page for Income Plan -->
-  <ListingDetail v-if="routeSlug === 'income-plan'" title="Income Plan" @reset-params="resetParams">
-    <template #min-invest>
-      5000
-    </template>
-    <template #modal-content>
+  <ListingDetail
+    :title="plans[routeSlug].title"
+    :minInvest="getSingleListing.minimumInvestment"
+    :returns="getSingleListing.returnsRange"
+    :holPeriod="getSingleListing.periodRange"
+    :imageSrc="getSingleListing.image"
+    :is-modal-visible="isModalVisible"
+    @show-modal="showModal"
+    @close-modal="closeModal"
+  >
+    <!-- Income Plan -->
+    <template v-if="routeSlug === 'income-plan'" #modal-content>
       <template v-if="transactionStep === 1">
         <MainIcon name="tooltip" size="sm" class="lst-modal__top-icon" />
         <p class="lst-modal__title">Income Plan</p>
@@ -12,7 +18,7 @@
           <MainInput type="number" label="Tokens" v-model.number="tokens" class="lst-modal__input" />
           <MainInput type="number" label="Amount (N)" :disable="true" :value="amount" class="lst-modal__input" />
         </div>
-        <button type="button" class="lst-modal__btn" :disabled="tokens <= 0" @click="next()">
+        <button type="button" class="lst-modal__btn" :disabled="!isTokensAvailable" @click="next()">
           <span>Continue</span>
           <MainIcon name="caret-right" size="xs" />
         </button>
@@ -47,7 +53,7 @@
         <p class="lst-modal__title">Payment Frequency</p>
         <div class="lst-modal__text-container">
           <p class="lst-modal__text lst-modal__text--wgt-600">Choose monthly payment date</p>
-          <MainInput inputType="select" label="" class="lst-modal__select" :options="freqOptions" />
+          <MainInput inputType="select" label="" class="lst-modal__select" :options="monthlyOptions" />
         </div>
         <button type="button" class="lst-modal__btn" @click="next(0.5)">
           <span>continue</span>
@@ -75,20 +81,30 @@
       </template>
       <template v-else-if="transactionStep === 4">
         <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack()" />
+        <p class="lst-modal__title">Investment Purpose</p>
+        <div class="lst-modal__text-container">
+          <p class="lst-modal__text lst-modal__text--wgt-600">Why do you want to invest?</p>
+          <MainInput label="" class="lst-modal__input" v-model="invPurpose" />
+        </div>
+        <button type="button" class="lst-modal__btn" @click="next()">
+          <span>continue</span>
+          <MainIcon name="caret-right" size="xs" />
+        </button>
+      </template>
+      <template v-else-if="transactionStep === 5">
+        <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack()" />
         <p class="lst-modal__title">Review Plan</p>
         <!-- eslint-disable-next-line -->
         <ListingPlanReview title="income plan" :amount="amount" :date="currentDate" :tokens="tokens" :frequency="paymentFrequency" :holPeriod="invPeriod" :invReturns="invReturns" />
-        <button type="button" class="lst-modal__btn lst-modal__btn--red" @click="initTransaction">
+        <button type="button" class="lst-modal__btn lst-modal__btn--red" @click="perfTransaction">
           <span>pay now</span>
           <MainIcon name="caret-right" size="xs" />
         </button>
       </template>
     </template>
-  </ListingDetail>
 
-  <!-- Page for Rental Plan -->
-  <ListingDetail v-else-if="routeSlug === 'rental-plan'" title="Rental Plan">
-    <template #modal-content>
+    <!-- Rental Plan -->
+    <template v-else-if="routeSlug === 'rental-plan'" #modal-content>
       <template v-if="transactionStep === 1">
         <MainIcon name="tooltip" size="sm" class="lst-modal__top-icon" />
         <p class="lst-modal__title">Rental Plan</p>
@@ -96,7 +112,7 @@
           <MainInput type="number" label="Tokens" v-model.number="tokens" class="lst-modal__input" />
           <MainInput type="number" label="Amount (N)" :disable="true" :value="amount" class="lst-modal__input" />
         </div>
-        <button type="button" class="lst-modal__btn" :disabled="tokens <= 0" @click="next()">
+        <button type="button" class="lst-modal__btn" :disabled="!isTokensAvailable" @click="next()">
           <span>Continue</span>
           <MainIcon name="caret-right" size="xs" />
         </button>
@@ -121,6 +137,7 @@
           <!-- eslint-disable-next-line -->
           <MainInput v-show="isFreqSelected('RECURRING')" inputType="select" label="" v-model.number="freqValue" class="lst-modal__select" :options="freqOptions" />
           <p class="lst-modal__title">Investment Period</p>
+          <p class="lst-modal__text lst-modal__text--lg">10 - 15 years</p>
           <p class="lst-modal__text">Returns: {{ invReturns }}</p>
         </div>
         <button type="button" class="lst-modal__btn" @click="next(stepVal)">
@@ -133,7 +150,7 @@
         <p class="lst-modal__title">Payment Frequency</p>
         <div class="lst-modal__text-container">
           <p class="lst-modal__text lst-modal__text--wgt-600">Choose monthly payment date</p>
-          <MainInput inputType="select" label="" class="lst-modal__select" :options="freqOptions" />
+          <MainInput inputType="select" label="" class="lst-modal__select" :options="monthlyOptions" />
         </div>
         <button type="button" class="lst-modal__btn" @click="next(0.5)">
           <span>continue</span>
@@ -141,6 +158,18 @@
         </button>
       </template>
       <template v-else-if="transactionStep === 3">
+        <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack(stepVal)" />
+        <p class="lst-modal__title">Investment Purpose</p>
+        <div class="lst-modal__text-container">
+          <p class="lst-modal__text lst-modal__text--wgt-600">Why do you want to invest?</p>
+          <MainInput label="" class="lst-modal__input" v-model="invPurpose" />
+        </div>
+        <button type="button" class="lst-modal__btn" @click="next()">
+          <span>continue</span>
+          <MainIcon name="caret-right" size="xs" />
+        </button>
+      </template>
+      <template v-else-if="transactionStep === 4">
         <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack()" />
         <p class="lst-modal__title">Review Plan</p>
         <!-- eslint-disable-next-line -->
@@ -149,22 +178,33 @@
             Rental Income
           </template>
         </ListingPlanReview>
-        <button type="button" class="lst-modal__btn lst-modal__btn--red">
+        <paystack
+          class="lst-modal__btn lst-modal__btn--red"
+          :amount="getKoboAmount"
+          :email="email"
+          :paystackkey="paystackkey"
+          :reference="reference"
+          :callback="callback"
+          :close="close"
+          :embed="false"
+        >
           <span>pay now</span>
           <MainIcon name="caret-right" size="xs" />
-        </button>
+        </paystack>
       </template>
     </template>
-  </ListingDetail>
 
-  <!-- Special Plan -->
-  <ListingDetail v-else-if="routeSlug === 'special-plan'" title="Special Plan">
-    <template #modal-content>
+    <!-- Special Plan -->
+    <template v-else-if="routeSlug === 'special-plan'" #modal-content>
       <MainIcon name="tooltip" size="sm" class="lst-modal__top-icon" />
       <p class="lst-modal__title">Special Plan</p>
       <div class="lst-modal__input-container">
         <MainInput label="Full Name" class="lst-modal__input" />
         <MainInput label="Email Address" class="lst-modal__input" />
+      </div>
+      <div class="lst-modal__input-container">
+        <MainInput label="Phone Number" class="lst-modal__input" />
+        <MainInput inputType="select" label="Interest" class="lst-modal__select" />
       </div>
       <button type="button" class="lst-modal__btn" @click="next()">
         <span>Continue</span>
@@ -179,7 +219,8 @@ import ListingDetail from "@/components/Shared/listings/ListingDetail.vue";
 import ListingPlanReview from "@/components/Shared/listings/ListingPlanReview.vue";
 import MainInput from "@/components/form/mainInput.vue";
 import MainIcon from "@/components/Shared/mainIcon.vue";
-import Api from "@/utils/api.js";
+import paystack from "vue-paystack";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "singleListing",
@@ -187,7 +228,8 @@ export default {
     ListingDetail,
     ListingPlanReview,
     MainInput,
-    MainIcon
+    MainIcon,
+    paystack
   },
   data() {
     return {
@@ -204,28 +246,34 @@ export default {
         { key: "6 months", value: 6 },
         { key: "12 months", value: 12 }
       ],
+      monthlyOptions: [
+        { key: "1st of Every Month", value: "1st" },
+        { key: "End of Every Month", value: "end" }
+      ],
+      invPurpose: "",
       plans: {
+        // using the route slugs as the key
         "income-plan": {
           name: "INCOME",
-          tokenValue: 5000
+          title: "Income Plan"
+          // tokenValue: 5000
         },
         "rental-plan": {
           name: "RENTAL",
-          tokenValue: 10000
+          title: "Rental Plan"
+          // tokenValue: 10000
+        },
+        "special-plan": {
+          title: "Special Plan"
         }
-      }
-      // using the route slugs as the key
-      // tokenValues: {
-      //   "income-plan": 5000,
-      //   "rental-plan": 10000,
-      //   "special-plan": 10000
-      // }
+      },
+      paystackkey: process.env.PAYSTACK_KEY,
+      email: "",
+      isModalVisible: false
     };
   },
   methods: {
-    resetParams() {
-      console.log("ok");
-    },
+    ...mapActions(["initTransaction", "findSingleListing"]),
     goBack(val = 1) {
       this.transactionStep -= val;
     },
@@ -251,15 +299,42 @@ export default {
       const ordinals = ["st", "nd", "rd"];
       const exceptions = [11, 12, 13];
       const num = day % 10;
-      return `${day}${num > 3 || exceptions.includes(day) ? "th" : ordinals[num]}`;
+      return `${day}${num > 3 || exceptions.includes(day) ? "th" : ordinals[num - 1]}`;
     },
-    async initTransaction() {
-      console.log("ok");
+    async callback(response) {
+      console.log(response);
+      this.closeModal();
+      const payload = {
+        purpose: this.invPurpose,
+        planName: this.plans[this.routeSlug].planName,
+        noTokens: this.tokens,
+        invPeriod: this.invPeriod,
+        paymentFrequency: this.paymentFrequency
+      };
+      const res = await this.initTransaction(payload);
+      console.log(res.data);
+    },
+    close() {
+      console.log("Payment Closed");
+    },
+    resetParams() {
+      Object.assign(this.$data, this.$options.data.apply(this));
+    },
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+      this.resetParams();
     }
   },
   computed: {
+    ...mapGetters(["getUser", "getSingleListing"]),
     routeSlug() {
       return this.$route.params.slug;
+    },
+    isTokensAvailable() {
+      return this.tokens > 0 && this.tokens <= this.getSingleListing.availableTokens;
     },
     getfreqText() {
       return this.freqTexts[this.paymentFrequency];
@@ -268,7 +343,11 @@ export default {
       return this.invPeriod === 6 ? "14% - 28%" : "25% - 45%";
     },
     amount() {
-      return this.tokens * this.plans[this.routeSlug].tokenValue;
+      // return this.tokens * this.plans[this.routeSlug].tokenValue;
+      return this.tokens * this.getSingleListing.minimumInvestment;
+    },
+    getKoboAmount() {
+      return this.amount * 100;
     },
     currentDate() {
       const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -277,12 +356,24 @@ export default {
     },
     stepVal() {
       return this.isFreqSelected("RECURRING") ? 0.5 : 1;
+    },
+    reference() {
+      let text = "";
+      let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      for (let i = 0; i < 10; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
     }
   },
-
-  async created() {
-    const res = await Api.get("portfolio/stats", true);
-    console.log(res.data);
+  created() {
+    if (this.routeSlug !== "special-plan") {
+      this.findSingleListing(this.plans[this.routeSlug].name);
+    }
+  },
+  mounted() {
+    this.email = this.getUser.email;
+    console.log(this.getSingleListing);
   }
 };
 </script>

@@ -5,7 +5,7 @@
       <!-- <div class="listing-dtl__carousel"> -->
       <Carousel class="listing-dtl__carousel" :autoplay="false" :nav="false" :items="1">
         <div v-for="i in 4" :key="i">
-          <img class="listing-dtl__img" src="https://res.cloudinary.com/dwpu7jpku/image/upload/v1612297295/listings_mfl4io.png" :alt="`${title} image`" />
+          <img class="listing-dtl__img" :src="imageSrc" :alt="`${title} image`" />
         </div>
       </Carousel>
       <!-- </div> -->
@@ -20,9 +20,7 @@
             </template>
             <template #value>
               <MainIcon name="green-naira" size="md" />
-              <slot name="min-invest">
-                10000
-              </slot>
+              {{ minInvest }}
             </template>
           </ListingInfoCard>
 
@@ -34,9 +32,7 @@
               Returns (ROI)
             </template>
             <template #value>
-              <slot name="returns">
-                30% - 40%
-              </slot>
+              {{ returns }}
             </template>
           </ListingInfoCard>
 
@@ -48,7 +44,7 @@
               Holding period
             </template>
             <template #value>
-              6 - 12 Months
+              {{ holPeriod }}
             </template>
           </ListingInfoCard>
 
@@ -65,7 +61,7 @@
           </ListingInfoCard>
         </div>
         <div>
-          <button type="button" class="listing-dtl__btn" @click="isModalVisible = true">Invest Now</button>
+          <button type="button" class="listing-dtl__btn" @click="$emit('show-modal')">Invest Now</button>
         </div>
       </div>
     </section>
@@ -141,11 +137,30 @@ export default {
     title: {
       type: String,
       required: true
+    },
+    minInvest: {
+      type: Number,
+      default: 10000
+    },
+    returns: {
+      type: String,
+      default: "25% - 30%"
+    },
+    holPeriod: {
+      type: String,
+      default: "6 - 12 Months"
+    },
+    imageSrc: {
+      type: String,
+      required: true
+    },
+    isModalVisible: {
+      type: Boolean,
+      required: true
     }
   },
   data() {
     return {
-      isModalVisible: false,
       minInvestText: "This is the smallest amount you can start this plan for and you can always invest more.",
       returnsText: "This is the Profit on your Investment, it usually has a range for each Plan.",
       holPeriodText: "This is the Duration for each asset before your Capital & returns are paid.",
@@ -154,8 +169,8 @@ export default {
   },
   methods: {
     closeModal() {
-      this.isModalVisible = false;
       this.$emit("reset-params");
+      this.$emit("close-modal");
     }
   }
 };

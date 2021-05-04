@@ -43,6 +43,8 @@
     <gt v-if="name === 'gt'"></gt>
     <back-caret v-if="name === 'back-caret'"></back-caret>
     <money-alt v-if="name === 'money-alt'"></money-alt>
+    <left-caret v-if="name === 'left-caret'"></left-caret>
+    <right-caret v-if="name === 'right-caret'"></right-caret>
   </span>
 </template>
 
@@ -114,7 +116,9 @@ export default {
     clipboard: () => import("@/components/__private__/media/clipboard"),
     activity: () => import("@/components/__private__/media/activity"),
     gt: () => import("@/components/__private__/media/gt"),
-    moneyAlt: () => import("@/components/__private__/media/moneyAlt")
+    moneyAlt: () => import("@/components/__private__/media/moneyAlt"),
+    leftCaret: () => import("@/components/__private__/media/leftCaret"),
+    rightCaret: () => import("@/components/__private__/media/rightCaret")
   }
 };
 </script>

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="listing-wrapper">
     <div class="listing-bg-red"></div>
     <div class="listing-item-container">
@@ -58,4 +58,4 @@ export default {
     MainIcon
   }
 };
-</script>
+</script> -->

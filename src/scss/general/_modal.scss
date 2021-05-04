@@ -22,12 +22,8 @@
     min-height: 14em;
     width: 91.25%;
     max-width: 38em;
-    padding: 1.35em 2.25em;
+    padding: 1.35em 2em;
     border-radius: 1.25rem;
-
-    @include breakpoint(mobile-only) {
-      padding: 1.35em 1.75em;
-    }
 
     &--md {
       max-width: 28.75em;

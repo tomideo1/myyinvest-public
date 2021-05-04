@@ -3,7 +3,9 @@ import Api from "@/utils/api";
 const state = {
   faqs: [],
   insights: [],
-  singleInsight: {}
+  singleInsight: {},
+  listings: [],
+  singleListing: {}
 };
 
 const getters = {
@@ -15,6 +17,12 @@ const getters = {
   },
   getSingleInsight(state) {
     return state.singleInsight;
+  },
+  getListings(state) {
+    return state.listings;
+  },
+  getSingleListing(state) {
+    return state.singleListing;
   }
 };
 
@@ -27,6 +35,12 @@ const mutations = {
   },
   setSingleInsight(state, data) {
     return (state.singleInsight = data);
+  },
+  setListings(state, data) {
+    state.listings = data;
+  },
+  setSingleListing(state, data) {
+    state.singleListing = data;
   }
 };
 
@@ -60,6 +74,22 @@ const actions = {
       return true;
     }
     return false;
+  },
+
+  async fetchListings({ commit }) {
+    const res = await Api.get("listings/get");
+    if (res.status === 200 || res.status === 201) {
+      commit("setListings", res.data.listings);
+    }
+    return res;
+  },
+
+  async findSingleListing({ commit, dispatch, getters }, listingType) {
+    if (!getters.getListings.length) {
+      await dispatch("fetchListings");
+    }
+    const listing = getters.getListings.find(item => item.listingType === listingType);
+    commit("setSingleListing", listing);
   }
 };
 

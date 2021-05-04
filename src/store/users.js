@@ -5,8 +5,10 @@ const state = {
   userInvestmentDetails: {},
   userNextOfKinDetails: {},
   userReferralDetails: {},
+  referredUsers: [],
   bankList: [],
   userBanks: [],
+  userCards: [],
   userWallet: {},
   userNotifications: []
 };
@@ -28,12 +30,20 @@ const getters = {
     return state.userReferralDetails;
   },
 
+  getReferredUsers(state) {
+    return state.referredUsers;
+  },
+
   getBankList(state) {
     return state.bankList;
   },
 
   getUserBanks(state) {
     return state.userBanks;
+  },
+
+  getUserCards(state) {
+    return state.userCards;
   },
 
   getUserNotifications(state) {
@@ -62,8 +72,20 @@ const mutations = {
     return (state.userReferralDetails = data);
   },
 
+  setReferredUsers(state, data) {
+    state.referredUsers = data;
+  },
+
   setUserBanks(state, data) {
     return (state.userBanks = data);
+  },
+
+  updateUserBanks(state, data) {
+    state.userBanks.push(data);
+  },
+
+  setUserCards(state, data) {
+    state.userCards = data;
   },
 
   setBankList(state, data) {
@@ -136,6 +158,7 @@ const actions = {
       });
       commit("setBankList", bankList);
     }
+    return res;
   },
 
   async fetchUserBanks({ commit }) {
@@ -158,29 +181,42 @@ const actions = {
     }
   },
 
-  // eslint-disable-next-line no-unused-vars
   async addBankAccount({ commit }, payload) {
     const res = await Api.post("banks", payload, true);
     if (res.status === 200 || res.status === 201) {
       commit("updateUserBanks", res.data.details);
-      return res;
-    } else {
-      return res;
     }
+    return res;
+  },
+
+  // eslint-disable-next-line no-unused-vars
+  async fetchUserCards({ commit }) {
+    const res = await Api.get("banks/cards/getCards", true);
+    if (res.status === 200 || res.status === 201) {
+      commit("setUserCards", res.data.cards);
+    }
+    return res;
+  },
+
+  // eslint-disable-next-line no-unused-vars
+  async verifyCardTransaction({ commit }, payload) {
+    const res = await Api.post("banks/cards/verifyTransaction", payload, true);
+    if (res.status === 200 || res.status === 201) {
+      console.log(res.data);
+    }
+    return res;
   },
 
   async fetchReferralDetails({ commit }) {
     const res = await Api.get("referrals/get", true);
     if (res.status === 200 || res.status === 201) {
-      const { referredUsers } = res.data;
-      const refData = { ...res.data.referralDetails, referredUsers };
-      commit("setReferralDetails", refData);
-      // commit("setReferralDetails", res.data.referralDetails);
-      // commit("setReferredUsers", res.data.referredUsers);
-      return res;
-    } else {
-      return res;
+      const { referredUsers, referralDetails } = res.data;
+      // const refData = { ...res.data.referralDetails, referredUsers };
+      // commit("setReferralDetails", refData);
+      commit("setReferralDetails", referralDetails);
+      commit("setReferredUsers", referredUsers);
     }
+    return res;
   },
 
   // eslint-disable-next-line no-unused-vars
@@ -226,6 +262,12 @@ const actions = {
   async getWalletBalance({ commit }) {
     const res = await Api.get(`wallet/balance`, true);
     commit("setUserWallet", res.data);
+  },
+
+  // eslint-disable-next-line no-unused-vars
+  async initTransaction({ commit }, payload) {
+    const res = await Api.post("transactions/initTransaction", payload, true);
+    console.log(res.data);
   }
 };
 

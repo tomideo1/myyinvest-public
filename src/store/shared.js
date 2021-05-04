@@ -3,6 +3,7 @@ import Api from "@/utils/api";
 const state = {
   faqs: [],
   insights: [],
+  top_stories: [],
   singleInsight: {}
 };
 
@@ -15,6 +16,9 @@ const getters = {
   },
   getSingleInsight(state) {
     return state.singleInsight;
+  },
+  getTopStories(state) {
+    return state.top_stories;
   }
 };
 
@@ -27,6 +31,9 @@ const mutations = {
   },
   setSingleInsight(state, data) {
     return (state.singleInsight = data);
+  },
+  setTopStories(state, data) {
+    return (state.top_stories = data);
   }
 };
 
@@ -35,6 +42,15 @@ const actions = {
     const res = await Api.get(`faq/get?page=${payload.page}&perpage=${payload.per_page}`);
     commit("setAllFaqs", res.data.faq);
     return res.status === 200 || res.status === 201;
+  },
+
+  async fetchTopStories({ commit }) {
+    const res = await Api.get(`insights/get/top`);
+    if (res.status === 200 || res.status === 201) {
+      commit("setTopStories", res.data.insights);
+    } else {
+      return res;
+    }
   },
 
   async fetchAllInsights({ commit }, payload) {

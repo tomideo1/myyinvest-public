@@ -2,10 +2,10 @@
   <div class="container-fluid p-1">
     <main class="col-md-12">
       <div class="row">
-        <status-card status-title="Net Worth" icon-color="#F4DCDC" status-number="1250000" icon-name="database" class="col-md-3 mb-3" />
-        <status-card status-title="Capital Invested" icon-color="#ABC9E0" status-number="1000000" icon-name="money-blue" class="col-md-3 mb-3" />
-        <status-card status-title="Total Return" icon-color="#9FD99F" status-number="250000" icon-name="reload" class="col-md-3 mb-3" />
-        <status-card status-title="Total Token" icon-color="#BA7BD8" :has-naira="false" status-number="005" icon-name="total" class="col-md-3 mb-3" />
+        <status-card status-title="Net Worth" icon-color="#F4DCDC" :status-number="getUserOverview.networth" icon-name="database" class="col-md-6 col-lg-3 col-12 mb-3" />
+        <status-card status-title="Capital Invested" icon-color="#ABC9E0" :status-number="getUserOverview.capitalInvested" icon-name="money-blue" class="col-md-6 col-lg-3 col-12 mb-3" />
+        <status-card status-title="Total Return" icon-color="#9FD99F" :status-number="getUserOverview.totalReturns" icon-name="reload" class="col-md-6 col-lg-3 col-12 mb-3" />
+        <status-card status-title="Total Tokens" icon-color="#BA7BD8" :has-naira="false" :status-number="getUserOverview.totalTokens" icon-name="total" class="col-md-6 col-lg-3 col-12 mb-3" />
       </div>
     </main>
 
@@ -69,8 +69,7 @@
         <div class="col-md-4 mb-4">
           <main-card style="min-height: 400px!important;">
             <p>Recent Transactions</p>
-            <recent-transactions status="success" />
-            <recent-transactions status="primary" />
+            <recent-transactions v-for="(transaction, index) in getUserOverview.topFiveTransactions" :key="index" status="success" />
             <p class="text-center ft-12 text-grey-500">View More</p>
           </main-card>
         </div>
@@ -84,6 +83,7 @@ import StatusCard from "../../components/dashboard/statusCard";
 import MainCard from "../../components/Shared/mainCard";
 import RecentTransactions from "../../components/dashboard/recentTransactions";
 import MainIcon from "../../components/Shared/mainIcon";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "dashboard",
   data() {
@@ -108,7 +108,16 @@ export default {
       }
     };
   },
-  components: { MainIcon, RecentTransactions, MainCard, StatusCard }
+  components: { MainIcon, RecentTransactions, MainCard, StatusCard },
+  methods: {
+    ...mapActions(["fetchUserOverview"])
+  },
+  computed: {
+    ...mapGetters(["getUserOverview"])
+  },
+  async mounted() {
+    await this.fetchUserOverview();
+  }
 };
 </script>
 

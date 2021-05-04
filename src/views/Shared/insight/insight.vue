@@ -18,15 +18,15 @@
                 <hr class="mt-n1" />
               </div>
               <div class="d-flex flex-column">
-                <div v-for="i in 6" :key="i" class="single-blog-post post-style-2 d-flex mb-3 align-items-center widget-post side-port p-lg-2 ">
+                <div v-for="(story, index) in topStories" :key="index" class="single-blog-post post-style-2 d-flex mb-3 align-items-center widget-post side-port p-lg-2 ">
                   <!-- Post Thumbnail -->
                   <div class="post-thumbnail">
-                    <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614039990/mmyyinvest-2.0/images/f_asqxxa.jpg" alt="" />
+                    <img :src="story.image" alt="" />
                   </div>
                   <!-- Post Content -->
                   <div class="post-cntent">
                     <router-link to="single2.html" class="text-black w-100">
-                      <p class="mb-0">How Did van Gogh’s Turbulent Mind Depict One of the Most</p>
+                      <p class="mb-0">{{ story.postTitle }}</p>
                     </router-link>
                   </div>
                 </div>
@@ -56,7 +56,24 @@
 </template>
 
 <script>
-export default {};
+import { mapActions, mapGetters } from "vuex";
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    ...mapActions(["fetchTopStories"])
+  },
+  computed: {
+    ...mapGetters(["getTopStories"]),
+    topStories() {
+      return this.getTopStories.slice(0, 5).reverse();
+    }
+  },
+  async mounted() {
+    await this.fetchTopStories();
+  }
+};
 </script>
 
 <style lang="scss" scoped>

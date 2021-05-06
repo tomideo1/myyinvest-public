@@ -115,6 +115,9 @@
   }
 
   &__title {
+    // border: 1px solid green;
+    display: flex;
+    align-items: center;
     font-size: 1.25em !important;
     font-weight: 600;
     text-transform: capitalize;
@@ -128,7 +131,7 @@
     // width of each summary item is 11.75em and 1.75em is for the spacing
     // the reason for all these gynamastics is so we can use justify-content: space-between to
     // seperate the two summary items (similar to how we would use gap in css grid)
-    max-width: 11.75em * 2 + 1.75em;
+    max-width: 11.5em * 2 + 1.75em;
 
     @include breakpoint(mobile-only) {
       justify-content: space-around;
@@ -161,6 +164,16 @@
 
     @include breakpoint(tablet-landscape-up) {
       margin-right: 2em;
+    }
+  }
+
+  &__status {
+    display: flex;
+    margin-bottom: 0.5em;
+
+    > p {
+      margin-left: 0.5em;
+      font-size: 1em !important;
     }
   }
 }
@@ -230,6 +243,66 @@
 
       &:last-child {
         max-width: 7em;
+      }
+    }
+  }
+}
+
+$total-spacing: 0.3rem;
+$length: 1.2rem;
+.inv-switch {
+  display: inline-block;
+  width: ($length * 2) + $total-spacing;
+  height: $length + $total-spacing;
+  position: relative;
+
+  &__slider {
+    position: absolute;
+    // setting top, left, right and bottom to 0 makes this block fill the space of the appropriate container (i.e.
+    // the nearest ancestor with position: relative or the body element) meaning it basically sets the width and
+    // height to 100% of the appropriate container
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #e3e3ec;
+    border-radius: 2.5rem;
+    cursor: pointer;
+    transition: background 0.3s linear;
+
+    &::after {
+      content: "\f04c";
+      font-family: "Font Awesome\ 5 Free";
+      font-weight: 900;
+      width: $length;
+      height: $length;
+      font-size: 0.75rem;
+      @include flex-center;
+      color: #ccc;
+      background: color(bv-white);
+      position: absolute;
+      // division in sass must be in parenthesis
+      top: ($total-spacing / 2);
+      left: ($total-spacing / 2);
+      border-radius: 50%;
+      // box-shadow: 0 0 0.2rem 0 $bv-shadow;
+      transition: all 0.3s linear;
+    }
+  }
+
+  &__checkbox {
+    visibility: hidden;
+
+    &:checked {
+      + .inv-switch__slider {
+        background: color(main-red);
+
+        &::after {
+          content: "\f04b";
+          padding-left: 0.1em;
+          color: color(main-red);
+          transform: translateX(100%);
+        }
       }
     }
   }

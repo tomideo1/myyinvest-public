@@ -7,6 +7,12 @@
   font-family: fonts(main-poppins), serif;
 }
 
+:root {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 html {
   font-size: 15px;
 }

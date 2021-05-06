@@ -1,5 +1,5 @@
 <template>
-  <button class="bc-card">
+  <button class="add-card bc-card">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -18,7 +18,7 @@
         />
       </svg>
     </svg>
-    <p class="bc-card__text">{{ text }}</p>
+    <p class="add-card__text">{{ text }}</p>
   </button>
 </template>
 
@@ -35,37 +35,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.bc-card {
-  border: 1px solid rgba(193, 0, 0, 0.6);
-  box-shadow: 0.025rem 0.025rem 0.25rem 0 rgba(0, 0, 0, 0.5);
-  border-radius: 0.9rem;
+.add-card {
   background: color(bv-white);
   color: color(main-red);
-  height: 15.25em;
-  display: flex;
+  @include flex-center;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.0325rem;
-  transition: box-shadow 0.3s ease;
-
-  @media screen and (max-width: 599px) {
-    font-size: 0.935rem;
-  }
+  cursor: pointer;
 
   &__text {
     margin-top: 0.8em;
     font-size: inherit !important;
     font-weight: 600;
-  }
-
-  &:hover,
-  &:focus {
-    box-shadow: 0.05rem 0.05rem 0.3rem 0 rgba(0, 0, 0, 0.6);
-  }
-
-  &:focus {
-    outline: none;
   }
 }
 </style>

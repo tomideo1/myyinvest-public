@@ -73,6 +73,28 @@
   }
 }
 
+.bc-card {
+  border: 1px solid rgba(193, 0, 0, 0.6);
+  box-shadow: 0.025rem 0.025rem 0.25rem 0 rgba(0, 0, 0, 0.5);
+  border-radius: 0.9rem;
+  height: 15em;
+  font-size: 1.0325rem;
+  transition: box-shadow 0.3s ease;
+
+  @include breakpoint(mobile-only) {
+    font-size: 0.925rem;
+  }
+
+  &:hover,
+  &:focus {
+    box-shadow: 0.05rem 0.05rem 0.25rem 0.1rem rgba(0, 0, 0, 0.6);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
 .ac-modal {
   // border: 1px solid green;
   &__info-container {

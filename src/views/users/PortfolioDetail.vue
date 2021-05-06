@@ -1,7 +1,7 @@
 <template>
   <div class="portfolio-container">
     <div class="inv-plan" v-if="getRouteSlug === 'income-plan'">
-      <p class="inv-plan__title">Income Plan</p>
+      <PlanHeader title="income plan" :show-summary="false" />
       <div class="inv-plan__content">
         <div class="inv-plan__graph-container">
           <PlanSummary :earnings="10416" :capital="0.26" />

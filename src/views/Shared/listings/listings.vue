@@ -67,7 +67,8 @@
                     </p>
                     <hr class="mt-n2 ml-auto " style="border-color:red!important; position: relative; left: -5%" />
                     <!-- <main-button @click="$router.push({ name: 'single-listing' })" style="font-size: 10px!important;" text="Read More" size="xs" class="float-right" /> -->
-                    <main-button @click="$router.push({ name: 'single-listing', params: { slug: slugs[i - 1] } })" style="font-size: 10px!important;" text="Read More" size="xs" class="float-right" />
+                    <!-- <main-button @click="$router.push({ name: 'single-listing', params: { slug: slugs[i - 1] } })" style="font-size: 10px!important;" text="Read More" size="xs" class="float-right" /> -->
+                    <main-button @click="moveToNextPage(i)" style="font-size: 10px!important;" text="Read More" size="xs" class="float-right" />
                   </div>
                 </div>
               </div>
@@ -98,7 +99,10 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["fetchListings"])
+    ...mapActions(["fetchListings"]),
+    moveToNextPage(i) {
+      this.$router.push(`${this.$route.path}}/${this.slugs[i - 1]}`);
+    }
   },
   created() {
     this.fetchListings();

@@ -9,216 +9,209 @@
     @show-modal="showModal"
     @close-modal="closeModal"
   >
-    <!-- Income Plan -->
-    <template v-if="routeSlug === 'income-plan'" #modal-content>
+    <template #modal-content>
       <template v-if="transactionStep === 1">
         <MainIcon name="tooltip" size="sm" class="lst-modal__top-icon" />
-        <p class="lst-modal__title">Income Plan</p>
-        <div class="lst-modal__input-container">
-          <MainInput type="number" label="Tokens" v-model.number="tokens" class="lst-modal__input" />
-          <MainInput type="number" label="Amount (N)" :disable="true" :value="amount" class="lst-modal__input" />
-        </div>
-        <button type="button" class="lst-modal__btn" :disabled="!isTokensAvailable" @click="next()">
-          <span>Continue</span>
-          <MainIcon name="caret-right" size="xs" />
-        </button>
-      </template>
-      <template v-else-if="transactionStep === 2">
-        <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack()" />
-        <p class="lst-modal__title">Payment Frequency</p>
-        <div class="lst-modal__input-container">
-          <button type="button" :class="getBtnClasses(isFreqSelected('ONE-OFF'))" @click="selectFrequency('ONE-OFF')">
-            <span>one off</span>
-            <MainIcon name="tooltip" size="sm" color="currentColor" />
-          </button>
-          <button type="button" :class="getBtnClasses(isFreqSelected('RECURRING'))" @click="selectFrequency('RECURRING')">
-            <span>Recurring</span>
-            <MainIcon name="tooltip" size="sm" color="currentColor" />
-          </button>
-        </div>
+        <p class="lst-modal__title">Plan Name</p>
         <div class="lst-modal__text-container">
-          <p class="lst-modal__text">
-            {{ getfreqText }}
+          <p class="lst-modal__text lst-modal__text--wgt-600">
+            Give this plan a creative name or purpose e.g. Road to new House, To buy new phone
           </p>
-          <!-- eslint-disable-next-line -->
-          <MainInput v-show="isFreqSelected('RECURRING')" inputType="select" label="" v-model.number="freqValue" class="lst-modal__input" :options="freqOptions" />
-        </div>
-        <button type="button" class="lst-modal__btn" @click="next(stepVal)">
-          <span>continue</span>
-          <MainIcon name="caret-right" size="xs" />
-        </button>
-      </template>
-      <template v-else-if="transactionStep === 2.5">
-        <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack(0.5)" />
-        <p class="lst-modal__title">Payment Frequency</p>
-        <div class="lst-modal__text-container">
-          <p class="lst-modal__text lst-modal__text--wgt-600">Choose monthly payment date</p>
-          <MainInput v-model="monthlyValue" inputType="select" label="" class="lst-modal__input" :options="monthlyOptions" />
-        </div>
-        <button type="button" class="lst-modal__btn" @click="next(0.5)">
-          <span>continue</span>
-          <MainIcon name="caret-right" size="xs" />
-        </button>
-      </template>
-      <template v-else-if="transactionStep === 3">
-        <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack(stepVal)" />
-        <p class="lst-modal__title">Investment Period</p>
-        <div class="lst-modal__input-container">
-          <button type="button" :class="getBtnClasses(isInvPeriodSelected(6))" @click="selectInvPeriod(6)">
-            6 months
-          </button>
-          <button type="button" :class="getBtnClasses(isInvPeriodSelected(12))" @click="selectInvPeriod(12)">
-            12 months
-          </button>
-        </div>
-        <div class="lst-modal__text-container">
-          <p class="lst-modal__text lst-modal__text--wgt-600">Returns: {{ invReturns }}</p>
+          <MainInput name="planname" label="" class="lst-modal__input lst-modal__input--mw-lg" v-model="invPurpose" />
         </div>
         <button type="button" class="lst-modal__btn" @click="next()">
           <span>continue</span>
           <MainIcon name="caret-right" size="xs" />
         </button>
       </template>
-      <template v-else-if="transactionStep === 4">
-        <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack()" />
-        <p class="lst-modal__title">Investment Purpose</p>
-        <div class="lst-modal__text-container">
-          <p class="lst-modal__text lst-modal__text--wgt-600">Why do you want to invest?</p>
-          <MainInput label="" class="lst-modal__input lst-modal__input--mw-lg" v-model="invPurpose" />
-        </div>
-        <button type="button" class="lst-modal__btn" @click="next()">
-          <span>continue</span>
-          <MainIcon name="caret-right" size="xs" />
-        </button>
-      </template>
-      <template v-else-if="transactionStep === 5">
-        <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack()" />
-        <p class="lst-modal__title">Review Plan</p>
-        <!-- eslint-disable-next-line -->
-        <ListingPlanReview title="income plan" :amount="amount" :date="currentDate" :tokens="tokens" :frequency="paymentFrequency" :holPeriod="invPeriod" :invReturns="invReturns" />
-        <paystack
-          class="lst-modal__btn lst-modal__btn--red"
-          :amount="getKoboAmount"
-          :email="email"
-          :paystackkey="paystackkey"
-          :reference="reference"
-          :callback="callback"
-          :close="close"
-          :embed="false"
-        >
-          <span>pay now</span>
-          <MainIcon name="caret-right" size="xs" />
-        </paystack>
-      </template>
-    </template>
 
-    <!-- Rental Plan -->
-    <template v-else-if="routeSlug === 'rental-plan'" #modal-content>
-      <template v-if="transactionStep === 1">
-        <MainIcon name="tooltip" size="sm" class="lst-modal__top-icon" />
-        <p class="lst-modal__title">Rental Plan</p>
-        <div class="lst-modal__input-container">
-          <MainInput type="number" label="Tokens" v-model.number="tokens" class="lst-modal__input" />
-          <MainInput type="number" label="Amount (N)" :disable="true" :value="amount" class="lst-modal__input" />
-        </div>
-        <button type="button" class="lst-modal__btn" :disabled="!isTokensAvailable" @click="next()">
-          <span>Continue</span>
-          <MainIcon name="caret-right" size="xs" />
-        </button>
-      </template>
-      <template v-else-if="transactionStep === 2">
-        <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack()" />
-        <p class="lst-modal__title">Payment Frequency</p>
-        <div class="lst-modal__input-container">
-          <button type="button" :class="getBtnClasses(isFreqSelected('ONE-OFF'))" @click="selectFrequency('ONE-OFF')">
-            <span>one off</span>
-            <MainIcon name="tooltip" size="sm" color="currentColor" />
+      <!-- Income Plan -->
+      <template v-if="routeSlug === 'income-plan'">
+        <template v-if="transactionStep === 2">
+          <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack()" />
+          <p class="lst-modal__title">Income Plan</p>
+          <div class="lst-modal__input-container">
+            <MainInput type="number" label="Tokens" v-model.number="tokens" class="lst-modal__input" />
+            <MainInput type="number" label="Amount (N)" :disable="true" :value="amount" class="lst-modal__input" />
+          </div>
+          <button type="button" class="lst-modal__btn" :disabled="!isTokensAvailable" @click="next()">
+            <span>Continue</span>
+            <MainIcon name="caret-right" size="xs" />
           </button>
-          <button type="button" :class="getBtnClasses(isFreqSelected('RECURRING'))" @click="selectFrequency('RECURRING')">
-            <span>Recurring</span>
-            <MainIcon name="tooltip" size="sm" color="currentColor" />
+        </template>
+        <template v-else-if="transactionStep === 3">
+          <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack()" />
+          <p class="lst-modal__title">Payment Frequency</p>
+          <div class="lst-modal__input-container">
+            <button type="button" :class="getBtnClasses(isFreqSelected('ONE-OFF'))" @click="selectFrequency('ONE-OFF')">
+              <span>one off</span>
+              <MainIcon name="tooltip" size="sm" color="currentColor" />
+            </button>
+            <button type="button" :class="getBtnClasses(isFreqSelected('RECURRING'))" @click="selectFrequency('RECURRING')">
+              <span>Recurring</span>
+              <MainIcon name="tooltip" size="sm" color="currentColor" />
+            </button>
+          </div>
+          <div class="lst-modal__text-container">
+            <p class="lst-modal__text">
+              {{ getfreqText }}
+            </p>
+            <!-- eslint-disable-next-line -->
+            <MainInput v-show="isFreqSelected('RECURRING')" inputType="select" label="" v-model.number="freqValue" class="lst-modal__input" :options="freqOptions" />
+          </div>
+          <button type="button" class="lst-modal__btn" @click="next(stepVal)">
+            <span>continue</span>
+            <MainIcon name="caret-right" size="xs" />
           </button>
-        </div>
-        <div class="lst-modal__text-container">
-          <p class="lst-modal__text">
-            {{ getfreqText }}
-          </p>
-          <!-- eslint-disable-next-line -->
-          <MainInput v-show="isFreqSelected('RECURRING')" inputType="select" label="" v-model.number="freqValue" class="lst-modal__input" :options="freqOptions" />
+        </template>
+        <template v-else-if="transactionStep === 3.5">
+          <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack(0.5)" />
+          <p class="lst-modal__title">Payment Frequency</p>
+          <div class="lst-modal__text-container">
+            <p class="lst-modal__text lst-modal__text--wgt-600">Choose monthly payment date</p>
+            <MainInput v-model="monthlyValue" inputType="select" label="" class="lst-modal__input" :options="monthlyOptions" />
+          </div>
+          <button type="button" class="lst-modal__btn" @click="next(0.5)">
+            <span>continue</span>
+            <MainIcon name="caret-right" size="xs" />
+          </button>
+        </template>
+        <template v-else-if="transactionStep === 4">
+          <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack(stepVal)" />
           <p class="lst-modal__title">Investment Period</p>
-          <p class="lst-modal__text lst-modal__text--lg">10 - 15 years</p>
-          <p class="lst-modal__text">Returns: {{ invReturns }}</p>
-        </div>
-        <button type="button" class="lst-modal__btn" @click="next(stepVal)">
-          <span>continue</span>
-          <MainIcon name="caret-right" size="xs" />
-        </button>
+          <div class="lst-modal__input-container">
+            <button type="button" :class="getBtnClasses(isInvPeriodSelected(6))" @click="selectInvPeriod(6)">
+              6 months
+            </button>
+            <button type="button" :class="getBtnClasses(isInvPeriodSelected(12))" @click="selectInvPeriod(12)">
+              12 months
+            </button>
+          </div>
+          <div class="lst-modal__text-container">
+            <p class="lst-modal__text lst-modal__text--wgt-600">Returns: {{ invReturns }}</p>
+          </div>
+          <button type="button" class="lst-modal__btn" @click="next()">
+            <span>continue</span>
+            <MainIcon name="caret-right" size="xs" />
+          </button>
+        </template>
+        <template v-else-if="transactionStep === 5">
+          <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack()" />
+          <p class="lst-modal__title">Review Plan</p>
+          <!-- eslint-disable-next-line -->
+          <ListingPlanReview title="income plan" :amount="amount" :date="currentDate" :tokens="tokens" :frequency="paymentFrequency" :holPeriod="invPeriod" :invReturns="invReturns" />
+          <paystack
+            class="lst-modal__btn lst-modal__btn--red"
+            :amount="getKoboAmount"
+            :email="email"
+            :paystackkey="paystackkey"
+            :reference="reference"
+            :callback="callback"
+            :close="close"
+            :embed="false"
+          >
+            <span>pay now</span>
+            <MainIcon name="caret-right" size="xs" />
+          </paystack>
+        </template>
       </template>
-      <template v-else-if="transactionStep === 2.5">
-        <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack(0.5)" />
-        <p class="lst-modal__title">Payment Frequency</p>
-        <div class="lst-modal__text-container">
-          <p class="lst-modal__text lst-modal__text--wgt-600">Choose monthly payment date</p>
-          <MainInput v-model="monthlyValue" inputType="select" label="" class="lst-modal__input" :options="monthlyOptions" />
-        </div>
-        <button type="button" class="lst-modal__btn" @click="next(0.5)">
-          <span>continue</span>
-          <MainIcon name="caret-right" size="xs" />
-        </button>
+
+      <!-- Rental Plan -->
+      <template v-else-if="routeSlug === 'rental-plan'">
+        <template v-if="transactionStep === 2">
+          <MainIcon name="tooltip" size="sm" class="lst-modal__top-icon" />
+          <p class="lst-modal__title">Rental Plan</p>
+          <div class="lst-modal__input-container">
+            <MainInput type="number" label="Tokens" v-model.number="tokens" class="lst-modal__input" />
+            <MainInput type="number" label="Amount (N)" :disable="true" :value="amount" class="lst-modal__input" />
+          </div>
+          <button type="button" class="lst-modal__btn" :disabled="!isTokensAvailable" @click="next()">
+            <span>Continue</span>
+            <MainIcon name="caret-right" size="xs" />
+          </button>
+        </template>
+        <template v-else-if="transactionStep === 3">
+          <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack()" />
+          <p class="lst-modal__title">Payment Frequency</p>
+          <div class="lst-modal__input-container">
+            <button type="button" :class="getBtnClasses(isFreqSelected('ONE-OFF'))" @click="selectFrequency('ONE-OFF')">
+              <span>one off</span>
+              <MainIcon name="tooltip" size="sm" color="currentColor" />
+            </button>
+            <button type="button" :class="getBtnClasses(isFreqSelected('RECURRING'))" @click="selectFrequency('RECURRING')">
+              <span>Recurring</span>
+              <MainIcon name="tooltip" size="sm" color="currentColor" />
+            </button>
+          </div>
+          <div class="lst-modal__text-container">
+            <p class="lst-modal__text">
+              {{ getfreqText }}
+            </p>
+            <!-- eslint-disable-next-line -->
+            <MainInput v-show="isFreqSelected('RECURRING')" inputType="select" label="" v-model.number="freqValue" class="lst-modal__input" :options="freqOptions" />
+            <p class="lst-modal__title">Investment Period</p>
+            <p class="lst-modal__text lst-modal__text--lg">10 - 15 years</p>
+            <p class="lst-modal__text">Returns: {{ invReturns }}</p>
+          </div>
+          <button type="button" class="lst-modal__btn" @click="next(stepVal)">
+            <span>continue</span>
+            <MainIcon name="caret-right" size="xs" />
+          </button>
+        </template>
+        <template v-else-if="transactionStep === 3.5">
+          <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack(0.5)" />
+          <p class="lst-modal__title">Payment Frequency</p>
+          <div class="lst-modal__text-container">
+            <p class="lst-modal__text lst-modal__text--wgt-600">Choose monthly payment date</p>
+            <MainInput v-model="monthlyValue" inputType="select" label="" class="lst-modal__input" :options="monthlyOptions" />
+          </div>
+          <button type="button" class="lst-modal__btn" @click="next(0.5)">
+            <span>continue</span>
+            <MainIcon name="caret-right" size="xs" />
+          </button>
+        </template>
+        <template v-else-if="transactionStep === 4">
+          <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack()" />
+          <p class="lst-modal__title">Review Plan</p>
+          <!-- eslint-disable-next-line -->
+          <ListingPlanReview title="rental plan" :amount="amount" :date="currentDate" :tokens="tokens" :frequency="paymentFrequency" :holPeriod="invPeriod" :invReturns="invReturns">
+            <template #returns-field>
+              Rental Income
+            </template>
+          </ListingPlanReview>
+          <paystack
+            class="lst-modal__btn lst-modal__btn--red"
+            :amount="getKoboAmount"
+            :email="email"
+            :paystackkey="paystackkey"
+            :reference="reference"
+            :callback="callback"
+            :close="close"
+            :embed="false"
+          >
+            <span>pay now</span>
+            <MainIcon name="caret-right" size="xs" />
+          </paystack>
+        </template>
       </template>
-      <template v-else-if="transactionStep === 3">
-        <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack(stepVal)" />
-        <p class="lst-modal__title">Investment Purpose</p>
-        <div class="lst-modal__text-container">
-          <p class="lst-modal__text lst-modal__text--wgt-600">Why do you want to invest?</p>
-          <MainInput label="" class="lst-modal__input lst-modal__input--mw-lg" v-model="invPurpose" />
+
+      <!-- Special Plan -->
+      <template v-else-if="routeSlug === 'special-plan'">
+        <MainIcon name="tooltip" size="sm" class="lst-modal__top-icon" />
+        <p class="lst-modal__title">Special Plan</p>
+        <div class="lst-modal__input-container">
+          <MainInput v-model="special.fullName" name="fullname" label="Full Name" class="lst-modal__input" />
+          <MainInput v-model="special.email" name="email" label="Email Address" class="lst-modal__input" />
+          <MainInput v-model="special.phoneNumber" name="phonenumber" label="Phone Number" class="lst-modal__input" />
+          <MainInput v-model="special.interest" inputType="select" label="Interest" class="lst-modal__input" :options="interestType" />
+          <MainInput v-model="special.address" name="address" inputType="textarea" label="Address" class="lst-modal__input" />
+          <MainInput v-model="special.amount" type="number" label="Amount" class="lst-modal__input" />
         </div>
         <button type="button" class="lst-modal__btn" @click="next()">
-          <span>continue</span>
+          <span>Continue</span>
           <MainIcon name="caret-right" size="xs" />
         </button>
       </template>
-      <template v-else-if="transactionStep === 4">
-        <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack()" />
-        <p class="lst-modal__title">Review Plan</p>
-        <!-- eslint-disable-next-line -->
-        <ListingPlanReview title="rental plan" :amount="amount" :date="currentDate" :tokens="tokens" :frequency="paymentFrequency" :holPeriod="invPeriod" :invReturns="invReturns">
-          <template #returns-field>
-            Rental Income
-          </template>
-        </ListingPlanReview>
-        <paystack
-          class="lst-modal__btn lst-modal__btn--red"
-          :amount="getKoboAmount"
-          :email="email"
-          :paystackkey="paystackkey"
-          :reference="reference"
-          :callback="callback"
-          :close="close"
-          :embed="false"
-        >
-          <span>pay now</span>
-          <MainIcon name="caret-right" size="xs" />
-        </paystack>
-      </template>
-    </template>
-
-    <!-- Special Plan -->
-    <template v-else-if="routeSlug === 'special-plan'" #modal-content>
-      <MainIcon name="tooltip" size="sm" class="lst-modal__top-icon" />
-      <p class="lst-modal__title">Special Plan</p>
-      <div class="lst-modal__input-container">
-        <MainInput v-model="special.fullName" label="Full Name" class="lst-modal__input" />
-        <MainInput v-model="special.email" label="Email Address" class="lst-modal__input" />
-        <MainInput v-model="special.phoneNumber" label="Phone Number" class="lst-modal__input" />
-        <MainInput v-model="special.interest" inputType="select" label="Interest" class="lst-modal__input" :options="interestType" />
-        <MainInput v-model="special.address" inputType="textarea" label="Address" class="lst-modal__input" />
-        <MainInput v-model="special.amount" type="number" label="Amount" class="lst-modal__input" />
-      </div>
-      <button type="button" class="lst-modal__btn" @click="next()">
-        <span>Continue</span>
-        <MainIcon name="caret-right" size="xs" />
-      </button>
     </template>
   </ListingDetail>
 </template>
@@ -290,7 +283,7 @@ export default {
         address: "",
         amount: 0
       },
-      paystackkey: process.env.PAYSTACK_KEY,
+      paystackkey: process.env.VUE_APP_PAYSTACK_KEY,
       email: "",
       isModalVisible: false
     };
@@ -396,7 +389,7 @@ export default {
   },
   mounted() {
     this.email = this.getUser.email;
-    console.log(this.getSingleListing);
+    // console.log(this.getSingleListing);
   }
 };
 </script>

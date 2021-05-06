@@ -31,8 +31,7 @@
       </div>
 
       <template v-else-if="inputType === 'textarea'">
-        <!-- eslint-disable-next-line -->
-        <textarea :name="name" class="form__input" :placeholder="placeholder" @input="$trigger($event)" :value="value" :disabled="disable" :required="required"></textarea>
+        <textarea :name="name" class="form__input" :placeholder="placeholder" @input="trigger($event)" :value="value" :disabled="disable" :required="required"></textarea>
         <label v-if="labelType !== 'full'" class="label">{{ label }}</label>
       </template>
     </div>

@@ -101,7 +101,7 @@ export default {
   methods: {
     ...mapActions(["fetchListings"]),
     moveToNextPage(i) {
-      this.$router.push(`${this.$route.path}}/${this.slugs[i - 1]}`);
+      this.$router.push(`${this.$route.path}/${this.slugs[i - 1]}`);
     }
   },
   created() {

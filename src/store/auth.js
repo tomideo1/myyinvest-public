@@ -70,7 +70,8 @@ const actions = {
       country: payload.country,
       password: payload.password,
       firstInvest: payload.firstInvest,
-      hearAbout: payload.hearAbout
+      hearAbout: payload.hearAbout,
+      dateOfBirth: payload.dateOfBirth
     });
   },
 

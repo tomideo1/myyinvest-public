@@ -42,6 +42,15 @@
             <div class="col-md-6">
               <main-input class="mb-3" name="password1" v-model="signUpForm.confirm_password" label="Confirm Password" type="password" />
             </div>
+
+            <div class=" col-lg-6 col-md-6 col-12">
+              <div class="form__div">
+                <!-- added custom styles for xmx-datepicker and xmx-input classes in this View file -->
+                <date-picker prefix-class="xmx" :formatter="momentFormat" class="width-95 " v-model="signUpForm.dateOfBirth" valueType="format"></date-picker>
+                <label class="label ft-10 mt-n4">Date Of Birth (DOB)</label>
+              </div>
+              <!--              <main-input class="col-md-12" label="Date of Birth" v-model="profile.dob" />-->
+            </div>
           </div>
           <main-button class="w-100 " text="CONTINUE" @click="isContinue = true" type="filled" />
         </form>
@@ -95,12 +104,24 @@
 import MainButton from "../../components/form/MainButton";
 import MainInput from "../../components/form/mainInput";
 import { mapActions } from "vuex";
+import DatePicker from "vue2-datepicker";
+import "vue2-datepicker/index.css";
+import moment from "moment";
 
 export default {
   name: "register",
-  components: { MainButton, MainInput },
+  components: { MainButton, MainInput, DatePicker },
   data() {
     return {
+      momentFormat: {
+        //[optional] Date to String
+        stringify: date => {
+          return date ? moment(date).format("LL") : "";
+        },
+        parse: value => {
+          return value ? moment(value, "LL").toDate() : null;
+        }
+      },
       authClasses: ["container-c "],
       isContinue: false,
       loginText: "Login",
@@ -151,6 +172,7 @@ export default {
         confirm_password: "",
         firstInvest: "",
         hearAbout: "",
+        dateOfBirth: "",
         isAgreedTerms: false
       }
     };

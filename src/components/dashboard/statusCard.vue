@@ -35,7 +35,7 @@ export default {
       default: ""
     },
     statusNumber: {
-      type: String
+      type: Number
     },
     iconName: {
       type: String

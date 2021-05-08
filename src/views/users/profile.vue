@@ -68,7 +68,7 @@
                 <main-input class="col-md-9 " type="number" label="Bank Verification Number (BVN)" v-model="profile.bvn" />
                 <span class="d-flex flex-column">
                   <p class="text-danger  ft-12 mt-n4 float-right">Why Bvn?</p>
-                  <p v-if="profile.bvn !== '' && typeof profile.bvn !== 'undefined'" class="ft-12 bg-primary-default p-1 text-white" style="border-radius:3px;">Confirmed</p>
+                  <!-- <p v-if="profile.bvn !== '' && typeof profile.bvn !== 'undefined'" class="ft-12 bg-primary-default p-1 text-white" style="border-radius:3px;">Confirmed</p> -->
                 </span>
               </div>
             </div>

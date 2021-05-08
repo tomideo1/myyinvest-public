@@ -125,6 +125,14 @@ export default [
         ]
       },
       {
+        path: "transactions",
+        name: "transactions",
+        component: () => import(/* webpackChunkName: "user-profile" */ "../views/users/transactions.vue"),
+        meta: {
+          middleware: [auth]
+        }
+      },
+      {
         path: "settings",
         name: "settings",
         component: () => import(/* webpackChunkName: "user-profile" */ "../views/users/settings.vue"),

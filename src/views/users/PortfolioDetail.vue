@@ -96,7 +96,7 @@
       </div>
     </div>
 
-    <Modal :config="{ isVisible: isModalVisible, size: 'md' }" show-cancel @close-modal="isModalVisible = false">
+    <!-- <Modal :config="{ isVisible: isModalVisible, size: 'md' }" show-cancel @close-modal="isModalVisible = false">
       <div class="inv-modal">
         <div class="inv-modal__data">
           <span>Date</span>
@@ -113,6 +113,20 @@
         <div class="inv-modal__data">
           <span>Earnings</span>
           <span>N25,000</span>
+        </div>
+      </div>
+    </Modal> -->
+    <Modal :config="{ isVisible: isModalVisible, size: 'md' }" show-cancel @close-modal="isModalVisible = false">
+      <div class="trans">
+        <div class="trans__row">
+          <div class="trans__head">Date</div>
+          <div class="trans__head">Purpose</div>
+          <div class="trans__head">Earnings</div>
+        </div>
+        <div class="trans__row">
+          <div class="trans__data">21st. Jan 2021</div>
+          <div class="trans__data">Project</div>
+          <div class="trans__data trans__data--red">N25,000</div>
         </div>
       </div>
     </Modal>

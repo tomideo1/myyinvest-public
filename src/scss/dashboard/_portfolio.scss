@@ -219,34 +219,34 @@
   }
 }
 
-.inv-modal {
-  // border: 1px solid green;
-  padding: 0 0.5em;
+// .inv-modal {
+//   border: 1px solid green;
+//   padding: 0 0.5em;
 
-  &__data {
-    display: flex;
-    justify-content: center;
-    // border: 1px solid black;
+//   &__data {
+//     display: flex;
+//     justify-content: center;
+//     // border: 1px solid black;
 
-    &:not(:last-child) {
-      margin-bottom: 1em;
-    }
+//     &:not(:last-child) {
+//       margin-bottom: 1em;
+//     }
 
-    > span {
-      // border: 1px solid green;
-      flex: 1;
+//     > span {
+//       // border: 1px solid green;
+//       flex: 1;
 
-      &:first-child {
-        max-width: 11em;
-        font-weight: 600;
-      }
+//       &:first-child {
+//         max-width: 11em;
+//         font-weight: 600;
+//       }
 
-      &:last-child {
-        max-width: 7em;
-      }
-    }
-  }
-}
+//       &:last-child {
+//         max-width: 7em;
+//       }
+//     }
+//   }
+// }
 
 $total-spacing: 0.3rem;
 $length: 1.2rem;
@@ -271,6 +271,7 @@ $length: 1.2rem;
     transition: background 0.3s linear;
 
     &::after {
+      // unicode for pause symbol
       content: "\f04c";
       font-family: "Font Awesome\ 5 Free";
       font-weight: 900;
@@ -298,6 +299,7 @@ $length: 1.2rem;
         background: color(main-red);
 
         &::after {
+          // unicode for play symbol
           content: "\f04b";
           padding-left: 0.1em;
           color: color(main-red);

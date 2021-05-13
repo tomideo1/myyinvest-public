@@ -3,7 +3,7 @@
     :title="plans[routeSlug].title"
     :minInvest="getSingleListing.minimumInvestment"
     :returns="getSingleListing.returnsRange"
-    :holPeriod="getSingleListing.periodRange"
+    :ownPeriod="getSingleListing.periodRange"
     :imageSrc="getSingleListing.image"
     :is-modal-visible="isModalVisible"
     @show-modal="showModal"
@@ -99,7 +99,7 @@
           <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack()" />
           <p class="lst-modal__title">Review Plan</p>
           <!-- eslint-disable-next-line -->
-          <ListingPlanReview title="income plan" :amount="amount" :date="currentDate" :tokens="tokens" :frequency="paymentFrequency" :holPeriod="invPeriod" :invReturns="invReturns" />
+          <ListingPlanReview title="income plan" :amount="amount" :date="currentDate" :tokens="tokens" :frequency="paymentFrequency" :ownPeriod="invPeriod" :invReturns="invReturns" />
           <paystack
             class="lst-modal__btn lst-modal__btn--red"
             :amount="getKoboAmount"
@@ -174,7 +174,7 @@
           <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack()" />
           <p class="lst-modal__title">Review Plan</p>
           <!-- eslint-disable-next-line -->
-          <ListingPlanReview title="rental plan" :amount="amount" :date="currentDate" :tokens="tokens" :frequency="paymentFrequency" :holPeriod="invPeriod" :invReturns="invReturns">
+          <ListingPlanReview title="rental plan" :amount="amount" :date="currentDate" :tokens="tokens" :frequency="paymentFrequency" :ownPeriod="invPeriod" :invReturns="invReturns">
             <template #returns-field>
               Rental Income
             </template>

@@ -26,12 +26,12 @@
       </div>
       <div class="lst-review__data">
         <div class="lst-review__field">
-          <span>Holding Period</span>
-          <div class="lst-tooltip lst-review__tooltip" :data-content="holPeriodText">
+          <span>Ownership Period</span>
+          <div class="lst-tooltip lst-review__tooltip" :data-content="ownPeriodText">
             <MainIcon name="tooltip" size="xs" />
           </div>
         </div>
-        <div class="lst-review__value">{{ holPeriod }} months</div>
+        <div class="lst-review__value">{{ ownPeriod }} months</div>
       </div>
       <div class="lst-review__data">
         <div class="lst-review__field">
@@ -75,7 +75,7 @@ export default {
       type: String,
       required: true
     },
-    holPeriod: {
+    ownPeriod: {
       type: Number,
       required: true
     },
@@ -86,7 +86,7 @@ export default {
   },
   data() {
     return {
-      holPeriodText: "This means the Duration of the project.",
+      ownPeriodText: "This means the Duration of the project.",
       returnsText: "This is the Profit on your Investment, it usually has a range for each Plan."
     };
   }

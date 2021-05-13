@@ -21,7 +21,7 @@
       </div>
       <div class="card shadow-3 d-flex flex-column justify-content-center w-100 p-2 " style="border-color: white;border-radius: 20px;">
         <div class="card-body ">
-          <form>
+          <form @submit.prevent="">
             <p class="text-center font-weight-bold ft-24 mt-5 pb-5">Enter your email to reset password</p>
             <main-input class=" mb-5 mt-5 " v-model="email" label="Email Address" type="email" />
             <main-button class="w-100 mt-2 mb-5 " @click="resetPassword" :text="resetText" type="filled" required />

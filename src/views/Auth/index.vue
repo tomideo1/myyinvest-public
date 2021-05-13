@@ -45,8 +45,8 @@
 
             <div class=" col-lg-6 col-md-6 col-12">
               <div class="form__div">
-                <!-- added custom styles for xmx-datepicker and xmx-input classes in this View file -->
-                <date-picker prefix-class="xmx" :formatter="momentFormat" class="width-95 " v-model="signUpForm.dateOfBirth" valueType="format"></date-picker>
+                <!-- added custom styles for xmx-datepicker and xmx-input classes in the datepicker stylesheet -->
+                <date-picker prefix-class="xmx" :formatter="momentFormat" v-model="signUpForm.dateOfBirth" valueType="format"></date-picker>
                 <label class="label ft-10 mt-n4">Date Of Birth (DOB)</label>
               </div>
               <!--              <main-input class="col-md-12" label="Date of Birth" v-model="profile.dob" />-->

@@ -4,9 +4,11 @@
     <div :class="['trans__data', { 'trans__data--mbl-hide': isToggled }]">{{ date }}</div>
     <div :class="['trans__data', 'trans__data--green', { 'trans__data--mbl-hide': isToggled }]">N{{ amount }}</div>
     <div :class="['trans__data', { 'trans__data--mbl-hide': isToggled }]">
-      {{ from }}
+      {{ purpose }}
     </div>
-    <div :class="['trans__data', 'trans__data--green', { 'trans__data--mbl-hide': !isToggled }]">{{ payment_channel }}</div>
+    <div :class="['trans__data', 'trans__data--green', { 'trans__data--mbl-hide': !isToggled }]">
+      {{ payment_channel }}
+    </div>
     <div :class="['trans__data', 'trans__data--green', { 'trans__data--mbl-hide': !isToggled }]">
       <span :class="`badge badge-${status} ml-auto ft-12 font-weight-normal`">Success</span>
     </div>
@@ -24,28 +26,22 @@ export default {
       type: String,
       default: "21st jan. 2021"
     },
-
     amount: {
       type: Number,
       default: 25000
     },
-    from: {
+    purpose: {
       type: String,
-      default: "Savoiur Amara"
+      default: "Project"
     },
     payment_channel: {
       type: String,
       default: "Bank Transfer"
     },
-    startDate: {
-      type: String,
-      default: "21st jan. 2021"
-    },
     status: {
       type: String,
       default: "success"
     },
-
     isToggled: {
       type: Boolean,
       default: false

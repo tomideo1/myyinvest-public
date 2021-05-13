@@ -22,7 +22,6 @@ export default {
   components: {
     PlanSummary
   },
-  // add boolean show summary
   props: {
     title: {
       type: String,

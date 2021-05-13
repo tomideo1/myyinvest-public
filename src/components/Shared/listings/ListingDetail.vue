@@ -36,15 +36,15 @@
             </template>
           </ListingInfoCard>
 
-          <ListingInfoCard :tooltip-text="holPeriodText">
+          <ListingInfoCard :tooltip-text="ownPeriodText">
             <template #icon>
               <MainIcon name="clock" size="lg" />
             </template>
             <template #title>
-              Holding period
+              Ownership period
             </template>
             <template #value>
-              {{ holPeriod }}
+              {{ ownPeriod }}
             </template>
           </ListingInfoCard>
 
@@ -67,12 +67,12 @@
     </section>
     <div class="listing-dtl__box">
       <button type="button" class="listing-dtl__btn">Project Details</button>
-      <button type="button" class="listing-dtl__btn listing-dtl__btn--white">Multimedia</button>
+      <!-- <button type="button" class="listing-dtl__btn listing-dtl__btn--white">Multimedia</button> -->
     </div>
 
     <div class="listing-dtl__card-container">
       <div class="lst-card">
-        <h4 class="lst-card__title">Project Details</h4>
+        <h4 class="lst-card__title">Plan Details</h4>
         <div>
           <p class="lst-card__text">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, quae. Ex maiores obcaecati ab nam earum, officiis magni? Velit inventore quae magnam suscipit minus vitae porro nobis
@@ -146,7 +146,7 @@ export default {
       type: String,
       default: "25% - 30%"
     },
-    holPeriod: {
+    ownPeriod: {
       type: String,
       default: "6 - 12 Months"
     },
@@ -163,7 +163,7 @@ export default {
     return {
       minInvestText: "This is the smallest amount you can start this plan for and you can always invest more.",
       returnsText: "This is the Profit on your Investment, it usually has a range for each Plan.",
-      holPeriodText: "This is the Duration for each asset before your Capital & returns are paid.",
+      ownPeriodText: "This is the Duration for each asset before your Capital & returns are paid.",
       invPurposeText: "The assets in this plan are solely for development."
     };
   },

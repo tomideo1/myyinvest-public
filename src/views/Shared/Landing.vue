@@ -6,10 +6,10 @@
           <div class="row p-5">
             <div class="col-lg-6 col-md-6">
               <div class="d-flex flex-column position-absolute top-10">
-                <h1 class="text-main-red m-1  w-100 font-weight-bold text-bold">Build your Net worth</h1>
+                <h2 class="text-main-red m-1  w-100 font-weight-bold text-bold">Build your Net worth</h2>
                 <p class="text-main-red ">
                   <span class="text_1">Through Fractional Real Estate Investment</span>
-                  <span class="text_2">Through Non Real Estate Investment and Stuff</span>
+                  <span class="text_2">From anywhere across Africa</span>
                 </p>
                 <!-- <p class="text-main-red">{{ landingList[Math.abs(currentList) % landingList.length] }}</p> -->
                 <div class="d-flex flex-row  ">
@@ -79,7 +79,7 @@
                 safe for investment.
               </p>
 
-              <main-button type="filled" text="Invest Now" size="md" class="mb-4" @click="goToLogin" />
+              <main-button @click="goToSingleListing('income-plan')" type="filled" text="Invest Now" size="md" class="mb-4" />
             </div>
 
             <div style="position: relative;" class="d-lg-block d-md-none col-lg-5 ">
@@ -117,7 +117,7 @@
                 (Secondary Market).
               </p>
 
-              <main-button class="float-right" type="filled" text="Invest Now" size="md" @click="goToLogin" />
+              <main-button @click="goToSingleListing('rental-plan')" class="float-right" type="filled" text="Invest Now" size="md" />
               <img
                 id="co_own_circle"
                 src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg"
@@ -166,7 +166,7 @@
                 style="z-index: -1; margin-top: -300px;margin-left: 200px"
               />
 
-              <main-button type="filled" class="float-right mt-4" text="Learn More" size="md" />
+              <main-button type="filled" class="float-right" text="Coming Soon" size="md" disable />
             </div>
 
             <div class=" col-md-11 d-md-block d-lg-none   ">
@@ -372,7 +372,7 @@
                 <h3 class="text-main-red m-1 w-100  font-weight-bold text-bold">Build your Net worth</h3>
                 <p class="text-main-red ">
                   <span class="text_1">Through Fractional Real Estate Investment</span>
-                  <span class="text_2">Through Non Real Estate Investment and Stuff</span>
+                  <span class="text_2">From anywhere across Africa</span>
                 </p>
 
                 <div class="d-flex flex-row">
@@ -438,7 +438,7 @@
                 safe for investment.
               </p>
 
-              <main-button @click="goToLogin" type="filled" text="Invest Now" class="mt-4" size="md" />
+              <main-button @click="goToSingleListing('income-plan')" type="filled" text="Invest Now" size="md" class="mt-4" />
             </div>
 
             <div class="col-12  mt-4">
@@ -467,7 +467,7 @@
                 (Secondary Market).
               </p>
 
-              <main-button @click="goToLogin" class="float-right" type="filled" text="Invest Now" size="md" />
+              <main-button @click="goToSingleListing('rental-plan')" class="float-right" type="filled" text="Invest Now" size="md" />
             </div>
 
             <div class="col-12">
@@ -484,7 +484,8 @@
           <div class="row ">
             <div class="col-12   d-lg-block d-md-none ">
               <span class="d-flex flex-column align-items-start  ">
-                <h5>Smart Invest</h5>
+                <!-- <h5>Smart Invest</h5> -->
+                <h5>Secondary Market</h5>
                 <span class="header-underline" style="margin-left: 150px;"></span>
               </span>
               <!-- <p id="smart_text" class="w-100 mt-3  text-align-left  font-weight-light font-poppins" style="line-height:30px">
@@ -497,7 +498,7 @@
                 (price) of the Capital Appreciation of your fractional property
               </p>
 
-              <main-button type="filled" class="float-left mt-4" text="Learn More" size="md" />
+              <main-button type="filled" class="float-left mt-2" text="Coming Soon" size="md" disable />
             </div>
             <div style="position: relative; margin-top: 80px" class=" col-md-12 ">
               <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614001034/mmyyinvest-2.0/images/smart-invest_yxzjgc.svg" width="300" height="300" class=" mt-n5" />
@@ -709,7 +710,7 @@ export default {
         access: [],
         returns: []
       },
-      landingList: ["Through Fractional Real Estate Investment", "Through Fractional Real Estate Investment and Stuff"],
+      landingList: ["Through Fractional Real Estate Investment", "From anywhere across Africa"],
       currentList: 0
     };
   },
@@ -731,6 +732,9 @@ export default {
     },
     goToLogin() {
       this.$router.push({ name: "login" });
+    },
+    goToSingleListing(slug) {
+      this.$router.push({ name: "single-listing", params: { slug } });
     }
   },
   mounted() {
@@ -786,7 +790,6 @@ p {
 #demo {
   overflow: hidden;
 }
-
 .text_1 {
   animation: text1;
 }
@@ -802,6 +805,10 @@ p {
   animation-duration: 20s;
   animation-timing-function: steps(25, end);
   animation-iteration-count: infinite;
+
+  @include breakpoint(tablet-landscape-down) {
+    font-size: 0.9em;
+  }
 }
 .text_1::after,
 .text_2::after {
@@ -820,7 +827,8 @@ p {
   }
   60%,
   90% {
-    width: 23.4em;
+    // width: 23.4em;
+    width: 15.125em;
   }
 }
 @keyframes text1 {
@@ -831,7 +839,7 @@ p {
   }
   10%,
   40% {
-    width: 22em;
+    width: 21.75em;
   }
 }
 @keyframes caret {

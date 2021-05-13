@@ -42,7 +42,7 @@ export default function() {
       }
     },
     {
-      title: "Bank and Cards",
+      title: "Banks and Cards",
       routeIcon: "atm-card",
       identifier: "banks-and-cards",
       to: {

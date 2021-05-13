@@ -187,7 +187,7 @@ button,
 
   &:disabled {
     cursor: auto;
-    opacity: 0.5 !important;
+    opacity: 0.6 !important;
   }
 }
 

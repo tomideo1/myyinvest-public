@@ -32,10 +32,10 @@
                 ]"
               />
             </div>
-            <div class=" col-lg-6 col-md-6 col-12">
+            <div class="col-lg-6 col-md-6 col-12">
               <div class="form__div">
-                <!-- added custom styles for xmx-datepicker and xmx-input classes in this View file -->
-                <date-picker prefix-class="xmx" :formatter="momentFormat" class="width-95 " v-model="profile.dob" valueType="format"></date-picker>
+                <!-- added custom styles for xmx-datepicker and xmx-input classes in the datepicker stylesheet -->
+                <date-picker prefix-class="xmx" :formatter="momentFormat" class="pfl-datepicker" v-model="profile.dob" valueType="format"></date-picker>
                 <label class="label ft-10 mt-n4">Date Of Birth (DOB)</label>
               </div>
               <!--              <main-input class="col-md-12" label="Date of Birth" v-model="profile.dob" />-->
@@ -510,41 +510,12 @@ export default {
   background: color(main-red) !important;
 }
 
-// custom styles
-.xmx-datepicker {
-  width: 93.325% !important;
+// profile datepicker custom styles
+.pfl-datepicker {
+  padding: 0 1rem;
 
   + .label {
-    left: 1.675rem;
-    font-weight: 500;
-    font-size: 0.75rem !important;
-  }
-
-  &:focus-within + .label {
-    color: color(main-red);
-    font-size: 0.8rem !important;
-  }
-}
-
-.xmx-input {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 48px;
-  font-size: 14px;
-  /*border: 1px solid #efb9b9;*/
-  /*color: #999999;*/
-  /*font-family: fonts(main-poppins), serif;*/
-  line-height: 1.3;
-  // padding: 1.3rem;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid #efb9b9 !important;
-  /*outline: none;*/
-
-  &:focus-within {
-    border-color: color(main-red) !important;
+    left: 1.7rem;
   }
 }
 </style>

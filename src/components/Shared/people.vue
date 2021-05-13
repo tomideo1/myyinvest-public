@@ -59,14 +59,14 @@ export default {
 
   &:hover {
     transition: all 500ms ease;
-    transform: scale(1.2);
+    transform: scale(1.125);
   }
 
   &.avatar-xxl {
     margin-top: 0.25em;
     margin-left: 0.25em;
-    height: 17rem !important;
-    width: 17rem !important;
+    height: 16rem !important;
+    width: 16rem !important;
   }
 }
 .avatar:before {

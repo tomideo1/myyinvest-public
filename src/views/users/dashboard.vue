@@ -13,6 +13,7 @@
       <div class="row">
         <div class="col-md-4 mb-4">
           <main-card style="min-height: 400px!important;">
+            <h6 class="text-align-center">Portfolio breakdown</h6>
             <GChart class="mt-5" type="PieChart" :data="chartData" :options="chartOptions" />
           </main-card>
         </div>
@@ -90,9 +91,9 @@ export default {
     return {
       chartData: [
         ["Task", "value"],
-        ["Smart-Invest", 450],
-        ["Co-invest", 300],
-        ["Co-own", 660]
+        ["Income Plan", 450],
+        ["Rental Plan", 300],
+        ["Wallet", 660]
       ],
       chartOptions: {
         chartArea: {

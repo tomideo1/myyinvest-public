@@ -6,7 +6,7 @@
           <div class="row p-5">
             <div class="col-lg-6 col-md-6">
               <div class="d-flex flex-column position-absolute top-10">
-                <h2 class="text-main-red m-1  w-100 font-weight-bold text-bold">Build your Net worth</h2>
+                <h2 class="text-main-red mb-1  w-100 font-weight-bold text-bold">Build your Net worth</h2>
                 <p class="text-main-red ">
                   <span class="text_1">Through Fractional Real Estate Investment</span>
                   <span class="text_2">From anywhere across Africa</span>
@@ -310,16 +310,46 @@
 
       <section style="margin-top: 200px;" class="ml-5">
         <div class="border-left-red d-flex flex-column  " style="margin-top: -120px">
-          <span class="text-main-red ">OUR PARTNERS</span>
-          <span>Collaborators</span>
+          <!-- <span class="text-main-red ">OUR PARTNERS</span>
+          <span>Collaborators</span> -->
+          <span class="text-main-red ">IN THE PRESS</span>
+          <span>Where we have been</span>
         </div>
-        <p class="font-weight-light mt-2">We vet, Manage and Secure our investment opportunities alongside with;</p>
+        <!-- <p class="font-weight-light mt-2">We vet, Manage and Secure our investment opportunities alongside with;</p> -->
       </section>
 
       <section class="ml-5">
         <div class="container-fluid">
           <carousel :autoplay="false" :nav="false" :items="1">
-            <div class="d-flex flex-row align-items-center justify-content-center " v-for="i in 2" :key="i">
+            <div class="d-flex flex-row align-items-center justify-content-center">
+              <div class="mr-5 partner-img riby">
+                <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Lagos_Innovate_f0y83m.png" />
+                <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Lagos_Innovate_f0y83m.png" />
+              </div>
+              <div class="mr-5 partner-img partner-img--lg riby">
+                <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069165/landing/Fintech_Nigeria_glu7sm.png" />
+                <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069165/landing/Fintech_Nigeria_glu7sm.png" />
+              </div>
+              <div class="mr-5 partner-img riby">
+                <img width="200" height="200" class="mx-auto d-lg-none d-md-block hgt-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Pertinence_h4kr10.jpg" />
+                <img width="300" height="200" class="mx-auto d-lg-block d-md-none hgt-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Pertinence_h4kr10.jpg" />
+              </div>
+            </div>
+            <div class="d-flex flex-row align-items-center justify-content-center">
+              <div class="mr-5 partner-img riby">
+                <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Lagos_Innovate_f0y83m.png" />
+                <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Lagos_Innovate_f0y83m.png" />
+              </div>
+              <div class="mr-5 partner-img partner-img--lg riby">
+                <img width="200" height="200" class="d-lg-none d-md-block hgt-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069165/landing/Africa-FinTech-Foundry-1_q2usmj.png" />
+                <img width="300" height="200" class="d-lg-block d-md-none hgt-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069165/landing/Africa-FinTech-Foundry-1_q2usmj.png" />
+              </div>
+              <div class="mr-5 partner-img riby">
+                <img width="200" height="200" class="mx-auto d-lg-none d-md-block hgt-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/NDES_eipp1c.png" />
+                <img width="300" height="200" class="mx-auto d-lg-block d-md-none hgt-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/NDES_eipp1c.png" />
+              </div>
+            </div>
+            <!-- <div class="d-flex flex-row align-items-center justify-content-center " v-for="i in 2" :key="i">
               <div class="mr-5 partner-img riby ">
                 <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001126/mmyyinvest-2.0/partners/riby_csqijz.svg" />
                 <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001126/mmyyinvest-2.0/partners/riby_csqijz.svg" />
@@ -332,7 +362,7 @@
                 <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001126/mmyyinvest-2.0/partners/leadway_rha16c.svg" />
                 <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001126/mmyyinvest-2.0/partners/leadway_rha16c.svg" />
               </div>
-            </div>
+            </div> -->
           </carousel>
         </div>
       </section>
@@ -369,7 +399,7 @@
           <div class="row p-3">
             <div class="">
               <div class="d-flex flex-column position-relative w-100 " style="top:40%!important">
-                <h3 class="text-main-red m-1 w-100  font-weight-bold text-bold">Build your Net worth</h3>
+                <h3 class="text-main-red mb-1 w-100  font-weight-bold text-bold">Build your Net worth</h3>
                 <p class="text-main-red ">
                   <span class="text_1">Through Fractional Real Estate Investment</span>
                   <span class="text_2">From anywhere across Africa</span>
@@ -636,18 +666,35 @@
             <!-- <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg" width="200" height="200" class="  position-relative d-md-none d-lg-block  mt-n5" style="z-index: -1" /> -->
             <!-- <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/light-circle_dzwdxm.svg" width="200" height="200" class="d-md-block d-lg-none " style="margin-top: 100px" alt="" /> -->
             <div class="border-left-red d-flex flex-column  ">
-              <span class="text-main-red ">OUR PARTNERS</span>
-              <span>Collaborators</span>
+              <!-- <span class="text-main-red ">OUR PARTNERS</span>
+              <span>Collaborators</span> -->
+              <span class="text-main-red ">IN THE PRESS</span>
+              <span>Where we have been.</span>
             </div>
           </div>
-          <p class="font-weight-light mt-2 w-100">We cherish this kind words from our investors and we are glad to be part on this journey with them.</p>
+          <!-- <p class="font-weight-light mt-2 w-100">We cherish this kind words from our investors and we are glad to be part on this journey with them.</p> -->
         </div>
       </section>
 
-      <section class="ml-5">
+      <section class="ml-0">
         <div class="container-fluid">
           <carousel :autoplay="false" :nav="false" :items="1">
-            <div class="d-flex flex-row align-items-center partner-img riby justify-content-center ">
+            <div class="partner-img riby">
+              <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Lagos_Innovate_f0y83m.png" />
+            </div>
+            <div class="partner-img riby">
+              <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069165/landing/Fintech_Nigeria_glu7sm.png" />
+            </div>
+            <div class="partner-img riby">
+              <img width="200" height="200" class="mx-auto d-lg-none d-md-block hgt-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Pertinence_h4kr10.jpg" />
+            </div>
+            <div class="partner-img riby">
+              <img width="200" height="200" class="d-lg-none d-md-block hgt-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069165/landing/Africa-FinTech-Foundry-1_q2usmj.png" />
+            </div>
+            <div class="partner-img riby">
+              <img width="200" height="200" class="mx-auto d-lg-none d-md-block hgt-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/NDES_eipp1c.png" />
+            </div>
+            <!-- <div class="d-flex flex-row align-items-center partner-img riby justify-content-center ">
               <img width="200" height="200" class="mx-auto" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001126/mmyyinvest-2.0/partners/riby_csqijz.svg" />
             </div>
             <div class="d-flex flex-row  partner-img riby align-items-center justify-content-center ">
@@ -655,7 +702,7 @@
             </div>
             <div class="d-flex flex-row align-items-center partner-img riby justify-content-center ">
               <img width="200" height="200" class="mx-auto " src="https://res.cloudinary.com/myyinvest/image/upload/v1614001126/mmyyinvest-2.0/partners/leadway_rha16c.svg" />
-            </div>
+            </div> -->
           </carousel>
         </div>
       </section>
@@ -749,6 +796,26 @@ export default {
 // * {
 // background-color: red!important;
 // }
+.partner-img {
+  // border: 1px solid green;
+  flex: 1;
+  @include flex-center;
+  height: 19.25em;
+
+  &--lg {
+    flex: 1.3;
+  }
+
+  > img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.hgt-100 {
+  height: 100%;
+}
+
 @media only screen and (min-width: 640px) and (max-width: 1240px) {
   #co_invest {
     width: 400px !important;

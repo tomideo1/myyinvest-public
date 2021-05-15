@@ -18,7 +18,7 @@
         </form>
 
         <!-- SIGN UP -->
-        <form @submit.prevent="" class="sign-up-form " v-if="!isContinue">
+        <form @submit.prevent="isContinue = true" class="sign-up-form " v-if="!isContinue">
           <div class="sign-logo">
             <router-link to="/">
               <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614001064/mmyyinvest-2.0/logos/Myylogo2_uwpfw9.png" class="img-fluid" alt="" />
@@ -28,41 +28,46 @@
           <p>Start your investment journey.</p>
           <div class="row">
             <div class="col-md-6">
-              <main-input v-model="signUpForm.firstName" name="firstname" class=" mb-3" label="First Name" />
+              <main-input v-model="signUpForm.firstName" name="firstname" class=" mb-3" label="First Name" :required="true" />
             </div>
             <div class="col-md-6">
-              <main-input v-model="signUpForm.lastName" name="lastname" class=" mb-3" label="Last Name" />
+              <main-input v-model="signUpForm.lastName" name="lastname" class=" mb-3" label="Last Name" :required="true" />
             </div>
           </div>
-          <main-input class="mb-1" name="email" label="Email Address" v-model="signUpForm.email" type="email" />
+          <main-input class="mb-0" name="email" label="Email Address" v-model="signUpForm.email" type="email" :required="true" />
           <div class="row">
             <div class="col-md-6">
-              <main-input class=" mb-3" name="password1" v-model="signUpForm.password" label="Password" type="password" />
+              <main-input name="phonenumber" v-model="signUpForm.phoneNo" label="Phone Number" type="tel" :required="true" />
             </div>
-            <div class="col-md-6">
-              <main-input class="mb-3" name="password1" v-model="signUpForm.confirm_password" label="Confirm Password" type="password" />
-            </div>
-
             <div class=" col-lg-6 col-md-6 col-12">
               <div class="form__div">
                 <!-- added custom styles for xmx-datepicker and xmx-input classes in the datepicker stylesheet -->
-                <date-picker prefix-class="xmx" :formatter="momentFormat" v-model="signUpForm.dateOfBirth" valueType="format"></date-picker>
+                <date-picker prefix-class="xmx" :formatter="momentFormat" v-model="signUpForm.dateOfBirth" valueType="format" :input-attr="{ required: 'true' }"></date-picker>
                 <label class="label ft-10 mt-n4">Date Of Birth (DOB)</label>
+                <!--  <main-input class="col-md-12" label="Date of Birth" v-model="profile.dob" />-->
               </div>
-              <!--              <main-input class="col-md-12" label="Date of Birth" v-model="profile.dob" />-->
             </div>
           </div>
-          <main-button class="w-100 " text="CONTINUE" @click="isContinue = true" type="filled" />
-        </form>
-        <form @submit.prevent="" class="sign-up-form" v-else>
           <div class="row">
-            <p class="text-main-red cursor-pointer" @click="isContinue = false">Go back</p>
+            <div class="col-md-6">
+              <main-input class=" mb-3" name="password1" v-model="signUpForm.password" label="Password" type="password" :required="true" />
+            </div>
+            <div class="col-md-6">
+              <main-input class="mb-3" name="password2" v-model="signUpForm.confirm_password" label="Confirm Password" type="password" :required="true" />
+            </div>
+          </div>
+          <!-- <main-button class="w-100 " text="CONTINUE" @click="isContinue = true" type="filled" /> -->
+          <main-button btn-type="submit" class="w-100 " text="CONTINUE" type="filled" />
+        </form>
+        <form @submit.prevent="handleRegister" class="sign-up-form" v-else>
+          <div class="row">
+            <p class="text-main-red cursor-pointer" @click="isContinue = false">&lt; Go back</p>
 
             <div class="col-md-12 ">
-              <main-input class="" v-model="signUpForm.firstInvest" label="Are you a first time investor?" inputType="select" :options="investment_options" />
+              <main-input class="" v-model="signUpForm.firstInvest" label="Are you a first time investor?" inputType="select" :options="investment_options" :required="true" />
             </div>
             <div class="col-md-12 ">
-              <main-input class=" " v-model="signUpForm.hearAbout" label="How did you hear about us?" inputType="select" :options="media_list" />
+              <main-input class=" " v-model="signUpForm.hearAbout" label="How did you hear about us?" inputType="select" :options="media_list" :required="true" />
             </div>
             <div class="form-check m-3">
               <input type="checkbox" class="form-check-input" v-model="signUpForm.isAgreedTerms" />
@@ -71,7 +76,8 @@
               </label>
             </div>
           </div>
-          <main-button class="w-100 " :disable="loginText === 'Loading...' || !signUpForm.isAgreedTerms" @click="handleRegister" :text="registerText" type="filled" />
+          <!-- <main-button class="w-100 " :disable="loginText === 'Loading...' || !signUpForm.isAgreedTerms" @click="handleRegister" :text="registerText" type="filled" /> -->
+          <main-button btn-type="submit" class="w-100 " :disable="loginText === 'Loading...' || !signUpForm.isAgreedTerms" :text="registerText" type="filled" />
         </form>
       </div>
     </div>
@@ -168,6 +174,7 @@ export default {
         lastName: "",
         email: "",
         country: "Nigeria",
+        phoneNo: "",
         password: "",
         confirm_password: "",
         firstInvest: "",

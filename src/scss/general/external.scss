@@ -3728,7 +3728,8 @@ form.sign-in-form {
 @media (max-width: 870px) {
   .container-c {
     // min-height: 800px;
-    min-height: 980px;
+    // min-height: 980px;
+    min-height: 1060px;
     // height: 100vh;
   }
 
@@ -3869,7 +3870,8 @@ form.sign-in-form {
   }
 
   .container-c:before {
-    bottom: 72%;
+    // bottom: 72%;
+    bottom: 70.5%;
     left: 50%;
   }
 

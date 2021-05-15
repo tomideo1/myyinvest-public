@@ -1,5 +1,5 @@
 <template>
-  <button @click="$emit('click', $event)" :class="[classes, icon ? iconClass : '']" :disabled="disable" :style="styles">
+  <button :type="btnType" @click="$emit('click', $event)" :class="[classes, icon ? iconClass : '']" :disabled="disable" :style="styles">
     <!-- Button Text -->
     <main-icon lass="mr-4" :size="size" v-if="Icon && IconPosition === 'beginning'" :name="Icon" />
     <span class="d-flex justify-content-around align-content-center mx-auto text-center">
@@ -70,6 +70,10 @@ export default {
     text: {
       type: String,
       default: ""
+    },
+    btnType: {
+      type: String,
+      default: "button"
     }
   },
   computed: {

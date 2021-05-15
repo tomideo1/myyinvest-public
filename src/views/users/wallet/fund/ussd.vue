@@ -9,7 +9,7 @@
         <main-input v-model="form.amount" label="Amount" />
         <main-input v-model="form.bank" label="Select Bank" input-type="select" :options="getBankList" />
 
-        <main-button type="filled" class="col-md-12 mt-5" text="Continue" :disable="form.amount === '' || form.bank === ''" />
+        <main-button btn-type="submit" type="filled" class="col-md-12 mt-5" text="Continue" :disable="form.amount === '' || form.bank === ''" />
       </form>
     </section>
 
@@ -77,6 +77,7 @@ export default {
   },
 
   async created() {
+    this.fetchBankList();
     this.$Bus.$on("close-modal", () => {
       this.isModalVisible = false;
     });

@@ -35,7 +35,7 @@
               <hr class="font-weight-lighter" />
 
               <div class="sidebar-widget-area">
-                <p class="title">Stay Connected</p>
+                <p class="title">Share</p>
                 <div class="widget-content">
                   <div class="social-area d-flex justify-content-between">
                     <a href="#"><i class="fa fa-facebook"></i></a>

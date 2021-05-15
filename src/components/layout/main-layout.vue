@@ -84,7 +84,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="d-flex flex-column">
                     <span class="mr-3  d-lg-inline text-black ft-12">Hi, {{ getUserName }}</span>
-                    <span class="mr-3  d-lg-inline text-black ft-10 ml-auto">{{ getUser.user_role }}</span>
+                    <span class="mr-3  d-lg-inline text-black ft-10 ml-auto">Myy{{ getUser.user_role }}</span>
                   </span>
 
                   <!--                  <avatar :user="getProfile" size="md" />-->

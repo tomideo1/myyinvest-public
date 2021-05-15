@@ -198,7 +198,7 @@ export default {
     }
   },
   async created() {
-    const res = await Api.get("portfolio/stats", true);
+    const res = await Api.get("portfolio/get", true);
     console.log(res.data);
   }
 };

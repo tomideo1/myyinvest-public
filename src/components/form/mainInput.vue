@@ -23,7 +23,7 @@
 
       <div class="" v-if="inputType === 'select'">
         <!-- added custom styles with form__select class -->
-        <select id="" class="form__input 'width-100 text-bold form__select " v-model="currentOption" @input="$emit('input', $event.target.value)">
+        <select id="" class="form__input 'width-100 text-bold form__select " v-model="currentOption" @input="$emit('input', $event.target.value)" :required="required">
           <option class="select-placeholder" value="" disabled selected>Select an Option</option>
           <option v-for="(option, index) in options" :key="index" :value="option.value">{{ option.key }}</option>
         </select>

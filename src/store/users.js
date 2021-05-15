@@ -287,7 +287,7 @@ const actions = {
   // eslint-disable-next-line no-unused-vars
   async initTransaction({ commit }, payload) {
     const res = await Api.post("transactions/initTransaction", payload, true);
-    console.log(res.data);
+    return res;
   }
 };
 

@@ -57,7 +57,7 @@
               {{ getfreqText }}
             </p>
             <!-- eslint-disable-next-line -->
-            <MainInput v-show="isFreqSelected('RECURRING')" inputType="select" label="" v-model.number="freqValue" class="lst-modal__input" :options="freqOptions" />
+            <MainInput v-show="isFreqSelected('RECURRING')" inputType="select" label="" v-model="freqValue" class="lst-modal__input" :options="freqOptions" />
           </div>
           <button type="button" class="lst-modal__btn" @click="next(stepVal)">
             <span>continue</span>
@@ -100,29 +100,20 @@
           <p class="lst-modal__title">Review Plan</p>
           <!-- eslint-disable-next-line -->
           <ListingPlanReview title="income plan" :amount="amount" :date="currentDate" :tokens="tokens" :frequency="paymentFrequency" :ownPeriod="invPeriod" :invReturns="invReturns" />
-          <paystack
-            class="lst-modal__btn lst-modal__btn--red"
-            :amount="getKoboAmount"
-            :email="email"
-            :paystackkey="paystackkey"
-            :reference="reference"
-            :callback="callback"
-            :close="close"
-            :embed="false"
-          >
+          <button type="button" class="lst-modal__btn lst-modal__btn--red" @click="initializeTransaction">
             <span>pay now</span>
             <MainIcon name="caret-right" size="xs" />
-          </paystack>
+          </button>
         </template>
       </template>
 
       <!-- Rental Plan -->
       <template v-else-if="routeSlug === 'rental-plan'">
         <template v-if="transactionStep === 2">
-          <MainIcon name="tooltip" size="sm" class="lst-modal__top-icon" />
+          <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack()" />
           <p class="lst-modal__title">Rental Plan</p>
           <div class="lst-modal__input-container">
-            <MainInput type="number" label="Tokens" v-model.number="tokens" class="lst-modal__input" />
+            <MainInput type="number" label="Tokens" v-model="tokens" class="lst-modal__input" />
             <MainInput type="number" label="Amount (N)" :disable="true" :value="amount" class="lst-modal__input" />
           </div>
           <button type="button" class="lst-modal__btn" :disabled="!isTokensAvailable" @click="next()">
@@ -148,7 +139,7 @@
               {{ getfreqText }}
             </p>
             <!-- eslint-disable-next-line -->
-            <MainInput v-show="isFreqSelected('RECURRING')" inputType="select" label="" v-model.number="freqValue" class="lst-modal__input" :options="freqOptions" />
+            <MainInput v-show="isFreqSelected('RECURRING')" inputType="select" label="" v-model="freqValue" class="lst-modal__input" :options="freqOptions" />
             <p class="lst-modal__title">Investment Period</p>
             <p class="lst-modal__text lst-modal__text--lg">10 - 15 years</p>
             <p class="lst-modal__text">Returns: {{ invReturns }}</p>
@@ -179,38 +170,31 @@
               Rental Income
             </template>
           </ListingPlanReview>
-          <paystack
-            class="lst-modal__btn lst-modal__btn--red"
-            :amount="getKoboAmount"
-            :email="email"
-            :paystackkey="paystackkey"
-            :reference="reference"
-            :callback="callback"
-            :close="close"
-            :embed="false"
-          >
+          <button type="button" class="lst-modal__btn lst-modal__btn--red" @click="initializeTransaction">
             <span>pay now</span>
             <MainIcon name="caret-right" size="xs" />
-          </paystack>
+          </button>
         </template>
       </template>
 
       <!-- Special Plan -->
       <template v-else-if="routeSlug === 'special-plan'">
-        <MainIcon name="tooltip" size="sm" class="lst-modal__top-icon" />
-        <p class="lst-modal__title">Special Plan</p>
-        <div class="lst-modal__input-container">
-          <MainInput v-model="special.fullName" name="fullname" label="Full Name" class="lst-modal__input" />
-          <MainInput v-model="special.email" name="email" label="Email Address" class="lst-modal__input" />
-          <MainInput v-model="special.phoneNumber" name="phonenumber" label="Phone Number" class="lst-modal__input" />
-          <MainInput v-model="special.interest" inputType="select" label="Interest" class="lst-modal__input" :options="interestType" />
-          <MainInput v-model="special.address" name="address" inputType="textarea" label="Address" class="lst-modal__input" />
-          <MainInput v-model="special.amount" type="number" label="Amount" class="lst-modal__input" />
-        </div>
-        <button type="button" class="lst-modal__btn" @click="next()">
-          <span>Continue</span>
-          <MainIcon name="caret-right" size="xs" />
-        </button>
+        <template v-if="transactionStep === 2">
+          <MainIcon name="back-caret" size="xl" class="lst-modal__top-icon" @click="goBack()" />
+          <p class="lst-modal__title">Special Plan</p>
+          <div class="lst-modal__input-container">
+            <MainInput v-model="special.fullName" name="fullname" label="Full Name" class="lst-modal__input" />
+            <MainInput v-model="special.email" name="email" label="Email Address" class="lst-modal__input" />
+            <MainInput v-model="special.phoneNumber" name="phonenumber" label="Phone Number" class="lst-modal__input" />
+            <MainInput v-model="special.interest" inputType="select" label="Interest" class="lst-modal__input" :options="interestType" />
+            <MainInput v-model="special.address" name="address" inputType="textarea" label="Address" class="lst-modal__input" />
+            <MainInput v-model="special.amount" type="number" label="Amount" class="lst-modal__input" />
+          </div>
+          <button type="button" class="lst-modal__btn" @click="specialPlanAction">
+            <span>Continue</span>
+            <MainIcon name="caret-right" size="xs" />
+          </button>
+        </template>
       </template>
     </template>
   </ListingDetail>
@@ -221,7 +205,6 @@ import ListingDetail from "@/components/Shared/listings/ListingDetail.vue";
 import ListingPlanReview from "@/components/Shared/listings/ListingPlanReview.vue";
 import MainInput from "@/components/form/mainInput.vue";
 import MainIcon from "@/components/Shared/mainIcon.vue";
-import paystack from "vue-paystack";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
@@ -230,8 +213,7 @@ export default {
     ListingDetail,
     ListingPlanReview,
     MainInput,
-    MainIcon,
-    paystack
+    MainIcon
   },
   data() {
     return {
@@ -283,7 +265,6 @@ export default {
         address: "",
         amount: 0
       },
-      paystackkey: process.env.VUE_APP_PAYSTACK_KEY,
       email: "",
       isModalVisible: false
     };
@@ -317,21 +298,24 @@ export default {
       const num = day % 10;
       return `${day}${num > 3 || exceptions.includes(day) ? "th" : ordinals[num - 1]}`;
     },
-    async callback(response) {
-      console.log(response);
-      this.closeModal();
+    async initializeTransaction() {
       const payload = {
         purpose: this.invPurpose,
-        planName: this.plans[this.routeSlug].planName,
+        planName: this.plans[this.routeSlug].name,
         noTokens: this.tokens,
         invPeriod: this.invPeriod,
         paymentFrequency: this.paymentFrequency
       };
+      this.closeModal();
       const res = await this.initTransaction(payload);
-      console.log(res.data);
+      window.open(res.data.url);
     },
-    close() {
-      console.log("Payment Closed");
+    specialPlanAction() {
+      this.closeModal();
+      this.handleNotify({
+        message: "Thank You for filling, an investment advisor would contact you shortly",
+        status: "Success"
+      });
     },
     resetParams() {
       Object.assign(this.$data, this.$options.data.apply(this));
@@ -372,14 +356,6 @@ export default {
     },
     stepVal() {
       return this.isFreqSelected("RECURRING") ? 0.5 : 1;
-    },
-    reference() {
-      let text = "";
-      let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-      for (let i = 0; i < 10; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-      }
-      return text;
     }
   },
   created() {

@@ -420,6 +420,7 @@
     }
 
     &:focus {
+      outline: none;
       box-shadow: 0 0 0.1rem 0.15rem rgba(62, 156, 233, 0.7);
     }
   }

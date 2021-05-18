@@ -1,10 +1,22 @@
 <template>
-  <ListingDetail
+  <!-- <ListingDetail
     :title="plans[routeSlug].title"
     :minInvest="getSingleListing.minimumInvestment"
     :returns="getSingleListing.returnsRange"
     :ownPeriod="getSingleListing.periodRange"
     :imageSrc="getSingleListing.image"
+    :is-modal-visible="isModalVisible"
+    @show-modal="showModal"
+    @close-modal="closeModal"
+  > -->
+  <ListingDetail
+    :title="listingPlan.title"
+    :minInvest="listingPlan.minInvest"
+    :returns="listingPlan.returns"
+    :invPurpose="listingPlan.purpose"
+    :planDetails="listingPlan.details"
+    :periodType="listingPlan.periodType"
+    :imageSrc="getListingPlanImage"
     :is-modal-visible="isModalVisible"
     @show-modal="showModal"
     @close-modal="closeModal"
@@ -188,7 +200,7 @@
             <MainInput v-model="special.phoneNumber" name="phonenumber" label="Phone Number" class="lst-modal__input" />
             <MainInput v-model="special.interest" inputType="select" label="Interest" class="lst-modal__input" :options="interestType" />
             <MainInput v-model="special.address" name="address" inputType="textarea" label="Address" class="lst-modal__input" />
-            <MainInput v-model="special.amount" type="number" label="Amount" class="lst-modal__input" />
+            <MainInput v-model="special.amount" name="amount" type="number" label="Amount" class="lst-modal__input" />
           </div>
           <button type="button" class="lst-modal__btn" @click="specialPlanAction">
             <span>Continue</span>
@@ -205,6 +217,7 @@ import ListingDetail from "@/components/Shared/listings/ListingDetail.vue";
 import ListingPlanReview from "@/components/Shared/listings/ListingPlanReview.vue";
 import MainInput from "@/components/form/mainInput.vue";
 import MainIcon from "@/components/Shared/mainIcon.vue";
+import listingPlans from "@/components/data/listingPlans.js";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
@@ -236,22 +249,7 @@ export default {
         { key: "End of Every Month", value: "end" }
       ],
       invPurpose: "",
-      plans: {
-        // using the route slugs as the key
-        "income-plan": {
-          name: "INCOME",
-          title: "Income Plan"
-          // tokenValue: 5000
-        },
-        "rental-plan": {
-          name: "RENTAL",
-          title: "Rental Plan"
-          // tokenValue: 10000
-        },
-        "special-plan": {
-          title: "Special Plan"
-        }
-      },
+      listingPlans: {},
       interestType: [
         { key: "Income", value: "income" },
         { key: "Rental", value: "rental" },
@@ -301,7 +299,7 @@ export default {
     async initializeTransaction() {
       const payload = {
         purpose: this.invPurpose,
-        planName: this.plans[this.routeSlug].name,
+        planName: this.listingPlan.name,
         noTokens: this.tokens,
         invPeriod: this.invPeriod,
         paymentFrequency: this.paymentFrequency
@@ -319,6 +317,7 @@ export default {
     },
     resetParams() {
       Object.assign(this.$data, this.$options.data.apply(this));
+      this.listingPlans = listingPlans;
     },
     showModal() {
       this.isModalVisible = true;
@@ -333,6 +332,9 @@ export default {
     routeSlug() {
       return this.$route.params.slug;
     },
+    listingPlan() {
+      return this.listingPlans[this.routeSlug];
+    },
     isTokensAvailable() {
       return this.tokens > 0 && this.tokens <= this.getSingleListing.availableTokens;
     },
@@ -343,11 +345,8 @@ export default {
       return this.invPeriod === 6 ? "14% - 28%" : "25% - 45%";
     },
     amount() {
-      // return this.tokens * this.plans[this.routeSlug].tokenValue;
-      return this.tokens * this.getSingleListing.minimumInvestment;
-    },
-    getKoboAmount() {
-      return this.amount * 100;
+      // return this.tokens * this.getSingleListing.minimumInvestment;
+      return this.tokens * this.listingPlan.minInvest;
     },
     currentDate() {
       const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -356,16 +355,19 @@ export default {
     },
     stepVal() {
       return this.isFreqSelected("RECURRING") ? 0.5 : 1;
+    },
+    getListingPlanImage() {
+      return this.getSingleListing.image || "https://res.cloudinary.com/dwpu7jpku/image/upload/v1612297295/listings_mfl4io.png";
     }
   },
   created() {
+    this.listingPlans = listingPlans;
     if (this.routeSlug !== "special-plan") {
-      this.findSingleListing(this.plans[this.routeSlug].name);
+      this.findSingleListing(this.listingPlan.name);
     }
-  },
-  mounted() {
-    this.email = this.getUser.email;
-    // console.log(this.getSingleListing);
   }
+  // mounted() {
+  //   console.log(this.getSingleListing);
+  // }
 };
 </script>

@@ -16,6 +16,7 @@
 
 <script>
 import PlanSummary from "./PlanSummary.vue";
+import { mapActions } from "vuex";
 
 export default {
   name: "PlanHeader",
@@ -44,6 +45,20 @@ export default {
     return {
       isChecked: false
     };
+  },
+  watch: {
+    isChecked(newValue) {
+      if (newValue) {
+        console.log("ok");
+        // this.playTransaction("");
+      } else {
+        console.log("no");
+        // this.pauseTransaction("");
+      }
+    }
+  },
+  methods: {
+    ...mapActions(["playTransaction", "pauseTransaction"])
   }
 };
 </script>

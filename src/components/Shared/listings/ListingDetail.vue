@@ -40,9 +40,7 @@
             <template #icon>
               <MainIcon name="clock" size="lg" />
             </template>
-            <template #title>
-              Ownership period
-            </template>
+            <template #title>{{ periodType }} period</template>
             <template #value>
               {{ ownPeriod }}
             </template>
@@ -56,7 +54,7 @@
               investment purpose
             </template>
             <template #value>
-              Construction
+              {{ invPurpose }}
             </template>
           </ListingInfoCard>
         </div>
@@ -75,35 +73,43 @@
         <h4 class="lst-card__title">Plan Details</h4>
         <div>
           <p class="lst-card__text">
+            {{ planDetails }}
+          </p>
+          <!-- <p class="lst-card__text">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, quae. Ex maiores obcaecati ab nam earum, officiis magni? Velit inventore quae magnam suscipit minus vitae porro nobis
             debitis dolorum at!
-          </p>
-          <p class="lst-card__text">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, quae. Ex maiores obcaecati ab nam earum, officiis magni? Velit inventore quae magnam suscipit minus vitae porro nobis
-            debitis dolorum at!
-          </p>
+          </p> -->
         </div>
       </div>
       <div class="lst-card">
         <h4 class="lst-card__title">Governance Bodies</h4>
         <div class="lst-card__section">
-          <h6>FUNX REALITY</h6>
-          <span class="lst-card__text lst-card__text--sm">21 Community Rd. Akoka,</span>
-          <span class="lst-card__text lst-card__text--sm">Lagos.</span>
+          <span class="lst-card__sub-title">AIICO Insurance</span>
           <p class="lst-card__text lst-card__text--md">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, quae. Ex maiores obcaecati ab nam earum, officiis magni? Velit inventore quae magnam suscipit minus vitae porro nobis
-            debitis dolorum at!
+            This Investment is backed up by an insurance Policy managed under AIICO insurance.
           </p>
         </div>
         <div class="lst-card__section">
-          <h6>FUNX REALITY</h6>
+          <span class="lst-card__sub-title">Zylus</span>
+          <p class="lst-card__text lst-card__text--md">
+            This is in charge of Managing this Investment Option and Providing the Returns on Investment.
+          </p>
+        </div>
+        <div class="lst-card__section">
+          <span class="lst-card__sub-title">Myyinvest</span>
+          <p class="lst-card__text lst-card__text--md">
+            This stands as the Channel that Facilitates this Process.
+          </p>
+        </div>
+        <!-- <div class="lst-card__section">
+          <h6 class="lst-card__sub-title">FUNX REALITY</h6>
           <span class="lst-card__text lst-card__text--sm">21 Community Rd. Akoka,</span>
           <span class="lst-card__text lst-card__text--sm">Lagos.</span>
           <p class="lst-card__text lst-card__text--md">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, quae. Ex maiores obcaecati ab nam earum, officiis magni? Velit inventore quae magnam suscipit minus vitae porro nobis
             debitis dolorum at!
           </p>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="listing-dtl__box">
@@ -150,6 +156,18 @@ export default {
       type: String,
       default: "6 - 12 Months"
     },
+    invPurpose: {
+      type: String,
+      required: true
+    },
+    periodType: {
+      type: String,
+      required: true
+    },
+    planDetails: {
+      type: String,
+      required: true
+    },
     imageSrc: {
       type: String,
       required: true
@@ -161,7 +179,7 @@ export default {
   },
   data() {
     return {
-      minInvestText: "This is the smallest amount you can start this plan for and you can always invest more.",
+      minInvestText: "This is the smallest amount you can start this plan with, however you can invest more.",
       returnsText: "This is the Profit on your Investment, it usually has a range for each Plan.",
       ownPeriodText: "This is the Duration for each asset before your Capital & returns are paid.",
       invPurposeText: "The assets in this plan are solely for development."

@@ -298,16 +298,21 @@
 
   &__title {
     color: color(main-red);
-    font-size: 1.45em !important;
+    font-size: 1.4em !important;
     font-weight: 600;
     margin-bottom: 0.875em !important;
+  }
+
+  &__sub-title {
+    font-size: 1.2em;
+    font-weight: 600;
   }
 
   &__text {
     display: block;
     color: #4a4a4a;
     line-height: 1.75;
-    font-size: 1.15em !important;
+    font-size: 1.1em !important;
 
     &--md {
       font-size: 1em !important;

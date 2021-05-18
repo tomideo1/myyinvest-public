@@ -50,22 +50,24 @@
               </div>
               <div class="list-details">
                 <!-- <p class="ft-18 w-100">Cambridge Apartments Construction</p> -->
-                <p class="ft-18 w-100">{{ titles[i - 1] }}</p>
+                <p class="ft-18 w-100">{{ currentPlan(i).title }}</p>
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-10 " style="border-right:1px solid red;">
                     <span class="d-flex flex-lg-row  ">
                       <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614000931/mmyyinvest-2.0/svgs/map_ktif6c.png/naira.svg" width="15" height="15" class="ml-3 mt-2" />
-                      <p class="ml-1 18 text-main-red font-weight-bolder">10,000</p>
+                      <!-- <p class="ml-1 18 text-main-red font-weight-bolder">10,000</p> -->
+                      <p class="text-main-red font-weight-bold">N{{ currentPlan(i).minInvest }}</p>
                     </span>
                     <p class="ml-4 ft-16">Minimum</p>
-                    <hr class="mt-n2 ml-auto " style="border-color:red!important; position: relative; left: 5%" />
+                    <hr class="mt-n2 ml-auto " style="border-color:red!important; position: relative; left: 7%" />
                   </div>
                   <div class="col-md-6 col-lg-6 col-10">
                     <p class="font-weight-light ft-12">Description</p>
-                    <p class="font-weight-light ft-12">
+                    <!-- <p class="font-weight-light ft-12">
                       Lorem ipsum dolor sit amet consect etur adipisicing elit. Eligendi tempori bus libero at ipsum, eveniet maiores.
-                    </p>
-                    <hr class="mt-n2 ml-auto " style="border-color:red!important; position: relative; left: -5%" />
+                    </p> -->
+                    <p class="font-weight-light ft-12">{{ currentPlan(i).details.slice(0, 120) }}...</p>
+                    <hr class="mt-n2 ml-auto " style="border-color:red!important; position: relative; left: -7%" />
                     <!-- <main-button @click="$router.push({ name: 'single-listing' })" style="font-size: 10px!important;" text="Read More" size="xs" class="float-right" /> -->
                     <!-- <main-button @click="$router.push({ name: 'single-listing', params: { slug: slugs[i - 1] } })" style="font-size: 10px!important;" text="Read More" size="xs" class="float-right" /> -->
                     <main-button @click="moveToNextPage(i)" style="font-size: 10px!important;" text="Read More" size="xs" class="float-right" />
@@ -84,6 +86,7 @@
 <script>
 import MainButton from "../../../components/form/MainButton.vue";
 // import mainCard from "../../../components/Shared/mainCard.vue";
+import listingPlans from "@/components/data/listingPlans.js";
 import { mapActions } from "vuex";
 
 export default {
@@ -94,7 +97,7 @@ export default {
       currentPage: 1,
       rows: 10,
       perPage: 1,
-      titles: ["Income Plan", "Rental Plan", "Special Plan"],
+      // titles: ["Income Plan", "Rental Plan", "Special Plan"],
       slugs: ["income-plan", "rental-plan", "special-plan"]
     };
   },
@@ -102,10 +105,15 @@ export default {
     ...mapActions(["fetchListings"]),
     moveToNextPage(i) {
       this.$router.push(`${this.$route.path}/${this.slugs[i - 1]}`);
+    },
+    currentPlan(i) {
+      console.log(i);
+      return this.listingPlans[this.slugs[i - 1]];
     }
   },
   created() {
     this.fetchListings();
+    this.listingPlans = listingPlans;
   }
 };
 </script>

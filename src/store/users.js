@@ -288,6 +288,16 @@ const actions = {
   async initTransaction({ commit }, payload) {
     const res = await Api.post("transactions/initTransaction", payload, true);
     return res;
+  },
+
+  async pauseTransaction({ commit }, payload) {
+    const res = await Api.post("transactions/pause", payload, true);
+    return res;
+  },
+
+  async playTransaction({ commit }, payload) {
+    const res = await Api.post("transactions/play", payload, true);
+    return res;
   }
 };
 

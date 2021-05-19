@@ -1529,7 +1529,8 @@ Text weight
   min-height: 300px;
   margin: auto !important;
   /* apply negative top and left margins to truly center the element */
-  box-shadow: 3px -3px 10px rgb(206, 206, 206);
+  // box-shadow: 3px -3px 10px rgb(206, 206, 206);
+  box-shadow: 1px -10px 10px rgb(206, 206, 206);
 }
 
 .d-flex {

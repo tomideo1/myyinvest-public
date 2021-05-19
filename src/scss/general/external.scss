@@ -832,7 +832,8 @@ button:focus {
 //}
 
 .testimonial div.comment {
-  width: 55%;
+  // width: 55%;
+  width: 94%;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -950,7 +951,8 @@ blockquote {
 
 .partner-img {
   transition: 0.5s;
-  padding: 15px;
+  // padding: 15px;
+  padding: 0.85em;
   text-align: center !important;
 }
 
@@ -1300,15 +1302,15 @@ blockquote {
   //  clip-path: none;
   //  overflow: hidden;
   //}
-  .testimonial div.comment {
-    width: 100%;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    flex-direction: row;
-    -webkit-box-pack: center;
-    justify-content: center;
-  }
+  // .testimonial div.comment {
+  //   width: 100%;
+  //   display: flex;
+  //   -webkit-box-orient: horizontal;
+  //   -webkit-box-direction: normal;
+  //   flex-direction: row;
+  //   -webkit-box-pack: center;
+  //   justify-content: center;
+  // }
   .quantum img {
     width: 80%;
   }

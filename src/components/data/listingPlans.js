@@ -8,7 +8,7 @@ export default {
     periodType: "Holding",
     purpose: "Development",
     details: `
-      Income Plan consists of Real Assets from 2 bedroom to 5-bedroom. These assets are in high demand for the past 5 years in Lagos, especially by the young working-class population working on the island but living far away as it is the best alternative for them, providing them with all the services and with ﬂexible payment plans.
+      This plan provides Fixed Income Investment Options ranging from Development to Refurbishing. You can pay Monthly or One time into the Plan.
     `
   },
   "rental-plan": {
@@ -19,7 +19,7 @@ export default {
     periodType: "Ownership",
     purpose: "Lease",
     details: `
-      Rental Plan consists of Self con assets, these assets are in high demand for the past 5 years in Lagos, especially by the young working-class population working on the island but living far away as it is the best alternative for them, providing them with all the services and with ﬂexible payment plans and investors in this plan will hold the assets in this plan for 15 to 20 years. 
+      This Plan provides equity based Investment Option that is focused on acquisition of leases. Investors are entitled to rental income on a yearly basis. The Duration is between 10-15 years.
     `
   },
   "special-plan": {
@@ -30,7 +30,7 @@ export default {
     periodType: "Ownership",
     purpose: "Diverse",
     details: `
-      The Special Plan consists of Real Assets from 2 bedroom to  5-bedroom. These assets are in high demand for the past 5 years in Lagos, especially by the young working-class population working on the island but living far away as it is the best alternative for them, providing them with all the services and with ﬂexible payment plans. 
+      This Plan Offers HNIs the opportunity to Diversify across Income Plan and Rental Plan. Investors are entitled to either rental or Fixed return or both.
     `
   }
 };

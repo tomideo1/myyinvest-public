@@ -30,7 +30,7 @@
         </div>
         <div class="pofl-data">
           <p class="pofl-data__title">Number of Tokens</p>
-          <p class="pofl-data__value">20th June, 2021</p>
+          <p class="pofl-data__value">3</p>
         </div>
       </div>
     </div>

@@ -322,31 +322,31 @@
         <div class="container-fluid">
           <carousel :autoplay="false" :nav="false" :items="1">
             <div class="d-flex flex-row align-items-center justify-content-center">
-              <div class="mr-5 partner-img riby">
+              <div class="mr-5 partner-img">
                 <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Lagos_Innovate_f0y83m.png" />
                 <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Lagos_Innovate_f0y83m.png" />
               </div>
-              <div class="mr-5 partner-img partner-img--lg riby">
+              <div class="mr-5 partner-img partner-img--lg">
                 <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069165/landing/Fintech_Nigeria_glu7sm.png" />
                 <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069165/landing/Fintech_Nigeria_glu7sm.png" />
               </div>
-              <div class="mr-5 partner-img riby">
-                <img width="200" height="200" class="mx-auto d-lg-none d-md-block hgt-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Pertinence_h4kr10.jpg" />
-                <img width="300" height="200" class="mx-auto d-lg-block d-md-none hgt-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Pertinence_h4kr10.jpg" />
+              <div class="mr-5 partner-img">
+                <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Pertinence_h4kr10.jpg" />
+                <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Pertinence_h4kr10.jpg" />
               </div>
             </div>
             <div class="d-flex flex-row align-items-center justify-content-center">
-              <div class="mr-5 partner-img riby">
+              <div class="mr-5 partner-img">
                 <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Lagos_Innovate_f0y83m.png" />
                 <img width="300" height="200" class="mx-auto d-lg-block d-md-none" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Lagos_Innovate_f0y83m.png" />
               </div>
-              <div class="mr-5 partner-img partner-img--lg riby">
-                <img width="200" height="200" class="d-lg-none d-md-block hgt-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069165/landing/Africa-FinTech-Foundry-1_q2usmj.png" />
-                <img width="300" height="200" class="d-lg-block d-md-none hgt-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069165/landing/Africa-FinTech-Foundry-1_q2usmj.png" />
+              <div class="mr-5 partner-img partner-img--lg">
+                <img width="200" height="200" class="d-lg-none d-md-block" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069165/landing/Africa-FinTech-Foundry-1_q2usmj.png" />
+                <img width="300" height="200" class="d-lg-block d-md-none h-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069165/landing/Africa-FinTech-Foundry-1_q2usmj.png" />
               </div>
-              <div class="mr-5 partner-img riby">
-                <img width="200" height="200" class="mx-auto d-lg-none d-md-block hgt-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/NDES_eipp1c.png" />
-                <img width="300" height="200" class="mx-auto d-lg-block d-md-none hgt-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/NDES_eipp1c.png" />
+              <div class="mr-5 partner-img">
+                <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/NDES_eipp1c.png" />
+                <img width="300" height="200" class="mx-auto d-lg-block d-md-none h-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/NDES_eipp1c.png" />
               </div>
             </div>
             <!-- <div class="d-flex flex-row align-items-center justify-content-center " v-for="i in 2" :key="i">
@@ -376,7 +376,7 @@
 
         <div class="p-5 m-5 ">
           <carousel :autoplay="true" :nav="false" :centre="true" :items="1">
-            <div class="testimonial d-flex" style="color: #7B7E80!important;" v-for="i in 2" :key="i">
+            <!-- <div class="testimonial d-flex" style="color: #7B7E80!important;" v-for="i in 2" :key="i">
               <div class="image" style="background-image: url('https://res.cloudinary.com/dwpu7jpku/image/upload/v1612182133/mojeed_Babatunde_xhnb61.jpg')"></div>
               <div class="comment px-4 py-3">
                 <blockquote class="mb-0">
@@ -386,6 +386,17 @@
                     <span class="text-danger"> Blessing Ogarahdukun</span>
                   </p>
                 </blockquote>
+              </div>
+            </div> -->
+            <div class="testimonial d-flex" style="color: #7B7E80!important;" v-for="(testimonial, index) in testimonials" :key="index">
+              <div class="comment px-4 py-3 mx-auto">
+                <blockquote class="mb-0 lnd-quote">
+                  <p class="position-relative">
+                    {{ testimonial.quote }}
+                  </p>
+                </blockquote>
+                <span class="text-danger">{{ testimonial.person }}</span>
+                <span class="d-block">{{ testimonial.position }}</span>
               </div>
             </div>
           </carousel>
@@ -679,20 +690,20 @@
       <section class="ml-0">
         <div class="container-fluid">
           <carousel :autoplay="false" :nav="false" :items="1">
-            <div class="partner-img riby">
-              <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Lagos_Innovate_f0y83m.png" />
+            <div class="partner-img">
+              <img width="200" height="200" class="d-lg-none" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Lagos_Innovate_f0y83m.png" />
             </div>
-            <div class="partner-img riby">
-              <img width="200" height="200" class="mx-auto d-lg-none d-md-block" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069165/landing/Fintech_Nigeria_glu7sm.png" />
+            <div class="partner-img">
+              <img width="200" height="200" class="d-lg-none" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069165/landing/Fintech_Nigeria_glu7sm.png" />
             </div>
-            <div class="partner-img riby">
-              <img width="200" height="200" class="mx-auto d-lg-none d-md-block hgt-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Pertinence_h4kr10.jpg" />
+            <div class="partner-img">
+              <img width="200" height="200" class="d-lg-none" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/Pertinence_h4kr10.jpg" />
             </div>
-            <div class="partner-img riby">
-              <img width="200" height="200" class="d-lg-none d-md-block hgt-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069165/landing/Africa-FinTech-Foundry-1_q2usmj.png" />
+            <div class="partner-img">
+              <img width="200" height="200" class="d-lg-none" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069165/landing/Africa-FinTech-Foundry-1_q2usmj.png" />
             </div>
-            <div class="partner-img riby">
-              <img width="200" height="200" class="mx-auto d-lg-none d-md-block hgt-100" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/NDES_eipp1c.png" />
+            <div class="partner-img">
+              <img width="200" height="200" class="d-lg-none" src="https://res.cloudinary.com/myyinvest/image/upload/v1621069164/landing/NDES_eipp1c.png" />
             </div>
             <!-- <div class="d-flex flex-row align-items-center partner-img riby justify-content-center ">
               <img width="200" height="200" class="mx-auto" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001126/mmyyinvest-2.0/partners/riby_csqijz.svg" />
@@ -722,7 +733,7 @@
 
         <div class=" m-3 ">
           <carousel :autoplay="true" :nav="false" :centre="true" :items="1">
-            <div class="testimonial d-flex w-100" v-for="i in 3" :key="i" style="color: #7B7E80!important;">
+            <!-- <div class="testimonial d-flex w-100" v-for="i in 3" :key="i" style="color: #7B7E80!important;">
               <div class="comment px-4 py-3">
                 <blockquote class="mb-0">
                   <p class="position-relative">
@@ -731,6 +742,17 @@
                     <span class="text-danger"> Blessing Ogarahdukun</span>
                   </p>
                 </blockquote>
+              </div>
+            </div> -->
+            <div class="testimonial d-flex" style="color: #7B7E80!important;" v-for="(testimonial, index) in testimonials" :key="index">
+              <div class="comment px-4 py-3 mx-auto">
+                <blockquote class="lnd-quote">
+                  <p class="position-relative">
+                    {{ testimonial.quote }}
+                  </p>
+                </blockquote>
+                <span class="text-danger">{{ testimonial.person }}</span>
+                <span class="d-block">{{ testimonial.position }}</span>
               </div>
             </div>
           </carousel>
@@ -745,6 +767,8 @@ import MainButton from "../../components/form/MainButton";
 import People from "../../components/Shared/people";
 import carousel from "vue-owl-carousel2";
 import MainIcon from "../../components/Shared/mainIcon";
+import testimonials from "@/components/data/testimonials.js";
+
 export default {
   name: "Landing",
   components: { MainIcon, People, MainButton, carousel },
@@ -758,7 +782,8 @@ export default {
         returns: []
       },
       landingList: ["Through Fractional Real Estate Investment", "From anywhere across Africa"],
-      currentList: 0
+      currentList: 0,
+      testimonials: []
     };
   },
   methods: {
@@ -784,6 +809,9 @@ export default {
       this.$router.push({ name: "single-listing", params: { slug } });
     }
   },
+  created() {
+    this.testimonials = testimonials;
+  },
   mounted() {
     setInterval(() => {
       this.currentList = this.currentList + 1;
@@ -797,23 +825,27 @@ export default {
 // background-color: red!important;
 // }
 .partner-img {
-  // border: 1px solid green;
   flex: 1;
-  @include flex-center;
-  height: 19.25em;
+  display: flex;
+  align-items: center;
+  height: 18.5em;
+
+  @media screen and (min-width: 1920px) {
+    height: 23.5em;
+  }
+
+  @media screen and (min-width: 640px) and (max-width: 1240px) {
+    height: 15em;
+  }
 
   &--lg {
-    flex: 1.3;
+    flex: 1.25;
   }
 
   > img {
-    display: block;
     width: 100%;
+    height: auto;
   }
-}
-
-.hgt-100 {
-  height: 100%;
 }
 
 @media only screen and (min-width: 640px) and (max-width: 1240px) {
@@ -916,6 +948,32 @@ p {
   }
   50% {
     opacity: 1;
+  }
+}
+
+.lnd-quote {
+  display: flex;
+  quotes: "“" "”" "‘" "’";
+  margin-bottom: 1em !important;
+
+  &::before {
+    content: open-quote;
+  }
+
+  &::after {
+    content: close-quote;
+  }
+
+  &::before,
+  &::after {
+    // border: 1px solid green;
+    color: color(main-red);
+    font-size: 2em !important;
+  }
+
+  > p {
+    // border: 1px solid green;
+    padding: 0.75em 0.5em;
   }
 }
 </style>

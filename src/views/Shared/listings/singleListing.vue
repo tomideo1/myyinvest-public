@@ -263,7 +263,6 @@ export default {
         address: "",
         amount: 0
       },
-      email: "",
       isModalVisible: false
     };
   },
@@ -328,7 +327,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["getUser", "getSingleListing"]),
+    ...mapGetters(["getSingleListing"]),
     routeSlug() {
       return this.$route.params.slug;
     },

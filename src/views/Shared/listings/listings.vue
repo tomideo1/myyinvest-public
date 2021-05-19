@@ -107,7 +107,6 @@ export default {
       this.$router.push(`${this.$route.path}/${this.slugs[i - 1]}`);
     },
     currentPlan(i) {
-      console.log(i);
       return this.listingPlans[this.slugs[i - 1]];
     }
   },

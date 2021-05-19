@@ -290,11 +290,13 @@ const actions = {
     return res;
   },
 
+  // eslint-disable-next-line no-unused-vars
   async pauseTransaction({ commit }, payload) {
     const res = await Api.post("transactions/pause", payload, true);
     return res;
   },
 
+  // eslint-disable-next-line no-unused-vars
   async playTransaction({ commit }, payload) {
     const res = await Api.post("transactions/play", payload, true);
     return res;

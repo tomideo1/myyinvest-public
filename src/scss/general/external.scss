@@ -2694,6 +2694,8 @@ blockquote.blockquote p {
 }
 
 .listings-col {
+  display: flex;
+  justify-content: center;
   margin-bottom: 40px;
 }
 
@@ -2728,6 +2730,9 @@ blockquote.blockquote p {
   box-shadow: -2px 2px 8px #646464;
   transition: 0.5s;
   overflow: hidden;
+  height: 100%;
+  width: 100% !important;
+  max-width: 25em;
 }
 
 .listings-col .single-list .list-details {

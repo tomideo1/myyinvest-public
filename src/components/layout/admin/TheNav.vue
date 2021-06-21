@@ -2,12 +2,34 @@
   <div class="wrapper">
     <div class="icon-group">
       <div v-if="windowWidth < 1023" class="hamburger-nav">
-        <svg style="cursor: pointer" xmlns="http://www.w3.org/2000/svg" @click="smOpenSideBar" width="21px" height="21px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12">
-          </line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+        <svg
+          style="cursor: pointer"
+          xmlns="http://www.w3.org/2000/svg"
+          @click="smOpenSideBar"
+          width="21px"
+          height="21px"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-menu"
+        >
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
       </div>
       <div class="nav-icon">
-        <img style="cursor: pointer" width="162" @click="$router.push('/')" height="26" src="@/assets/logos/Myylogo2.png" alt="Logo" />
+        <img
+          style="cursor: pointer"
+          width="162"
+          @click="$router.push('/')"
+          height="26"
+          src="https://res.cloudinary.com/myyinvest/image/upload/v1614001064/mmyyinvest-2.0/logos/Myylogo2_uwpfw9.png"
+          alt="Logo"
+        />
       </div>
     </div>
     <div class="nav-details">
@@ -63,17 +85,23 @@ export default {
       }
       return val;
     },
-    windowWidth()     { return this.$store.state.responsive.windowWidth },
-    mobileResponsive: {
-      get()    { return this.$store.state.responsive.mobileResponsive },
-      set(val) { this.$store.commit('TOGGLE_MOBILE_RESPONSIVE', val) }
+    windowWidth() {
+      return this.$store.state.responsive.windowWidth;
     },
+    mobileResponsive: {
+      get() {
+        return this.$store.state.responsive.mobileResponsive;
+      },
+      set(val) {
+        this.$store.commit("TOGGLE_MOBILE_RESPONSIVE", val);
+      }
+    }
   },
   methods: {
     smOpenSideBar() {
-      const mobileState = !this.mobileResponsive.open
-      this.$store.commit('TOGGLE_MOBILE_RESPONSIVE', {open: mobileState});
-      this.$store.commit('TOGGLE_SIDEBAR_NAV_MENU_ACTIVE', {open: true});
+      const mobileState = !this.mobileResponsive.open;
+      this.$store.commit("TOGGLE_MOBILE_RESPONSIVE", { open: mobileState });
+      this.$store.commit("TOGGLE_SIDEBAR_NAV_MENU_ACTIVE", { open: true });
     }
   }
 };

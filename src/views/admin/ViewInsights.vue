@@ -1,73 +1,87 @@
 <template>
   <the-admin-layout>
-    <div class="main-content">
-      <section class="content-titles">
-        <div class="sn">S/N</div>
-        <div class="title-p">Post Title</div>
-        <div class="image">Post Image</div>
-        <div class="author">Post Author</div>
-        <div class="tags">Post Tags</div>
-        <div class="category">Post Category</div>
-        <div class="status">Post Status</div>
-        <div class="date">Post Date</div>
-        <div class="options"></div>
-      </section>
-
-      <section class="contents" v-for="x in 10" :key="x">
-        <div class="sn">{{ zeroPrefix(x) }}{{ x }}</div>
-        <div class="title-p">How to invest seamlessly in Real Estate</div>
-        <div class="image">
-          <img src="@/assets/admin/images/dummy-img.jpg" alt="Content Image" />
-        </div>
-        <div class="author">Valentine Offiah</div>
-        <div class="tags">Real Estates Investments, Finance</div>
-        <div class="category">Blog</div>
-        <div class="status" :style="changeColor(status)">{{ status }}</div>
-        <div class="date">17th Feb. 2021</div>
-        <div class="options">
-          <span>
-            <svg width="15" height="13" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#0a47a0">
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13">
-                <path
-                  paint-order="stroke fill markers"
-                  fill-rule="evenodd"
-                  d="M9.837 8.962l.773-.773a.195.195 0 0 1 .332.137v3.514c0 .64-.52 1.16-1.16 1.16H1.275c-.64 0-1.16-.52-1.16-1.16V3.334c0-.641.52-1.16 1.16-1.16h6.61c.171 0 .258.208.137.33l-.773.774a.194.194 0 0 1-.138.056H1.275v8.506h8.507V9.097c0-.05.019-.1.055-.135zm3.784-4.877L7.276 10.43l-2.185.242A.998.998 0 0 1 3.989 9.57l.242-2.185 6.346-6.346a1.41 1.41 0 0 1 1.998 0l1.044 1.044c.553.554.553 1.45.002 2zm-2.387.747L9.83 3.428 5.34 7.92l-.176 1.578 1.578-.176 4.492-4.49zM12.8 2.906l-1.044-1.044a.253.253 0 0 0-.358 0l-.746.747 1.404 1.404.746-.747a.257.257 0 0 0-.002-.36z"
-                />
-              </svg>
-            </svg>
-          </span>
-          <span>
-            <svg width="17" height="11" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#0baa12">
-              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="11">
-                <path
-                  paint-order="stroke fill markers"
-                  fill-rule="evenodd"
-                  d="M16.9 5.082C15.347 2.05 12.27 0 8.75 0 5.229 0 2.152 2.052.6 5.082a.925.925 0 0 0 0 .836C2.153 8.948 5.229 11 8.75 11c3.52 0 6.598-2.052 8.15-5.082a.925.925 0 0 0 0-.836zM8.75 9.625c-2.826 0-5.417-1.576-6.816-4.125 1.399-2.55 3.99-4.125 6.816-4.125 2.826 0 5.417 1.576 6.816 4.125-1.4 2.549-3.99 4.125-6.816 4.125zm0-7.333a3.158 3.158 0 0 0-.895.143c.134.236.206.502.208.773 0 .886-.72 1.605-1.605 1.605a1.591 1.591 0 0 1-.773-.208A3.2 3.2 0 1 0 8.75 2.292z"
-                />
-              </svg>
-            </svg>
-          </span>
-          <span>
-            <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000" @click="deleteItem">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="14">
-                <path
-                  paint-order="stroke fill markers"
-                  fill-rule="evenodd"
-                  d="M11.57 2.286H9.365L8.453.766A1.286 1.286 0 0 0 7.35.144h-2.7c-.452 0-.87.237-1.103.624l-.911 1.519H.429a.429.429 0 0 0-.43.428v.429c0 .237.193.428.43.428h.428v9c0 .71.576 1.286 1.286 1.286h7.714c.71 0 1.286-.575 1.286-1.286v-9h.428c.237 0 .429-.191.429-.428v-.43a.429.429 0 0 0-.43-.427zM9.858 12.57H2.143v-9h7.714v9zM4.603 1.507c.029-.05.08-.08.138-.078h2.518a.16.16 0 0 1 .138.078l.468.779h-3.73l.468-.78zm2.576 9.779h.642a.322.322 0 0 0 .322-.322V5.179a.322.322 0 0 0-.322-.322h-.642a.322.322 0 0 0-.322.322v5.785c0 .178.144.322.322.322zm-3 0h.642a.322.322 0 0 0 .322-.322V5.179a.322.322 0 0 0-.322-.322h-.642a.322.322 0 0 0-.322.322v5.785c0 .178.144.322.322.322z"
-                />
-              </svg>
-            </svg>
-          </span>
-        </div>
-      </section>
+    <div id="style-2" class="table-responsive"> 
+        <table class="table table-bordered table-hover">
+            <thead class="table-header">
+                <tr>
+                    <th scope="col">S/N</th>
+                    <th scope="col">Post Title</th>
+                    <th scope="col">Post Image</th>
+                    <th scope="col">Post Author</th>
+                    <th scope="col">Post Tags</th>
+                    <th scope="col">Post Category</th>
+                    <th scope="col">Post Status</th>
+                    <th scope="col">Post Date</th>
+                    <th scope="col" class="options">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="x in 10" :key="x">
+                    <th scope="row">{{ zeroPrefix(x) }}{{ x }}</th>
+                    <td>How to invest seamlessly in Real Estate</td>
+                    <td>
+                        <img style="width: 180px; height: 100px; object-fit: cover" src="@/assets/admin/images/dummy-img.jpg" alt="Content Image" />
+                    </td>
+                    <td>
+                        Valentine Offiah
+                    </td>
+                    <td>
+                        Real Estates Investments, Finance
+                    </td>
+                    <td>Blog</td>
+                    <td>
+                        <div class="status" :style="changeColor(status)">{{ status }}</div>
+                    </td>
+                    <td>
+                        17th Feb. 2021
+                    </td>
+                    <td style="display: flex; justify-content: space-between">
+                        <span>
+                            <svg width="15" height="13" class="m-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#0a47a0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13">
+                                <path
+                                paint-order="stroke fill markers"
+                                fill-rule="evenodd"
+                                d="M9.837 8.962l.773-.773a.195.195 0 0 1 .332.137v3.514c0 .64-.52 1.16-1.16 1.16H1.275c-.64 0-1.16-.52-1.16-1.16V3.334c0-.641.52-1.16 1.16-1.16h6.61c.171 0 .258.208.137.33l-.773.774a.194.194 0 0 1-.138.056H1.275v8.506h8.507V9.097c0-.05.019-.1.055-.135zm3.784-4.877L7.276 10.43l-2.185.242A.998.998 0 0 1 3.989 9.57l.242-2.185 6.346-6.346a1.41 1.41 0 0 1 1.998 0l1.044 1.044c.553.554.553 1.45.002 2zm-2.387.747L9.83 3.428 5.34 7.92l-.176 1.578 1.578-.176 4.492-4.49zM12.8 2.906l-1.044-1.044a.253.253 0 0 0-.358 0l-.746.747 1.404 1.404.746-.747a.257.257 0 0 0-.002-.36z"
+                                />
+                            </svg>
+                            </svg>
+                        </span>
+                        <span @click="viewUser(x)" class="m-3">
+                            <svg width="17" height="11" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#0baa12">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="11">
+                                <path
+                                paint-order="stroke fill markers"
+                                fill-rule="evenodd"
+                                d="M16.9 5.082C15.347 2.05 12.27 0 8.75 0 5.229 0 2.152 2.052.6 5.082a.925.925 0 0 0 0 .836C2.153 8.948 5.229 11 8.75 11c3.52 0 6.598-2.052 8.15-5.082a.925.925 0 0 0 0-.836zM8.75 9.625c-2.826 0-5.417-1.576-6.816-4.125 1.399-2.55 3.99-4.125 6.816-4.125 2.826 0 5.417 1.576 6.816 4.125-1.4 2.549-3.99 4.125-6.816 4.125zm0-7.333a3.158 3.158 0 0 0-.895.143c.134.236.206.502.208.773 0 .886-.72 1.605-1.605 1.605a1.591 1.591 0 0 1-.773-.208A3.2 3.2 0 1 0 8.75 2.292z"
+                                />
+                            </svg>
+                            </svg>
+                        </span>
+                        <span @click="deleteItem" class="m-3">
+                            <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" fill="#c10000">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="14">
+                                <path
+                                paint-order="stroke fill markers"
+                                fill-rule="evenodd"
+                                d="M11.57 2.286H9.365L8.453.766A1.286 1.286 0 0 0 7.35.144h-2.7c-.452 0-.87.237-1.103.624l-.911 1.519H.429a.429.429 0 0 0-.43.428v.429c0 .237.193.428.43.428h.428v9c0 .71.576 1.286 1.286 1.286h7.714c.71 0 1.286-.575 1.286-1.286v-9h.428c.237 0 .429-.191.429-.428v-.43a.429.429 0 0 0-.43-.427zM9.858 12.57H2.143v-9h7.714v9zM4.603 1.507c.029-.05.08-.08.138-.078h2.518a.16.16 0 0 1 .138.078l.468.779h-3.73l.468-.78zm2.576 9.779h.642a.322.322 0 0 0 .322-.322V5.179a.322.322 0 0 0-.322-.322h-.642a.322.322 0 0 0-.322.322v5.785c0 .178.144.322.322.322zm-3 0h.642a.322.322 0 0 0 .322-.322V5.179a.322.322 0 0 0-.322-.322h-.642a.322.322 0 0 0-.322.322v5.785c0 .178.144.322.322.322z"
+                                />
+                            </svg>
+                            </svg>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <div class="pagination">
-      <button>Previous</button>
-      <button v-for="n in 5" :key="n" :class="[n === currentPage ? 'button-active' : '']">{{ n }}</button>
-      <button>Next</button>
+        <!-- <div class="mt-2 pagination-wrapper"> -->
+            <button class="mt-2">Previous</button>
+            <button class="mt-2" v-for="n in 5" :key="n" :class="[n === currentPage ? 'button-active' : '']">{{ n }}</button>
+            <button class="mt-2">Next</button>
+        <!-- </div> -->
     </div>
-
     <div class="delete-overlay" v-if="!noDeleteModal">
       <div class="delete-modal">
         <p>Delete post</p>
@@ -127,6 +141,33 @@ export default {
 </script>
 
 <style scoped>
+#style-2::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #D62929;
+}
+
+.table-header {
+    box-shadow: var(--myyinvest-red) 2px 0px 4px 0px;
+    position: sticky !important;
+    top: 0px;
+    background-color: #c10000;
+    color: white;
+}
 .main-content {
   padding: 1px;
   overflow-y: auto;
@@ -193,10 +234,11 @@ div.options {
 }
 
 .pagination {
+  border-top: 1px solid grey;
   display: flex;
   justify-content: right;
   align-items: center;
-  margin-top: var(--base-size);
+  /* margin-top: var(--base-size); */
 }
 
 .pagination button {

@@ -1,27 +1,22 @@
 <template>
   <div class="main-wrap">
-    <!-- <p class="warning-info" v-if="!supportedDevice">
+    <p class="warning-info" v-if="!supportedDevice">
       Hello friend, <br />
       This page is only available on bigger screens.
-    </p> -->
-    <div class="body">
+    </p>
+    <div class="body" v-if="supportedDevice">
       <nav class="top-nav">
-        <the-nav />
+        <the-nav @sm-open-side-bar="parentMutate" />
       </nav>
-      <main :class="{'sidebar-is-open': sideBarNavMenuActive.open}">
+      <main :class="{'sidebar-is-open': sideBarToggleValue.open}">
         <nav class="side-nav" 
-        v-if="windowWidth > 1023"
         @mouseleave="closeSideBarTemp" @mouseenter="openSideBarTemp">
-          <the-side-nav ref="sidebar" />
-        </nav>
-        <nav class="side-nav" :class="{'d-none': mobileResponsive.open}" 
-        v-if="windowWidth < 1023">
-          <the-side-nav />
+          <the-side-nav ref="sidebar" @toggle-sidebar="toggler" />
         </nav>
 
-        <div class="main-contents" @click="smCloseSidebar">
+        <div class="main-contents">
           <div class="header-options" v-if="hasOptions">
-            <button class="mr-1 download" v-if="windowWidth > 553" @click="previewDownload">Download</button>
+            <button class="download" @click="previewDownload">Download</button>
 
             <div class="download-overlay" v-if="noDownloadModal === false">
               <div class="download-modal">
@@ -42,11 +37,14 @@
             </div>
 
             <div class="input-grp">
-              <input type="text" class="my-auto" name="search" id="search_query" placeholder="Search" />
-                <select name="" style="width: 5vw" class="ml-2 w-50 form-control" id="">
-                    <option value="">Sort By</option>
-                    <option value="">Category 2</option>
-                </select>
+              <input type="text" name="search" id="search_query" placeholder="Search" />
+
+              <div class="dropdown">
+                <button class="dropbtn">{{ selectedOption || "Sort by" }} <img src="@/assets/admin/icons/chevron-down.svg" alt="Dropdown" /></button>
+                <div class="dropdown-content">
+                  <div class="option" v-for="(option, index) in selectOptions" :key="index" @click="filterBy(option.name)">{{ option.name }}</div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -96,68 +94,19 @@ export default {
       ]
     };
   },
-  computed: {
-    mobileResponsive: {
-      get()    { return this.$store.state.responsive.mobileResponsive },
-      set(val) { this.$store.commit('TOGGLE_MOBILE_RESPONSIVE', val) }
-    },
-    sideBarNavMenuActive: {
-      get()    { return this.$store.state.responsive.sideBarNavMenuActive },
-      set(val) { this.$store.commit('TOGGLE_SIDEBAR_NAV_MENU_ACTIVE', val) }
-    },
-    windowWidth()     { return this.$store.state.responsive.windowWidth },
-    hasOptions() {
-      return this.$route.path.includes("/admin/view-") || this.$route.path.includes("/admin/transactions");
-    },
 
-    supportedDevice() {
-      return this.deviceType() === "desktop";
-    },
-  },
-  watch: {
-    windowWidth(newValue, oldValue)  { 
-      if (newValue > 1023) {
-        this.$store.commit('TOGGLE_MOBILE_RESPONSIVE', {open: true})
-        this.$store.commit('TOGGLE_SIDEBAR_NAV_MENU_ACTIVE', {open: true, stay: true});
-      }
-    }
-  },
-  mounted() {
-    this.$store.commit('UPDATE_WINDOW_WIDTH', window.innerWidth)
-    window.addEventListener('resize', this.handleWindowResize)
-    window.addEventListener('scroll', this.handleScroll)
-  },
-  destroyed() {
-    window.removeEventListener('resize', this.handleWindowResize)
-    window.removeEventListener('scroll', this.handleScroll)
-  },
   methods: {
-    // VUEX RESPONSIVE HANDLE METHODS BEGINS HERE
-    smCloseSidebar() {
-      if (!this.mobileResponsive.open) {
-        const mobileState = !this.mobileResponsive.open
-        this.$store.commit('TOGGLE_MOBILE_RESPONSIVE', {open: mobileState});
-      }
-    },
-    handleWindowResize() {
-      this.$store.commit('UPDATE_WINDOW_WIDTH', window.innerWidth)
-    },
-    handleScroll() {
-      this.$store.commit('UPDATE_WINDOW_SCROLL_Y', window.scrollY)
-    },
     openSideBarTemp() {
-      if (!this.sideBarNavMenuActive.open) {
-       this.$store.commit('TOGGLE_SIDEBAR_NAV_MENU_ACTIVE', {open: true, stay: false})
+      if (!this.$refs.sidebar.sideBarState.open) {
+        this.$refs.sidebar.sideBarState.open = true
+        this.$refs.sidebar.sideBarState.stay = false
       }
     },
     closeSideBarTemp() {
-      if (!this.sideBarNavMenuActive.stay) {
-        this.$store.commit('TOGGLE_SIDEBAR_NAV_MENU_ACTIVE', {open: false, stay: true})
+      if (!this.$refs.sidebar.sideBarState.stay) {
+        this.$refs.sidebar.sideBarState.open = false
       }
     },
-
-    // VUEX RESPONSIVE HANDLE METHODS ENDS HERE
-
     toggler(value) {
       this.sideBarToggleValue = value
     },
@@ -203,8 +152,30 @@ export default {
   },
 
   created() {
-    // return this.deviceType();
+    return this.deviceType();
   },
+
+  // mounted() {
+  //   sideBarToggleValue.open 
+  //   = this.$refs.sidebar.sideBarState.open
+  //   this.$refs.sidebar.sideBarState.close =
+  //   console.log(this.$refs.sidebar.sideBarState)
+  // },
+
+  computed: {
+    hasOptions() {
+      return this.$route.path.includes("/admin/view-") || this.$route.path.includes("/admin/transactions");
+    },
+
+    supportedDevice() {
+      return this.deviceType() === "desktop";
+    },
+
+    // layout() {
+    //   const layout = this.$route.meta.layout || defaultLayout;
+    //   return () => import(`@/layouts/${layout}.vue`);
+    // },
+  }
 };
 </script>
 
@@ -223,8 +194,6 @@ export default {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  /* overflow-x: hidden; */
-  /* overflow-y: hidden; */
 }
 
 .warning-info {
@@ -249,42 +218,6 @@ main {
 
 .sm-sidebar-close {
   display: none;
-}
-
-@media (max-width: 1024px) {
-  .side-nav {
-    width: 58%;
-    background-color: antiquewhite;
-    z-index: 100;
-    position: absolute;
-  }
-  main {
-    display: block;
-  }
-
-  main article .content-wrapper {
-  display: block !important;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-  border: 1px solid var(--myyinvest-red);
-  border-radius: 10px;
-  overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  }
-  main article .content-wrapper::-webkit-scrollbar {
-    display: none !important;
-  }
-
-  /* Hide scrollbar for IE, Edge and Firefox */
-  main article .content-wrapper {
-    -ms-overflow-style: none !important;  /* IE and Edge */
-    scrollbar-width: none !important;  /* Firefox */
-  }
-
 }
 
 @media (min-width: 1024px) {
@@ -337,7 +270,7 @@ main nav.side-nav {
   -webkit-background-origin: border-box;
   -moz-background-origin: content-box;
   background-position: 0 100%;
-  /* overflow-y: auto; */
+  overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -349,9 +282,7 @@ main nav.side-nav::-webkit-scrollbar {
 .main-contents {
   /* grid-column: 2 / 3;
   grid-row: 2 / 3; */
-  margin: 10px;
-  max-width: 100%;
-
+  margin: 20px;
 }
 
 main article {
@@ -370,7 +301,7 @@ main article .content-wrapper {
   box-sizing: border-box;
   border: 1px solid var(--myyinvest-red);
   border-radius: 10px;
-  /* overflow-y: auto; */
+  overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -400,8 +331,6 @@ main article .content-wrapper {
 
 .header-options .input-grp {
   margin-left: auto;
-  display: flex;
-  justify-content: space-around;
 }
 
 .dropbtn {

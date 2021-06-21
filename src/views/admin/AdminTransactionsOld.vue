@@ -1,46 +1,35 @@
 <template>
   <the-admin-layout>
-          <div id="style-2" class="table-responsive"> 
-            <table class="table table-bordered table-hover">
-                <thead class="table-header">
-                    <tr>
-                        <th scope="col">S/N</th>
-                        <th scope="col">Email Address</th>
-                        <th scope="col">Investment Cost</th>
-                        <th scope="col">Tokens</th>
-                        <th scope="col">Project</th>
-                        <th scope="col">Payment Channel</th>
-                        <th scope="col">Post Status</th>
-                        <th scope="col" class="options">Post Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="x in 10" :key="x">
-                        <th scope="row">{{ zeroPrefix(x) }}{{ x }}</th>
-                        <td>voffiah@gmail.com</td>
-                        <td>₦70000</td>
-                        <td>35</td>
-                        <td>
-                            Cambridge Apartment
-                        </td>
-                        <td>RIBY</td>
-                        <td>
-                            <div class="status">
-                                <div class="text-white p-lg-1 status-content" style="border-radius: 1em" :style="changeBackgroundColor(status[x])">{{ status[x] }}</div>
-                            </div>
-                        </td>
-                        <td>
-                            17th Feb. 2021
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="main-content">
+      <section class="content-titles">
+        <div class="sn">S/N</div>
+        <div class="email">Email Address</div>
+        <div class="investment-cost">Investment Cost</div>
+        <div class="tokens">Tokens</div>
+        <div class="project">Project</div>
+        <div class="payment-channel">Payment Channel</div>
+        <div class="status">Post Status</div>
+        <div class="date">Post Date</div>
+      </section>
+
+      <section class="contents" v-for="x in 10" :key="x">
+        <div class="sn">{{ zeroPrefix(x) }}{{ x }}</div>
+        <div class="email">voffiah@gmail.com</div>
+        <div class="investment-cost">₦70000</div>
+        <div class="tokens">35</div>
+        <div class="project">Cambridge Apartment</div>
+        <div class="payment-channel">RIBY</div>
+        <div class="status">
+          <div class="status-content" :style="changeBackgroundColor(status[x])">{{ status[x] }}</div>
         </div>
+        <div class="date">17th Feb. 2021</div>
+      </section>
+    </div>
 
     <div class="pagination">
-        <button class="mt-2">Previous</button>
-        <button class="mt-2" v-for="n in 5" :key="n" :class="[n === currentPage ? 'button-active' : '']">{{ n }}</button>
-        <button class="mt-2">Next</button>
+      <button>Previous</button>
+      <button v-for="n in 5" :key="n" :class="[n === currentPage ? 'button-active' : '']">{{ n }}</button>
+      <button>Next</button>
     </div>
   </the-admin-layout>
 </template>
@@ -120,33 +109,6 @@ export default {
 </script>
 
 <style scoped>
-#style-2::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 10px;
-	background-color: #F5F5F5;
-}
-
-#style-2::-webkit-scrollbar
-{
-	width: 12px;
-	background-color: #F5F5F5;
-}
-
-#style-2::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #D62929;
-}
-
-.table-header {
-    box-shadow: var(--myyinvest-red) 2px 0px 4px 0px;
-    position: sticky !important;
-    top: 0px;
-    background-color: #c10000;
-    color: white;
-}
 .main-content {
   /* height: 95%; */
   padding: 1px;
@@ -216,18 +178,17 @@ section:not(:first-child) div.status {
   color: var(--myyinvest-white);
 }
 
-div.status .status-content {
+section div.status .status-content {
   width: 100%;
-  padding: 2px 10px;
+  padding: 2px 1px;
   border-radius: 5px;
 }
 
 .pagination {
-  border-top: 1px solid grey;
   display: flex;
   justify-content: right;
   align-items: center;
-  /* margin-top: var(--base-size); */
+  margin-top: var(--base-size);
 }
 
 .pagination button {

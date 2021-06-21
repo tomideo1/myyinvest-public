@@ -4,8 +4,10 @@
 
 <script>
 export default {
-  name: "profile"
-};
+
+}
 </script>
 
-<style scoped></style>
+<style>
+
+</style>

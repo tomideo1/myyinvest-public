@@ -4,8 +4,8 @@
       <img src="@/assets/logos/Myylogo2.png" alt="Logo" width="98" height="15" />
       <div class="d-flex flex-column justify-content-center align-items-center ">
         <img src="@/assets/svgs/success.svg" class="mt-5" alt="Logo" width="50" height="50" />
-        <p class="mt-4 text-main-red text-center ft-18">{{ notify.tinyMessage }}</p>
-        <!--        <p class="text-center mt-4">{{ notify.mainMessage }}</p>-->
+        <p class="mt-4 text-center text-main-red ft-18">{{ notify.tinyMessage }}</p>
+        <!--        <p class="mt-4 text-center">{{ notify.mainMessage }}</p>-->
       </div>
     </modal>
 
@@ -27,8 +27,12 @@ export default {
       }
     };
   },
+  watch: {
+    '$route'() {
+      this.$store.commit('TOGGLE_MOBILE_RESPONSIVE', {open: true})
+    },
+  },
   components: { Modal },
-
   methods: {
     showModal() {
       this.notify.show = true;

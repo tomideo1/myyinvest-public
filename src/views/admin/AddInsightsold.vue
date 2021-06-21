@@ -1,65 +1,118 @@
 <template>
   <the-admin-layout>
-    <form style="overflow-y: auto; overflow-x:hidden" id="overflow-wrapper">
-        <div class="row">
-            <div class="mx-auto mb-5 col-md-6">
-                <fieldset class="input-grp">
-                    <legend><label for="ptitle">Post Name</label></legend>
-                    <input type="text" class="form-control" id="ptitle" placeholder="How to invest in Real Estates Seamlessly" />
-                </fieldset>
-                <fieldset class="input-grp">
-                    <legend><label for="ptitle">Written by</label></legend>
-                    <input type="text" class="form-control" id="ptitle" placeholder="How to invest in Real Estates Seamlessly" />
-                </fieldset>
-                <fieldset class="input-grp">
-                    <legend><label for="pcategory">Post Category</label></legend>
-                    <select name="" class="form-control" id="">
-                        <option value="">Category 1</option>
-                        <option value="">Category 2</option>
-                    </select>
-                 </fieldset>
-                <fieldset class="input-grp pcontent">
-                    <legend><label for="pcontent">Post Content</label></legend>
-                    <textarea
-                        class="form-control"
-                        i="pcontent"
-                        placeholder="Post Content"
-                        cols="4"
-                        rows="5"
-                    ></textarea>
-                </fieldset>
-                 <button class="m-2" type="submit">Submit</button>
+    <form class="wrapper">
+      <div class="left-area">
+        <fieldset class="input-grp">
+          <legend><label for="ptitle">Post Title</label></legend>
+          <input type="text" id="ptitle" placeholder="How to invest in Real Estates Seamlessly" />
+        </fieldset>
 
+        <fieldset class="input-grp">
+          <legend><label for="pauthor">Post Author</label></legend>
+          <input type="text" id="pauthor" placeholder="Valentine Offiah" />
+        </fieldset>
+
+        <fieldset class="input-grp">
+          <legend><label for="ptags">Post Tags</label></legend>
+          <input type="text" id="ptags" placeholder="Investments, Finance, Money, Real Estates" />
+        </fieldset>
+
+        <fieldset class="input-grp">
+          <legend><label for="pstatus">Post Status</label></legend>
+          <!-- <select name="" id="pstatus">
+            <option key="category.value" value="category.value">Option</option>
+          </select> -->
+          <div class="dropdown-wrap">
+            <div class="dropdown">
+              <button class="dropbtn">{{ selectedPostStatus || "Category" }} <img src="@/assets/admin/icons/caret-down.svg" alt="Dropdown" /></button>
+              <div class="dropdown-content">
+                <div class="option" v-for="(option, index) in postStatuses" :key="index" @click="newPostStatus(option.name)">{{ option.name }}</div>
+              </div>
             </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="input-grp">
+          <legend><label for="pcategory">Post Category</label></legend>
+          <!-- <select name="" id="pcategory">
+            <option key="category.value" value="category.value">Option</option>
+          </select> -->
+          <div class="dropdown-wrap">
+            <div class="dropdown">
+              <button class="dropbtn">{{ selectedCategory || "Category" }} <img src="@/assets/admin/icons/caret-down.svg" alt="Dropdown" /></button>
+              <div class="dropdown-content">
+                <div class="option" v-for="(option, index) in categories" :key="index" @click="newCategory(option.name)">{{ option.name }}</div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="right-area">
+        <div class="upload">
+          <div class="upload-window">
+            <img :src="imgURL" alt="User Image Preview" class="img-fluid" />
+          </div>
+
+          <div class="file-input">
+            <input type="file" accept="image/*" id="file" class="file" @change="updateFilename" />
+            <label for="file">
+              Select file
+            </label>
+
+            <p class="file-name">{{ selectedFilename }}</p>
+          </div>
         </div>
+
+        <fieldset class="input-grp pcontent">
+          <legend><label for="pcontent">Post Content</label></legend>
+          <textarea
+            name=""
+            id="pcontent"
+            placeholder="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore fugit quibusdam praesentium molestiae debitis autem fugiat iure ratione voluptas fuga, consequuntur dignissimos minima, veniam dolorum! Debitis quae officiis et sint."
+            cols="30"
+            rows="10"
+          ></textarea>
+        </fieldset>
+        <button>SUBMIT</button>
+      </div>
     </form>
   </the-admin-layout>
 </template>
 
 <script>
 export default {
-  name: "AddAdminNotification",
+  name: "AddInsights",
 
   metaInfo: {
-    title: "Myyinvest - Add Notifications (Admin)",
+    title: "Myyinvest - Add Insights (Admin)",
     titleTemplate: null
   },
 
   data() {
     return {
-      selectedProject: "",
-      newProjectNames: [
+      selectedPostStatus: "",
+      postStatuses: [
         {
-          name: "Project One"
+          name: "Published"
         },
         {
-          name: "Project Two"
+          name: "Unpublished"
         },
         {
-          name: "Project Three"
+          name: "Scheduled/Delayed"
+        }
+      ],
+
+      selectedCategory: "",
+      categories: [
+        {
+          name: "News"
         },
         {
-          name: "Project Four"
+          name: "Blog"
+        },
+        {
+          name: "Research"
         }
       ],
 
@@ -69,8 +122,13 @@ export default {
   },
 
   methods: {
-    newProjectName(val) {
-      this.selectedProject = val;
+    newPostStatus(val) {
+      this.selectedPostStatus = val;
+      alert(val);
+    },
+
+    newCategory(val) {
+      this.selectedCategory = val;
       alert(val);
     },
 
@@ -96,32 +154,18 @@ export default {
 </script>
 
 <style scoped>
-#overflow-wrapper::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 10px;
-	background-color: #F5F5F5;
-}
-
-#overflow-wrapper::-webkit-scrollbar
-{
-	width: 12px;
-	background-color: #F5F5F5;
-}
-
-#overflow-wrapper::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #D62929;
-}
-
 *:focus:not(:-moz-focusring) {
   outline: none;
 }
 
 *:focus:not(:focus-visible) {
   outline: none;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  padding: var(--base-size);
 }
 
 .left-area {
@@ -133,7 +177,7 @@ export default {
 }
 
 fieldset {
-  padding: 5px;
+  padding: 10px;
   border: 1px solid var(--myyinvest-red-fade);
   border-radius: 5px;
   stroke-opacity: 0.5;
@@ -159,19 +203,19 @@ label {
 input,
 /* select, */
 textarea {
-  /* width: 100%; */
-  /* height: fit-content;
+  width: 100%;
+  height: fit-content;
   height: -moz-fit-content;
-  height: max-content; */
-  /* padding: 5px; */
+  height: max-content;
+  padding: 5px;
   font-size: var(--font-md);
-  /* border: 1px solid transparent; */
-  /* border-radius: 5px; */
+  border: 1px solid transparent;
+  border-radius: 5px;
   background-color: var(--myyinvest-white);
-  /* -moz-appearance: none;
-  -webkit-appearance: none; */
-  /* text-indent: 0.01px; */
-  /* text-overflow: ""; */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  text-indent: 0.01px;
+  text-overflow: "";
 }
 
 input:hover:not(.upload input),
@@ -184,6 +228,11 @@ textarea:focus {
   outline: none;
 }
 
+input {
+  /* select::-ms-expand { */
+  display: none;
+}
+
 button {
   margin-top: 10px;
   color: var(--myyinvest-white);
@@ -191,8 +240,8 @@ button {
 }
 
 .pcontent {
-  max-width: 100%;
-  /* height: 300px; */
+  width: 100%;
+  height: 300px;
   margin-top: var(--base-size);
 }
 

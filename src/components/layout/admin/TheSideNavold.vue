@@ -2,20 +2,21 @@
   <div>
     <div class="menu-toggler-wrapper">
       <span>
-        <svg  @click="closeSidebar" v-if="sideBarNavMenuActive.open && sideBarNavMenuActive.stay" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" 
+        <svg  @click="closeSideBarPerm" v-if="sideBarState.open && sideBarState.stay" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" 
           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
           stroke-linejoin="round" class="lg-menu-toggler collapse-toggle-icon feather feather-disc">
           <circle cx="12" cy="12" r="10"></circle>
           <circle cx="12" cy="12" r="3"></circle>
         </svg>
-
-        <svg  @click="openSidebar" v-if="!sideBarNavMenuActive.stay && sideBarNavMenuActive.open" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" 
+  
+        <svg  @click="openSideBarPerm" v-if="!sideBarState.stay && sideBarState.open" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" 
           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
           stroke-linejoin="round" class="lg-menu-toggler collapse-toggle-icon feather feather-disc">
           <circle cx="12" cy="12" r="10"></circle>
         </svg>
+
         <!-- cross -->
-        <svg v-if="windowWidth < 1023" xmlns="http://www.w3.org/2000/svg" @click="smCloseSideBar" width="20px" height="20px" 
+        <svg xmlns="http://www.w3.org/2000/svg" @click="smCloseSidebar" width="20px" height="20px" 
           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" 
           stroke-linecap="round" stroke-linejoin="round" class="sm-menu-toggler d-block d-xl-none feather feather-x">
           <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
@@ -25,27 +26,27 @@
     <div class="menu">
       <router-link to="/admin" class="main-route">
         <img src="@/assets/admin/icons/home.svg" alt="Overview Logo" class="logo" />
-        <span v-if="sideBarNavMenuActive.open">Overview</span>
+        <span v-if="sideBarState.open">Overview</span>
       </router-link>
       <router-link to="/admin/statistics" class="main-route">
         <img src="@/assets/admin/icons/statistics.svg" alt="Statistics Logo" class="logo" />
-        <span v-if="sideBarNavMenuActive.open">Statistics</span>
+        <span v-if="sideBarState.open">Statistics</span>
       </router-link>
       <router-link to="/admin/all-users" :class="[myPath('/admin/users/'), 'main-route']">
         <img src="@/assets/admin/icons/user.svg" alt="User Logo" class="logo" />
-        <span v-if="sideBarNavMenuActive.open">Users</span>
+        <span v-if="sideBarState.open">Users</span>
       </router-link>
       <router-link to="/admin/projects" class="main-route">
         <img src="@/assets/admin/icons/checklist.svg" alt="Projects Logo" class="logo" />
-        <span v-if="sideBarNavMenuActive.open">Projects</span>
+        <span v-if="sideBarState.open">Projects</span>
       </router-link>
       <router-link to="/admin/transactions" class="main-route">
         <img src="@/assets/admin/icons/money.svg" alt="Transactions Logo" class="logo" />
-        <span v-if="sideBarNavMenuActive.open">Transactions</span>
+        <span v-if="sideBarState.open">Transactions</span>
       </router-link>
       <div :class="[myPath('-insights'), 'main-route']" @click="noInsight = !noInsight">
         <img src="@/assets/admin/icons/window.svg" alt="Insight Logo" class="logo" />
-        <span v-if="sideBarNavMenuActive.open">Insights</span>
+        <span v-if="sideBarState.open">Insights</span>
       </div>
       <div class="sub-nav" v-if="!noInsight">
         <!-- <transition name="expand-fly"> -->
@@ -55,7 +56,7 @@
       </div>
       <div :class="[myPath('-notification'), 'main-route']" @click="noNotification = !noNotification">
         <img src="@/assets/admin/icons/bell.svg" alt="Notifications Logo" class="logo" />
-        <span v-if="sideBarNavMenuActive.open">Notifications</span>
+        <span v-if="sideBarState.open">Notifications</span>
       </div>
       <div class="sub-nav" v-if="!noNotification">
         <!-- <transition name="expand-fly"> -->
@@ -65,7 +66,7 @@
       </div>
       <div :class="[myPath('-faqs'), 'main-route']" @click="noPost = !noPost">
         <img src="@/assets/admin/icons/phone.svg" alt="Talk to us Logo" class="logo" />
-        <span v-if="sideBarNavMenuActive.open">FAQ</span>
+        <span v-if="sideBarState.open">FAQ</span>
       </div>
       <div class="sub-nav" v-if="!noPost">
         <!-- <transition name="expand-fly"> -->
@@ -75,7 +76,7 @@
       </div>
       <router-link to="/admin/newsletters" class="main-route">
         <img src="@/assets/admin/icons/envelope.svg" alt="Newsletter Logo" class="logo" />
-        <span v-if="sideBarNavMenuActive.open">Newsletter</span>
+        <span v-if="sideBarState.open">Newsletter</span>
       </router-link>
     </div>
   </div>
@@ -93,26 +94,8 @@ export default {
         open: true,
         stay: true
       },
+      // noUser: true,
     };
-  },
-
-  computed: {
-    mobileResponsive: {
-      get()    { return this.$store.state.responsive.mobileResponsive },
-      set(val) { this.$store.commit('TOGGLE_MOBILE_RESPONSIVE', val) }
-    },
-    currentPath() {
-      return this.$route.path;
-    },
-    windowWidth()     { return this.$store.state.responsive.windowWidth },
-    isSideBarNavMenuActive: {
-      get()    { return this.$store.state.responsive.isSideBarNavMenuActive },
-      set(val) { this.$store.commit('TOGGLE_IS_SIDEBAR_NAV_MENU_ACTIVE', val) }
-    },
-    sideBarNavMenuActive: {
-      get()    { return this.$store.state.responsive.sideBarNavMenuActive },
-      set(val) { this.$store.commit('TOGGLE_SIDEBAR_NAV_MENU_ACTIVE', val) }
-    },
   },
 
   methods: {
@@ -121,18 +104,28 @@ export default {
         return "active-main-route";
       } else "";
     },
-    smCloseSideBar() {
-      this.$store.commit('TOGGLE_MOBILE_RESPONSIVE', {open: true});
-    },
-    closeSidebar() {
-      this.$store.commit('TOGGLE_SIDEBAR_NAV_MENU_ACTIVE', {open: false, stay: true});
+    closeSideBarPerm() {
+      this.sideBarState.open = !this.sideBarState.open;
+      this.$emit('toggle-sidebar', this.sideBarState)
     },
 
-    openSidebar() {
-      this.$store.commit('TOGGLE_SIDEBAR_NAV_MENU_ACTIVE', {open: true, stay: true});
+    openSideBarPerm() {
+      this.sideBarState.open = true
+      this.sideBarState.stay = true
+      // this.$emit('toggle-sidebar', this.sideBarState)
+    },
+
+    smCloseSidebar() {
+      this.sideBarState.open = false;
+      this.sideBarState.stay = false;
+    }
+  },
+
+  computed: {
+    currentPath() {
+      return this.$route.path;
     },
   },
-  
 };
 </script>
 

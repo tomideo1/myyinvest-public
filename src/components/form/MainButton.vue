@@ -1,15 +1,21 @@
 <template>
-  <button @click="$emit('click', $event)" :class="[classes, icon ? iconClass : '']" :disabled="disable" :style="styles">
+  <button :type="btnType" @click="$emit('click', $event)" :class="[classes, icon ? iconClass : '']" :disabled="disable" :style="styles">
     <!-- Button Text -->
-    <span v-if="text" v-html="textProp"> </span>
+    <main-icon lass="mr-4" :size="size" v-if="Icon && IconPosition === 'beginning'" :name="Icon" />
+    <span class="d-flex justify-content-around align-content-center mx-auto text-center">
+      <span class="" v-if="text" v-html="textProp"> </span>
+    </span>
+    <main-icon class="ml-auto" :size="size" v-if="Icon && IconPosition === 'end'" :name="Icon" />
   </button>
 </template>
 <script>
+import MainIcon from "../Shared/mainIcon";
 const sizes = ["xs", "sm", "md", "lg"];
 const types = ["inverse", "filled", "outline", "transparent", "plain"];
 
 export default {
   name: "MainButton",
+  components: { MainIcon },
   data() {
     return {
       widths: {
@@ -27,6 +33,15 @@ export default {
       type: String,
       default: types[1],
       required: false
+    },
+
+    Icon: {
+      type: String
+    },
+
+    IconPosition: {
+      type: String,
+      default: "beginning"
     },
     // The size of the button
     size: {
@@ -55,6 +70,10 @@ export default {
     text: {
       type: String,
       default: ""
+    },
+    btnType: {
+      type: String,
+      default: "button"
     }
   },
   computed: {
@@ -91,7 +110,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 button,
 .btn {
   font-family: fonts(main-poppins);
@@ -172,7 +191,7 @@ button,
 
   &:disabled {
     cursor: auto;
-    opacity: 0.5 !important;
+    opacity: 0.6 !important;
   }
 }
 

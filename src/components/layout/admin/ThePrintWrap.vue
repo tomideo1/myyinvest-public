@@ -3,7 +3,7 @@
     <div class="overlay-content">
       <div class="" id="printArea">
         <div class="logo-area">
-          <img width="324" height="52" src="@/assets/logos/Myylogo2.png" alt="Myyinvest Logo" />
+          <img width="324" height="52" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001064/mmyyinvest-2.0/logos/Myylogo2_uwpfw9.png" alt="Myyinvest Logo" />
         </div>
 
         <slot name="title" @callClosePreview="closePrintPreview" />

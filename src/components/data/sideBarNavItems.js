@@ -1,84 +1,87 @@
 export default function() {
-  let mobileViewRoutes = [
-    {
-      title: "Notifications",
-      routeIcon: "bell",
-      to: {
-        name: "notifications"
-      }
-    },
-    {
-      title: "Logout",
-      routeIcon: "logout",
-      to: {
-        name: "logout"
-      }
-    }
-  ];
   let customerRoutes = [
     {
-      title: "Dashboard",
-      routeIcon: "dashboard",
-      activeIcon: "active-dashboard",
-      identifier: "dashboard",
+      title: "Overview",
+      routeIcon: "home",
+      identifier: "overview",
       to: {
-        name: "customer-dashboard"
+        name: "overview"
       }
     },
     {
-      title: "Trade",
-      routeIcon: "trade",
-      activeIcon: "active-trade",
-      identifier: "trade",
+      title: "Browse Assets",
+      routeIcon: "assets",
+      identifier: "browse-assets",
       to: {
-        name: "customer-trade-home"
+        name: "assets"
       }
     },
-    {
-      title: "Bitcoin",
-      routeIcon: "bitcoin",
-      activeIcon: "active-bitcoin",
-      identifier: "bitcoin",
-      to: {
-        name: "customer-bitcoin-home"
-      }
-    },
-    {
-      title: "History",
-      routeIcon: "history",
-      activeIcon: "active-history",
-      identifier: "history",
-      to: {
-        name: "customer-history-home"
-      }
-    },
-    {
-      title: "Rates",
-      routeIcon: "rates",
-      activeIcon: "active-rates",
-      identifier: "rates",
-      to: {
-        name: "customer-rates-home"
-      }
-    },
+
     {
       title: "Wallet",
       routeIcon: "wallet",
-      activeIcon: "active-wallet",
       identifier: "wallet",
       to: {
-        name: "customer-wallet-home"
+        name: "wallet"
       }
     },
     {
-      title: "Settings",
-      routeIcon: "settings",
-      activeIcon: "active-settings",
-      identifier: "settings",
+      title: "Myy Portfolio",
+      routeIcon: "portfolio",
+      identifier: "myy-portfolio",
       to: {
-        name: "customer-settings-home"
+        name: "portfolio"
+      }
+    },
+    {
+      title: "Transactions",
+      routeIcon: "wallet",
+      identifier: "transactions",
+      to: {
+        name: "transactions"
+      }
+    },
+    {
+      title: "Banks and Cards",
+      routeIcon: "atm-card",
+      identifier: "banks-and-cards",
+      to: {
+        name: "banks"
+      }
+    },
+    {
+      title: "Refer and Earn",
+      routeIcon: "money",
+      identifier: "refer-and-earn",
+      to: {
+        name: "refer"
+      }
+    },
+    // {
+    //   title: "Talk to us",
+    //   routeIcon: "phone",
+    //   identifier: "talk",
+    //   to: {
+    //     name: "talk"
+    //   }
+    // },
+    {
+      title: "Profile",
+      routeIcon: "profile",
+      identifier: "profile",
+      to: {
+        name: "profile"
       }
     }
+
+    // {
+    //   title: "Settings",
+    //   routeIcon: "cog",
+    //   identifier: "settings",
+    //   to: {
+    //     name: "settings"
+    //   }
+    // }
   ];
   let appRoutes = [
     {
@@ -87,6 +90,6 @@ export default function() {
     }
   ];
 
-  appRoutes[0].items = [...customerRoutes, ...mobileViewRoutes];
+  appRoutes[0].items = [...customerRoutes];
   return appRoutes[0].items;
 }

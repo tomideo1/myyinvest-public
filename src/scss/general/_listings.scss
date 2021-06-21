@@ -1,0 +1,630 @@
+.listing-wrapper {
+  min-height: 50vh;
+  padding-top: 1.5em;
+  overflow: hidden;
+}
+
+#dot-vector-1,
+#dot-vector-2 {
+  position: absolute;
+  width: 12.5em;
+  height: 10em;
+}
+
+#dot-vector-1 {
+  bottom: 21.5%;
+  // left: -17.25%;
+  left: -11.5em;
+}
+
+#dot-vector-2 {
+  top: 12.5%;
+  // right: -17.25%;
+  right: -11.5em;
+}
+
+.listing-bg-red {
+  min-height: 9em;
+  background: color(main-red);
+}
+
+.listing-item-container {
+  position: relative;
+  top: -3em;
+  width: 81.5%;
+  max-width: 87em;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @include breakpoint(mobile-only) {
+    justify-content: center;
+  }
+}
+
+// LISTING ITEM
+.listing-item {
+  border-radius: 0.75rem;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.15);
+  text-align: center;
+  background: color(bv-white);
+  width: 100%;
+  // min-width: 20em;
+  max-width: 19.5em;
+  margin-bottom: 3em;
+  z-index: 2;
+
+  &__img {
+    width: 100%;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 1.35em !important;
+    color: #505050;
+  }
+
+  &__details {
+    padding: 1.25em 1em;
+  }
+
+  &__sub-title {
+    font-size: 1em !important;
+    font-weight: 500;
+
+    &--red {
+      color: color(main-red);
+    }
+  }
+
+  &__returns,
+  &__min-invest {
+    font-weight: 700;
+    font-size: 1.9em !important;
+  }
+
+  &__returns {
+    color: color(main-red);
+  }
+
+  &__min-invest {
+    color: color(txt-green);
+    @include flex-center;
+
+    > .icon {
+      width: auto;
+    }
+  }
+
+  &__plan-summary {
+    border-bottom: 1px solid #dadada;
+    padding-bottom: 1em;
+    margin-bottom: 1.35em;
+  }
+
+  &__benefits {
+    color: #4a4a4a;
+    font-size: 0.925em;
+
+    > p {
+      font-size: inherit !important;
+    }
+  }
+
+  &__btn {
+    display: block;
+    background: color(main-red);
+    color: color(bv-white);
+    border-radius: $border-radius-sm;
+    padding: 0.625em 2.5em;
+    box-shadow: 0 0 0.65rem 0.1rem rgba(0, 0, 0, 0.1);
+    margin: 2.5em auto 1em auto;
+    border: 1px solid transparent;
+
+    &:hover {
+      background: #b10606;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0.1rem 0.2rem rgba(62, 156, 233, 0.7);
+    }
+  }
+
+  &__link {
+    color: #4886e3;
+    font-size: 0.95em;
+
+    &:hover {
+      font-weight: 500;
+    }
+  }
+}
+
+// SINGLE LISTING
+.listing-dtl {
+  // border: 1px solid green;
+  padding: 1em 1.5em;
+  text-align: center;
+  max-width: 108em;
+  margin: 0 auto;
+
+  @include breakpoint(mobile-only) {
+    font-size: 0.925rem;
+  }
+
+  &__title {
+    color: color(main-red);
+    font-weight: 600;
+    font-size: 1.5em !important;
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: 1.075fr 1fr;
+    // justify-items: center;
+    gap: 2.5em;
+    margin-bottom: 3.5em;
+
+    @include breakpoint(tablet-landscape-down) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__carousel {
+    overflow: hidden;
+    // width: 100%;
+    // max-width: 48em;
+  }
+
+  &__img {
+    max-height: 28.75em;
+  }
+
+  &__plan-section {
+    padding: 1.25em 1em;
+    // width: 100%;
+    // max-width: 48em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 0 1.25rem 0 rgba(136, 117, 117, 0.2);
+  }
+
+  &__summary {
+    display: grid;
+    // $lst-info-max-width is defined in utils/variables.scss;
+    grid-template-columns: repeat(2, $lst-info-max-width + 0.75em);
+    gap: 2em;
+    justify-content: center;
+    justify-items: center;
+    padding-bottom: 1.1em;
+
+    @include breakpoint(mobile-only) {
+      grid-template-columns: $lst-info-max-width + 0.75em;
+    }
+  }
+
+  &__btn {
+    color: color(bv-white);
+    background: color(main-red);
+    border: 1px solid transparent;
+    padding: 0.6em 2.25em;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: $border-radius-xs;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.15);
+
+    &:hover {
+      background: #aa0202;
+    }
+
+    &--white {
+      background: color(bv-white);
+      color: color(main-red);
+
+      &:hover {
+        background: #f5f5f5;
+      }
+    }
+  }
+
+  &__box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    // padding: 1.75em;
+    padding: 1em 1.75em;
+    box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
+    border-radius: $border-radius;
+
+    // adding normal top and bottom margins for items inside the container and more importantly, using the
+    // concept of collapsing margins to create spacing when the flex items wrap
+    > * {
+      margin: 0.75em 0;
+    }
+  }
+
+  &__card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+    text-align: left;
+    padding: 2.5em 0;
+
+    @include breakpoint(tablet-potrait-down) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// LISTING TOOLTIP
+.lst-tooltip {
+  display: inline-flex;
+  // transform-origin: 100% 50%;
+
+  &::after {
+    content: attr(data-content);
+    position: absolute;
+    background: color(main-red);
+    color: color(bv-white);
+    font-size: 0.9em;
+    padding: 1em;
+    width: 12.75em;
+    z-index: 5;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    // transform: translateX(-50%) scaleX(0);
+    transform: scale(0);
+    transition: all 0.3s ease;
+  }
+
+  &:hover::after,
+  &:focus::after {
+    opacity: 1;
+    transform: scale(1);
+    // transform: translateX(-50%) scaleX(1);
+  }
+}
+
+.lst-card {
+  box-shadow: 0 0 1.25rem 0 inset rgba(0, 0, 0, 0.1);
+  padding: 1.5em 2em;
+  flex: 1;
+  // background: color(bv-white);
+  // border: 1px solid green;
+
+  &__title {
+    color: color(main-red);
+    font-size: 1.4em !important;
+    font-weight: 600;
+    margin-bottom: 0.875em !important;
+  }
+
+  &__sub-title {
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+
+  &__text {
+    display: block;
+    color: #4a4a4a;
+    line-height: 1.75;
+    font-size: 1.1em !important;
+
+    &--md {
+      font-size: 1em !important;
+    }
+
+    &--sm {
+      font-size: 0.85em !important;
+    }
+  }
+
+  &__section {
+    > p {
+      margin-top: 0.5em;
+    }
+  }
+}
+
+.lst-modal {
+  &__top-icon {
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+    // border: 1px solid green;
+  }
+
+  &__title {
+    color: color(main-red);
+    font-size: 1.1rem !important;
+    font-weight: 600;
+  }
+
+  &__input-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    // only adding padding to the top because input and select have a bottom margin that I can't overwrite
+    // due to the styles in MainInput... so only adding padding to the top helps to offset it
+    padding-top: 1.4em;
+    // border: 1px solid green;
+  }
+
+  &__input {
+    width: 100%;
+
+    @include breakpoint(tablet-potrait-up) {
+      max-width: 14.5em;
+
+      &--mw-lg {
+        max-width: 18.5em;
+      }
+    }
+  }
+
+  &__text-container {
+    // border: 1px solid green;
+    @include flex-center;
+    flex-direction: column;
+    padding: 1em 0;
+  }
+
+  &__text {
+    color: #4a4a4a;
+    font-size: 1em !important;
+    font-weight: 500;
+
+    &--wgt-600 {
+      font-weight: 600;
+    }
+
+    &--lg {
+      font-size: 1.2em !important;
+    }
+  }
+
+  &__btn {
+    padding: 0.58em 1.25em;
+    border-radius: $border-radius-xs;
+    color: color(main-red);
+    background: color(bv-white);
+    font-weight: 600;
+    border-color: transparent;
+    text-transform: capitalize;
+    box-shadow: 0 0 0.65rem 0 $bv-shadow;
+    transition: color 0.25s ease, background 0.25s ease;
+
+    > .icon {
+      margin-left: 0.25em;
+    }
+
+    &--max {
+      width: 90%;
+      max-width: 12em;
+      margin-bottom: 1.25em;
+
+      > .icon {
+        // border: 1px solid green;
+        margin-left: 0.35em;
+      }
+    }
+
+    &--red,
+    &--active {
+      color: color(bv-white);
+      background: color(main-red);
+    }
+
+    &:hover {
+      color: color(bv-white);
+      background: #c70202;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0.1rem 0.15rem rgba(62, 156, 233, 0.7);
+    }
+  }
+}
+
+// LISTING REVIEW
+.lst-review {
+  // border: 1px solid blue;
+  margin-bottom: 1.25em;
+
+  &__header {
+    // border: 1px solid black;
+    margin: 0.5em 0;
+  }
+
+  &__title {
+    font-size: 0.95em;
+    text-transform: capitalize;
+  }
+
+  &__amount {
+    @include flex-center;
+    color: color(main-red);
+    font-size: 1.4em;
+    font-weight: 700;
+  }
+
+  &__date {
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+
+  &__content {
+    padding: 1.25em 0;
+
+    @include breakpoint(tablet-potrait-up) {
+      padding-left: 1.5em;
+      padding-right: 1.5em;
+    }
+  }
+
+  &__data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 0;
+    font-size: 0.935rem;
+    border-bottom: 1px solid #bfbfbf;
+  }
+
+  &__field,
+  &__value {
+    display: flex;
+    align-items: center;
+  }
+
+  &__field {
+    font-weight: 500;
+    color: #4a4a4a;
+    text-align: left;
+    position: relative;
+
+    > span {
+      margin-right: 0.3em;
+    }
+  }
+
+  &__value {
+    font-weight: 600;
+  }
+
+  &__tooltip {
+    // there are already ::after styles in lst-tooltip, that's why I don't need to add content
+    &::after {
+      top: 100%;
+      right: -25%;
+      transform-origin: 75% 0%;
+    }
+  }
+}
+
+// .lst-modal {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   min-height: 100vh;
+//   width: 100vw;
+//   background: rgba(0, 0, 0, 0.8);
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   z-index: 99999;
+//   transform: translateY(0);
+//   opacity: 1;
+//   transition: transform 0.35s ease-in, opacity 0.35s ease-in;
+
+//   &--hidden {
+//     opacity: 0;
+//     transform: translateY(-100%);
+//   }
+
+//   &__dialog-box {
+//     position: relative;
+//     background: color(bv-white);
+//     min-height: 15em;
+//     width: 90%;
+//     max-width: 38em;
+//     padding: 1.5em 2.5em;
+//     border-radius: 1.25rem;
+//   }
+
+//   &__close-icon {
+//     position: absolute;
+//     top: -1em;
+//     right: -2.25em;
+//   }
+
+//   &__content {
+//     // display: flex;
+//     // flex-direction: column;
+//     // align-items: center;
+//     // border: 1px solid green;
+//   }
+
+//   &__top-icon {
+//     display: flex;
+//     position: absolute;
+//     top: 0.75em;
+//     left: 0.75em;
+//   }
+
+//   &__title {
+//     color: color(main-red);
+//     font-size: 1.1rem !important;
+//     font-weight: 600;
+//   }
+
+//   &__input-container {
+//     display: flex;
+//     justify-content: space-around;
+//     padding-top: 1.25em;
+//     // border: 1px solid green;
+
+//     @include breakpoint(mobile-only) {
+//       flex-direction: column;
+//       // align-items: center;
+//     }
+
+//     > div {
+//       width: 100%;
+
+//       @include breakpoint(tablet-potrait-up) {
+//         max-width: 14em;
+//       }
+//     }
+//   }
+
+//   &__freq-container {
+//     padding: 1.5em 0;
+//   }
+
+//   &__freq-text {
+//     color: #4a4a4a;
+//     font-size: 1em !important;
+//     font-weight: 500;
+//   }
+
+//   &__btn {
+//     padding: 0.6em 1.25em;
+//     border-radius: $border-radius-xs;
+//     color: color(main-red);
+//     background: color(bv-white);
+//     font-weight: 600;
+//     border-color: transparent;
+//     box-shadow: 0 0 0.65rem 0 $bv-shadow;
+//     transition: color 0.25s ease, background 0.25s ease;
+
+//     &--max {
+//       width: 90%;
+//       max-width: 11em;
+
+//       > .icon {
+//         // border: 1px solid green;
+//         margin-left: 0.35em;
+//       }
+//     }
+
+//     &--active {
+//       color: color(bv-white);
+//       background: color(main-red);
+//     }
+
+//     &:hover {
+//       color: color(bv-white);
+//       background: #c70202;
+//     }
+
+//     &:focus {
+//       box-shadow: 0 0 0.1rem 0.2rem rgba(62, 156, 233, 0.7);
+//     }
+//   }
+// }

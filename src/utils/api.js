@@ -1,5 +1,8 @@
 import axios from "axios";
 import { store } from "@/store/store";
+// import NProgress from "nprogress";
+// import "nprogress/nprogress.css";
+import progressFns from "@/utils/helper.js";
 
 let api_url = process.env.VUE_APP_API;
 
@@ -7,20 +10,42 @@ const instance = axios.create({
   baseURL: api_url
 });
 
+const { start: progressStart, stop: progressStop } = progressFns();
+
 /* eslint-disable no-unused-vars */
 // request interceptor
 instance.interceptors.request.use(
   (config, reqAuth) => {
+    // NProgress.start();
+    progressStart();
     return config;
   },
-  error => {}
+  error => {
+    // NProgress.done();
+    progressStop();
+    return Promise.reject(error);
+  }
 );
+
+instance.interceptors.response.use(
+  response => {
+    // NProgress.done();
+    progressStop();
+    return response;
+  },
+  error => {
+    // NProgress.done();
+    progressStop();
+    return Promise.reject(error);
+  }
+);
+
 class Api {
   static async get(url, requireAuth = false) {
     try {
       let config = {
         headers: {
-          Authorization: `Bearer ${store.state.auth.token}`
+          "x-auth-token": `${store.state.auth.token}`
         }
       };
       return requireAuth ? await instance.get(url, config) : await instance.get(url);
@@ -33,11 +58,12 @@ class Api {
     try {
       let config = {
         headers: {
-          Authorization: `Bearer ${store.state.auth.token}`
+          "x-auth-token": `${store.state.auth.token}`
         }
       };
       return requireAuth ? await instance.post(url, payload, config) : await instance.post(url, payload);
     } catch (error) {
+      console.log(`My Error: ${error}`);
       return error.response;
     }
   }
@@ -46,7 +72,7 @@ class Api {
     try {
       let config = {
         headers: {
-          Authorization: `Bearer ${store.state.auth.token}`
+          "x-auth-token": `${store.state.auth.token}`
         }
       };
       return requireAuth ? await instance.patch(url, payload, config) : await instance.patch(url, payload);
@@ -59,7 +85,7 @@ class Api {
     try {
       let config = {
         headers: {
-          Authorization: `Bearer ${store.state.auth.token}`
+          "x-auth-token": `${store.state.auth.token}`
         }
       };
       return requireAuth ? await instance.put(url, payload, config) : await instance.put(url, payload);
@@ -72,7 +98,7 @@ class Api {
     try {
       let config = {
         headers: {
-          Authorization: `Bearer ${store.state.auth.token}`
+          "x-auth-token": `${store.state.auth.token}`
         },
         data: payload
       };

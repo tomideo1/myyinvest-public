@@ -1,0 +1,20 @@
+// Import Custom SB Admin 2 Variables (Overrides Default Bootstrap Variables)
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "variables.scss";
+
+// Import Bootstrap
+
+// Import Custom SB Admin 2 Mixins and Components
+@import "global.scss";
+
+// Custom Components
+@import "dropdowns.scss";
+@import "admin.scss";
+@import "navs.scss";
+@import "datepicker.scss";
+@import "transaction.scss";
+
+@import "refer.scss";
+@import "progressbar.scss";
+@import "banks-cards.scss";
+@import "portfolio.scss";

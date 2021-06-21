@@ -46,16 +46,6 @@
 <script>
 export default {
   name: "MainNavBar",
-
-  metaInfo: {
-    title: "Myyinvest",
-    titleTemplate: "%s - Home",
-    htmlAttrs: {
-      lang: "en",
-      amp: true
-    }
-  },
-
   data() {
     return {
       toggled: false,

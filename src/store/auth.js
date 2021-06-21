@@ -1,7 +1,9 @@
 import Api from "@/utils/api";
+import * as PusherPushNotifications from "@pusher/push-notifications-web";
 
 const state = {
   user: {},
+  profile: {},
   token: null,
   prefix: null,
   isLoading: false
@@ -9,6 +11,12 @@ const state = {
 const getters = {
   getUser(state) {
     return state.user;
+  },
+  getProfile(state) {
+    return state.profile;
+  },
+  getUserName(state) {
+    return `${state.user.firstName}  ${state.user.lastName}`;
   },
   getToken(state) {
     return state.token;
@@ -23,16 +31,20 @@ const mutations = {
   },
   setUser(state, data) {
     return (state.user = data);
+  },
+  setProfile(state, data) {
+    return (state.profile = data);
   }
 };
 const actions = {
-  async login({ commit }, payload) {
+  async login({ commit, dispatch }, payload) {
     let res = await Api.post("auth", payload);
     if (res.status === 200 || res.status === 201) {
       localStorage.setItem("myyinvest-user", JSON.stringify(res.data.decodeDetails));
       localStorage.setItem("myyinvest-token", JSON.stringify(res.data.token));
       commit("setToken", res.data.token);
       commit("setUser", res.data.decodeDetails);
+      dispatch("getUserProfileDetails");
       return res;
     } else {
       return res;
@@ -43,103 +55,52 @@ const actions = {
     return await Api.post(`/users/recover`, payload);
   },
   //
-  // async passwordChange({ commit }, payload) {
-  //     let res = await Api.post(`auth/change-password`, payload);
-  //     if (res.status === 200 || res.status === 201) {
-  //         return true;
-  //     } else {
-  //         return res;
-  //     }
-  // },
+  async passwordChange({ commit }, payload) {
+    return await Api.post(`users/reset/${payload.userToken}`, {
+      password: payload.password
+    });
+  },
 
   /* eslint-disable no-unused-vars */
   async register({ commit }, payload) {
-    delete payload.confirm_password;
-    delete payload.phone_number;
-    delete payload.isAgreedTerms;
-    return await Api.post("/users/register", payload);
+    return await Api.post("/users/register", {
+      firstName: payload.firstName,
+      lastName: payload.lastName,
+      email: payload.email,
+      country: payload.country,
+      password: payload.password,
+      firstInvest: payload.firstInvest,
+      hearAbout: payload.hearAbout,
+      dateOfBirth: payload.dateOfBirth
+    });
   },
 
   async resendVerification({ commit }, payload) {
     return await Api.post("/users/resend", payload);
+  },
+
+  async saveToken({ commit }, payload) {
+    return await Api.post(
+      "/admin/pusher/auth",
+      {
+        socket_id: payload.interest,
+        channel_name: "private-myyinvest"
+      },
+      true
+    );
+  },
+
+  async logout({ commit }) {
+    const beamsClient = new PusherPushNotifications.Client({
+      instanceId: "152ee166-ce1b-4279-a308-a88e57d847cb"
+    });
+    beamsClient.stop().catch(console.error);
+
+    commit("setToken", "");
+    commit("setUser", {});
+    commit("setProfile", {});
+    localStorage.clear();
   }
-  // async tenantLogin({ commit, dispatch }, payload) {
-  //     let res = await Api.post("auth/tenant/login", payload);
-  //     if (res.status === 200 || res.status === 201) {
-  //         // learner: oluwaseunalamu@gmail.com|password
-  //         //console.log({ res });
-  //         if (res.data.login_type === "cross") {
-  //             commit("setTenantPrefix", res.data.tenant_prefix);
-  //             await dispatch("fetchTenantSettings", {
-  //                 prefix: res.data.tenant_prefix,
-  //             });
-  //
-  //             localStorage.setItem("lms-user", JSON.stringify(res.data.user));
-  //             localStorage.setItem(
-  //                 "lms-token",
-  //                 JSON.stringify(res.data.access_token)
-  //             );
-  //             commit("setToken", res.data.access_token);
-  //             commit("setUser", res.data.user);
-  //             return true;
-  //         } else {
-  //             let prefix =
-  //                 typeof res.data.user.tenant_profile !== "undefined"
-  //                     ? res.data.user.tenant_profile.tenant_prefix
-  //                     : res.data.user.tenant.tenant_prefix;
-  //             commit("setTenantPrefix", prefix);
-  //             await dispatch("fetchTenantSettings", { prefix });
-  //
-  //             localStorage.setItem("lms-user", JSON.stringify(res.data.user));
-  //             localStorage.setItem(
-  //                 "lms-token",
-  //                 JSON.stringify(res.data.access_token)
-  //             );
-  //             commit("setToken", res.data.access_token);
-  //             commit("setUser", res.data.user);
-  //             return true;
-  //         }
-  //     } else {
-  //         return res;
-  //     }
-  // },
-  //
-  // async updateProfile({ commit }, payload) {
-  //     let res = await Api.put("user/update-profile", payload, true);
-  //     return res;
-  // },
-  //
-  // async fetchUserDetailsProfile({ commit }, payload) {
-  //     let res = await Api.get(`user/${payload.id}/show`, payload, true);
-  //     return res;
-  // },
-  //
-  // async fetchProfile({ commit }, payload) {
-  //     let res = await Api.get("user", true);
-  //     return res;
-  // },
-  //
-  // async fetchNotificationSettings({ commit }, payload) {
-  //     let res = await Api.get("user/notification-settings", true);
-  //     //console.log({ res });
-  //     return res.data.data.notification_settings;
-  // },
-  //
-  // async updateNotificationSettings({ commit }, payload) {
-  //     let res = await Api.put("user/notification-settings", payload, true);
-  //     return res;
-  // },
-  //
-  // async updateToken({ commit }, payload) {
-  //     let res = await Api.put("user/update-device-token", payload, true);
-  //     return res;
-  // },
-  //
-  // async logout({ commit }) {
-  //     commit("setToken", "");
-  //     commit("setUser", {});
-  //     localStorage.clear();
-  // },
 };
 
 export default {

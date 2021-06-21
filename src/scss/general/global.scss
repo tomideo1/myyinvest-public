@@ -1,10 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap");
 //@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&display=swap");
 // Then import Bootstrap an BootstrapVue SCSS files (order is important)
 * {
   box-sizing: border-box;
   font-family: fonts(main-poppins), serif;
+}
+
+:root {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html {
@@ -67,6 +73,10 @@ h6 {
 
 .font-poppins {
   font-family: fonts(main-poppins), serif;
+}
+
+.font-Nunito {
+  font-family: fonts(nunito), serif;
 }
 /**
 * Shadows
@@ -143,7 +153,7 @@ h6 {
 }
 
 .text-grey-500 {
-  color: color(sla-grey) !important;
+  color: #7a7777 !important;
 }
 
 .text-grey-800 {
@@ -158,6 +168,10 @@ h6 {
 */
 
 .bg-primary {
+  background-color: color(bv-primary) !important;
+}
+
+.bg-primary-default {
   background-color: color(bv-primary) !important;
 }
 
@@ -1126,6 +1140,16 @@ Text weight
   &50 {
     width: 50% !important;
   }
+  &75 {
+    width: 75% !important;
+  }
+  &80 {
+    width: 80% !important;
+  }
+
+  &95 {
+    width: 95% !important;
+  }
   &100 {
     width: 100% !important;
   }
@@ -1505,7 +1529,8 @@ Text weight
   min-height: 300px;
   margin: auto !important;
   /* apply negative top and left margins to truly center the element */
-  box-shadow: 3px -3px 10px rgb(206, 206, 206);
+  // box-shadow: 3px -3px 10px rgb(206, 206, 206);
+  box-shadow: 1px -10px 10px rgb(206, 206, 206);
 }
 
 .d-flex {
@@ -1586,4 +1611,30 @@ hr {
 
 .custom-shadow {
   box-shadow: inset 2px 2px 5px #acacac;
+}
+
+.text-bold-black {
+  font-size: 16px;
+  line-height: 22px;
+  /* identical to box height */
+
+  color: #000000 !important;
+}
+
+.text-bold-main-red {
+  font-size: 16px;
+  line-height: 22px;
+  /* identical to box height */
+
+  color: #f00304 !important;
+}
+
+.header {
+  font-style: normal;
+  font-weight: bolder !important;
+  font-size: 32px;
+  line-height: 44px;
+  letter-spacing: 0.02em;
+
+  color: #2f2f2f;
 }

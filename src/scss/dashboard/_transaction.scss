@@ -1,0 +1,116 @@
+.trans {
+  font-size: 0.95em;
+  text-transform: capitalize;
+
+  &__row {
+    box-shadow: 0 0 0.35rem 0 rgba(0, 0, 0, 0.35);
+    margin-bottom: 1.75em;
+    display: flex;
+    align-items: center;
+    padding: 0.95em 0.5em;
+    border-radius: $border-radius;
+    position: relative;
+
+    &--alt {
+      box-shadow: 0 5px 20px -5px $bv-shadow !important;
+      border-radius: 8px;
+    }
+  }
+
+  &__head,
+  &__data {
+    flex: 1;
+    // border: 1px solid green;
+    text-align: center;
+    padding: 0 0.25em;
+
+    &--md {
+      flex: 0.75;
+    }
+
+    &--sm {
+      flex: 0.5;
+    }
+
+    &--lg {
+      flex: 1.5;
+    }
+
+    &--mbl-hide {
+      @include breakpoint(mobile-only) {
+        display: none;
+      }
+    }
+  }
+
+  &__head {
+    font-weight: 600;
+  }
+
+  &__data {
+    &--green {
+      color: #408141;
+    }
+
+    &--red {
+      color: #c20000;
+    }
+  }
+
+  &__icon {
+    width: 0.95em;
+    height: 0.95em;
+
+    @include breakpoint(mobile-only) {
+      display: none;
+    }
+  }
+
+  &__caret {
+    position: absolute;
+    width: auto;
+
+    &--right {
+      right: 0.2em;
+    }
+
+    &--left {
+      left: 0.2em;
+    }
+
+    &--hidden {
+      display: none;
+    }
+
+    @include breakpoint(tablet-potrait-up) {
+      display: none;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__btn {
+    font-weight: 500;
+    background: color(bv-white);
+    border: 1px solid color(main-red-alt);
+    border-radius: 0.3rem;
+    margin-left: 0.5em;
+    color: color(main-red);
+    box-shadow: $box-shadow-sm-alt;
+    padding: 0.15em 0.425em;
+
+    &--active,
+    &:hover {
+      background: color(main-red);
+      color: color(bv-white);
+    }
+
+    &--lg {
+      padding-right: 0.8em;
+      padding-left: 0.8em;
+    }
+  }
+}

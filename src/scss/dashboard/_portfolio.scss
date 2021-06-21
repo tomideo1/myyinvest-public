@@ -1,0 +1,311 @@
+.portfolio-container {
+  // border: 1px solid red;
+  min-height: 80vh;
+}
+
+.portfolio-item-container {
+  padding: 1.25em 1.75em;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.pofl-item {
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.35rem 0 rgba(0, 0, 0, 0.35);
+  max-width: 20.5em;
+  margin-bottom: 2em;
+
+  &__img-container {
+    max-height: 16em;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+
+  &__img {
+    width: 100%;
+    border-radius: inherit;
+  }
+
+  &__info {
+    padding: 0.75em 0.35em;
+    margin-bottom: 0.5em;
+  }
+
+  &__title {
+    font-size: 1.1em !important;
+    font-weight: 600;
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  &__link-container {
+    // border: 1px solid black;
+    display: flex;
+    justify-content: flex-end;
+    border-bottom-right-radius: inherit;
+  }
+
+  &__link {
+    display: inline-block;
+    color: color(bv-white);
+    background: color(main-red);
+    border-bottom-right-radius: inherit;
+    padding: 0.35em 0.85em;
+    font-size: 0.825em;
+
+    &:hover {
+      color: color(bv-white);
+      font-weight: 600;
+    }
+  }
+
+  &__data {
+    border-top: 1px solid color(main-red);
+    display: flex;
+
+    &:last-child {
+      border-bottom: 1px solid color(main-red);
+    }
+  }
+}
+
+.pofl-data {
+  flex: 1;
+  padding: 0.4em 0.25em;
+
+  &:last-child {
+    border-left: 1px solid color(main-red);
+    text-align: right;
+  }
+
+  &__title {
+    font-size: 0.8em !important;
+    font-weight: 500;
+  }
+
+  &__icon {
+    width: 1.15rem;
+    height: 1.15rem;
+    padding-bottom: 0.15em;
+  }
+
+  &__value {
+    font-size: 0.85em !important;
+    font-weight: 500;
+    margin-bottom: 0;
+    color: #4a4a4a;
+
+    &--alt {
+      font-size: 1.05em !important;
+      font-weight: 600;
+      color: color(main-red);
+    }
+  }
+}
+
+.inv-plan {
+  &__header {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint(mobile-only) {
+      align-items: center;
+    }
+  }
+
+  &__title {
+    // border: 1px solid green;
+    display: flex;
+    align-items: center;
+    font-size: 1.25em !important;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  &__summary {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    // width of each summary item is 11.75em and 1.75em is for the spacing
+    // the reason for all these gynamastics is so we can use justify-content: space-between to
+    // seperate the two summary items (similar to how we would use gap in css grid)
+    max-width: 11.5em * 2 + 1.75em;
+
+    @include breakpoint(mobile-only) {
+      justify-content: space-around;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    // @include breakpoint(tablet-landscape-down) {
+    //   flex-direction: column;
+    // }
+  }
+
+  &__graph-container {
+    // border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: flex-start; // makes the height of the container adapt to its content properly
+    font-size: 0.825em;
+    padding: 1.75em 1em;
+    width: 100%;
+    max-width: 37em;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 1rem 0 $bv-shadow;
+    margin-bottom: 2em;
+
+    @include breakpoint(tablet-landscape-up) {
+      margin-right: 2em;
+    }
+  }
+
+  &__status {
+    display: flex;
+    margin-bottom: 0.5em;
+
+    > p {
+      margin-left: 0.5em;
+      font-size: 1em !important;
+    }
+  }
+}
+
+.inv-smry {
+  border-radius: $border-radius;
+  text-align: center;
+  box-shadow: 0 0 0.5rem 0 $bv-shadow;
+  width: 11.5em;
+  padding: 0.5em;
+  font-weight: 500;
+  margin-bottom: 1.65em;
+
+  &__title {
+    font-size: 0.8em !important;
+  }
+
+  &__value {
+    // border: 1px solid black;
+    font-size: 1.2em !important;
+    margin: 0.25em 0;
+    color: color(main-red);
+
+    &--green {
+      color: color(txt-green);
+    }
+  }
+}
+
+.inv-trans {
+  // border: 1px solid color(main-red);
+  flex: auto;
+  color: #000;
+
+  &__heading {
+    @include breakpoint(tablet-potrait-up) {
+      padding-left: 1.3em;
+    }
+  }
+
+  &__link {
+    color: inherit;
+  }
+}
+
+// .inv-modal {
+//   border: 1px solid green;
+//   padding: 0 0.5em;
+
+//   &__data {
+//     display: flex;
+//     justify-content: center;
+//     // border: 1px solid black;
+
+//     &:not(:last-child) {
+//       margin-bottom: 1em;
+//     }
+
+//     > span {
+//       // border: 1px solid green;
+//       flex: 1;
+
+//       &:first-child {
+//         max-width: 11em;
+//         font-weight: 600;
+//       }
+
+//       &:last-child {
+//         max-width: 7em;
+//       }
+//     }
+//   }
+// }
+
+$total-spacing: 0.3rem;
+$length: 1.2rem;
+.inv-switch {
+  display: inline-block;
+  width: ($length * 2) + $total-spacing;
+  height: $length + $total-spacing;
+  position: relative;
+
+  &__slider {
+    position: absolute;
+    // setting top, left, right and bottom to 0 makes this block fill the space of the appropriate container (i.e.
+    // the nearest ancestor with position: relative or the body element) meaning it basically sets the width and
+    // height to 100% of the appropriate container
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #e3e3ec;
+    border-radius: 2.5rem;
+    cursor: pointer;
+    transition: background 0.3s linear;
+
+    &::after {
+      // unicode for pause symbol
+      content: "\f04c";
+      font-family: "Font Awesome\ 5 Free";
+      font-weight: 900;
+      width: $length;
+      height: $length;
+      font-size: 0.75rem;
+      @include flex-center;
+      color: #ccc;
+      background: color(bv-white);
+      position: absolute;
+      // division in sass must be in parenthesis
+      top: ($total-spacing / 2);
+      left: ($total-spacing / 2);
+      border-radius: 50%;
+      // box-shadow: 0 0 0.2rem 0 $bv-shadow;
+      transition: all 0.3s linear;
+    }
+  }
+
+  &__checkbox {
+    visibility: hidden;
+
+    &:checked {
+      + .inv-switch__slider {
+        background: color(main-red);
+
+        &::after {
+          // unicode for play symbol
+          content: "\f04b";
+          padding-left: 0.1em;
+          color: color(main-red);
+          transform: translateX(100%);
+        }
+      }
+    }
+  }
+}

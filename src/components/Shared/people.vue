@@ -2,13 +2,13 @@
   <div>
     <div :class="`avatar avatar-${size}`" @click="$emit('click', $event)" :style="{ background: '' }">
       <span class="flag-left" v-if="flagPosition === 'left'">
-        <img src="@/assets/flags/nigeria.png" />
+        <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614039018/mmyyinvest-2.0/flags/nigeria_uldatp.png" />
       </span>
       <span class="flag-right" v-if="flagPosition === 'right'">
-        <img src="@/assets/flags/nigeria.png" />
+        <img src="https://res.cloudinary.com/myyinvest/image/upload/v1614039018/mmyyinvest-2.0/flags/nigeria_uldatp.png" />
       </span>
       <div class="avatar-border "></div>
-      <img class="p-2 people" src="@/assets/images/avatar.png" alt="avatar" />
+      <img class="p-2 people" src="https://res.cloudinary.com/myyinvest/image/upload/v1614001034/mmyyinvest-2.0/images/avatar_u9yuje.png" alt="avatar" />
     </div>
   </div>
 </template>
@@ -59,7 +59,14 @@ export default {
 
   &:hover {
     transition: all 500ms ease;
-    transform: scale(1.2);
+    transform: scale(1.125);
+  }
+
+  &.avatar-xxl {
+    margin-top: 0.25em;
+    margin-left: 0.25em;
+    height: 16rem !important;
+    width: 16rem !important;
   }
 }
 .avatar:before {

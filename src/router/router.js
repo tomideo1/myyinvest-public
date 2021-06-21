@@ -1,6 +1,13 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import userRoutes from "./users";
+
+import middlewarePipeline from "./kernel/middlewarePipeline";
+import { store } from "../store/store";
+// import NProgress from "nprogress";
+// import "nprogress/nprogress.css";
+import progressFns from "@/utils/helper.js";
+
 import AdminRoutes from "./Admin";
 Vue.use(VueRouter);
 
@@ -34,10 +41,15 @@ const baseRoutes = [
             name: "listings",
             component: () => import(/* webpackChunkName: "listings" */ "../views/Shared/listings/listings.vue")
           },
+          // {
+          //   path: "",
+          //   name: "listing",
+          //   component: () => import(/* webpackChunkName: "listing" */ "../views/Shared/listings/listing.vue")
+          // },
           {
-            path: "single",
+            path: ":slug",
             name: "single-listing",
-            component: () => import(/* webpackChunkName: "single" */ "../views/Shared/listings/single.vue")
+            component: () => import(/* webpackChunkName: "single-listing" */ "../views/Shared/listings/singleListing.vue")
           }
         ]
       },
@@ -60,7 +72,7 @@ const baseRoutes = [
             component: () => import(/* webpackChunkName: "blogs" */ "../views/Shared/insight/blogs.vue")
           },
           {
-            path: "blogs/single",
+            path: "blogs/single/:id",
             name: "single-blog",
             component: () => import(/* webpackChunkName: "single-blog" */ "../views/Shared/insight/single.vue")
           }
@@ -111,7 +123,7 @@ const baseRoutes = [
     component: () => import(/* webpackChunkName: "confirmPassword" */ "../views/Auth/confirmPassword.vue")
   },
 
-  ...AdminRoutes,
+  ...AdminRoutes
   // {
   //   path: "/about",
   //   name: "About",
@@ -119,12 +131,14 @@ const baseRoutes = [
   //   // this generates a separate chunk (about.[hash].js) for this route
   //   // which is lazy-loaded when the route is visited.
   // }
-  {
-    path: "/:pathMatch(.*)*",
-    name: "PageNotFound",
-    component: () => import("../views/Shared/PageNotFound.vue")
-  }
+  // {
+  //   path: "/:pathMatch(.*)*",
+  //   name: "PageNotFound",
+  //   component: () => import("../views/Shared/PageNotFound.vue")
+  // }
 ];
+
+const { start: progressStart, stop: progressStop } = progressFns();
 
 const routes = baseRoutes.concat(userRoutes);
 const router = new VueRouter({
@@ -133,6 +147,40 @@ const router = new VueRouter({
   routes,
   linkActiveClass: "active",
   linkExactActiveClass: "exact-active"
+});
+
+router.beforeResolve((to, from, next) => {
+  // Start the route progress bar.
+  // NProgress.start();
+  progressStart();
+  next();
+});
+
+/* eslint-disable no-unused-vars */
+router.afterEach((to, from) => {
+  // Complete the animation of the route progress bar.
+  // NProgress.done();
+  progressStop();
+});
+
+router.beforeEach((to, from, next) => {
+  if (!to.meta.middleware) {
+    return next();
+  }
+
+  const middleware = to.meta.middleware;
+  const context = {
+    to,
+    from,
+    next,
+    router,
+    store
+  };
+
+  return middleware[0]({
+    ...context,
+    next: middlewarePipeline(context, middleware, 1)
+  });
 });
 
 router.resolve({

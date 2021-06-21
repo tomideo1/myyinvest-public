@@ -1,3 +1,7 @@
+button:focus {
+  border: 1px solid transparent !important;
+}
+
 /* HEADER PART */
 
 .first-header {
@@ -828,7 +832,8 @@
 //}
 
 .testimonial div.comment {
-  width: 55%;
+  // width: 55%;
+  width: 94%;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -946,7 +951,8 @@ blockquote {
 
 .partner-img {
   transition: 0.5s;
-  padding: 15px;
+  // padding: 15px;
+  padding: 0.85em;
   text-align: center !important;
 }
 
@@ -1296,15 +1302,15 @@ blockquote {
   //  clip-path: none;
   //  overflow: hidden;
   //}
-  .testimonial div.comment {
-    width: 100%;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    flex-direction: row;
-    -webkit-box-pack: center;
-    justify-content: center;
-  }
+  // .testimonial div.comment {
+  //   width: 100%;
+  //   display: flex;
+  //   -webkit-box-orient: horizontal;
+  //   -webkit-box-direction: normal;
+  //   flex-direction: row;
+  //   -webkit-box-pack: center;
+  //   justify-content: center;
+  // }
   .quantum img {
     width: 80%;
   }
@@ -2688,6 +2694,8 @@ blockquote.blockquote p {
 }
 
 .listings-col {
+  display: flex;
+  justify-content: center;
   margin-bottom: 40px;
 }
 
@@ -2722,6 +2730,9 @@ blockquote.blockquote p {
   box-shadow: -2px 2px 8px #646464;
   transition: 0.5s;
   overflow: hidden;
+  height: 100%;
+  width: 100% !important;
+  max-width: 25em;
 }
 
 .listings-col .single-list .list-details {
@@ -3431,14 +3442,16 @@ blockquote.blockquote p {
 }
 
 .sign-in-form h2 {
-  font-size: 30px;
+  // font-size: 30px;
+  font-size: 35px !important;
   color: #ed1c24;
   font-weight: 600;
 }
 
 .sign-in-form p {
   font-size: 16px;
-  font-weight: 600;
+  // font-weight: 600;
+  font-weight: 500;
   color: #393939;
   margin-bottom: 40px;
 }
@@ -3450,14 +3463,16 @@ blockquote.blockquote p {
 }
 
 .sign-up-form h2 {
-  font-size: 30px;
+  // font-size: 30px;
+  font-size: 35px !important;
   color: #ed1c24;
   font-weight: 600;
 }
 
 .sign-up-form p {
   font-size: 16px;
-  font-weight: 600;
+  // font-weight: 600;
+  font-weight: 500;
   color: #393939;
   margin-bottom: 40px;
 }
@@ -3491,59 +3506,6 @@ blockquote.blockquote p {
   margin-bottom: 1.5rem;
 }
 
-.form__input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  font-size: 1rem;
-  border: 1px solid #dadce0;
-  border-radius: 0.5rem;
-  outline: none;
-  padding: 1rem;
-  background: none;
-  z-index: 1;
-}
-
-.form__label {
-  position: absolute;
-  left: 1rem;
-  top: 1rem;
-  padding: 0 0.25rem;
-  background-color: #fff;
-  color: #80868b;
-  font-size: 1rem;
-  transition: 0.3s;
-}
-
-/*Input focus move up label*/
-
-.form__input:focus + .form__label {
-  top: -0.5rem;
-  left: 0.8rem;
-  color: #1a73e8;
-  font-size: 12px;
-  font-weight: 500;
-  z-index: 10;
-}
-
-/*Input focus sticky top label*/
-
-.form__input:not(:placeholder-shown).form__input:not(:focus) + .form__label {
-  top: -0.5rem;
-  left: 0.8rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  z-index: 10;
-}
-
-/*Input focus*/
-
-.form__input:focus {
-  border: 1.5px solid #1a73e8;
-}
-
 form.sign-up-form {
   opacity: 0;
   z-index: 1;
@@ -3569,6 +3531,21 @@ form.sign-in-form {
   overflow: hidden;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
+}
+
+// custom styles for vue-tel-input
+.vue-tel-input {
+  z-index: 11 !important;
+
+  &:focus-within {
+    box-shadow: none !important;
+    border: 1.5px solid color(main-red) !important;
+
+    + .label {
+      font-size: 0.8rem !important;
+      color: color(main-red);
+    }
+  }
 }
 
 .title {
@@ -3689,9 +3666,11 @@ form.sign-in-form {
 }
 
 .panel h3 {
-  font-weight: 600;
+  // font-weight: 600;
+  font-weight: 500 !important;
   line-height: 1;
-  font-size: 1.5rem;
+  // font-size: 1.5rem;
+  font-size: 1.825rem !important;
 }
 
 .panel p {
@@ -3755,8 +3734,10 @@ form.sign-in-form {
 
 @media (max-width: 870px) {
   .container-c {
-    min-height: 800px;
-    height: 100vh;
+    // min-height: 800px;
+    // min-height: 980px;
+    min-height: 1060px;
+    // height: 100vh;
   }
 
   .signin-signup {
@@ -3854,7 +3835,8 @@ form.sign-in-form {
   }
 
   .container-c.sign-up-mode .signin-signup {
-    top: 5%;
+    // top: 5%;
+    top: 2.25em;
     transform: translate(-50%, 0);
   }
 
@@ -3895,7 +3877,8 @@ form.sign-in-form {
   }
 
   .container-c:before {
-    bottom: 72%;
+    // bottom: 72%;
+    bottom: 70.5%;
     left: 50%;
   }
 
@@ -3905,7 +3888,7 @@ form.sign-in-form {
   }
 
   form.sign-up-form {
-    padding: 0rem 2rem;
+    padding: 0 2em;
   }
 }
 
